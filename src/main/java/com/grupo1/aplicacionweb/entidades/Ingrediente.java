@@ -9,15 +9,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "recetas")
+@Table(name = "ingredientes")
 public class Ingrediente {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotEmpty
-    @Column(name="nombre")
+    @Column(name = "nombre")
     private String nombre;
     @NotEmpty
-    @Column(name="cantidad")
+    @Column(name = "cantidad")
     private String cantidad;
+    @ManyToOne
+    @JoinColumn (name ="ingrediente_id")
+    private Receta receta;
 }
