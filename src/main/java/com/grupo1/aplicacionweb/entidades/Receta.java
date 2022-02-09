@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,9 +25,8 @@ public class Receta {
     @Column(name="comentario")
     private String comentario;
 
-    @OneToOne
-    @JoinColumn(name="ingrediente_id")
-    private Ingrediente ingrediente;
+    @OneToMany (mappedBy = "receta")
+    private List<Ingrediente> ingredientes;
 
     @NotEmpty
     @Column(name="tiempo_coccion")
