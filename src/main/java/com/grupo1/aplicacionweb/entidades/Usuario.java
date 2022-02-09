@@ -13,25 +13,26 @@ import java.util.Date;
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
+
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotEmpty
-    @Column(name="nombre")
+    @Column(name = "nombre")
     private String nombre;
     @NotEmpty
-    @Column(name="apellido")
+    @Column(name = "apellido")
     private String apellido;
     @NotEmpty
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
     @NotEmpty
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
     @NotEmpty
-    @Column(name="foto")
+    @Column(name = "foto")
     private String foto;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date alta;
     @Temporal(TemporalType.TIMESTAMP)
