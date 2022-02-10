@@ -1,5 +1,8 @@
 package com.grupo1.aplicacionweb.entidades;
 
+import java.io.Serializable;
+
+import com.grupo1.aplicacionweb.enumeraciones.Roles;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,29 +15,37 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements Serializable {
+
+
+    private static final long serialVersionUID = -1299678208192314499L;
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotEmpty
-    @Column(name="nombre")
+    @Column(name = "nombre")
     private String nombre;
     @NotEmpty
-    @Column(name="apellido")
+    @Column(name = "apellido")
     private String apellido;
     @NotEmpty
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
     @NotEmpty
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
     @NotEmpty
-    @Column(name="foto")
+    @Column(name = "foto")
     private String foto;
-    
+
+    @ManyToOne()
+    @JoinColumn(name = "carta_id")
+    private Carta carta;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date alta;
     @Temporal(TemporalType.TIMESTAMP)
     private Date baja;
-
+    @Enumerated(EnumType.STRING)
+    private Roles rol;
 }

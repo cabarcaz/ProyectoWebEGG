@@ -5,41 +5,48 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "recetas")
-public class Receta {
+public class Receta implements Serializable {
+
+    private static final long serialVersionUID = -3210120901686041769L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotEmpty
-    @Column(name="nombre")
+    @Column(name = "nombre")
     private String nombre;
-    @Column(name="preparacion")
+    @Column(name = "preparacion")
     private String preparacion; // considerar armar arraylist para iterar en front
-    @Column(name="foto")
+    @Column(name = "foto")
     private String foto;
-    @Column(name="comentario")
+    @Column(name = "comentario")
     private String comentario;
 
     @OneToMany (mappedBy = "receta")
     private List<Ingrediente> ingredientes;
 
+    @ManyToOne
+    @JoinColumn(name = "receta_id")
+    private Carta carta;
+    
     @NotEmpty
-    @Column(name="tiempo_coccion")
+    @Column(name = "tiempo_coccion")
     private String tiempoDeCoccion;
     @NotEmpty
-    @Column(name="tiempo_preparacion")
+    @Column(name = "tiempo_preparacion")
     private String tiempoDePreparacion;
     @NotEmpty
-    @Column(name="tiempo_total")
+    @Column(name = "tiempo_total")
     private String tiempoTotal;
     @NotEmpty
-    @Column(name="procion")
+    @Column(name = "procion")
     private String porcion;
-
 
 }
