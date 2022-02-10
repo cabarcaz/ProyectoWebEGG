@@ -26,19 +26,15 @@ public class CartaController {
         return "carta-lista";
     }
 
-    @GetMapping("/guardar")
-    private String toGuardar(Model model) {
-        model.addAttribute("carta", new Carta());
+    @GetMapping("/toGuardar")
+    private String toGuardar(Carta carta) {
         return "carta-form";
     }
 
     @PostMapping("/guardar")
     public String guardar(@Valid Carta carta, BindingResult result) {
         if (result.hasErrors()) {
-
-            // VER DONDE TRABAJAMOS LAS EXCEPCIONES.
-
-            return "carta-form";
+            return "carta-form"; // VER DONDE TRABAJAMOS LAS EXCEPCIONES.
         }
         cartaServicio.crear(carta);
         return "redirect:/carta/lista";
@@ -53,7 +49,10 @@ public class CartaController {
                 cartaServicio.crear(cartaServicio.findById(id));
             }
         } catch (Exception e) {
+            
             model.addAttribute("error", e.getMessage());
+            model.addAttribute("lista", cartaServicio.listar());
+            return "receta-lista";
         }
         return "carta-lista";
     }

@@ -33,7 +33,7 @@ public class Receta implements Serializable {
     private List<Ingrediente> ingredientes;
 
     @ManyToOne
-    @JoinColumn(name = "receta_id")
+    @JoinColumn(name = "carta_id")
     private Carta carta;
     
     @NotEmpty
