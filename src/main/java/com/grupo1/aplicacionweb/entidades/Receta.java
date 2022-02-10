@@ -5,13 +5,16 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "recetas")
-public class Receta {
+public class Receta implements Serializable {
+
+    private static final long serialVersionUID = -3210120901686041769L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +32,10 @@ public class Receta {
     @OneToMany (mappedBy = "receta")
     private List<Ingrediente> ingredientes;
 
+    @ManyToOne
+    @JoinColumn(name = "receta_id")
+    private Carta carta;
+    
     @NotEmpty
     @Column(name = "tiempo_coccion")
     private String tiempoDeCoccion;
