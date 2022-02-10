@@ -1,6 +1,7 @@
-package com.grupo1.aplicacionweb.servicios;
+package com.grupo1.aplicacionweb.serviciosimpl;
 
 import com.grupo1.aplicacionweb.entidades.Usuario;
+import com.grupo1.aplicacionweb.iservicios.UsuarioServicio;
 import com.grupo1.aplicacionweb.repositorios.UsuarioDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

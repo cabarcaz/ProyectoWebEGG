@@ -1,6 +1,7 @@
-package com.grupo1.aplicacionweb.servicios;
+package com.grupo1.aplicacionweb.serviciosimpl;
 
 import com.grupo1.aplicacionweb.entidades.Receta;
+import com.grupo1.aplicacionweb.iservicios.RecetaServicio;
 import com.grupo1.aplicacionweb.repositorios.RecetaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

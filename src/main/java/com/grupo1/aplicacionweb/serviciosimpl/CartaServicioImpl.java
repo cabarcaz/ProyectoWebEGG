@@ -1,6 +1,7 @@
-package com.grupo1.aplicacionweb.servicios;
+package com.grupo1.aplicacionweb.serviciosimpl;
 
 import com.grupo1.aplicacionweb.entidades.Carta;
+import com.grupo1.aplicacionweb.iservicios.CartaServicio;
 import com.grupo1.aplicacionweb.repositorios.CartaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

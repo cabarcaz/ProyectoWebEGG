@@ -1,6 +1,7 @@
-package com.grupo1.aplicacionweb.servicios;
+package com.grupo1.aplicacionweb.serviciosimpl;
 
 import com.grupo1.aplicacionweb.entidades.Ingrediente;
+import com.grupo1.aplicacionweb.iservicios.IngredienteSerivcio;
 import com.grupo1.aplicacionweb.repositorios.IngredienteDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

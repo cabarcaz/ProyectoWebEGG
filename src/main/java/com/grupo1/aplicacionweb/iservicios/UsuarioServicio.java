@@ -1,6 +1,5 @@
-package com.grupo1.aplicacionweb.servicios;
+package com.grupo1.aplicacionweb.iservicios;
 
-import com.grupo1.aplicacionweb.entidades.Carta;
 import com.grupo1.aplicacionweb.entidades.Usuario;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

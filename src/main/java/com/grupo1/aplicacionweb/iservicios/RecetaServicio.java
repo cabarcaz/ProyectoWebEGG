@@ -1,6 +1,5 @@
-package com.grupo1.aplicacionweb.servicios;
+package com.grupo1.aplicacionweb.iservicios;
 
-import com.grupo1.aplicacionweb.entidades.Carta;
 import com.grupo1.aplicacionweb.entidades.Receta;
 
 import java.util.List;
