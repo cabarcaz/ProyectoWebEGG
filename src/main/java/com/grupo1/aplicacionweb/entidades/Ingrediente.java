@@ -6,21 +6,27 @@ import javax.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @Entity
 @Table(name = "ingredientes")
-public class Ingrediente {
+public class Ingrediente implements Serializable {
+
+    private static final long serialVersionUID = 3098791991667236102L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotEmpty
-    @Column(name="nombre")
+    @Column(name = "nombre")
     private String nombre;
     @NotEmpty
-    @Column(name="cantidad")
+    @Column(name = "cantidad")
     private String cantidad;
+
     @ManyToOne
-    @JoinColumn (name ="ingrediente_id")
+    @JoinColumn(name = "receta_id")
     private Receta receta;
 }
