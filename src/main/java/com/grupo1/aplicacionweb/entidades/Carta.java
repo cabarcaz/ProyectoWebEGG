@@ -12,17 +12,16 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
+/*
+@Getter - importamos para usar lombok
 @Setter
+*/
+
 @Entity
 @Table(name = "cartas")
 public class Carta implements Serializable {
 
-
-    private static final long serialVersionUID = -7819236374992397102L;
+    private static long serialVersionUID = -7819236374992397102L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -40,4 +39,102 @@ public class Carta implements Serializable {
 
     @OneToMany(mappedBy = "carta")
     private List<Usuario> usuarios;
+
+    /**
+     * @return the serialVersionUID
+     */
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    /**
+     * @param aSerialVersionUID the serialVersionUID to set
+     */
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the alta
+     */
+    public Date getAlta() {
+        return alta;
+    }
+
+    /**
+     * @param alta the alta to set
+     */
+    public void setAlta(Date alta) {
+        this.alta = alta;
+    }
+
+    /**
+     * @return the baja
+     */
+    public Date getBaja() {
+        return baja;
+    }
+
+    /**
+     * @param baja the baja to set
+     */
+    public void setBaja(Date baja) {
+        this.baja = baja;
+    }
+
+    /**
+     * @return the recetas
+     */
+    public List<Receta> getRecetas() {
+        return recetas;
+    }
+
+    /**
+     * @param recetas the recetas to set
+     */
+    public void setRecetas(List<Receta> recetas) {
+        this.recetas = recetas;
+    }
+
+    /**
+     * @return the usuarios
+     */
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    /**
+     * @param usuarios the usuarios to set
+     */
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
 }
