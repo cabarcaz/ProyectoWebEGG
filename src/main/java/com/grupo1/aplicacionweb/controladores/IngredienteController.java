@@ -2,7 +2,6 @@ package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Ingrediente;
 import com.grupo1.aplicacionweb.excepciones.ErrorServicio;
-import com.grupo1.aplicacionweb.iservicios.IngredienteSerivcio;
 import com.grupo1.aplicacionweb.iservicios.RecetaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import com.grupo1.aplicacionweb.iservicios.IngredienteServicio;
 
 @Controller
 @RequestMapping("/ingrediente")
 public class IngredienteController {
     @Autowired
-    private IngredienteSerivcio ingredienteServicio;
+    private IngredienteServicio ingredienteServicio;
 
     @Autowired
     private RecetaServicio recetaServicio;
