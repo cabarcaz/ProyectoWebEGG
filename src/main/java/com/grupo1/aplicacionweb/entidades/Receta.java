@@ -29,6 +29,10 @@ public class Receta {
     @OneToMany (mappedBy = "receta")
     private List<Ingrediente> ingredientes;
 
+    @ManyToOne
+    @JoinColumn(name = "receta_id")
+    private Carta carta;
+    
     @NotEmpty
     @Column(name = "tiempo_coccion")
     private String tiempoDeCoccion;

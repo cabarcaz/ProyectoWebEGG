@@ -22,6 +22,6 @@ public class Ingrediente {
     @Column(name = "cantidad")
     private String cantidad;
     @ManyToOne
-    @JoinColumn (name ="ingrediente_id")
+    @JoinColumn(name = "ingrediente_id")
     private Receta receta;
 }

@@ -1,5 +1,6 @@
 package com.grupo1.aplicacionweb.entidades;
 
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,8 +13,9 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
-
+public class Usuario implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -32,6 +34,10 @@ public class Usuario {
     @NotEmpty
     @Column(name = "foto")
     private String foto;
+
+    @ManyToOne()
+    @JoinColumn(name = "carta_id")
+    private Carta carta;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date alta;
