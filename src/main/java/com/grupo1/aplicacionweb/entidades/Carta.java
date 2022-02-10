@@ -84,7 +84,7 @@ public class Carta implements Serializable {
 
     /**
      * @return the alta
-     */
+     **/
     public Date getAlta() {
         return alta;
     }
