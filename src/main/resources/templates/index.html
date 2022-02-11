@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proyecto</title>
+<html  xml:lang xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  </html>
+<head th:replace="/plantilla/plantilla::head"></head>
+<link rel="stylesheet" href="/css/estilos.css">
 </head>
 <body>
-  <h1>tittle</h1>
+
+  <header th:replace="/plantilla/plantilla::header"></header>
+  
+    <div class="container contenedor">
+    
+      <form>
+        
+        <footer class="text-center text-white" style="background-color: #caced1;"></footer>
+        <div class="mx-auto" style="width: 200px;">
+        
+        <div class="mb-3">
+        <div class="inicio ">    <label for="exampleInputIniciarSesion"class="form-lable">IniciarSesion</label>    </div>  <br>
+         <!---- <input type="iniciarsesion" class="form-control" id="exampleInputiniciarsesion" aria-describedby="iniciarsesionHelp"><br> -->
+          <label for="exampleInputUsuario" class1="form-label">Usuario</label>
+          <input type="usuario" class1="form-control" id="exampleInputusuario" aria-describedby="usuarioHelp">
+      <!----<div id="usuarioHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="for> m-control" id="exampleInputPassword1">
+        </div>
+        <!--<div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>-->
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="registrarse" class="btn btn-primary">Registrarse</button>
+      </div>
+      <footer class="bg-light text-center text-lg-start">
+         <div class="text-rigth p-3" style="background-color: rgba(243, 12, 12, 0.2);">
+          © 2020 Copyright:
+          <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+       
+      </footer>
+      </form>
+  <footer th:replace="/plantilla/plantilla::footer"></footer>
 </body>
-</html>
+
