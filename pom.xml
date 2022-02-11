@@ -60,11 +60,11 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
+<!--		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
+			<scope>annotationProcessor</scope>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

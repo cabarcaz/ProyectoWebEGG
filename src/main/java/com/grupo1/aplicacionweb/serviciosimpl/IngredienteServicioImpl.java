@@ -1,15 +1,15 @@
 package com.grupo1.aplicacionweb.serviciosimpl;
 
 import com.grupo1.aplicacionweb.entidades.Ingrediente;
-import com.grupo1.aplicacionweb.iservicios.IngredienteSerivcio;
 import com.grupo1.aplicacionweb.repositorios.IngredienteDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import com.grupo1.aplicacionweb.iservicios.IngredienteServicio;
 
 @Service
-public class IngredienteServicioImpl implements IngredienteSerivcio {
+public class IngredienteServicioImpl implements IngredienteServicio {
     @Autowired
     private IngredienteDao ingredienteDao;
 
