@@ -14,4 +14,5 @@ public class LandingController {
         model.addAttribute("titulo", "Inicio");
         return "/main/landing";
     }
+   
 }
