@@ -30,4 +30,8 @@ Se implementa para la organizacion interna de la empresa.
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/Krusink/ProyectoWebEGG/graphs/contributors) quíenes han participado en este proyecto. 
 
 ---
+<<<<<<< .merge_file_a08716
 ⌨️ con ❤️ por [Krusink](https://github.com/Krusink)
+=======
+⌨️ con ❤️ por [Krusink](https://github.com/Krusink)
+>>>>>>> .merge_file_a07700

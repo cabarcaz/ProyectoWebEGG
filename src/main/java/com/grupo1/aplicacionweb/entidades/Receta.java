@@ -3,6 +3,7 @@ package com.grupo1.aplicacionweb.entidades;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "recetas")
@@ -16,13 +17,15 @@ public class Receta implements Serializable {
     @NotEmpty
     @Column(name = "nombre")
     private String nombre;
+    @NotEmpty
     @Column(name = "preparacion")
     private String preparacion; // considerar armar arraylist para iterar en front
+    @NotEmpty
     @Column(name = "foto")
     private String foto;
+    @NotEmpty
     @Column(name = "comentario")
     private String comentario;
-
     @NotEmpty
     @Column(name = "tiempo_coccion")
     private String tiempoDeCoccion;
@@ -35,6 +38,21 @@ public class Receta implements Serializable {
     @NotEmpty
     @Column(name = "procion")
     private String porcion;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "receta_ingrediente",
+            joinColumns = {@JoinColumn(name = "receta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "ingrediente_id")})
+    private List<Ingrediente> ingredientes;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "receta_carta",
+            joinColumns = {@JoinColumn(name = "receta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "carta_id")})
+    private List<Carta> cartas;
+
 
     /**
      * @return the serialVersionUID
