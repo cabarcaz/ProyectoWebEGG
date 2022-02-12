@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name = "ingredientes")
 public class Ingrediente implements Serializable {
@@ -13,67 +15,54 @@ public class Ingrediente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+    @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "nombre")
     private String nombre;
-    
+
+    @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "cantidad")
     private String cantidad;
 
-    /**
-     * @return the serialVersionUID
-     */
+    @ManyToMany(mappedBy = "ingredientes")
+    private List<Receta> recetas;
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    /**
-     * @param aSerialVersionUID the serialVersionUID to set
-     */
-    public static void setSerialVersionUID(long aSerialVersionUID) {
-        serialVersionUID = aSerialVersionUID;
+    public static void setSerialVersionUID(long serialVersionUID) {
+        Ingrediente.serialVersionUID = serialVersionUID;
     }
 
-    /**
-     * @return the id
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * @return the nombre
-     */
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     * @return the cantidad
-     */
     public String getCantidad() {
         return cantidad;
     }
 
-    /**
-     * @param cantidad the cantidad to set
-     */
     public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
 
+    public List<Receta> getRecetas() {
+        return recetas;
+    }
+
+    public void setRecetas(List<Receta> recetas) {
+        this.recetas = recetas;
+    }
 }

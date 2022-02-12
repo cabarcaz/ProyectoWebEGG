@@ -6,10 +6,9 @@ import com.grupo1.aplicacionweb.servicio.IngredienteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -32,28 +31,47 @@ public class IngredienteController {
 
     @GetMapping("/crear")
     public String crearIngrediente(Model model) {
-        Ingrediente ingredientes = new Ingrediente();
+        Ingrediente ingrediente = new Ingrediente();
         model.addAttribute("titulo", "Formulario");
         model.addAttribute("h1", "Formulario Ingreso nuevo Ingrediente");
-        model.addAttribute("ingrediente", ingredientes);
+        model.addAttribute("ingrediente", ingrediente);
         return "/ingrediente/nuevo";
     }
 
     @PostMapping("/guardar")
-    public String guardar(@Valid @ModelAttribute Ingrediente ingrediente, Model model) {
-        ingredienteServicio.crear(ingrediente);
+    public String guardar(@Valid @ModelAttribute Ingrediente ingrediente, BindingResult result, RedirectAttributes redirect) {
+        if (result.hasErrors()){
+            return "redirect:/ingrediente/crear";
+        }
+        try {
+            ingredienteServicio.crear(ingrediente);
+        } catch (Exception e) {
+            redirect.addFlashAttribute("error", e.getMessage());
+        }
         return "redirect:/ingrediente/";
     }
 
-    @GetMapping("/editar")
-    public String editar() {
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect,Model model) {
+        if (id == null || ingredienteServicio.findById(id) == null) {
+            redirect.addFlashAttribute("error", "Error, no hay un ingrediente con ese ID.");
+            return "redirect:/ingrediente/";
+        } else {
+            model.addAttribute("ingrediente", ingredienteServicio.findById(id));
+        }
 
         return "/ingrediente/editar";
     }
 
     @GetMapping("/eliminar/{id}")
-    public String eliminar() {
-
+    public String eliminar(@PathVariable("id") Integer id, RedirectAttributes redirect) {
+        if (id == null || ingredienteServicio.findById(id) == null) {
+            redirect.addFlashAttribute("error", "Error, no hay un ingrediente con ese ID.");
+            return "redirect:/ingrediente/";
+        } else {
+           ingredienteServicio.eliminar(id);
+           redirect.addFlashAttribute("success","Su ingrediente se elimino con exito!");
+        }
         return "redirect:/ingrediente/";
     }
 }
