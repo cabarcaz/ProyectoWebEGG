@@ -2,13 +2,9 @@ package com.grupo1.aplicacionweb.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.List;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "cartas")
@@ -19,81 +15,75 @@ public class Carta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotEmpty (message = "Este campo es obligatorio.")
     private String nombre;
+
+    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    private List<Receta> recetas;
+
+    @OneToMany(mappedBy = "carta", cascade = CascadeType.ALL)
+    private List<Usuario> usuarios;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date alta;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date baja;
+    private Boolean baja;
 
-    /**
-     * @return the serialVersionUID
-     */
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    /**
-     * @param aSerialVersionUID the serialVersionUID to set
-     */
-    public static void setSerialVersionUID(long aSerialVersionUID) {
-        serialVersionUID = aSerialVersionUID;
+    public static void setSerialVersionUID(long serialVersionUID) {
+        Carta.serialVersionUID = serialVersionUID;
     }
 
-    /**
-     * @return the id
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * @return the nombre
-     */
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     * @return the alta
-     **/
+    public List<Receta> getRecetas() {
+        return recetas;
+    }
+
+    public void setRecetas(List<Receta> recetas) {
+        this.recetas = recetas;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
     public Date getAlta() {
         return alta;
     }
 
-    /**
-     * @param alta the alta to set
-     */
     public void setAlta(Date alta) {
         this.alta = alta;
     }
 
-    /**
-     * @return the baja
-     */
-    public Date getBaja() {
+    public Boolean getBaja() {
         return baja;
     }
 
-    /**
-     * @param baja the baja to set
-     */
-    public void setBaja(Date baja) {
+    public void setBaja(Boolean baja) {
         this.baja = baja;
     }
 }
+
+

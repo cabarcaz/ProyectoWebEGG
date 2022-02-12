@@ -3,6 +3,8 @@ package com.grupo1.aplicacionweb.entidades;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name = "ingredientes")
 public class Ingrediente implements Serializable {
@@ -12,12 +14,15 @@ public class Ingrediente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     @Column(name = "nombre")
     private String nombre;
-    
+
     @Column(name = "cantidad")
     private String cantidad;
+
+    @ManyToMany(mappedBy = "ingredientes")
+    private List<Receta> recetas;
 
     /**
      * @return the serialVersionUID
