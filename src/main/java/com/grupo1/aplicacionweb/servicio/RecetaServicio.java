@@ -1,7 +1,7 @@
-package com.grupo1.aplicacionweb.serviciosimpl;
+package com.grupo1.aplicacionweb.servicio;
 
 import com.grupo1.aplicacionweb.entidades.Receta;
-import com.grupo1.aplicacionweb.iservicios.RecetaServicio;
+import com.grupo1.aplicacionweb.interfas.IReceta;
 import com.grupo1.aplicacionweb.repositorios.RecetaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RecetaServicioImpl implements RecetaServicio {
+public class RecetaServicio implements IReceta {
     @Autowired
     private RecetaDao recetaDao;
     @Override

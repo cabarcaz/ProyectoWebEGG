@@ -1,10 +1,10 @@
-package com.grupo1.aplicacionweb.iservicios;
+package com.grupo1.aplicacionweb.interfas;
 
 import com.grupo1.aplicacionweb.entidades.Carta;
 
 import java.util.List;
 
-public interface CartaServicio {
+public interface ICarta {
     public List<Carta> listar();
     public void eliminar(Integer id);
     public void crear(Carta carta);

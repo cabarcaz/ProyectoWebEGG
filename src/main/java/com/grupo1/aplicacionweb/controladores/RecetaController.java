@@ -1,18 +1,19 @@
 package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Receta;
-import com.grupo1.aplicacionweb.excepciones.ErrorServicio;
-import com.grupo1.aplicacionweb.iservicios.CartaServicio;
-import com.grupo1.aplicacionweb.iservicios.RecetaServicio;
+import com.grupo1.aplicacionweb.servicio.RecetaServicio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
+
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -21,61 +22,46 @@ import javax.validation.Valid;
 public class RecetaController {
     @Autowired
     private RecetaServicio recetaServicio;
-    @Autowired
-    private CartaServicio cartaServicio;
 
-    @GetMapping("/lista")
+    @GetMapping("/")
     public String listar(Model model) {
-        model.addAttribute("lista", recetaServicio.listar());
-        return "receta-lista";
+        List<Receta> listaRecetas = recetaServicio.listar();
+        model.addAttribute("recetas",listaRecetas);
+        model.addAttribute("titulo","Listadi Recetas");
+        model.addAttribute("h1","Formulario ingreso de nueva receta");
+        return "/receta/lista";
     }
 
-    @GetMapping("/toGuardar")
-    private String toGuardar(Receta receta) {
-        return "receta-form";
+    @GetMapping("/crear")
+    public String crearReceta(Model model) {
+        Receta recetas = new Receta();
+        model.addAttribute("recetas",recetas);
+        model.addAttribute("titulo","Formulario");
+        model.addAttribute("h1","Formulario ingreso de recetas");
+        return "/receta/nuevo";
     }
 
     @PostMapping("/guardar")
-    public String guardar(@Valid Receta receta, BindingResult result) {
-        if (result.hasErrors()) {
-
-            // VER DONDE TRABAJAMOS LAS EXCEPCIONES.
-
-            return "receta-form";
-        }
-        receta.setCarta(cartaServicio.findById(receta.getCarta().getId())); // VALIDAR SI ES NULO
+    public String guardar(@Valid @ModelAttribute Receta receta,Model model) {
         recetaServicio.crear(receta);
-        return "redirect:/receta/lista";
+        return "redirect:/receta/";
     }
 
-    @GetMapping("/editar/{id}")
-    public String editar(@RequestParam("id") Integer id, Model model, RedirectAttributes redirect) {
-        try {
-            if (recetaServicio.findById(id) == null) {
-                throw new ErrorServicio("El id devuelve un valor nulo");
-            } else {
-                redirect.addFlashAttribute("receta",recetaServicio.findById(id));
-            }
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            model.addAttribute("lista", recetaServicio.listar());
-            return "receta-lista";
-        }
-        return "redirect:/receta/toGuardar";
+    @GetMapping("/editar")
+    public String editar() {
+       
+        return "/receta/editar";
     }
 
-    @GetMapping("/eliminar/{id}")
-    public String eliminar(@RequestParam("id") Integer id, Model model) {
-        try {
-            if (recetaServicio.findById(id) == null) {
-                throw new ErrorServicio("El id devuelve un valor nulo");
-            } else {
-                recetaServicio.eliminar(id);
-            }
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            return "receta-lista";
-        }
-        return "redirect:/receta/lista";
+    @GetMapping("/eliminar")
+    public String eliminar() {
+        
+        return "redirect:/receta/";
+    }
+
+    @GetMapping("/detalle")
+    public String detalleRecetas(Model model){
+        model.addAttribute("h1", "Detalle de la receta");
+        return "/receta/detalles";
     }
 }

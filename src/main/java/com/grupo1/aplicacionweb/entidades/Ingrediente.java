@@ -1,15 +1,8 @@
 package com.grupo1.aplicacionweb.entidades;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
-
-/*
-@Getter - importamos para usar lombok
-@Setter
-*/
-
 @Entity
 @Table(name = "ingredientes")
 public class Ingrediente implements Serializable {
@@ -19,16 +12,12 @@ public class Ingrediente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotEmpty
+    
     @Column(name = "nombre")
     private String nombre;
-    @NotEmpty
+    
     @Column(name = "cantidad")
     private String cantidad;
-
-    @ManyToOne
-    @JoinColumn(name = "receta_id")
-    private Receta receta;
 
     /**
      * @return the serialVersionUID
@@ -86,17 +75,4 @@ public class Ingrediente implements Serializable {
         this.cantidad = cantidad;
     }
 
-    /**
-     * @return the receta
-     */
-    public Receta getReceta() {
-        return receta;
-    }
-
-    /**
-     * @param receta the receta to set
-     */
-    public void setReceta(Receta receta) {
-        this.receta = receta;
-    }
 }

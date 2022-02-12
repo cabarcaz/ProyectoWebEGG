@@ -2,20 +2,13 @@ package com.grupo1.aplicacionweb.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-/*
-@Getter - importamos para usar lombok
-@Setter
-*/
 
 @Entity
 @Table(name = "cartas")
@@ -33,12 +26,6 @@ public class Carta implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date baja;
-
-    @OneToMany(mappedBy = "carta")
-    private List<Receta> recetas;
-
-    @OneToMany(mappedBy = "carta")
-    private List<Usuario> usuarios;
 
     /**
      * @return the serialVersionUID
@@ -108,33 +95,5 @@ public class Carta implements Serializable {
      */
     public void setBaja(Date baja) {
         this.baja = baja;
-    }
-
-    /**
-     * @return the recetas
-     */
-    public List<Receta> getRecetas() {
-        return recetas;
-    }
-
-    /**
-     * @param recetas the recetas to set
-     */
-    public void setRecetas(List<Receta> recetas) {
-        this.recetas = recetas;
-    }
-
-    /**
-     * @return the usuarios
-     */
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    /**
-     * @param usuarios the usuarios to set
-     */
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
     }
 }

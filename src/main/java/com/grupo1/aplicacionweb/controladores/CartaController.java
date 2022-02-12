@@ -1,16 +1,17 @@
 package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Carta;
-import com.grupo1.aplicacionweb.excepciones.ErrorServicio;
-import com.grupo1.aplicacionweb.iservicios.CartaServicio;
+import com.grupo1.aplicacionweb.servicio.CartaServicio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -20,55 +21,39 @@ public class CartaController {
     @Autowired
     private CartaServicio cartaServicio;
 
-    @GetMapping("/lista")
+    @GetMapping("/")
     public String listar(Model model) {
-        model.addAttribute("lista", cartaServicio.listar());
-        return "carta-lista";
+        List<Carta> listaCarta = cartaServicio.listar();
+        model.addAttribute("cartas",listaCarta);
+        model.addAttribute("titulo", "Listado de Recetas");
+        model.addAttribute("h1","Listado de Recetas");
+        return "/carta/lista";
     }
 
-    @GetMapping("/toGuardar")
-    private String toGuardar(Carta carta) {
-        return "carta-form";
+    @GetMapping("/crear")
+    public String crearCarta(Model model) {
+        Carta cartas = new Carta();
+        model.addAttribute("titulo","Formulario");
+        model.addAttribute("h1", "Formulario ingreso Nueva receta");
+        model.addAttribute("carta", cartas);
+        return "/carta/nuevo";
     }
 
     @PostMapping("/guardar")
-    public String guardar(@Valid Carta carta, BindingResult result) {
-        if (result.hasErrors()) {
-            return "carta-form"; // VER DONDE TRABAJAMOS LAS EXCEPCIONES.
-        }
+    public String guardar(@Valid @ModelAttribute Carta carta, Model model) {
         cartaServicio.crear(carta);
-        return "redirect:/carta/lista";
+        return "redirect:/carta/";
     }
 
-    @GetMapping("/editar/{id}")
-    public String editar(@RequestParam("id") Integer id, Model model) {
-        try {
-            if (cartaServicio.findById(id) == null) {
-                throw new ErrorServicio("El id devuelve un valor nulo");
-            } else {
-                cartaServicio.crear(cartaServicio.findById(id));
-            }
-        } catch (Exception e) {
-            
-            model.addAttribute("error", e.getMessage());
-            model.addAttribute("lista", cartaServicio.listar());
-            return "receta-lista";
-        }
-        return "carta-lista";
+    @GetMapping("/editar")
+    public String editar() {
+        
+        return "/carta/editar";
     }
 
     @GetMapping("/eliminar/{id}")
-    public String eliminar(@RequestParam("id") Integer id, Model model) {
-        try {
-            if (cartaServicio.findById(id) == null) {
-                throw new ErrorServicio("El id devuelve un valor nulo");
-            } else {
-                cartaServicio.eliminar(id);
-            }
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-        }
-
-        return "carta-lista";
+    public String eliminar() {
+       
+        return "redirect:/carta/";
     }
 }

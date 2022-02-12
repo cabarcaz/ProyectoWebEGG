@@ -1,25 +1,18 @@
-package com.grupo1.aplicacionweb.serviciosimpl;
+package com.grupo1.aplicacionweb.servicio;
 
 import com.grupo1.aplicacionweb.entidades.Usuario;
-import com.grupo1.aplicacionweb.iservicios.UsuarioServicio;
+import com.grupo1.aplicacionweb.interfas.IUsuario;
 import com.grupo1.aplicacionweb.repositorios.UsuarioDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UsuarioServicioImpl implements UsuarioServicio{
+public class UsuarioServicio implements IUsuario{
 
     @Autowired
     private UsuarioDao usuarioDao;
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
-    }
 
     @Override
     public List<Usuario> listar() {

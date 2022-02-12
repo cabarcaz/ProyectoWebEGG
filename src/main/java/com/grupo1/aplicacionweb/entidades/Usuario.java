@@ -9,11 +9,6 @@ import javax.validation.constraints.NotEmpty;
 
 import java.util.Date;
 
-/*
-@Getter - importamos para usar lombok
-@Setter
-*/
-
 @Entity
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
@@ -38,10 +33,6 @@ public class Usuario implements Serializable {
     @NotEmpty
     @Column(name = "foto")
     private String foto;
-
-    @ManyToOne()
-    @JoinColumn(name = "carta_id")
-    private Carta carta;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date alta;
@@ -146,20 +137,6 @@ public class Usuario implements Serializable {
      */
     public void setFoto(String foto) {
         this.foto = foto;
-    }
-
-    /**
-     * @return the carta
-     */
-    public Carta getCarta() {
-        return carta;
-    }
-
-    /**
-     * @param carta the carta to set
-     */
-    public void setCarta(Carta carta) {
-        this.carta = carta;
     }
 
     /**

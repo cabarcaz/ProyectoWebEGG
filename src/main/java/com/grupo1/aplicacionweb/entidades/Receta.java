@@ -3,12 +3,6 @@ package com.grupo1.aplicacionweb.entidades;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.List;
-
-/*
-@Getter - importamos para usar lombok
-@Setter
-*/
 
 @Entity
 @Table(name = "recetas")
@@ -29,13 +23,6 @@ public class Receta implements Serializable {
     @Column(name = "comentario")
     private String comentario;
 
-    @OneToMany (mappedBy = "receta")
-    private List<Ingrediente> ingredientes;
-
-    @ManyToOne
-    @JoinColumn(name = "carta_id")
-    private Carta carta;
-    
     @NotEmpty
     @Column(name = "tiempo_coccion")
     private String tiempoDeCoccion;
@@ -133,33 +120,6 @@ public class Receta implements Serializable {
         this.comentario = comentario;
     }
 
-    /**
-     * @return the ingredientes
-     */
-    public List<Ingrediente> getIngredientes() {
-        return ingredientes;
-    }
-
-    /**
-     * @param ingredientes the ingredientes to set
-     */
-    public void setIngredientes(List<Ingrediente> ingredientes) {
-        this.ingredientes = ingredientes;
-    }
-
-    /**
-     * @return the carta
-     */
-    public Carta getCarta() {
-        return carta;
-    }
-
-    /**
-     * @param carta the carta to set
-     */
-    public void setCarta(Carta carta) {
-        this.carta = carta;
-    }
 
     /**
      * @return the tiempoDeCoccion

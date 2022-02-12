@@ -1,20 +1,19 @@
 package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Ingrediente;
-import com.grupo1.aplicacionweb.excepciones.ErrorServicio;
-import com.grupo1.aplicacionweb.iservicios.RecetaServicio;
+import com.grupo1.aplicacionweb.servicio.IngredienteServicio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 import javax.validation.Valid;
-import com.grupo1.aplicacionweb.iservicios.IngredienteServicio;
 
 @Controller
 @RequestMapping("/ingrediente")
@@ -22,60 +21,39 @@ public class IngredienteController {
     @Autowired
     private IngredienteServicio ingredienteServicio;
 
-    @Autowired
-    private RecetaServicio recetaServicio;
-
-    @GetMapping("/lista")
+    @GetMapping("/")
     public String listar(Model model) {
-        model.addAttribute("lista", ingredienteServicio.listar());
-        return "ingrediente-lista";
+        List<Ingrediente> listaIngredientes = ingredienteServicio.listar();
+        model.addAttribute("ingredientes", listaIngredientes);
+        model.addAttribute("titulo", "Listado Ingredientes");
+        model.addAttribute("h1", "Lista de Ingredientes.");
+        return "/ingrediente/lista";
     }
 
-    @GetMapping("/toGuardar")
-    private String toGuardar(Ingrediente ingrediente) {
-        return "ingrediente-form";
+    @GetMapping("/crear")
+    public String crearIngrediente(Model model) {
+        Ingrediente ingredientes = new Ingrediente();
+        model.addAttribute("titulo", "Formulario");
+        model.addAttribute("h1", "Formulario Ingreso nuevo Ingrediente");
+        model.addAttribute("ingrediente", ingredientes);
+        return "/ingrediente/nuevo";
     }
 
     @PostMapping("/guardar")
-    public String guardar(@Valid Ingrediente ingrediente, BindingResult result) {
-        if (result.hasErrors()) {
-            return "Ingrediente-form"; // VER COMO TRABAJAMOS LAS EXCEPCIONES.
-        }
-        ingrediente.setReceta(recetaServicio.findById(ingrediente.getReceta().getId())); // VALIDAR SI ES NULO EL ID
-
+    public String guardar(@Valid @ModelAttribute Ingrediente ingrediente, Model model) {
         ingredienteServicio.crear(ingrediente);
-        return "redirect:/ingrediente/lista";
+        return "redirect:/ingrediente/";
     }
 
-    @GetMapping("/editar/{id}")
-    public String editar(@RequestParam("id") Integer id, Model model, RedirectAttributes redirect) {
-        try {
-            if (ingredienteServicio.findById(id) == null) {
-                throw new ErrorServicio("El id devuelve un valor nulo");
-            } else {
-                redirect.addAttribute(ingredienteServicio.findById(id));
-            }
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            model.addAttribute("lista",ingredienteServicio.listar());
-            return "ingrediente-lista";
-        }
-        return "redirect:/ingrediente/toGuardar";
+    @GetMapping("/editar")
+    public String editar() {
+
+        return "/ingrediente/editar";
     }
 
     @GetMapping("/eliminar/{id}")
-    public String eliminar(@RequestParam("id") Integer id, Model model) {
-        try {
-            if (ingredienteServicio.findById(id) == null) {
-                throw new ErrorServicio("El id devuelve un valor nulo");
-            } else {
-                ingredienteServicio.eliminar(id);
-            }
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            model.addAttribute("lista",ingredienteServicio.listar());
-            return "ingrediente-lista";
-        }
-        return "redirect:/ingrediente/lista";
+    public String eliminar() {
+
+        return "redirect:/ingrediente/";
     }
 }
