@@ -6,6 +6,7 @@ import com.grupo1.aplicacionweb.interfas.ICarta;
 import com.grupo1.aplicacionweb.repositorios.CartaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -17,28 +18,30 @@ public class CartaServicio implements ICarta {
     @Autowired
     private CartaDao cartaDao;
 
-
+    @Transactional(readOnly = true)
     @Override
     public List<Carta> listar() {
         return cartaDao.findAll();
     }
 
+    @Transactional
     @Override
-    public void eliminar(Integer id) throws ErrorServicio{
+    public void eliminar(Integer id) throws ErrorServicio {
         if (cartaDao.findById(id) != null) {
-            Carta carta =findById(id);
+            Carta carta = findById(id);
             carta.setBaja(true);
             crear(carta);
-        }else {
+        } else {
             throw new ErrorServicio("Error, ID nulo.");
         }
     }
 
+    @Transactional
     @Override
     public void crear(Carta carta) throws ErrorServicio {
         if (carta != null) {
             if (cartaDao.findById(carta.getId()) != null) {
-                                                                //Agregar validaciones para las listas
+                //Agregar validaciones para las listas
                 cartaDao.save(carta);
             } else {
                 carta.setBaja(false);
@@ -50,6 +53,7 @@ public class CartaServicio implements ICarta {
         }
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Carta findById(Integer id) {
         return cartaDao.findById(id).orElse(null);

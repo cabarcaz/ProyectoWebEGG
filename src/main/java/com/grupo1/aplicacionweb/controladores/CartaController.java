@@ -49,7 +49,7 @@ public class CartaController {
     }
 
     @GetMapping("/editar/{id}")
-    public String editar(@RequestParam("id") Integer id, Model model, RedirectAttributes redirect) {
+    public String editar(@PathVariable("id") Integer id, Model model, RedirectAttributes redirect) {
         if (id != null) {
             model.addAttribute("carta", cartaServicio.findById(id));
         } else {
@@ -61,7 +61,7 @@ public class CartaController {
     }
 
     @GetMapping("/eliminar/{id}")
-    public String eliminar(@RequestParam("id") Integer id, Model model, RedirectAttributes redirect) {
+    public String eliminar(@PathVariable("id") Integer id, Model model, RedirectAttributes redirect) {
         try {
             cartaServicio.eliminar(id);
         } catch (Exception e) {
