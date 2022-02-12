@@ -38,9 +38,9 @@ public class IngredienteServicio implements InIngrediente{
         }
     }
 
+
     @Override
     public Ingrediente findById(Integer id) {
-        
         return ingredienteDao.findById(id).orElse(null);
     }
    

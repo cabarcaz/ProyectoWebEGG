@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/inicio")
-public class LandingController {
+@RequestMapping("/")
+public class IndexController {
 
     @GetMapping("/")
-    public String landing(Model model){
+    public String loginIndex(Model model){
         model.addAttribute("titulo", "Inicio");
-        return "/main/landing";
+        return "index";
     }
    
 }

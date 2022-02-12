@@ -60,7 +60,7 @@ public class CartaController {
     }
 
     @GetMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable("id") Integer id, Model model, RedirectAttributes redirect) {
+    public String delete(@PathVariable("id") Integer id, Model model, RedirectAttributes redirect) {
         try {
             cartaServicio.eliminar(id);
         } catch (Exception e) {
