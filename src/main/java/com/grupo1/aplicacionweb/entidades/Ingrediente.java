@@ -1,6 +1,7 @@
 package com.grupo1.aplicacionweb.entidades;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 @Entity
