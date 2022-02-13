@@ -35,7 +35,7 @@ public class UsuarioController {
 
     @GetMapping("/crear")
     public String crearUsuario(Model model) {
-        Usuario usuario= new Usuario();
+        Usuario usuario = new Usuario();
         model.addAttribute("titulo", "Formulario");
         model.addAttribute("h1", "Formulario ingreso nuevo usuario");
         model.addAttribute("usuario", usuario);
@@ -48,14 +48,14 @@ public class UsuarioController {
             return "/usuario/nuevo";
         }
         try {
-            if (cartaServicio.findById(usuario.getCarta().getId()) != null) {
-                usuario.setCarta(cartaServicio.findById(usuario.getCarta().getId()));
-                usuarioServicio.crear(usuario);
-                redirect.addFlashAttribute("success", "Su menu se ha asignado con EXITO.");
-            } else {
+//            if (usuario.getCarta().getId()== null) {
                 usuario.setCarta(null);
                 usuarioServicio.crear(usuario);
-            }
+//            } else {
+//                usuario.setCarta(cartaServicio.findById(usuario.getCarta().getId()));
+//                usuarioServicio.crear(usuario);
+//                redirect.addFlashAttribute("success", "Su menu se ha asignado con EXITO.");
+//            }
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
         }
@@ -78,13 +78,13 @@ public class UsuarioController {
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable("id") Integer id, RedirectAttributes redirect) {
 
-            if (id == null || usuarioServicio.findById(id) == null) {
-                redirect.addFlashAttribute("error", "Error, no hay un usuario con ese ID.");
-                return "redirect:/usuario/";
-            } else {
-                usuarioServicio.eliminar(id);
-                redirect.addFlashAttribute("success", "Su usuario se elimino con exito!");
-            }
+        if (id == null || usuarioServicio.findById(id) == null) {
+            redirect.addFlashAttribute("error", "Error, no hay un usuario con ese ID.");
+            return "redirect:/usuario/";
+        } else {
+            usuarioServicio.eliminar(id);
+            redirect.addFlashAttribute("success", "Su usuario se elimino con exito!");
+        }
 
         return "redirect:/usuario/";
     }

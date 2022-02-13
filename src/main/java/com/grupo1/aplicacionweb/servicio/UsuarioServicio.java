@@ -36,12 +36,16 @@ public class UsuarioServicio implements IUsuario {
     public void crear(Usuario usuario) throws ErrorServicio {
 
         if (usuario != null) {
-            if (usuario.getId() == null) {
-                usuario.setAlta(new Date());
-                usuario.setBaja(false);
-                usuario.setRol(Roles.USER);
+            if (usuario.getPassword2().equals(usuario.getPassword())) {
+                if (usuario.getId() == null) {
+                    usuario.setAlta(new Date());
+                    usuario.setBaja(false);
+                    usuario.setRol(Roles.USER);
+                }
+                usuarioDao.save(usuario);
+            } else {
+                throw new ErrorServicio("Password no coincide");
             }
-            usuarioDao.save(usuario);
         } else {
             throw new ErrorServicio("Error,el usuario es nulo.");
         }
