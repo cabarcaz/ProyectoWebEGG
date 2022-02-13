@@ -10,12 +10,15 @@
     <div class="card my-5 py-5">
       <div class="card-body">
         <h4 class="card-title text-center mb-3">Nueva Receta</h4>
-        <form class="row mx-3 py-2 my-2 align-items-center">
+
+        <form class="row mx-3 py-2 my-2 align-items-center" th:action="@{/receta/guardar}" th:object="${receta}" method="post" enctype="multipart/form-data">
+          
           <div class="col-sm-6 mb-2">
-            <label for="specificSizeInputName" class="fas fa-regular fa-file-signature form-label"> Nombre de la
-              Receta</label>
-            <input type="text" class="form-control" id="specificSizeInputName">
+
+            <label for="nombre" class="fas fa-regular fa-file-signature form-label"> Nombre de la Receta</label>
+            <input type="text"  class="form-control" id="nombre">
           </div>
+
           <div class="col-sm-2 mb-2">
             <label for="Tcocion" class="fas fa-solid fa-clock form-label"> Cocción (min)</label>
             <input type="number" class="form-control" id="Tcocion">
@@ -37,6 +40,13 @@
               <label for="disabledTextInput" class="fas fa-solid fa-bread-slice form-label"> Autor</label>
               <input type="text" class="form-control" id="disabledTextInput">
           </div>
+
+
+          <input type="submit" class="btn btn-primary" value="Guardar" />
+
+
+
+
           <div class="col-sm-12 mb-4 mt-4">
             <label for="ingrediente" class="fas fa-solid fa-utensils form-label"> Ingredientes </label>
             <a href="#" class="fas fa-solid fa-plus text-decoration-none text-success" data-bs-toggle="modal"
