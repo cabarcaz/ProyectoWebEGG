@@ -1,10 +1,10 @@
-package com.grupo1.aplicacionweb.iservicios;
+package com.grupo1.aplicacionweb.interfas;
 
 import com.grupo1.aplicacionweb.entidades.Receta;
 
 import java.util.List;
 
-public interface RecetaServicio {
+public interface IReceta{
     public List<Receta> listar();
     public void eliminar(Integer id);
     public void crear(Receta receta);

@@ -1,57 +1,31 @@
 <!DOCTYPE html>
-<html  xml:lang xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-  </html>
+<html xml:lang xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head th:replace="/plantilla/plantilla::head"></head>
-<link rel="stylesheet" href="/css/estilos.css">
-</head>
 
-
-  <header th:replace="/plantilla/plantilla::header"></head>
-
-<body>
-  <h1>   Proyecto EGG Cocina    </h1>
-  <h2>Recetario de comidas para clínicas y hospitales de la provincia </h2>
-  <ul>
-    <li><a href="inicio.html">Menú</a></li>
-    <li><a href="seccionuno.html">Contacto</a></li>
-<li><a href="secciontres.html">Registrarse</a></li>
-
-  <header th:replace="/plantilla/plantilla::header"></header>
+<body class="idx">
   
-    <div class="container contenedor">
-    
-      <form>
-        
-        <footer class="text-center text-white" style="background-color: #caced1;"></footer>
-        <div class="mx-auto" style="width: 200px;">
-        
+  <div class=" text-center justify-content-center px-5 mx-5 my-5 py-5">
+    <form class="fx">
+      <div class="mx-auto card-img" style="width: 200px;">
         <div class="mb-3">
-        <div class="inicio ">    <label for="exampleInputIniciarSesion"class="form-lable">IniciarSesion</label>    </div>  <br>
-         <!---- <input type="iniciarsesion" class="form-control" id="exampleInputiniciarsesion" aria-describedby="iniciarsesionHelp"><br> -->
-          <label for="exampleInputUsuario" class1="form-label">Usuario</label>
-          <input type="usuario" class1="form-control" id="exampleInputusuario" aria-describedby="usuarioHelp">
-      <!----<div id="usuarioHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          <div> <label for="exampleInputIniciarSesion" class="form-lable fw-bolder text-dark mb-4 fs-2">Iniciar Sesion</label> 
+            <label for="exampleInputUsuario" class="form-label text-dark fs-3 ">User Name</label>
+            <input type="usuario" class="form-control" id="exampleInputusuario" aria-describedby="usuarioHelp">
+          </div>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="for> m-control" id="exampleInputPassword1">
+          <label for="exampleInputPassword1" class="form-label text-dark fs-3 ">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1">
         </div>
-        <!--<div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>-->
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <a th:href="@{/inicio/}" class="btn btn-primary">Entrar</a>
         <button type="registrarse" class="btn btn-primary">Registrarse</button>
       </div>
-      <footer class="bg-light text-center text-lg-start">
-         <div class="text-rigth p-3" style="background-color: rgba(243, 12, 12, 0.2);">
-          © 2020 Copyright:
-          <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-        </div>
-       
-      </footer>
-      </form>
+    </form>
+  </div>
+
   <footer th:replace="/plantilla/plantilla::footer"></footer>
 
 </body>
 
+</html>
