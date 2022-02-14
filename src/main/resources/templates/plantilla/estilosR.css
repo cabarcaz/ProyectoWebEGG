@@ -1,6 +1,16 @@
-@import "./import/landing.css";
-@import "./import/card.css";
-@import "./import/detalle.css";
-@import"./import/registrarse.html";
-.body{
-background-color: rgb(247, 207, 108);image-orientation: from-image;
+
+.body {
+background-color:#f7cbcb";
+}
+
+p{
+    font-size: 20cm;
+    font-family: Georgia;
+    color:rgb(13, 17, 243);
+}
+h1{
+    text-align: center;
+    font-size: 30cm;
+    text-decoration: underline;
+    background-color: aqua;
+}
