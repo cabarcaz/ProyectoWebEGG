@@ -1,9 +1,9 @@
 package com.grupo1.aplicacionweb.entidades;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "recetas")
@@ -15,11 +15,11 @@ public class Receta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty(message = "Este campo es obligatorio.")
+    // @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "nombre")
     private String nombre;
 
-    @NotEmpty(message = "Este campo es obligatorio.")
+    // @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "preparacion")
     private String preparacion; // considerar armar arraylist para iterar en front
 
@@ -31,15 +31,15 @@ public class Receta implements Serializable {
     @Column(name = "comentario")
     private String comentario;
 
-    @NotEmpty(message = "Este campo es obligatorio.")
+    // @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "tiempo_coccion")
     private String tiempoDeCoccion;
 
-    @NotEmpty(message = "Este campo es obligatorio.")
+    // @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "tiempo_preparacion")
     private String tiempoDePreparacion;
 
-    @NotEmpty(message = "Este campo es obligatorio.")
+    // @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "tiempo_total")
     private String tiempoTotal;
 

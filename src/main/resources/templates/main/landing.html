@@ -2,7 +2,6 @@
 <html xml:lang xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="/plantilla/plantilla::head"></head>
-</head>
 
 <body>
 
@@ -10,6 +9,14 @@
 
   <main class="container">
 
+    <div id="reloj">
+      <div class="reloj-contenedor" id="contenedor">
+        <div id="hora">Reloj Digital</div>
+        <div id="fecha">con javaScript</div>
+      </div>
+    </div>
+
+    </div>
     <div class="row pt-5 text-center">
       <div class="col-lg-4">
         <img src="/imagenes/opciones/recetas.jpg" alt="" class="rounded-3" style="width:10rem">
@@ -124,7 +131,7 @@
 
     </table>
 
-    
+
   </main>
 
   <footer th:replace="/plantilla/plantilla::footer"></footer>
