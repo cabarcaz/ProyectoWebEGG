@@ -9,16 +9,14 @@
   <div class="container ">
     <div class="card my-5 py-5">
       <div class="card-body">
-        <h4 class="card-title text-center mb-3">Nueva Receta</h4>
+        <h4 class="card-title text-center mb-3" th:text="${h1}"></h4>
 
-        <form class="row mx-3 py-2 my-2 align-items-center" th:action="@{/receta/guardar}" th:object="${receta}" method="post" enctype="multipart/form-data">
+        <form class="row mx-3 py-2 my-2 align-items-center" th:action="@{/receta/guardar}" th:object="${receta}" method="POST" enctype="multipart/form-data">
           
           <div class="col-sm-6 mb-2">
-
             <label for="nombre" class="fas fa-regular fa-file-signature form-label"> Nombre de la Receta</label>
-            <input type="text"  class="form-control" id="nombre">
+            <input type="text" class="form-control" id="nombre" required>
           </div>
-
           <div class="col-sm-2 mb-2">
             <label for="Tcocion" class="fas fa-solid fa-clock form-label"> Cocción (min)</label>
             <input type="number" class="form-control" id="Tcocion">
@@ -56,6 +54,7 @@
             <fieldset disabled>
               <textarea name="ingredientes" id="ingredientes" class="form-control"></textarea>
           </div>
+
           <div class="col-sm-12 mb-4">
             <label for="preparacion" class=" fas fa-solid fa-align-left form-label"> Preparación </label>
             <a href="#" class="fas fa-solid fa-plus text-decoration-none text-success" data-bs-toggle="modal"
@@ -64,7 +63,7 @@
               data-bs-target="#exampleModal" data-bs-whatever="@mdo"></a>
             <fieldset disabled>
               <textarea name="preparacion" id="preparacion" class="form-control"></textarea>
-          </div>
+          </div> 
 
           <!-- Modal Ingrediente-->
           <div class="modal fade" id="ingrediente" tabindex="-1" aria-labelledby="ingredienteLabel" aria-hidden="true">
@@ -112,9 +111,11 @@
               </div>
             </div>
           </div>
+
           <div class="col-auto">
             <button type="submit" class="btn btn-primary">Agregar</button>
           </div>
+
         </form>
       </div>
     </div>
