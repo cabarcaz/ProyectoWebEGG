@@ -34,8 +34,8 @@ public class RecetaController {
 
     @GetMapping("/crear")
     public String crearReceta(Model model) {
-        Receta recetas = new Receta();
-        model.addAttribute("recetas",recetas);
+        Receta receta = new Receta();
+        model.addAttribute("receta",receta);
         model.addAttribute("titulo","Formulario");
         model.addAttribute("h1","Formulario ingreso de recetas");
         return "/receta/nuevo";
