@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xml:lang xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/plantilla/plantilla::head">
+    <link rel="stylesheet" href="estilosR.css">
+</head>
+<body style="background-color:#f7cbcb;">
+    <img src="R.jpeg"/>
+</body>
+<body class="regis" >
+
+    <div class="row g-3">
+        <div id="register" class="form">
+
+            <form action="mysuperscript.php" autocomplete="on">
+
+
+                <h1> Registro </h1>
+
+                <p><strong>
+
+                        <label for="numerodelegajosignup" class="youlegajo">Tu Número de legajo</label><br>
+                        <input id="numerodelegajosignup" name="numerodelegajosignup" required="required" type="text"
+                            placeholder="123456" />
+                </p>
+                <p><strong>
+
+                        <label for="usernamesignup" class="youname">Tu nombre</label><br>
+                        <input id="usernamesignup" name="usernamesignup" required="required" type="text"
+                            placeholder="Nombre" />
+                </p>
+                <p>
+                    <label for="emailsignup" class="youmail"> Tu email</label><br>
+                    <input id="emailsignup" name="emailsignup" required="required" type="email"
+                        placeholder="ejemplo@mail.com" />
+                </p>
+                <p>
+                    <label for="passwordsignup" class="youpasswd">Tu password </label><br>
+                    <input id="passwordsignup" name="passwordsignup" required="required" type="password"
+                        placeholder="eg. X8df!90EO" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Debe contener al menos un número y una letra minúscula y mayúscula, y al menos 8 o más caracteres" />
+                </p>
+                <p>
+                    <label for="passwordsignup_confirm" class="youpasswd">Confirma tu password </label><br>
+                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password"
+                        placeholder="eg. X8df!90EO" />
+                </p>
+                <p class="signin button"bgcolor="#D35400">
+                    <input type="submit" value="Registro" />
+                </p></strong>
+                <p class="change_link">
+                    Ya eres miembro
+                    <a href="#tologin" class="to_register"> Inicia Sesión </a>
+                </p>
+            </form>
+        </div>
+    </div>
+    <footer th:replace="/plantilla/plantilla::footer"></footer>
+</body>
+
+
+</html>

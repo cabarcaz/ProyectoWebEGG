@@ -1,0 +1,6 @@
+@import "./import/landing.css";
+@import "./import/card.css";
+@import "./import/detalle.css";
+@import"./import/registrarse.html";
+.body{
+background-color: rgb(247, 207, 108);image-orientation: from-image;
