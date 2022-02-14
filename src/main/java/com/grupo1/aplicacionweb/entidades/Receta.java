@@ -44,7 +44,7 @@ public class Receta implements Serializable {
     private String tiempoTotal;
 
     @NotEmpty (message = "Este campo es obligatorio.")
-    @Column(name = "procion")
+    @Column(name = "porcion")
     private String porcion;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
