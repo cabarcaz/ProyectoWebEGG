@@ -20,28 +20,28 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-//    @NotEmpty(message = "Este campo es obligatorio.")
+//    @NotEmpty(message = "nombre es obligatorio")
     @Column(name = "nombre")
     private String nombre;
 
-//    @NotEmpty(message = "Este campo es obligatorio.")
+//    @NotEmpty(message = "apellido es obligatorio.")
     @Column(name = "apellido")
     private String apellido;
 
-//    @NotEmpty(message = "Este campo es obligatorio.")
+//    @NotEmpty(message = "email es obligatorio.")
     @Email
     @Column(name = "email")
     private String email;
 
-//    @NotEmpty(message = "Este campo es obligatorio.")
+//    @NotEmpty(message = "password es obligatorio.")
     @Column(name = "password")
     private String password;
 
-//    @NotEmpty(message = "Este campo es obligatorio.")
+//    @NotEmpty(message = "password2 es obligatorio.")
     @Column(name = "password2")
     private String password2;
 
-    //    @NotEmpty(message = "Este campo es obligatorio.")
+//    @NotEmpty(message = "foto es obligatoria.")
     @Column(name = "foto")
     private String foto;
 
@@ -58,13 +58,6 @@ public class Usuario implements Serializable {
     @Enumerated(EnumType.STRING)
     private Roles rol;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public static void setSerialVersionUID(long serialVersionUID) {
-        Usuario.serialVersionUID = serialVersionUID;
-    }
 
     public Integer getId() {
         return id;

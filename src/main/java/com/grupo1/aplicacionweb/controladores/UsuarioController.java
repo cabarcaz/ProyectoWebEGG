@@ -51,14 +51,14 @@ public class UsuarioController {
             return "/usuario/nuevo";
         }
         try {
-//            if (usuario.getCarta().getId()== null) {
-            usuario.setCarta(null);
-            usuarioServicio.crear(usuario);
-//            } else {
-//                usuario.setCarta(cartaServicio.findById(usuario.getCarta().getId()));
-//                usuarioServicio.crear(usuario);
-//                redirect.addFlashAttribute("success", "Su menu se ha asignado con EXITO.");
-//            }
+            if (usuario.getCarta() == null) {
+                usuario.setCarta(null);
+                usuarioServicio.crear(usuario);
+            } else {
+                usuario.setCarta(cartaServicio.findById(usuario.getCarta().getId()));
+                usuarioServicio.crear(usuario);
+                redirect.addFlashAttribute("success", "Su menu se ha asignado con EXITO.");
+            }
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
         }
