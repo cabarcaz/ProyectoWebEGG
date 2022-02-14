@@ -1,6 +1,7 @@
 package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Usuario;
+import com.grupo1.aplicacionweb.enumeraciones.Roles;
 import com.grupo1.aplicacionweb.servicio.CartaServicio;
 import com.grupo1.aplicacionweb.servicio.UsuarioServicio;
 
@@ -11,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -49,8 +52,8 @@ public class UsuarioController {
         }
         try {
 //            if (usuario.getCarta().getId()== null) {
-                usuario.setCarta(null);
-                usuarioServicio.crear(usuario);
+            usuario.setCarta(null);
+            usuarioServicio.crear(usuario);
 //            } else {
 //                usuario.setCarta(cartaServicio.findById(usuario.getCarta().getId()));
 //                usuarioServicio.crear(usuario);
@@ -69,7 +72,10 @@ public class UsuarioController {
             redirect.addFlashAttribute("error", "Error, no hay un usuario con ese ID.");
             return "redirect:/usuario/";
         } else {
+            List<Roles> roles = new ArrayList<Roles>(Arrays.asList(Roles.values()));
             model.addAttribute("usuario", usuarioServicio.findById(id));
+            model.addAttribute("roles", roles);
+
         }
 
         return "/usuario/editar";
@@ -88,4 +94,14 @@ public class UsuarioController {
 
         return "redirect:/usuario/";
     }
+
+    @GetMapping("/pass/{id}")
+    public String nuevoPass(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("usuario", usuarioServicio.findById(id));
+        return "/usuario/nuevo-pass";
+    }
+
+    //-------------------------------------FIN CRUD-----------------------------------------------------------------------//
+
+
 }
