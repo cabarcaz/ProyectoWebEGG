@@ -2,12 +2,13 @@
 <html xml:lang xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="/plantilla/plantilla::head">
-    <link rel="stylesheet" href="estilosR.css">
+  
 </head>
 
 
 <body class=" regis">
-    <body style="background-color:#f7cbcb;">
+
+    <body style="background-color:#f8d982;">
     </body>
     <div class="row g-3">
         <div id="register" class="form">
@@ -30,17 +31,17 @@
                         placeholder="ejemplo@mail.com" />
                 </p>
                 <p>
-                    <label for="passwordsignup" class="youpasswd">Tu password </label><br>
-                    <input id="passwordsignup" name="passwordsignup" required="required" type="password"
+                    <label for="contraseñasignup" class="youcontraseña">Tu contraseña </label><br>
+                    <input id="contraseñasignup" name="contraseñasignup" required="required" type="contraseña"
                         placeholder="eg. X8df!90EO" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         title="Debe contener al menos un número y una letra minúscula y mayúscula, y al menos 8 o más caracteres" />
                 </p>
                 <p>
-                    <label for="passwordsignup_confirm" class="youpasswd">Confirma tu password </label><br>
-                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password"
-                        placeholder="eg. X8df!90EO" />
+                    <label for="contraseñasignup_confirm" class="youcontraseña">Confirma tu contraseña </label><br>
+                    <input id="contraseñasignup_confirm" name="contraseñasignup_confirm" required="required"
+                        type="contraseña" placeholder="eg. X8df!90EO" />
                 </p>
-                <p class="signin button" >
+                <p class="signin button">
                     <input type="submit" value="Registro" />
                 </p></strong>
                 <p class="change_link">
