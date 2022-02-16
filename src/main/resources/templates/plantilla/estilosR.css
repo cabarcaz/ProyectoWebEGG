@@ -1,0 +1,16 @@
+
+.body {
+background-color:#f7cbcb;
+}
+
+p{
+    font-size: 20cm;
+    font-family: Georgia;
+    color:rgb(13, 17, 243);
+}
+h1{
+    text-align: center;
+    font-size: 10cm;
+    text-decoration: underline;
+    background-color: aqua;
+}
