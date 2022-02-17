@@ -2,6 +2,7 @@ package com.grupo1.aplicacionweb.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,11 +23,11 @@ public class Receta implements Serializable {
     @Column(name = "preparacion")
     private String preparacion; // considerar armar arraylist para iterar en front
 
-//    @NotEmpty(message = "Este campo es obligatorio.")
+    //    @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "foto")
     private String foto;
 
-//    @NotEmpty(message = "Este campo es obligatorio.")
+    //    @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "comentario")
     private String comentario;
 
@@ -43,7 +44,7 @@ public class Receta implements Serializable {
     private String tiempoTotal;
 
     // @NotEmpty (message = "Este campo es obligatorio.")
-    @Column(name = "procion")
+    @Column(name = "porcion")
     private String porcion;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -51,14 +52,14 @@ public class Receta implements Serializable {
             name = "receta_ingrediente",
             joinColumns = {@JoinColumn(name = "receta_id")},
             inverseJoinColumns = {@JoinColumn(name = "ingrediente_id")})
-    private List<Ingrediente> ingredientes;
+    private List<Ingrediente> ingredientes = new ArrayList<>();
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "receta_carta",
             joinColumns = {@JoinColumn(name = "receta_id")},
             inverseJoinColumns = {@JoinColumn(name = "carta_id")})
-    private List<Carta> cartas;
+    private List<Carta> cartas = new ArrayList<>();
 
 
     public static long getSerialVersionUID() {

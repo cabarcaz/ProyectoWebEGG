@@ -1,4 +1,4 @@
-package com.grupo1.aplicacionweb.interfas;
+package com.grupo1.aplicacionweb.interfaz;
 
 import java.util.List;
 

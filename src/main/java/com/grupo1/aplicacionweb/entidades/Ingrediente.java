@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class Ingrediente implements Serializable {
     private String cantidad;
 
     @ManyToMany(mappedBy = "ingredientes")
-    private List<Receta> recetas;
+    private List<Receta> recetas = new ArrayList<>();
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
