@@ -2,7 +2,7 @@ package com.grupo1.aplicacionweb.servicio;
 
 import com.grupo1.aplicacionweb.entidades.Carta;
 import com.grupo1.aplicacionweb.excepciones.ErrorServicio;
-import com.grupo1.aplicacionweb.interfas.ICarta;
+import com.grupo1.aplicacionweb.interfaz.ICarta;
 import com.grupo1.aplicacionweb.repositorios.CartaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
