@@ -17,7 +17,8 @@
     <table class="table table-striped table-hover table-sm table-bordered">
       <thead>
         <tr>
-          <th scope="col" >ID</th>         
+
+          <th scope="col" >ID</th>
           <th scope="col" >Cantidad</th>         
           <th scope="col" >Nombre del ingrediente</th>         
           <th scope="col" >Editar</th>
@@ -26,6 +27,7 @@
       </thead>
       <tbody>
         <tr th:each="ingrediente:${ingredientes}">
+
           <td th:text="${ingrediente.id}"></td>
           <td th:text="${ingrediente.cantidad}"></td>
           <td th:text="${ingrediente.nombre}"></td>
