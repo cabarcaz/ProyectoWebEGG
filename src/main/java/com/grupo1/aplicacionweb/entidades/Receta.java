@@ -5,6 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "recetas")
@@ -41,14 +42,12 @@ public class Receta implements Serializable {
     @Column(name = "tiempo_total")
     private Integer tiempoTotal;
 
+    private String porcion;
+
     // @NotNull (message = "Este campo es obligatorio.")
     @Column(name = "porcion")
-    private Integer porcion;
-
     @OneToMany( mappedBy = "receta" ,cascade = CascadeType.ALL)
     private List<Paso> pasos = new ArrayList<>();
-
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "receta_ingrediente",
             joinColumns = {@JoinColumn(name = "receta_id")},
@@ -125,14 +124,6 @@ public class Receta implements Serializable {
 
     public void setTiempoTotal(Integer tiempoTotal) {
         this.tiempoTotal = tiempoTotal;
-    }
-
-    public Integer getPorcion() {
-        return porcion;
-    }
-
-    public void setPorcion(Integer porcion) {
-        this.porcion = porcion;
     }
 
     public List<Ingrediente> getIngredientes() {
