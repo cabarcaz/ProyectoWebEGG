@@ -1,6 +1,7 @@
 package com.grupo1.aplicacionweb.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -19,23 +20,15 @@ public class Carta implements Serializable {
     private String nombre;
 
     @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-    private List<Receta> recetas;
+    private List<Receta> recetas = new ArrayList<>();
 
     @OneToMany(mappedBy = "carta", cascade = CascadeType.ALL)
-    private List<Usuario> usuarios;
+    private List<Usuario> usuarios = new ArrayList<>();
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date alta;
 
     private Boolean baja;
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public static void setSerialVersionUID(long serialVersionUID) {
-        Carta.serialVersionUID = serialVersionUID;
-    }
 
     public Integer getId() {
         return id;

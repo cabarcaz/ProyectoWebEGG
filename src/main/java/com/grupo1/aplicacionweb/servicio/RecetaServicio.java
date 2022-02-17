@@ -1,7 +1,7 @@
 package com.grupo1.aplicacionweb.servicio;
 
 import com.grupo1.aplicacionweb.entidades.Receta;
-import com.grupo1.aplicacionweb.interfas.IReceta;
+import com.grupo1.aplicacionweb.interfaz.IReceta;
 import com.grupo1.aplicacionweb.repositorios.RecetaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +24,7 @@ public class RecetaServicio implements IReceta {
 
     @Override
     public void crear(Receta receta) {
+
         recetaDao.save(receta);
     }
 
