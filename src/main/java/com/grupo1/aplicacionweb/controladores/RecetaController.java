@@ -64,7 +64,7 @@ public class RecetaController {
     @PostMapping("/guardar")
     //
     public String guardar(@Valid @ModelAttribute Receta receta, SessionStatus ss, RedirectAttributes redirect, @RequestParam("file") MultipartFile imagen) {
-                                //GUARDAR IMAGEN //
+                                //codigo para GUARDAR IMAGEN //
         if (!imagen.isEmpty()) {
             Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/receta");
             String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
@@ -76,6 +76,9 @@ public class RecetaController {
             } catch (IOException e) {
                redirect.addFlashAttribute("error",e.getMessage());
             }
+        }
+        for (int i = 0; i < receta.getPasos().size(); ++i) { // se asigna el orden de los pasos
+           receta.getPasos().get(i).setNumero(i+1);
         }
         receta.setTiempoTotal(receta.getTiempoDeCoccion()+receta.getTiempoDePreparacion());
         recetaServicio.crear(receta);

@@ -21,11 +21,11 @@
                 </div>
                 <div class="col-sm-2 mb-2">
                     <label for="Tcocion" class="fas fa-solid fa-clock form-label"> Cocción (min)</label>
-                    <input th:field="*{tiempoDeCoccion}" type="number" class="form-control" id="Tcocion">
+                    <input th:field="*{tiempoDeCoccion}" type="number" class="form-control" id="Tcocion" min="0">
                 </div>
                 <div class="col-sm-2 mb-2">
                     <label for="prep" class="fas fa-solid fa-clock form-label"> Preparación (min)</label>
-                    <input th:field="*{tiempoDePreparacion}" type="number" class="form-control" id="prep">
+                    <input th:field="*{tiempoDePreparacion}" type="number" class="form-control" id="prep" min="0">
                 </div>
                 <div class="col-sm-4 mb-2">
                     <label for="file" class="fas fa-regular fa-camera form-label"> Imagen </label>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-sm-2">
                     <label for="specificSizeInputName" class="fas fa-solid fa-users form-label"> Porciones</label>
-                    <input th:field="*{porcion}" type="number" class="form-control" id="specificSizeInputName">
+                    <input th:field="*{porcion}" type="number" class="form-control" id="specificSizeInputName" min="0">
                 </div>
 
 
@@ -78,9 +78,7 @@
                         <tr th:each="paso,index : *{pasos}">
                             <!--                            <input type="hidden" th:field="*{ingredientes[__${index.index}__].id}">-->
                             <td>
-                                <label for="nombre">Numero de paso</label>
-                                <input placeholder="--" type="number"
-                                       th:field="*{pasos[__${index.index}__].numero}">
+                                <p th:text="'Paso ' + ${index.count}"></p>
                             </td>
                             <td>
                                 <div class="form-floating">

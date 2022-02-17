@@ -51,10 +51,13 @@ public class UsuarioController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect,@RequestParam("file") MultipartFile imagen) {
+    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect, @RequestParam("file") MultipartFile imagen) {
         if (result.hasErrors()) {
             return "/usuario/nuevo";
         }
+
+        // CODIGO PARA RECIBIR Y GUARDAR LA FOTO
+
         if (!imagen.isEmpty()) {
             Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/usuario");
             String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
@@ -64,9 +67,11 @@ public class UsuarioController {
                 Files.write(rutaCompleta, bytesImg);
                 usuario.setFoto(imagen.getOriginalFilename());
             } catch (IOException e) {
-                redirect.addFlashAttribute("error",e.getMessage());
+                redirect.addFlashAttribute("error", e.getMessage());
             }
         }
+
+        // VALIDACION PARA VER SI EL USUARIO TIENE ASIGNADA O NO UNA CARTA
         try {
             if (usuario.getCarta() == null) {
                 usuario.setCarta(null);
@@ -85,6 +90,9 @@ public class UsuarioController {
 
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect, Model model) {
+
+        //VALIDACION DE INGRESO DE ID
+
         if (id == null || usuarioServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un usuario con ese ID.");
             return "redirect:/usuario/";
@@ -92,7 +100,6 @@ public class UsuarioController {
             List<Roles> roles = new ArrayList<Roles>(Arrays.asList(Roles.values()));
             model.addAttribute("usuario", usuarioServicio.findById(id));
             model.addAttribute("roles", roles);
-
         }
 
         return "/usuario/editar";
@@ -100,6 +107,8 @@ public class UsuarioController {
 
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable("id") Integer id, RedirectAttributes redirect) {
+
+        //VALIDACION DE INGRESO DE ID
 
         if (id == null || usuarioServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un usuario con ese ID.");
@@ -111,6 +120,8 @@ public class UsuarioController {
 
         return "redirect:/usuario/";
     }
+
+// METODO PARA CAMBIAR EL PASSWORD EN PROCESO JEJE
 
     @GetMapping("/pass/{id}")
     public String nuevoPass(@PathVariable("id") Integer id, Model model) {
