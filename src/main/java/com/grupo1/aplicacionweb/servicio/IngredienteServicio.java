@@ -2,7 +2,7 @@ package com.grupo1.aplicacionweb.servicio;
 
 import com.grupo1.aplicacionweb.entidades.Ingrediente;
 import com.grupo1.aplicacionweb.excepciones.ErrorServicio;
-import com.grupo1.aplicacionweb.interfas.InIngrediente;
+import com.grupo1.aplicacionweb.interfaz.InIngrediente;
 import com.grupo1.aplicacionweb.repositorios.IngredienteDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,6 @@ public class IngredienteServicio implements InIngrediente{
      ingredienteDao.deleteById(id);
     }
 
-    @Transactional
     @Override
     public void crear(Ingrediente ingrediente) throws ErrorServicio {
         if (ingrediente != null) {
