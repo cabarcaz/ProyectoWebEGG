@@ -48,7 +48,41 @@ if(hora<10)
   return hora;
 };
 
-
-
-
 setInterval(mostrarReloj,1000);
+
+//Ingrediente
+class Ingrediente{
+  constructor(nombre,cantidad){
+    this._nombre = nombre;
+    this._cantidad = cantidad;
+  }
+  get nombre(){return this._nombre;}
+  set nombre(nombre){this._nombre = nombre;}
+
+  get cantidad(){return this._cantidad;}
+  set cantidad(cantidad){this._cantidad = cantidad;}
+}
+
+const ingredientes =[
+  new Ingrediente('Nombre del ingrediente', 'Cantidad del ingrediente'),
+];
+function mostrarIngredientes(){
+  console.log('Mostrar Ingredientes.');
+  let texto ='';
+  for(let ingrediente of ingredientes){
+    texto += `<li>${ingrediente.nombre} - ${ingrediente.cantidad}</li>`
+  }
+  document.getElementById('ingredientes').innerHTML = texto;
+}
+function agregarIngrediente(){
+  const forma = document.forms['forma'];
+  const nombre = forma['nombre'];
+  const cantidad = forma['cantidad'];
+  if(nombre.value !='' && cantidad.value !=''){
+    const ingrediente = new Ingrediente(nombre.value, cantidad.value);
+    ingredientes.push(ingrediente);
+    mostrarIngredientes();
+  }else{
+    console.log('sin información para agregar.')
+  }
+}

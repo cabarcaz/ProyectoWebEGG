@@ -1,9 +1,8 @@
 package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Ingrediente;
-import com.grupo1.aplicacionweb.entidades.Paso;
 import com.grupo1.aplicacionweb.entidades.Receta;
-import com.grupo1.aplicacionweb.repositorios.RecetaDao;
+import com.grupo1.aplicacionweb.servicio.IngredienteServicio;
 import com.grupo1.aplicacionweb.servicio.RecetaServicio;
 
 
@@ -34,6 +33,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class RecetaController {
     @Autowired
     private RecetaServicio recetaServicio;
+    @Autowired 
+    private IngredienteServicio ingredienteServicio;
 
     @GetMapping("/")
     public String listar(Model model) {
@@ -109,9 +110,27 @@ public class RecetaController {
         }
         return "redirect:/receta/";
     }
-    @GetMapping("/detalle")
-    public String detalleRecetas(Model model) {
+
+    @GetMapping("/detalle/{id}")
+    public String detalleRecetas(@PathVariable("id")Integer id, Model model, RedirectAttributes atribute){
+        Receta receta = null;
+        if(id != null){
+            receta = recetaServicio.findById(id);
+            if(id == null){
+                atribute.addFlashAttribute("error", "El id de la receta no existe!");
+                return "redirect:/receta/";
+            }
+        }else{
+            atribute.addFlashAttribute("error", "Error con el id de la recera");
+            return "redirect:/receta/";
+        }
+        List<Ingrediente> listIngredientes = ingredienteServicio.listar();
+
+        model.addAttribute("titulo","Detalle");
         model.addAttribute("h1", "Detalle de la receta");
+        model.addAttribute("recetas",receta);
+        model.addAttribute("ingredientes", listIngredientes);
+
         return "/receta/detalles";
     }
 }
