@@ -88,4 +88,11 @@ public class UsuarioController {
 
         return "redirect:/usuario/";
     }
+
+    @GetMapping("/registrarse")
+    public String registrarUsuario(Model model) {
+       
+        return "/usuario/registrarse";
+}
+
 }
