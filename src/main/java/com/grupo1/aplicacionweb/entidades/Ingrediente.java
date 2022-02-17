@@ -27,14 +27,6 @@ public class Ingrediente implements Serializable {
     @ManyToMany(mappedBy = "ingredientes")
     private List<Receta> recetas = new ArrayList<>();
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public static void setSerialVersionUID(long serialVersionUID) {
-        Ingrediente.serialVersionUID = serialVersionUID;
-    }
-
     public Integer getId() {
         return id;
     }

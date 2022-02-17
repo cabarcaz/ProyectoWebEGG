@@ -10,7 +10,8 @@
         <div class="card-header bg-dark text-white" th:text="${h1}"></div>
         <div class="card-body ">
 
-            <form class="row g-3" th:action="@{/usuario/guardar}" th:object="${usuario}" method="post">
+            <form class="row g-3" th:action="@{/usuario/guardar}" th:object="${usuario}" method="post"
+                  enctype="multipart/form-data">
 
                 <div class="form-group row mt-3">
                     <label for="nombre" class="col-sm-3 col-form-label"> Nombre</label>
@@ -24,7 +25,6 @@
                     <div class="col-sm-6">
                         <input type="text" th:field="*{apellido}" class="form-control" id="apellido"
                                placeholder="Ingrese apellido" required>
-
                     </div>
                 </div>
                 <div class="form-group row mt-3">
@@ -49,12 +49,14 @@
                     </div>
                 </div>
                 <!--          creamos el campo de confirmacion de contrasenia?-->
-                <div class="form-group row mt-3">
-                    <p>Espacio para campo de foto (siguiente etapa)</p>
+                <div class="col-sm-4 mb-2">
+                    <label for="file" class="fas fa-regular fa-camera form-label"> Imagen </label>
+                    <input type="file" class="form-control" id="file" name="file">
                 </div>
+
                 <div class="card-footer text-center">
                     <input type="submit" class="btn btn-primary" value="Guardar"/>
-                    <a class="btn btn-success" onclick="goBack()"  th:href="@{/}" value="Regresar"/>Regresar</a>
+                    <a class="btn btn-success" onclick="goBack()" th:href="@{/}" value="Regresar"/>Regresar</a>
                 </div>
             </form>
         </div>

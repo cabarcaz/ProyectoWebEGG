@@ -1,7 +1,9 @@
 package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Ingrediente;
+import com.grupo1.aplicacionweb.entidades.Paso;
 import com.grupo1.aplicacionweb.entidades.Receta;
+import com.grupo1.aplicacionweb.repositorios.RecetaDao;
 import com.grupo1.aplicacionweb.servicio.RecetaServicio;
 
 
@@ -23,6 +25,7 @@ import javax.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -45,49 +48,64 @@ public class RecetaController {
     @GetMapping("/crear")
     public String crearReceta(Model model) {
         Receta receta = new Receta();
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < 3; ++i) { // ingresar el numero de ingredientes que precisa el ususario
             receta.getIngredientes().add(new Ingrediente());
+        }
+        for (int i = 0; i < 3; ++i) { // ingresar el numero de pasos que precisa el ususario
+            receta.getPasos().add(new Paso());
         }
         model.addAttribute("titulo", "Formulario");
         model.addAttribute("h1", "Formulario ingreso de recetas");
         model.addAttribute("receta", receta);
+
         return "/receta/nuevo";
     }
 
     @PostMapping("/guardar")
-    //@RequestParam("file") MultipartFile imagen
-    public String guardar(@Valid @ModelAttribute Receta receta, SessionStatus ss, Model model) {
+    //
+    public String guardar(@Valid @ModelAttribute Receta receta, SessionStatus ss, RedirectAttributes redirect, @RequestParam("file") MultipartFile imagen) {
                                 //GUARDAR IMAGEN //
-//        if (!imagen.isEmpty()) {
-//            Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/receta");
-//            String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
-//            try {
-//                byte[] bytesImg = imagen.getBytes();
-//                Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
-//                Files.write(rutaCompleta, bytesImg);
-//                receta.setFoto(imagen.getOriginalFilename());
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-        ///////////////////////////////////////////////////////////////////////////////
-
+        if (!imagen.isEmpty()) {
+            Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/receta");
+            String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+            try {
+                byte[] bytesImg = imagen.getBytes();
+                Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
+                Files.write(rutaCompleta, bytesImg);
+                receta.setFoto(imagen.getOriginalFilename());
+            } catch (IOException e) {
+               redirect.addFlashAttribute("error",e.getMessage());
+            }
+        }
+        receta.setTiempoTotal(receta.getTiempoDeCoccion()+receta.getTiempoDePreparacion());
         recetaServicio.crear(receta);
         ss.setComplete();
         return "redirect:/receta/";
     }
 
-    @GetMapping("/editar")
-    public String editar() {
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect,Model model) {
+        if (id == null || recetaServicio.findById(id) == null) {
+            redirect.addFlashAttribute("error", "Error, no hay un receta con ese ID.");
+            return "redirect:/receta/";
+        } else {
+            model.addAttribute("receta", recetaServicio.findById(id));
+        }
+
         return "/receta/editar";
     }
 
-    @GetMapping("/eliminar")
-    public String eliminar() {
-
+    @GetMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable("id") Integer id, RedirectAttributes redirect) {
+        if (id == null || recetaServicio.findById(id) == null) {
+            redirect.addFlashAttribute("error", "Error, no hay un receta con ese ID.");
+            return "redirect:/receta/";
+        } else {
+            recetaServicio.eliminar(id);
+            redirect.addFlashAttribute("success","Su receta se elimino con exito!");
+        }
         return "redirect:/receta/";
     }
-
     @GetMapping("/detalle")
     public String detalleRecetas(Model model) {
         model.addAttribute("h1", "Detalle de la receta");

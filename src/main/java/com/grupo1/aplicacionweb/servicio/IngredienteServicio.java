@@ -28,7 +28,6 @@ public class IngredienteServicio implements InIngrediente{
      ingredienteDao.deleteById(id);
     }
 
-    @Transactional
     @Override
     public void crear(Ingrediente ingrediente) throws ErrorServicio {
         if (ingrediente != null) {
