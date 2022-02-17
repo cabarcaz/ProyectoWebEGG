@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xml:lang xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/plantilla/plantilla::head"></head>
+
+<div class="col-lg-4">
+
+  <body>
+    <link rel="stylesheet" href="/css/nuevocarta.css">
+    <header th:replace="/plantilla/plantilla::header"></header>
+
+    <h1><strong>Recetas</strong></h1>
+    <h2>Postres</h2>
+
+    <div class="container">
+      <div class="row">
+        <div class="col align-content">
+          Compota de Manzana
+          
+        </div>
+        <div class="col align-self-center">
+          Gelatina
+        </div>
+        <div class="col align-self-end">
+          Flan
+        </div>
+      </div>
+    </div>
+    <p> 
+    <button>Añandir </button>
+    <button>Eliminar </button></p>
+    <footer th:replace="/plantilla/plantilla::footer"></footer>
+
+  </body>
+
+</html>
