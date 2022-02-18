@@ -132,4 +132,10 @@ public class UsuarioController {
     //-------------------------------------FIN CRUD-----------------------------------------------------------------------//
 
 
+    @GetMapping("/registrarse")
+    public String registrarUsuario(Model model) {
+       
+        return "/usuario/registrarse";
+}
+
 }
