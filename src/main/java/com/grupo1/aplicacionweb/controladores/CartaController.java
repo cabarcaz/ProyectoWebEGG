@@ -3,6 +3,7 @@ package com.grupo1.aplicacionweb.controladores;
 import com.grupo1.aplicacionweb.entidades.Carta;
 import com.grupo1.aplicacionweb.servicio.CartaServicio;
 
+import com.grupo1.aplicacionweb.servicio.RecetaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +20,13 @@ public class CartaController {
     @Autowired
     private CartaServicio cartaServicio;
 
+    @Autowired
+    private RecetaServicio recetaServicio;
+
     @GetMapping("/")
     public String listar(Model model) {
         List<Carta> listaCarta = cartaServicio.listar();
+        List<>
         model.addAttribute("cartas", listaCarta);
         model.addAttribute("titulo", "Listado de Recetas");
         model.addAttribute("h1", "Listado de Recetas");
@@ -34,6 +39,7 @@ public class CartaController {
         model.addAttribute("titulo", "Formulario");
         model.addAttribute("h1", "Formulario ingreso Nueva receta");
         model.addAttribute("carta", carta);
+        model.addAttribute("recetas",)
         return "/carta/nuevo";
     }
 

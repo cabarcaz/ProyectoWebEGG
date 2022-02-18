@@ -37,8 +37,8 @@ public class Carta implements Serializable {
 
     private Boolean baja;
 
-    /*@Temporal(TemporalType.TIMESTAMP)
-    private Date alta;*/
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date alta;
 
 
     public static long getSerialVersionUID() {
@@ -127,6 +127,14 @@ public class Carta implements Serializable {
 
     public void setBaja(Boolean baja) {
         this.baja = baja;
+    }
+
+    public Date getAlta() {
+        return alta;
+    }
+
+    public void setAlta(Date alta) {
+        this.alta = alta;
     }
 }
 
