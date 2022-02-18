@@ -1,6 +1,7 @@
 package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Carta;
+
 import com.grupo1.aplicacionweb.servicio.CartaServicio;
 
 import com.grupo1.aplicacionweb.servicio.RecetaServicio;
@@ -26,7 +27,6 @@ public class CartaController {
     @GetMapping("/")
     public String listar(Model model) {
         List<Carta> listaCarta = cartaServicio.listar();
-        List<>
         model.addAttribute("cartas", listaCarta);
         model.addAttribute("titulo", "Listado de Recetas");
         model.addAttribute("h1", "Listado de Recetas");
