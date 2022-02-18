@@ -1,6 +1,7 @@
 package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Ingrediente;
+import com.grupo1.aplicacionweb.entidades.Paso;
 import com.grupo1.aplicacionweb.entidades.Receta;
 import com.grupo1.aplicacionweb.servicio.IngredienteServicio;
 import com.grupo1.aplicacionweb.servicio.RecetaServicio;
