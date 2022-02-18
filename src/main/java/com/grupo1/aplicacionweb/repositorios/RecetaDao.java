@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface RecetaDao extends JpaRepository<Receta,Integer> {
 
-    @Query("SELECT c FROM recetas c WHERE c.categoria = :categoria")
+    @Query("SELECT c FROM Receta c WHERE c.categoria = :categoria")
     public List<Receta> buscarPorCategoria(@Param("categoria") String categoria);
 }
