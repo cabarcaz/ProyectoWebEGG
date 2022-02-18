@@ -3,325 +3,303 @@
 
 <head th:replace="/plantilla/plantilla::head"></head>
 
-<div class="col-lg-4">
+
+
 <body>
   <header th:replace="/plantilla/plantilla::header"></header>
-  
-<h1 class="text-center py-4">Menu Semanal</h1>
-<h2 class="text-center py-4">Planificación Semanal</h2>
 
-    <table class=" table text-center border border-secondary border-2 pt-4">
-      <tr>
-        <th scope="row">Días</th>
-        <th scope="row">Entrada</th>
-        <th scope="row">Plato de fondo</th>
-        <th scope="row">Postre</th>
-      </tr>
-      <tr>
-        <th class="text-uppercase" scope="row">Lunes</th>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title ">Nombre del plato</h5>
-              <br>
-              <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-1">Agregar receta</a>
-              <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-1">Modificar receta</a>
-              <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-1">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo ">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th class="text-uppercase" scope="row">Martes</th>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title ">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo ">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th class="text-uppercase" scope="row">Miércoles</th>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title ">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Agregar receta</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo ">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th class="text-uppercase" scope="row">Jueves</th>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title ">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Agregar receta</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo ">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th class="text-uppercase" scope="row">Viernes</th>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title ">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Agregar receta</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo ">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th class="text-uppercase" scope="row">Sábado</th>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title ">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Agregar receta</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo ">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th class="text-uppercase" scope="row">Domingo</th>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title ">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Agregar receta</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo ">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-      </tr>
+  <h1 class="text-center py-4">Menu Semanal</h1>
+  <h2 class="text-center py-4">Planificación Semanal</h2>
 
-
-    </table>
-
-  <body>
-    <link rel="stylesheet" href="/css/nuevocarta.css">
-    <header th:replace="/plantilla/plantilla::header"></header>
-
-    <h1><strong>Recetas</strong></h1>
-    <h2>Postres</h2>
-
-    <div class="container">
-      <div class="row">
-        <div class="col align-content">
-          Compota de Manzana
-          
+  <table class=" table text-center border border-secondary border-2 pt-4">
+    <tr>
+      <th scope="row">Días</th>
+      <th scope="row">Entrada</th>
+      <th scope="row">Plato de fondo</th>
+      <th scope="row">Postre</th>
+    </tr>
+    <tr>
+      <th class="text-uppercase" scope="row">Lunes</th>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title ">Nombre del plato</h5>
+            <br>
+            <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-1">Agregar receta</a>
+            <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-1">Modificar receta</a>
+            <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-1">Detalles</a>
+          </div>
         </div>
-        <div class="col align-self-center">
-          Gelatina
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
         </div>
-        <div class="col align-self-end">
-          Flan
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo ">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
         </div>
-      </div>
-    </div>
-    <p> 
-    <button>Añandir </button>
-    <button>Eliminar </button></p>
-    <footer th:replace="/plantilla/plantilla::footer"></footer>
+      </td>
+    </tr>
+    <tr>
+      <th class="text-uppercase" scope="row">Martes</th>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title ">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo ">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th class="text-uppercase" scope="row">Miércoles</th>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title ">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Agregar receta</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo ">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th class="text-uppercase" scope="row">Jueves</th>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title ">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Agregar receta</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo ">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th class="text-uppercase" scope="row">Viernes</th>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title ">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Agregar receta</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo ">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th class="text-uppercase" scope="row">Sábado</th>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title ">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Agregar receta</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo ">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th class="text-uppercase" scope="row">Domingo</th>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title ">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Agregar receta</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="card carta border border-dark" style="width: 18rem;">
+          <div class="image">
+            <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
+          </div>
+          <div class="card-body cuerpo ">
+            <h5 class="card-title">Nombre del plato</h5>
+            <p class="card-text">Pequeña descripción.</p>
+            <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+          </div>
+        </div>
+      </td>
+    </tr>
 
-  </body>
+
+  </table>
+
+
+  <footer th:replace="/plantilla/plantilla::footer"></footer>
+
+</body>
 
 </html>
