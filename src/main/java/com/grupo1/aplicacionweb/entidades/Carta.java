@@ -16,19 +16,38 @@ public class Carta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty (message = "Este campo es obligatorio.")
-    private String nombre;
-
     @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-    private List<Receta> recetas = new ArrayList<>();
+    private List<Receta> lunes = new ArrayList<>();
+    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    private List<Receta> martes = new ArrayList<>();
+    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    private List<Receta> miercoles = new ArrayList<>();
+    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    private List<Receta> jueves = new ArrayList<>();
+    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    private List<Receta> viernes = new ArrayList<>();
+    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    private List<Receta> sabado = new ArrayList<>();
+    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    private List<Receta> domingo = new ArrayList<>();
+
 
     @OneToMany(mappedBy = "carta", cascade = CascadeType.ALL)
     private List<Usuario> usuarios = new ArrayList<>();
 
+    private Boolean baja;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date alta;
 
-    private Boolean baja;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public static void setSerialVersionUID(long serialVersionUID) {
+        Carta.serialVersionUID = serialVersionUID;
+    }
 
     public Integer getId() {
         return id;
@@ -38,20 +57,60 @@ public class Carta implements Serializable {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public List<Receta> getLunes() {
+        return lunes;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setLunes(List<Receta> lunes) {
+        this.lunes = lunes;
     }
 
-    public List<Receta> getRecetas() {
-        return recetas;
+    public List<Receta> getMartes() {
+        return martes;
     }
 
-    public void setRecetas(List<Receta> recetas) {
-        this.recetas = recetas;
+    public void setMartes(List<Receta> martes) {
+        this.martes = martes;
+    }
+
+    public List<Receta> getMiercoles() {
+        return miercoles;
+    }
+
+    public void setMiercoles(List<Receta> miercoles) {
+        this.miercoles = miercoles;
+    }
+
+    public List<Receta> getJueves() {
+        return jueves;
+    }
+
+    public void setJueves(List<Receta> jueves) {
+        this.jueves = jueves;
+    }
+
+    public List<Receta> getViernes() {
+        return viernes;
+    }
+
+    public void setViernes(List<Receta> viernes) {
+        this.viernes = viernes;
+    }
+
+    public List<Receta> getSabado() {
+        return sabado;
+    }
+
+    public void setSabado(List<Receta> sabado) {
+        this.sabado = sabado;
+    }
+
+    public List<Receta> getDomingo() {
+        return domingo;
+    }
+
+    public void setDomingo(List<Receta> domingo) {
+        this.domingo = domingo;
     }
 
     public List<Usuario> getUsuarios() {
@@ -62,20 +121,20 @@ public class Carta implements Serializable {
         this.usuarios = usuarios;
     }
 
-    public Date getAlta() {
-        return alta;
-    }
-
-    public void setAlta(Date alta) {
-        this.alta = alta;
-    }
-
     public Boolean getBaja() {
         return baja;
     }
 
     public void setBaja(Boolean baja) {
         this.baja = baja;
+    }
+
+    public Date getAlta() {
+        return alta;
+    }
+
+    public void setAlta(Date alta) {
+        this.alta = alta;
     }
 }
 
