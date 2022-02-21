@@ -1,0 +1,14 @@
+@import "./import/landing.css";
+@import "./import/card.css";
+@import "./import/detalle.css";
+@import "./import/login.css";
+@import "./import/reloj.css";
+@import "./import/estilosR.css";
+@import "./import/registrar.css";
+@import "./import/nuevouser.css";
+
+
+
+footer{
+  text-align: center;
+}
