@@ -1,54 +1,42 @@
 <!DOCTYPE html>
 <html xml:lang xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="/plantilla/plantilla::head">
-    <link rel="stylesheet" href="estilosR.css">
-</head>
+<head th:replace="/plantilla/plantilla::head"></head>
 
-
-<body class=" regis">
-    <body style="background-color:#f7cbcb;">
-    </body>
-
+<body class="regis" >
+    <header th:replace="/plantilla/plantilla::header"></header>
     <div class="row g-3">
         <div id="register" class="form">
-
             <form action="mysuperscript.php" autocomplete="on">
-
-
                 <h1> Registro </h1>
-
                 <p><strong>
-                    
-                
-
-                        <label for="numerodelegajosignup" class="youlegajo">Tu Número de legajo</label><br>
+                        <label for="numerodelegajosignup" class="youlegajo"> Número de legajo</label><br>
                         <input id="numerodelegajosignup" name="numerodelegajosignup" required="required" type="text"
                             placeholder="123456" />
                 </p>
                 <p><strong>
 
-                        <label for="usernamesignup" class="youname">Tu nombre</label><br>
+                        <label for="usernamesignup" class="youname"> Nombre</label><br>
                         <input id="usernamesignup" name="usernamesignup" required="required" type="text"
                             placeholder="Nombre" />
                 </p>
                 <p>
-                    <label for="emailsignup" class="youmail"> Tu email</label><br>
+                    <label for="emailsignup" class="youmail"> Email</label><br>
                     <input id="emailsignup" name="emailsignup" required="required" type="email"
                         placeholder="ejemplo@mail.com" />
                 </p>
                 <p>
-                    <label for="passwordsignup" class="youpasswd">Tu password </label><br>
-                    <input id="passwordsignup" name="passwordsignup" required="required" type="password"
+                    <label for="contraseñasignup" class="youcontraseña">Contraseña </label><br>
+                    <input id="contraseñasignup" name="contraseñasignup" required="required" type="contraseña"
                         placeholder="eg. X8df!90EO" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         title="Debe contener al menos un número y una letra minúscula y mayúscula, y al menos 8 o más caracteres" />
                 </p>
                 <p>
-                    <label for="passwordsignup_confirm" class="youpasswd">Confirma tu password </label><br>
-                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password"
-                        placeholder="eg. X8df!90EO" />
+                    <label for="contraseñasignup_confirm" class="youcontraseña">Confirma tu contraseña </label><br>
+                    <input id="contraseñasignup_confirm" name="contraseñasignup_confirm" required="required"
+                        type="contraseña" placeholder="eg. X8df!90EO" />
                 </p>
-                <p class="signin button" >
+                <p class="signin button">
                     <input type="submit" value="Registro" />
                 </p></strong>
                 <p class="change_link">

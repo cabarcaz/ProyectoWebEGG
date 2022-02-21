@@ -97,7 +97,7 @@ public class UsuarioController {
             redirect.addFlashAttribute("error", "Error, no hay un usuario con ese ID.");
             return "redirect:/usuario/";
         } else {
-            List<Roles> roles = new ArrayList<Roles>(Arrays.asList(Roles.values()));
+            List<Roles> roles = new ArrayList<>(Arrays.asList(Roles.values()));
             model.addAttribute("usuario", usuarioServicio.findById(id));
             model.addAttribute("roles", roles);
         }
@@ -131,5 +131,11 @@ public class UsuarioController {
 
     //-------------------------------------FIN CRUD-----------------------------------------------------------------------//
 
+
+    @GetMapping("/registrarse")
+    public String registrarUsuario(Model model) {
+       
+        return "/usuario/registrarse";
+}
 
 }
