@@ -32,4 +32,11 @@ public class RecetaServicio implements IReceta {
     public Receta findById(Integer id) {
         return recetaDao.findById(id).orElse(null);
     }
+
+    @Override
+    public List<Receta> listarPorCategoria(String categoria) {
+        return recetaDao.buscarPorCategoria(categoria);
+    }
+
+
 }

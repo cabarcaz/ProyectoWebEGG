@@ -9,4 +9,6 @@ public interface IReceta{
     public void eliminar(Integer id);
     public void crear(Receta receta);
     public Receta findById(Integer id);
+    public List<Receta> listarPorCategoria(String categoria);
+
 }

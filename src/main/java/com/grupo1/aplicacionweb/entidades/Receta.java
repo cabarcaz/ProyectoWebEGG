@@ -20,6 +20,9 @@ public class Receta implements Serializable {
     @Column(name = "nombre")
     private String nombre;
 
+    // @NotEmpty(message = "Este campo es obligatorio.")
+    @Column(name = "categoria")
+    private String categoria;
 
     //    @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "foto")
@@ -62,6 +65,13 @@ public class Receta implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "carta_id")})
     private List<Carta> cartas = new ArrayList<>();
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public static void setSerialVersionUID(long serialVersionUID) {
+        Receta.serialVersionUID = serialVersionUID;
+    }
 
     public Integer getId() {
         return id;
@@ -79,12 +89,12 @@ public class Receta implements Serializable {
         this.nombre = nombre;
     }
 
-    public List<Paso> getPasos() {
-        return pasos;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setPasos(List<Paso> pasos) {
-        this.pasos = pasos;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getFoto() {
@@ -133,6 +143,14 @@ public class Receta implements Serializable {
 
     public void setPorcion(Integer porcion) {
         this.porcion = porcion;
+    }
+
+    public List<Paso> getPasos() {
+        return pasos;
+    }
+
+    public void setPasos(List<Paso> pasos) {
+        this.pasos = pasos;
     }
 
     public List<Ingrediente> getIngredientes() {
