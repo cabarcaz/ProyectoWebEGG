@@ -1,10 +1,7 @@
-
-
 .regis{
-  text-align center;
-}
-img{
-  
-  height:auto;
-  width:50%;
+  text-align: center;
+  background-color:rgb(167, 230, 209);
+  background-size: 80%;
+  background-repeat: no-repeat;
+
 }
