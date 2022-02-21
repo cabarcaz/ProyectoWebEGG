@@ -44,7 +44,7 @@ public class CartaController {
         model.addAttribute("recetasEntradas",recetasEntradas);
         List<Receta> recetasPrincpales = recetaServicio.listarPorCategoria("PRINCIPALES");
         model.addAttribute("recetasPrincpales",recetasPrincpales);
-        List<Receta> recetasPostres = recetaServicio.listarPorCategoria("PRINCIPALES");
+        List<Receta> recetasPostres = recetaServicio.listarPorCategoria("POSTRES");
         model.addAttribute("recetasPostres",recetasPostres);
         return "/carta/nuevo";
     }

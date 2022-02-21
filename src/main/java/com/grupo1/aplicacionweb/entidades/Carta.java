@@ -16,30 +16,20 @@ public class Carta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
     private List<Receta> lunes = new ArrayList<>();
-    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
     private List<Receta> martes = new ArrayList<>();
-    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
     private List<Receta> miercoles = new ArrayList<>();
-    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
     private List<Receta> jueves = new ArrayList<>();
-    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
     private List<Receta> viernes = new ArrayList<>();
-    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
     private List<Receta> sabado = new ArrayList<>();
-    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
     private List<Receta> domingo = new ArrayList<>();
-
-
-    @OneToMany(mappedBy = "carta", cascade = CascadeType.ALL)
-    private List<Usuario> usuarios = new ArrayList<>();
-
-    private Boolean baja;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date alta;
-
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -111,30 +101,6 @@ public class Carta implements Serializable {
 
     public void setDomingo(List<Receta> domingo) {
         this.domingo = domingo;
-    }
-
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
-    public Boolean getBaja() {
-        return baja;
-    }
-
-    public void setBaja(Boolean baja) {
-        this.baja = baja;
-    }
-
-    public Date getAlta() {
-        return alta;
-    }
-
-    public void setAlta(Date alta) {
-        this.alta = alta;
     }
 }
 
