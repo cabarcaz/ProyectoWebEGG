@@ -4,15 +4,15 @@
 <head th:replace="/plantilla/plantilla::head"></head>
 
 <body>
-<header th:replace="/plantilla/plantilla::header"></header>
+    <header th:replace="/plantilla/plantilla::header"></header>
 
-<div class="container ">
-    <div class="card my-5 py-5">
-        <div class="card-body">
-            <h4 class="card-title text-center mb-3" th:text="${h1}"></h4>
+    <div class="container ">
+        <div class="card my-5 py-5">
+            <div class="card-body">
+                <h4 class="card-title text-center mb-3" th:text="${h1}"></h4>
 
-            <form class="row mx-3 py-2 my-2 align-items-center" th:action="@{/receta/guardar}" th:object="${receta}"
-                  method="POST" enctype="multipart/form-data">
+                <form class="row mx-3 py-2 my-2 align-items-center" th:action="@{/receta/guardar}" th:object="${receta}"
+                    method="POST" enctype="multipart/form-data">
 
 
                 <div class="col-sm-6 mb-2">
@@ -45,145 +45,167 @@
                         </option>
                     </select>
                 </div>
+                    <div class="col-sm-6 mb-2">
+                        <label for="nombre" class="fas fa-regular fa-file-signature form-label"> Nombre de la
+                            Receta</label>
+                        <input th:field="*{nombre}" type="text" class="form-control" id="nombre" required>
+                    </div>
+                    <div class="col-sm-2 mb-2">
+                        <label for="Tcocion" class="fas fa-solid fa-clock form-label"> Cocción (min)</label>
+                        <input th:field="*{tiempoDeCoccion}" type="number" class="form-control" id="Tcocion" min="0">
+                    </div>
+                    <div class="col-sm-2 mb-2">
+                        <label for="prep" class="fas fa-solid fa-clock form-label"> Preparación (min)</label>
+                        <input th:field="*{tiempoDePreparacion}" type="number" class="form-control" id="prep" min="0">
+                    </div>
+                    <div class="col-sm-4 mb-2">
+                        <label for="file" class="fas fa-regular fa-camera form-label"> Imagen </label>
+                        <input type="file" class="form-control" id="file" name="file">
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="specificSizeInputName" class="fas fa-solid fa-users form-label"> Porciones</label>
+                        <input th:field="*{porcion}" type="number" class="form-control" id="specificSizeInputName"
+                            min="0">
+                    </div>
 
 
-                <!--                FORMULARIO INGREDIENTES -->
-                <div class="container text-capitalize">
-                    <table class="table table-striped table-hover table-sm table-bordered">
-                        <thead>
-                        <tr>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Nombre del ingrediente</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="ingrediente,index : *{ingredientes}">
-                            <!--<input type="hidden" th:field="*{ingredientes[__${index.index}__].id}">-->
-                            <td>
-                                <label for="nombre">Nombre</label>
-                                <input placeholder="Ingrese Ingrediente" type="text"
-                                       th:field="*{ingredientes[__${index.index}__].nombre}">
-                            </td>
-                            <td>
-                                <label for="nombre">Cantidad</label>
-                                <input placeholder="Ingrese Cantidad" type="text"
-                                       th:field="*{ingredientes[__${index.index}__].cantidad}">
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <!--                FORMULARIO INGREDIENTES -->
+                    <div class="container text-capitalize">
+                        <table class="table table-striped table-hover table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Nombre del ingrediente</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="ingrediente,index : *{ingredientes}">
+                                    <!--<input type="hidden" th:field="*{ingredientes[__${index.index}__].id}">-->
+                                    <td>
+                                        <label for="nombre">Nombre</label>
+                                        <input placeholder="Ingrese Ingrediente" type="text"
+                                            th:field="*{ingredientes[__${index.index}__].nombre}">
+                                    </td>
+                                    <td>
+                                        <label for="nombre">Cantidad</label>
+                                        <input placeholder="Ingrese Cantidad" type="text"
+                                            th:field="*{ingredientes[__${index.index}__].cantidad}">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <!--                FORMULARIO PROCEDIMIENTOS-->
+                    <!--                FORMULARIO PROCEDIMIENTOS-->
 
-                <div class="container text-capitalize">
-                    <table class="table table-striped table-hover table-sm table-bordered">
-                        <thead>
-                        <tr>
-                            <th scope="col">Paso</th>
-                            <th scope="col">Descripcion del paso</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="paso,index : *{pasos}">
-                            <!--                            <input type="hidden" th:field="*{ingredientes[__${index.index}__].id}">-->
-                            <td>
-                                <p th:text="'Paso ' + ${index.count}"></p>
-                            </td>
-                            <td>
-                                <div class="form-floating">
-                                    <!--                                <input type="text" th:field="*{pasos[__${index.index}__].paso}">-->
-                                    <textarea th:field="*{pasos[__${index.index}__].paso}" class="form-control"
-                                              placeholder="Descripcion -->" id="floatingTextarea"></textarea>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-
-                <input type="submit" class="btn btn-primary" value="Guardar"/>
-
-                <!--          <div class="col-sm-12 mb-4 mt-4">-->
-                <!--            <label for="ingrediente" class="fas fa-solid fa-utensils form-label"> Ingredientes </label>-->
-                <!--            <a href="#" class="fas fa-solid fa-plus text-decoration-none text-success" data-bs-toggle="modal"-->
-                <!--              data-bs-target="#ingrediente"></a> //-->
-                <!--            <a href="#" class="fas fa-solid fa-minus text-danger text-decoration-none" data-bs-toggle="modal"-->
-                <!--              data-bs-target="#ingrediente"></a>-->
-                <!--            <fieldset disabled>-->
-                <!--              <textarea name="ingredientes" id="ingredientes" class="form-control"></textarea>-->
-                <!--          </div>-->
-
-                <!--                <div class="col-sm-12 mb-4">-->
-                <!--                    <label for="preparacion" class=" fas fa-solid fa-align-left form-label"> Preparación </label>-->
-                <!--                    <a href="#" class="fas fa-solid fa-plus text-decoration-none text-success" data-bs-toggle="modal"-->
-                <!--                       data-bs-target="#exampleModal" data-bs-whatever="@mdo"></a> //-->
-                <!--                    <a href="#" class="fas fa-solid fa-minus text-danger text-decoration-none" data-bs-toggle="modal"-->
-                <!--                       data-bs-target="#exampleModal" data-bs-whatever="@mdo"></a>-->
-                <!--                    <fieldset disabled>-->
-                <!--                        <textarea name="preparacion" id="preparacion" class="form-control"></textarea>-->
-                <!--                </div>-->
+                    <div class="container text-capitalize">
+                        <table class="table table-striped table-hover table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Paso</th>
+                                    <th scope="col">Descripcion del paso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="paso,index : *{pasos}">
+                                    <!--                            <input type="hidden" th:field="*{ingredientes[__${index.index}__].id}">-->
+                                    <td>
+                                        <p th:text="'Paso ' + ${index.count}"></p>
+                                    </td>
+                                    <td>
+                                        <div class="form-floating">
+                                            <!--                                <input type="text" th:field="*{pasos[__${index.index}__].paso}">-->
+                                            <textarea th:field="*{pasos[__${index.index}__].paso}" class="form-control"
+                                                placeholder="Descripcion -->" id="floatingTextarea"></textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
 
-                <!-- Modal Ingrediente-->
-                <!--          <div class="modal fade" id="ingrediente" tabindex="-1" aria-labelledby="ingredienteLabel" aria-hidden="true">-->
-                <!--            <div class="modal-dialog">-->
-                <!--              <div class="modal-content">-->
-                <!--                <div class="modal-header">-->
-                <!--                  <h5 class="modal-title" id="ingredienteLabel">Modal ingrediente</h5>-->
-                <!--                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-                <!--                </div>-->
-                <!--                <div class="modal-body">-->
-                <!--                  ...-->
-                <!--                </div>-->
-                <!--                <div class="modal-footer">-->
-                <!--                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-                <!--                  <button type="button" class="btn btn-primary">Save changes</button>-->
-                <!--                </div>-->
-                <!--              </div>-->
-                <!--            </div>-->
-                <!--          </div>-->
-                <!-- Modal Preparación-->
-<!--                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"-->
-<!--                     aria-hidden="true">-->
-<!--                    <div class="modal-dialog">-->
-<!--                        <div class="modal-content">-->
-<!--                            <div class="modal-header">-->
-<!--                                <h5 class="modal-title" id="exampleModalLabel">New message</h5>-->
-<!--                                <button type="button" class="btn-close" data-bs-dismiss="modal"-->
-<!--                                        aria-label="Close"></button>-->
-<!--                            </div>-->
-<!--                            <div class="modal-body">-->
-<!--                                <form>-->
-<!--                                    <div class="mb-3">-->
-<!--                                        <label for="recipient-name" class="col-form-label">Recipient:</label>-->
-<!--                                        <input type="text" class="form-control" id="recipient-name">-->
-<!--                                    </div>-->
-<!--                                    <div class="mb-3">-->
-<!--                                        <label for="message-text" class="col-form-label">Message:</label>-->
-<!--                                        <textarea class="form-control" id="message-text"></textarea>-->
-<!--                                    </div>-->
-<!--                                </form>-->
-<!--                            </div>-->
-<!--                            <div class="modal-footer">-->
-<!--                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--                                <button type="button" class="btn btn-primary">Send message</button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                    <input type="submit" class="btn btn-primary" value="Guardar" />
 
-<!--                <div class="col-auto">-->
-<!--                    <button type="submit" class="btn btn-primary">Agregar</button>-->
-<!--                </div>-->
+                    <!--          <div class="col-sm-12 mb-4 mt-4">-->
+                    <!--            <label for="ingrediente" class="fas fa-solid fa-utensils form-label"> Ingredientes </label>-->
+                    <!--            <a href="#" class="fas fa-solid fa-plus text-decoration-none text-success" data-bs-toggle="modal"-->
+                    <!--              data-bs-target="#ingrediente"></a> //-->
+                    <!--            <a href="#" class="fas fa-solid fa-minus text-danger text-decoration-none" data-bs-toggle="modal"-->
+                    <!--              data-bs-target="#ingrediente"></a>-->
+                    <!--            <fieldset disabled>-->
+                    <!--              <textarea name="ingredientes" id="ingredientes" class="form-control"></textarea>-->
+                    <!--          </div>-->
 
-            </form>
+                    <!--                <div class="col-sm-12 mb-4">-->
+                    <!--                    <label for="preparacion" class=" fas fa-solid fa-align-left form-label"> Preparación </label>-->
+                    <!--                    <a href="#" class="fas fa-solid fa-plus text-decoration-none text-success" data-bs-toggle="modal"-->
+                    <!--                       data-bs-target="#exampleModal" data-bs-whatever="@mdo"></a> //-->
+                    <!--                    <a href="#" class="fas fa-solid fa-minus text-danger text-decoration-none" data-bs-toggle="modal"-->
+                    <!--                       data-bs-target="#exampleModal" data-bs-whatever="@mdo"></a>-->
+                    <!--                    <fieldset disabled>-->
+                    <!--                        <textarea name="preparacion" id="preparacion" class="form-control"></textarea>-->
+                    <!--                </div>-->
+
+
+                    <!-- Modal Ingrediente-->
+                    <!--          <div class="modal fade" id="ingrediente" tabindex="-1" aria-labelledby="ingredienteLabel" aria-hidden="true">-->
+                    <!--            <div class="modal-dialog">-->
+                    <!--              <div class="modal-content">-->
+                    <!--                <div class="modal-header">-->
+                    <!--                  <h5 class="modal-title" id="ingredienteLabel">Modal ingrediente</h5>-->
+                    <!--                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+                    <!--                </div>-->
+                    <!--                <div class="modal-body">-->
+                    <!--                  ...-->
+                    <!--                </div>-->
+                    <!--                <div class="modal-footer">-->
+                    <!--                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                    <!--                  <button type="button" class="btn btn-primary">Save changes</button>-->
+                    <!--                </div>-->
+                    <!--              </div>-->
+                    <!--            </div>-->
+                    <!--          </div>-->
+                    <!-- Modal Preparación-->
+                    <!--                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"-->
+                    <!--                     aria-hidden="true">-->
+                    <!--                    <div class="modal-dialog">-->
+                    <!--                        <div class="modal-content">-->
+                    <!--                            <div class="modal-header">-->
+                    <!--                                <h5 class="modal-title" id="exampleModalLabel">New message</h5>-->
+                    <!--                                <button type="button" class="btn-close" data-bs-dismiss="modal"-->
+                    <!--                                        aria-label="Close"></button>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="modal-body">-->
+                    <!--                                <form>-->
+                    <!--                                    <div class="mb-3">-->
+                    <!--                                        <label for="recipient-name" class="col-form-label">Recipient:</label>-->
+                    <!--                                        <input type="text" class="form-control" id="recipient-name">-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="mb-3">-->
+                    <!--                                        <label for="message-text" class="col-form-label">Message:</label>-->
+                    <!--                                        <textarea class="form-control" id="message-text"></textarea>-->
+                    <!--                                    </div>-->
+                    <!--                                </form>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="modal-footer">-->
+                    <!--                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                    <!--                                <button type="button" class="btn btn-primary">Send message</button>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
+
+                    <!--                <div class="col-auto">-->
+                    <!--                    <button type="submit" class="btn btn-primary">Agregar</button>-->
+                    <!--                </div>-->
+
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-<footer th:replace="/plantilla/plantilla::footer"></footer>
+    <footer th:replace="/plantilla/plantilla::footer"></footer>
 
 </body>
 
