@@ -1,5 +1,5 @@
 .idx {
-  background-image: url(/imagenes/fondo/finfex.jpg);
+  background-image: url(/imagenes/landing/finfex.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
@@ -8,8 +8,3 @@
   justify-content: center;
   
 }
-
-/* .fx{
-  border: 5px solid red;
-  background-image: url(/imagenes/fondo/finfex.jpg);
-} */
