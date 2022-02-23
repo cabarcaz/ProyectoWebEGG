@@ -6,11 +6,19 @@
 @import "./import/registrar.css";
 @import "./import/nuevouser.css";
 @import "./import/lista_receta.css";
+@import "./import/up.css";
 
 
 
-
-
-footer{
-  text-align: center;
+header{
+  width:100%;
+  height: 65px;
 }
+main .container{
+  min-height: calc(100vh  - 65px - 100px);
+}
+footer{
+  width:100%;
+  height: 100px;
+}
+

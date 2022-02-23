@@ -7,25 +7,23 @@
 
   <header th:replace="/plantilla/plantilla::header"></header>
 
-  <main class="container px-5 py-5">
-
-    <div id="reloj">
-      <div class="reloj-contenedor" id="contenedor">
-        <div id="hora">Reloj Digital</div>
-        <div id="fecha">con javaScript</div>
-      </div>
-    </div>
-
-    <div class="container ">
-      <div class="row">
-        <div class="col-sm-3 border border-dark">
-          <p>RecetaApp</p>
-          <p>Las mejores recetas y mas bla bla bla.</p>
+  <main>
+    <div class="container">
+      <div id="reloj">
+        <div class="reloj-contenedor" id="contenedor">
+          <div id="hora">Reloj Digital</div>
+          <div id="fecha">con javaScript</div>
         </div>
-
-        <div class="col-sm-9">
-          <div class="row">
-            <div class="col-8 col-sm-6">
+      </div>
+      <div>
+        <div class="row">
+          <div class="col-sm-3 border border-dark">
+            <p>RecetaApp</p>
+            <p>Las mejores recetas y mas bla bla bla.</p>
+          </div>
+          <div class="col-sm-9">
+            <div class="row">
+              <div class="col-8 col-sm-6">
 
                 <div class="btn card cuadro detal ">
                   <a th:href="@{/ingrediente/crear}">
@@ -33,39 +31,38 @@
                     <div class="btn card-body details">Perfil</div>
                   </a>
                 </div>
-
+              </div>
+              <div class="col-4 col-sm-6">
+                <div class="  btn card cuadro detal">
+                  <a href="#">
+                    <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                    <div class="card-body details"> Setting</div>
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="col-4 col-sm-6">
-              <div class="  btn card cuadro detal">
-                <a href="#">
-                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
-                  <div class="card-body details"> Setting</div>
-                </a>
+            <div class="row">
+              <div class="col-8 col-sm-6">
+                <div class="  btn card cuadro detal">
+                  <a href="#">
+                    <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                    <div class="card-body details"> Setting</div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-4 col-sm-6">
+                <div class="  btn card cuadro detal">
+                  <a href="#">
+                    <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                    <div class="card-body details"> Setting</div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-8 col-sm-6">
-              <div class="  btn card cuadro detal">
-                <a href="#">
-                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
-                  <div class="card-body details"> Setting</div>
-                </a>
-              </div>
-            </div>
-            <div class="col-4 col-sm-6">
-              <div class="  btn card cuadro detal">
-                <a href="#">
-                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
-                  <div class="card-body details"> Setting</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="row">
-            <div class="col-8 col-sm-6">
+          <div class="col-sm-9">
+            <div class="row">
+              <div class="col-8 col-sm-6">
 
                 <div class="btn card cuadro detal ">
                   <a th:href="@{/ingrediente/crear}">
@@ -73,45 +70,38 @@
                     <div class="btn card-body details">Perfil</div>
                   </a>
                 </div>
-
-            </div>
-            <div class="col-4 col-sm-6">
-              <div class="  btn card cuadro detal">
-                <a href="#">
-                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
-                  <div class="card-body details"> Setting</div>
-                </a>
+              </div>
+              <div class="col-4 col-sm-6">
+                <div class="  btn card cuadro detal">
+                  <a href="#">
+                    <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                    <div class="card-body details"> Setting</div>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-8 col-sm-6">
-              <div class="  btn card cuadro detal">
-                <a href="#">
-                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
-                  <div class="card-body details"> Setting</div>
-                </a>
+            <div class="row">
+              <div class="col-8 col-sm-6">
+                <div class="  btn card cuadro detal">
+                  <a href="#">
+                    <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                    <div class="card-body details"> Setting</div>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="col-4 col-sm-6">
-              <div class="  btn card cuadro detal">
-                <a href="#">
-                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
-                  <div class="card-body details"> Setting</div>
-                </a>
+              <div class="col-4 col-sm-6">
+                <div class="  btn card cuadro detal">
+                  <a href="#">
+                    <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                    <div class="card-body details"> Setting</div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
   </main>
 
   <footer th:replace="/plantilla/plantilla::footer"></footer>
