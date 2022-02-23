@@ -35,6 +35,16 @@
                     <label for="specificSizeInputName" class="fas fa-solid fa-users form-label"> Porciones</label>
                     <input th:field="*{porcion}" type="number" class="form-control" id="specificSizeInputName" min="0">
                 </div>
+                <div class="col-sm-2">
+                    <label for="specificSizeInputName" class="fas fa-solid fa-users form-label"> Categoria</label>
+                    <select th:field="*{categoria}"  class="form-control">
+                        <option th:each="categoria : ${listaCategorias}"
+                                th:value="${categoria}"
+                                th:text="${categoria.toString}">
+
+                        </option>
+                    </select>
+                </div>
 
 
                 <!--                FORMULARIO INGREDIENTES -->

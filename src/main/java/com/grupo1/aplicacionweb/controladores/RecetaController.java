@@ -3,6 +3,8 @@ package com.grupo1.aplicacionweb.controladores;
 import com.grupo1.aplicacionweb.entidades.Ingrediente;
 import com.grupo1.aplicacionweb.entidades.Paso;
 import com.grupo1.aplicacionweb.entidades.Receta;
+import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
+import com.grupo1.aplicacionweb.enumeraciones.Roles;
 import com.grupo1.aplicacionweb.servicio.IngredienteServicio;
 import com.grupo1.aplicacionweb.servicio.RecetaServicio;
 
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.io.IOException;
 import java.nio.file.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -59,6 +63,7 @@ public class RecetaController {
         model.addAttribute("titulo", "Formulario");
         model.addAttribute("h1", "Formulario ingreso de recetas");
         model.addAttribute("receta", receta);
+        model.addAttribute("listaCategorias", CategoriaPlato.values());
 
         return "/receta/nuevo";
     }
