@@ -47,8 +47,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="ingrediente,index : *{ingredientes}">
+                        <tr  id="botonAgregar" th:class="${index.index == 0} ? 'prueba' : 'prueba2' " th:each="ingrediente,index : *{ingredientes}">
                             <!--<input type="hidden" th:field="*{ingredientes[__${index.index}__].id}">-->
+
+                            <button th:class="${index.index == 0} ? 'prueba' : 'prueba2' " onclick="confirm()">
+                                un testo
+                            </button>
                             <td>
                                 <label for="nombre">Nombre</label>
                                 <input placeholder="Ingrese Ingrediente" type="text"
@@ -60,8 +64,10 @@
                                        th:field="*{ingredientes[__${index.index}__].cantidad}">
                             </td>
                         </tr>
+
                         </tbody>
                     </table>
+                    <h3 class="cualquiera">hola fede</h3>
                 </div>
 
                 <!--                FORMULARIO PROCEDIMIENTOS-->

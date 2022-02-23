@@ -85,4 +85,13 @@ function agregarIngrediente(){
   }else{
     console.log('sin información para agregar.')
   }
+
 }
+function agregar(){
+
+const tr = document.getElementById("ElementOne");
+tr.style.backgroundColor=red;
+
+}
+
+ 
