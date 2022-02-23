@@ -7,7 +7,7 @@
 
   <header th:replace="/plantilla/plantilla::header"></header>
 
-  <main class="container">
+  <main class="container px-5 py-5">
 
     <div id="reloj">
       <div class="reloj-contenedor" id="contenedor">
@@ -16,120 +16,100 @@
       </div>
     </div>
 
+    <div class="container ">
+      <div class="row">
+        <div class="col-sm-3 border border-dark">
+          <p>RecetaApp</p>
+          <p>Las mejores recetas y mas bla bla bla.</p>
+        </div>
+
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-8 col-sm-6">
+
+                <div class="btn card cuadro detal ">
+                  <a th:href="@{/ingrediente/crear}">
+                    <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="Profile"></div>
+                    <div class="btn card-body details">Perfil</div>
+                  </a>
+                </div>
+
+            </div>
+            <div class="col-4 col-sm-6">
+              <div class="  btn card cuadro detal">
+                <a href="#">
+                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                  <div class="card-body details"> Setting</div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 col-sm-6">
+              <div class="  btn card cuadro detal">
+                <a href="#">
+                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                  <div class="card-body details"> Setting</div>
+                </a>
+              </div>
+            </div>
+            <div class="col-4 col-sm-6">
+              <div class="  btn card cuadro detal">
+                <a href="#">
+                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                  <div class="card-body details"> Setting</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-8 col-sm-6">
+
+                <div class="btn card cuadro detal ">
+                  <a th:href="@{/ingrediente/crear}">
+                    <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="Profile"></div>
+                    <div class="btn card-body details">Perfil</div>
+                  </a>
+                </div>
+
+            </div>
+            <div class="col-4 col-sm-6">
+              <div class="  btn card cuadro detal">
+                <a href="#">
+                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                  <div class="card-body details"> Setting</div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 col-sm-6">
+              <div class="  btn card cuadro detal">
+                <a href="#">
+                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                  <div class="card-body details"> Setting</div>
+                </a>
+              </div>
+            </div>
+            <div class="col-4 col-sm-6">
+              <div class="  btn card cuadro detal">
+                <a href="#">
+                  <div class="card-img-top center imbBx"> <img src="/imagenes/landing/user.svg" alt="prueba"></div>
+                  <div class="card-body details"> Setting</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="row pt-5 text-center">
-      <div class="col-lg-4">
-        <img src="/imagenes/opciones/recetas.jpg" alt="" class="rounded-3" style="width:10rem">
-        <h2>Recetas</h2>
-        <p>Listado de recetas disponibles.</p>
-        <p><a class="btn btn-info" href="#">Ver detalles &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img src="/imagenes/opciones/menu.jpg" alt="" class="rounded-3" style="width:10rem">
-
-        <h2 class="mt-3">Menú</h2>
-        <p>Opciones de menú diario.</p>
-        <p><a class="btn btn-info" href="#">Ver Detalles &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img src="/imagenes/opciones/calendario.jpg" alt="" class="rounded-3" style="width:10rem">
-        <h2 class="mt-3">Calendario</h2>
-        <p>Detalles del calendario semanal</p>
-        <p><a class="btn btn-info" href="#">Ver Detalles &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
-
-    <h2 class="text-center py-4">Planificación Semanal</h2>
-
-    <table class=" table text-center border border-secondary border-2 pt-4">
-      <tr>
-        <th scope="row">Días</th>
-        <th scope="row">Entrada</th>
-        <th scope="row">Plato de fondo</th>
-        <th scope="row">Postre</th>
-      </tr>
-      <tr>
-        <th class="text-uppercase" scope="row">Lunes</th>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title ">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo ">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th class="text-uppercase" scope="row">Martes</th>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title ">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/fondo/f.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card carta border border-dark" style="width: 18rem;">
-            <div class="image">
-              <img src="/imagenes/postre/p.jpg" class="card-img-top imgl img-thumbnail" alt="...">
-            </div>
-            <div class="card-body cuerpo ">
-              <h5 class="card-title">Nombre del plato</h5>
-              <p class="card-text">Pequeña descripción.</p>
-              <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-            </div>
-          </div>
-        </td>
-      </tr>
 
 
 
-    </table>
+
+
 
 
   </main>
