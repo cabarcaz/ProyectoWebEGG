@@ -1,6 +1,7 @@
 package com.grupo1.aplicacionweb.servicio;
 
 import com.grupo1.aplicacionweb.entidades.Receta;
+import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
 import com.grupo1.aplicacionweb.interfaz.IReceta;
 import com.grupo1.aplicacionweb.repositorios.RecetaDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,11 @@ public class RecetaServicio implements IReceta {
     public Receta findById(Integer id) {
         return recetaDao.findById(id).orElse(null);
     }
+
+    @Override
+    public List<Receta> listarPorCategoria(CategoriaPlato categoria) {
+        return recetaDao.buscarPorCategoria(categoria);
+    }
+
+
 }

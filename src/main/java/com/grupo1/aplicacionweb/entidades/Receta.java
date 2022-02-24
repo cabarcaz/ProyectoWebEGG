@@ -1,5 +1,7 @@
 package com.grupo1.aplicacionweb.entidades;
 
+import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -20,6 +22,10 @@ public class Receta implements Serializable {
     @Column(name = "nombre")
     private String nombre;
 
+    // @NotEmpty(message = "Este campo es obligatorio.")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "categoria")
+    private CategoriaPlato categoria;
 
     //    @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "foto")
@@ -62,6 +68,13 @@ public class Receta implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "carta_id")})
     private List<Carta> cartas = new ArrayList<>();
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public static void setSerialVersionUID(long serialVersionUID) {
+        Receta.serialVersionUID = serialVersionUID;
+    }
 
     public Integer getId() {
         return id;
@@ -79,12 +92,12 @@ public class Receta implements Serializable {
         this.nombre = nombre;
     }
 
-    public List<Paso> getPasos() {
-        return pasos;
+    public CategoriaPlato getCategoria() {
+        return categoria;
     }
 
-    public void setPasos(List<Paso> pasos) {
-        this.pasos = pasos;
+    public void setCategoria(CategoriaPlato categoria) {
+        this.categoria = categoria;
     }
 
     public String getFoto() {
@@ -133,6 +146,14 @@ public class Receta implements Serializable {
 
     public void setPorcion(Integer porcion) {
         this.porcion = porcion;
+    }
+
+    public List<Paso> getPasos() {
+        return pasos;
+    }
+
+    public void setPasos(List<Paso> pasos) {
+        this.pasos = pasos;
     }
 
     public List<Ingrediente> getIngredientes() {
