@@ -3,81 +3,101 @@
 
 <head th:replace="/plantilla/plantilla::head"></head>
 
-<body>
-  <header class="shadow">
-    <div id="reloj">
-      <div class="reloj-contenedor " id="contenedor">
-        <div id="hora" >Reloj Digital </div>
-        <div id="fecha"> con javaScript</div>
-      </div>
-    </div>
-  </header>
+<body class="fondo-img">
 
-  <main class="py-3 shadow-lg">
-    <div class="container border border-2 border-dark ">
-      <div class="hero d-flex justify-content-evenly align-items-center shadow">
-        <h2>Bienvenido </h2>
-        <h3> Nombre de usuario.</h3>
-      </div>
-        <div class="row">
+  <main class="borde-negro">
 
-          <div class="col-sm-3 py-3 shadow">
-            <p><img src="/imagenes/landing/logo.png" alt="Logo RecetApp" class="img-fluid" ></p> 
+    <div class="contenedor ">
+
+      <div class="aside ">
+        <div class="logo card bg-transparent align-items-center">
+          <img src="/imagenes/landing/logo.png" alt="Logo RecetApp" class="img-fluid ">
+          <div class="card-body">
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="hero ">
+
+        <div style="width: 100%">
+          <div class="texto px-3 py-3">
+
+            <h2 class="">Bienvenido <p> Nombre de usuario.</p>
+            </h2>
           </div>
 
-          <div class="col-sm-9  px-5 py-4">
-            <div class="row">
-              <div class="col-6 col-sm-6 shadow">
-                <div class="btn card cuadro detal">
-                  <div class="card-img-top imbBx ps-2"> <img src="/imagenes/landing/user.svg" alt="Profile"></div>
-                  <div class="btn card-body details">
-                      <p class="pba fs-5 fst-italic"><a href="#">Perfil</a></p>
-                      <p class="pba fs-5 fst-italic"><a href="#">Nuevo</a></p>
-                      <p class="pba fs-5 fst-italic"><a href="#">Logout</a></p>
+
+          <div class="botones px-3 py-3" style="width: 100%">
+
+            <div class="">
+
+              <div class="row my-3">
+                <div class="col-6 col-sm-6 shadow">
+                  <div class="btn card cuadro detal ">
+                    <div class="card-img-top imbBx ps-2 pb1"> <img src="/imagenes/landing/user.svg" alt="Profile"></div>
+                    <div class="btn card-body details">
+                      <p class="fs-4 fw-bolder"><a href="#">Perfil</a></p>
+                      <p class="fs-4 fw-bolder"><a th:href="@{/usuario/}">Usuarios</a></p>
+                      <p class="fs-4 fw-bolder"><a href="#">Logout</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-6 shadow">
+                  <div class="btn card cuadro detal">
+                    <div class="card-img-top imbBx ps-2 pb1"> <img src="/imagenes/landing/receta.svg" alt="Recetas"></div>
+                    <div class="btn card-body details">
+                      <p class="fs-4 fw-bolder"><a th:href="@{/receta/}">Todas</a></p>
+                      <p class="fs-4 fw-bolder"><a th:href="@{/receta/crear}">Nueva</a></p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-6 col-sm-6 shadow">
-                <div class="btn card cuadro detal">
-                  <div class="card-img-top imbBx ps-2"> <img src="/imagenes/landing/receta.svg" alt="Recetas"></div>
-                  <div class="btn card-body details">
-                      <p class="pba fs-5 fst-italic"><a th:href="@{/receta/}">Todas</a></p>
-                      <p class="pba fs-5 fst-italic"><a th:href="@{/receta/crear}">Nueva</a></p>
+
+              <div class="row">
+                <div class="col-6 col-sm-6 shadow">
+                  <div class="btn card cuadro detal">
+                    <div class="card-img-top imbBx ps-4 pb1"> <img  src="/imagenes/landing/carta.svg" alt="Carta"></div>
+                    <div class="btn card-body details">
+                      <p class="fs-4 fw-bolder"><a th:href="@{/carta/}">Todas</a></p>
+                      <p class="fs-4 fw-bolder"><a th:href="@{/carta/crear}">Nueva</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-6 shadow">
+                  <div class="btn card cuadro detal">
+                    <div class="card-img-top imbBx ps-4 pb1"> <img  src="/imagenes/landing/ingrediente.svg"
+                        alt="Ingredientes">
+                    </div>
+                    <div class="btn card-body details">
+                      <p class="fs-4 fw-bolder"><a th:href="@{/ingrediente/}">Todos</a></p>
+                      <p class="fs-4 fw-bolder"><a th:href="@{/ingrediente/crear}">Nuevo</a></p>
+                    </div>
                   </div>
                 </div>
               </div>
+
+
             </div>
 
-            <div class="row">
-              <div class="col-6 col-sm-6 shadow">
-                <div class="btn card cuadro detal">
-                  <div class="card-img-top imbBx ps-4"> <img src="/imagenes/landing/carta.svg" alt="Carta"></div>
-                  <div class="btn card-body details">
-                      <p class="pba fs-5 fst-italic"><a th:href="@{/carta/}">Todas</a></p>
-                      <p class="pba fs-5 fst-italic"><a th:href="@{/carta/crear}">Nueva</a></p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-6 shadow">
-                <div class="btn card cuadro detal">
-                  <div class="card-img-top imbBx ps-4"> <img src="/imagenes/landing/ingrediente.svg" alt="Ingredientes"></div>
-                  <div class="btn card-body details">
-                      <p class="pba fs-5 fst-italic"><a th:href="@{/ingrediente/}">Todos</a></p>
-                      <p class="pba fs-5 fst-italic"><a th:href="@{/ingrediente/crear}">Nuevo</a></p>
-                  </div>
-                </div>
-            </div>
           </div>
 
 
         </div>
       </div>
 
-      <p class="fs-6 fw-bold shadow"><img src="/imagenes/landing/motivacion.png" alt="Estrella"> Una receta no tiene alma. Es el cocinero quien debe darle el alma a la receta.</p>
     </div>
+
   </main>
 
-  <footer th:replace="/plantilla/plantilla::footer"></footer>
+
+
+
+  <!--
+      <p class="fs-6 fw-bold shadow"><img src="/imagenes/landing/motivacion.png" alt="Estrella"> Una receta no tiene alma. Es el cocinero quien debe darle el alma a la receta.</p>
+    </div>
+  </main>  -->
+
 </body>
 
 </html>
