@@ -7,16 +7,10 @@
 @import "./import/registrar.css";
 @import "./import/nuevouser.css";
 
-.cualquiera{
-display:none;
-}
-.prueba{
-
-}
-.prueba2{
-display:none;
-}
 footer{
   text-align: center;
 }
 
+.no-mostrar{
+display:none;
+}

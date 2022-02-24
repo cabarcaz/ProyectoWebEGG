@@ -23,32 +23,32 @@ function mensaje(nombre){
 }
 
 
-// Reloj
-const mostrarReloj = () => {
-  let fecha = new Date();
-  let hr = formatoHora(fecha.getHours());
-  let min = formatoHora(fecha.getMinutes());
-  let seg = formatoHora(fecha.getSeconds());
-  document.getElementById('hora').innerHTML = `${hr}:${min}:${seg}`;
-
-  const meses =['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-  const dias =['Domingo', 'Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
-  let diaSemana = dias[fecha.getDay()];
-  let dia = fecha.getDate();
-  let mes = meses[fecha.getMonth()];
-  let fechaTexto= `${diaSemana}, ${dia}/${mes}`;
-  document.getElementById('fecha').innerHTML = fechaTexto;
-
-  document.getElementById('contenedor').classList.toggle('animar');
-};
-
-const formatoHora = (hora) => {
-if(hora<10)
-  hora = '0'+hora;
-  return hora;
-};
-
-setInterval(mostrarReloj,1000);
+//// Reloj
+//const mostrarReloj = () => {
+//  let fecha = new Date();
+//  let hr = formatoHora(fecha.getHours());
+//  let min = formatoHora(fecha.getMinutes());
+//  let seg = formatoHora(fecha.getSeconds());
+//  document.getElementById('hora').innerHTML = `${hr}:${min}:${seg}`;
+//
+//  const meses =['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+//  const dias =['Domingo', 'Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
+//  let diaSemana = dias[fecha.getDay()];
+//  let dia = fecha.getDate();
+//  let mes = meses[fecha.getMonth()];
+//  let fechaTexto= `${diaSemana}, ${dia}/${mes}`;
+//  document.getElementById('fecha').innerHTML = fechaTexto;
+//
+//  document.getElementById('contenedor').classList.toggle('animar');
+//};
+//
+//const formatoHora = (hora) => {
+//if(hora<10)
+//  hora = '0'+hora;
+//  return hora;
+//};
+//
+//setInterval(mostrarReloj,1000);
 
 //Ingrediente
 class Ingrediente{
@@ -87,11 +87,28 @@ function agregarIngrediente(){
   }
 
 }
-function agregar(){
+function agregar(string, index){
+  //  console.log(event)
+  let nextIndex = index + 1;
+  let row = document.getElementById(string + nextIndex );
+  if(row != null) { row.classList.remove("no-mostrar"); }
+  console.log("holis entre a agregar");
+  }
 
-const tr = document.getElementById("ElementOne");
-tr.style.backgroundColor=red;
-
-}
+  function eliminar(string,index){
+  let row = document.getElementById(string + index );
+  if(string == "ingrediente"){
+  let nombre = document.getElementById('nombre' + index );
+  let cantidad = document.getElementById('cantidad' + index );
+  nombre.value = '';
+  cantidad.value = '';
+  }
+  if(string == "paso"){
+  let texto = document.getElementById('procedimiento'+index);
+  texto.value = '';
+  }
+  if(row != null) {row.classList.add("no-mostrar")};
+  console.log("holis entre a eliminar");
+  }
 
  
