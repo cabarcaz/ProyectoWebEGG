@@ -7,6 +7,7 @@
 @import "./import/nuevouser.css";
 @import "./import/lista_receta.css";
 @import "./import/up.css";
+@import "./import/agregar-eliminar.css";
 
 footer{
   text-align: center;
