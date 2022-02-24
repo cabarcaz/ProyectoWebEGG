@@ -1,5 +1,7 @@
 package com.grupo1.aplicacionweb.entidades;
 
+import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -21,8 +23,9 @@ public class Receta implements Serializable {
     private String nombre;
 
     // @NotEmpty(message = "Este campo es obligatorio.")
+    @Enumerated(EnumType.STRING)
     @Column(name = "categoria")
-    private String categoria;
+    private CategoriaPlato categoria;
 
     //    @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "foto")
@@ -89,11 +92,11 @@ public class Receta implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getCategoria() {
+    public CategoriaPlato getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(CategoriaPlato categoria) {
         this.categoria = categoria;
     }
 

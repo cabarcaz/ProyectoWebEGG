@@ -35,7 +35,15 @@
                     <label for="specificSizeInputName" class="fas fa-solid fa-users form-label"> Porciones</label>
                     <input th:field="*{porcion}" type="number" class="form-control" id="specificSizeInputName" min="0">
                 </div>
-
+                <div class="col-sm-2">
+                    <label for="specificSizeInputName" class="fas fa-solid fa-users form-label"> Categoria</label>
+                    <select th:field="*{categoria}" class="form-control">
+                        <option th:each="categoria : ${listaCategorias}"
+                                th:value="${categoria}"
+                                th:text="${categoria.toString}">
+                        </option>
+                    </select>
+                </div>
 
                 <!--                FORMULARIO INGREDIENTES -->
                 <div class="container text-capitalize">
@@ -48,9 +56,6 @@
                             <th scope="col">Eliminar</th>
                         </tr>
                         </thead>
-
-                        <!--                            agregar boton on click-->
-
                         <tbody>
 
                         <tr th:id="'ingrediente' + ${index.index}"
@@ -100,13 +105,12 @@
                         <tr th:id="'paso'+${index.index}"
                             th:classappend="${index.index != 0} ? 'no-mostrar'"
                             th:each="paso,index : *{pasos}">
-                            <!--                            <input type="hidden" th:field="*{ingredientes[__${index.index}__].id}">-->
                             <td>
                                 <p th:text="'Paso ' + ${index.count}"></p>
                             </td>
                             <td>
                                 <div class="form-floating">
-                                    <!--                                <input type="text" th:field="*{pasos[__${index.index}__].paso}">-->
+
                                     <textarea th:field="*{pasos[__${index.index}__].paso}"
                                               class="form-control"
                                               placeholder="Descripcion -->"
