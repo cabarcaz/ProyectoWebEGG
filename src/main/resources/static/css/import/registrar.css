@@ -1,7 +1,22 @@
-.regis{
-  text-align: center;
-  background-color:rgb(167, 230, 209);
-  background-size: 80%;
-  background-repeat: no-repeat;
+.conteiner{
+  background-color: rgb(147, 209, 224);
 
+}.form{
+  text-align: center;
+}
+.cajon{
+  text-align: right;
+  font-size: x-large;
+  font-style: normal;
+  font-family: Arial;
+  padding: 20px;
+
+}button{
+  height:40px; 
+  width:100px; 
+  margin: -30px -50px; 
+  position:relative;
+  top:40%; 
+  left:50%;
+  padding: 5px;
 }

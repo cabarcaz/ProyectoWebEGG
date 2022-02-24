@@ -4,35 +4,58 @@
 
 <head th:replace="/plantilla/plantilla::head"></head>
 
-<body class="idx">
+<body class="fondo-imagen">
+  <main class="shadow-orange">
 
-  <div class=" text-center justify-content-center px-5 mx-5 my-5 py-5 ">
-    <form class="fx px-auto mx-auto my-auto py-auto">
+    <div class=" caja">
+      <form class="formulario">
 
-      <div class="mx-auto card-img" style="width: 200px;">
-        <div class="mb-3">
-          <label for="exampleInputIniciarSesion" class="form-lable fw-bolder text-dark mb-4 fs-2">Iniciar Sesion</label>
-          <div class="form-floating"> 
-            <input type="usuario" class="form-control" id="floatingInput" placeholder="User Name">
-            <label for="floatingInput">User Name</label>
+        <div class="login-text my-5">
+          <label class=" texto my-3">Iniciar Sesion</label>
+        </div>
+
+        <div class="form-but">
+
+          <div class="espacios my-5 py-5 mx-5 px-5">
+            <div class="form-floating my-3 border border-dark border-2 rounded-3">
+              <input type="usuario" class="form-control" id="floatingInput" placeholder="User Name">
+              <label for="floatingInput">User Name</label>
+            </div>
+            <div>
+              <div class="form-floating border border-dark border-2 rounded-3">
+                <input type="password" class="form-control" id="floatingInput" placeholder="Password">
+                <label for="floatingInput">Password</label>
+              </div>
+            </div>
           </div>
-        </div>
-        <div>
-          <div class="form-floating"> 
-            <input type="password" class="form-control" id="floatingInput" placeholder="Password">
-            <label for="floatingInput">Password</label>
+
+          <div class="botones my-5 py-5 mx-5">
+
+            <div class="mx-4">
+              <a th:href="@{/inicio/}" class="btn btn-lg btn-primary me-5">Iniciar Sesion</a>
+              <a th:href="@{/usuario/crear}" class="btn btn-lg btn-primary">Crear Usuario</a>
+            </div>
+
+            <div class="frase mt-3">
+              <div class="puno">
+                <img src="/imagenes/landing/motivacion.png" alt="Estrella">
+              </div>
+              <p class="ms-2 fs-3"> Una receta no tiene alma. Es el cocinero quien debe darle el alma a la receta. </p>
+            </div>
+
+
           </div>
-        </div>
-        <div class="mt-3">
-          <a th:href="@{/inicio/}" class="btn btn-primary">Iniciar Sesion</a>
-          <br> <br>
-          <a th:href="@{/usuario/crear}" class="btn btn-primary">Crear Usuario</a>
+
         </div>
 
 
-      </div>
-    </form>
-  </div>
+
+
+      </form>
+    </div>
+
+
+  </main>
 </body>
 
 </html>
