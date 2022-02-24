@@ -1,4 +1,4 @@
-package com.grupo1.aplicacionweb.interfas;
+package com.grupo1.aplicacionweb.interfaz;
 
 import com.grupo1.aplicacionweb.entidades.Carta;
 import com.grupo1.aplicacionweb.excepciones.ErrorServicio;

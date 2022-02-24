@@ -1,7 +1,11 @@
 package com.grupo1.aplicacionweb.entidades;
 
+import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,47 +23,50 @@ public class Receta implements Serializable {
     private String nombre;
 
     // @NotEmpty(message = "Este campo es obligatorio.")
-    @Column(name = "preparacion")
-    private String preparacion; // considerar armar arraylist para iterar en front
+    @Enumerated(EnumType.STRING)
+    @Column(name = "categoria")
+    private CategoriaPlato categoria;
 
-//    @NotEmpty(message = "Este campo es obligatorio.")
+    //    @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "foto")
     private String foto;
 
-//    @NotEmpty(message = "Este campo es obligatorio.")
+    //    @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "comentario")
     private String comentario;
 
-    // @NotEmpty(message = "Este campo es obligatorio.")
+    // @NotNull (message = "Este campo es obligatorio.")
     @Column(name = "tiempo_coccion")
-    private String tiempoDeCoccion;
+    private Integer tiempoDeCoccion;
 
-    // @NotEmpty(message = "Este campo es obligatorio.")
+    // @NotNull (message = "Este campo es obligatorio.")
     @Column(name = "tiempo_preparacion")
-    private String tiempoDePreparacion;
+    private Integer tiempoDePreparacion;
 
-    // @NotEmpty(message = "Este campo es obligatorio.")
+    // @NotNull (message = "Este campo es obligatorio.")
     @Column(name = "tiempo_total")
-    private String tiempoTotal;
+    private Integer tiempoTotal;
 
-    // @NotEmpty (message = "Este campo es obligatorio.")
-    @Column(name = "procion")
-    private String porcion;
+    // @NotNull (message = "Este campo es obligatorio.")
+    @Column(name = "porcion")
+    private Integer porcion;
+
+    @OneToMany( mappedBy = "receta" ,cascade = CascadeType.ALL)
+    private List<Paso> pasos = new ArrayList<>();
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "receta_ingrediente",
             joinColumns = {@JoinColumn(name = "receta_id")},
             inverseJoinColumns = {@JoinColumn(name = "ingrediente_id")})
-    private List<Ingrediente> ingredientes;
+    private List<Ingrediente> ingredientes = new ArrayList<>();
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "receta_carta",
             joinColumns = {@JoinColumn(name = "receta_id")},
             inverseJoinColumns = {@JoinColumn(name = "carta_id")})
-    private List<Carta> cartas;
-
+    private List<Carta> cartas = new ArrayList<>();
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -85,12 +92,12 @@ public class Receta implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getPreparacion() {
-        return preparacion;
+    public CategoriaPlato getCategoria() {
+        return categoria;
     }
 
-    public void setPreparacion(String preparacion) {
-        this.preparacion = preparacion;
+    public void setCategoria(CategoriaPlato categoria) {
+        this.categoria = categoria;
     }
 
     public String getFoto() {
@@ -109,36 +116,44 @@ public class Receta implements Serializable {
         this.comentario = comentario;
     }
 
-    public String getTiempoDeCoccion() {
+    public Integer getTiempoDeCoccion() {
         return tiempoDeCoccion;
     }
 
-    public void setTiempoDeCoccion(String tiempoDeCoccion) {
+    public void setTiempoDeCoccion(Integer tiempoDeCoccion) {
         this.tiempoDeCoccion = tiempoDeCoccion;
     }
 
-    public String getTiempoDePreparacion() {
+    public Integer getTiempoDePreparacion() {
         return tiempoDePreparacion;
     }
 
-    public void setTiempoDePreparacion(String tiempoDePreparacion) {
+    public void setTiempoDePreparacion(Integer tiempoDePreparacion) {
         this.tiempoDePreparacion = tiempoDePreparacion;
     }
 
-    public String getTiempoTotal() {
+    public Integer getTiempoTotal() {
         return tiempoTotal;
     }
 
-    public void setTiempoTotal(String tiempoTotal) {
+    public void setTiempoTotal(Integer tiempoTotal) {
         this.tiempoTotal = tiempoTotal;
     }
 
-    public String getPorcion() {
+    public Integer getPorcion() {
         return porcion;
     }
 
-    public void setPorcion(String porcion) {
+    public void setPorcion(Integer porcion) {
         this.porcion = porcion;
+    }
+
+    public List<Paso> getPasos() {
+        return pasos;
+    }
+
+    public void setPasos(List<Paso> pasos) {
+        this.pasos = pasos;
     }
 
     public List<Ingrediente> getIngredientes() {

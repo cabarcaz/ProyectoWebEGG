@@ -1,8 +1,12 @@
 package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Carta;
+
+import com.grupo1.aplicacionweb.entidades.Receta;
+import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
 import com.grupo1.aplicacionweb.servicio.CartaServicio;
 
+import com.grupo1.aplicacionweb.servicio.RecetaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +23,9 @@ public class CartaController {
     @Autowired
     private CartaServicio cartaServicio;
 
+    @Autowired
+    private RecetaServicio recetaServicio;
+
     @GetMapping("/")
     public String listar(Model model) {
         List<Carta> listaCarta = cartaServicio.listar();
@@ -34,6 +41,12 @@ public class CartaController {
         model.addAttribute("titulo", "Formulario");
         model.addAttribute("h1", "Formulario ingreso Nueva receta");
         model.addAttribute("carta", carta);
+        List<Receta> recetasEntradas = recetaServicio.listarPorCategoria(CategoriaPlato.ENTRADA);
+        model.addAttribute("recetasEntradas",recetasEntradas);
+        List<Receta> recetasPrincpales = recetaServicio.listarPorCategoria(CategoriaPlato.PRINCIPAL);
+        model.addAttribute("recetasPrincpales",recetasPrincpales);
+        List<Receta> recetasPostres = recetaServicio.listarPorCategoria(CategoriaPlato.POSTRE);
+        model.addAttribute("recetasPostres",recetasPostres);
         return "/carta/nuevo";
     }
 
@@ -68,5 +81,8 @@ public class CartaController {
             return "redirect:/carta/";
         }
         return "redirect:/carta/";
+
+    
     }
+
 }
