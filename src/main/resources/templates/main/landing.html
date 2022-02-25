@@ -10,77 +10,80 @@
     <div class="contenedor ">
 
       <div class="aside ">
-        <div class="logo card bg-transparent align-items-center">
-          <img src="/imagenes/landing/logo.png" alt="Logo RecetApp" class="img-fluid ">
-          <div class="card-body">
-            
-          </div>
+        <div class="logo card bg-transparent align-items-center border border-warning">
+          <img src="/imagenes/landing/logo.png" alt="Logo RecetApp" style="width:30rem;">
+
         </div>
       </div>
 
       <div class="hero ">
 
         <div style="width: 100%">
-          <div class="texto px-3 py-3">
 
+          <div class="texto px-3 py-3">
             <h2 class="">Bienvenido <p> Nombre de usuario.</p>
             </h2>
           </div>
 
-
-          <div class="botones px-3 py-3" style="width: 100%">
-
-            <div class="">
-
-              <div class="row my-3">
-                <div class="col-6 col-sm-6 shadow">
-                  <div class="btn card cuadro detal ">
-                    <div class="card-img-top imbBx ps-2 pb1"> <img src="/imagenes/landing/user.svg" alt="Profile"></div>
-                    <div class="btn card-body details">
-                      <p class="fs-4 fw-bolder"><a href="#">Perfil</a></p>
-                      <p class="fs-4 fw-bolder"><a th:href="@{/usuario/}">Usuarios</a></p>
-                      <p class="fs-4 fw-bolder"><a href="#">Logout</a></p>
-                    </div>
+          <div class="botones ">
+            <div class="row sup">
+              <div class="col-12 col-sm-6 ">
+                <div class="btn card cuadro detal " >
+                  <div class="btn card-body details">
+                    <p class="fs-4 fw-bolder"><a class="tipos" href="#">Perfil</a></p>
+                    <p class="fs-4 fw-bolder"><a class="tipos" th:href="@{/usuario/}">Usuarios</a></p>
+                    <p class="fs-4 fw-bolder"><a class="tipos" href="#">Logout</a></p>
                   </div>
-                </div>
-                <div class="col-6 col-sm-6 shadow">
-                  <div class="btn card cuadro detal">
-                    <div class="card-img-top imbBx ps-2 pb1"> <img src="/imagenes/landing/receta.svg" alt="Recetas"></div>
-                    <div class="btn card-body details">
-                      <p class="fs-4 fw-bolder"><a th:href="@{/receta/}">Todas</a></p>
-                      <p class="fs-4 fw-bolder"><a th:href="@{/receta/crear}">Nueva</a></p>
-                    </div>
+                  <div >
+                    <img src="/imagenes/landing/user.svg" alt="Profile" style="height:14rem;" class="img-png">
                   </div>
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-6 col-sm-6 shadow">
-                  <div class="btn card cuadro detal">
-                    <div class="card-img-top imbBx ps-4 pb1"> <img  src="/imagenes/landing/carta.svg" alt="Carta"></div>
-                    <div class="btn card-body details">
-                      <p class="fs-4 fw-bolder"><a th:href="@{/carta/}">Todas</a></p>
-                      <p class="fs-4 fw-bolder"><a th:href="@{/carta/crear}">Nueva</a></p>
-                    </div>
+              <div class="col-12 col-sm-6">
+                <div class="btn card cuadro detal">  
+                  <div class="btn card-body details">
+                    <p class="fs-4 fw-bolder"><a class="tipos" th:href="@{/receta/}">Todas</a></p>
+                    <p class="fs-4 fw-bolder"><a class="tipos" th:href="@{/receta/crear}">Nueva</a></p>
                   </div>
-                </div>
-                <div class="col-6 col-sm-6 shadow">
-                  <div class="btn card cuadro detal">
-                    <div class="card-img-top imbBx ps-4 pb1"> <img  src="/imagenes/landing/ingrediente.svg"
-                        alt="Ingredientes">
-                    </div>
-                    <div class="btn card-body details">
-                      <p class="fs-4 fw-bolder"><a th:href="@{/ingrediente/}">Todos</a></p>
-                      <p class="fs-4 fw-bolder"><a th:href="@{/ingrediente/crear}">Nuevo</a></p>
-                    </div>
+                  <div>
+                    <img src="/imagenes/landing/receta.svg" alt="Recetas" style="height:14rem;" class="img-png">
                   </div>
                 </div>
               </div>
-
 
             </div>
 
+            <div class="row sup">
+
+              <div class="col-12 col-sm-6 ">
+                <div class="btn card cuadro detal">
+                  <div class="btn card-body details">
+                    <p class="fs-4 fw-bolder"><a class="tipos" th:href="@{/carta/}">Todas</a></p>
+                    <p class="fs-4 fw-bolder"><a class="tipos" th:href="@{/carta/crear}">Nueva</a></p>
+                  </div>
+                  <div>
+                    <img src="/imagenes/landing/carta.svg" alt="Carta" style="height:14rem;" class="img-png"></div>
+                </div>
+
+              </div>
+
+              <div class="col-12 col-sm-6 ">
+                <div class="btn card cuadro detal ">
+                  <div class="btn card-body details">
+                    <p class="fs-4 fw-bolder"><a class=" tipos" th:href="@{/ingrediente/}">Todos</a></p>
+                    <p class="fs-4 fw-bolder"><a class="tipos" th:href="@{/ingrediente/crear}">Nuevo</a></p>
+                  </div>
+                  <div>
+                    <img src="/imagenes/landing/ingrediente.svg" alt="Ingredientes" style="height:14rem;" class="img-png">
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
+
+
+
 
 
         </div>
