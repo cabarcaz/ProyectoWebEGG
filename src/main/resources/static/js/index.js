@@ -80,14 +80,18 @@ function agregar(string, index){
   function eliminar(string,index){
   let row = document.getElementById(string + index );
   if(string == "ingrediente"){
+  if(index != 0){
   let nombre = document.getElementById('nombre' + index );
   let cantidad = document.getElementById('cantidad' + index );
-  nombre.value = '';
-  cantidad.value = '';
+  nombre.value ='';
+  cantidad.value ='';
+  }
   }
   if(string == "paso"){
+  if(index != 0){
   let texto = document.getElementById('procedimiento'+index);
   texto.value = '';
+  }
   }
   if(row != null) {row.classList.add("no-mostrar")};
   console.log("holis entre a eliminar");
