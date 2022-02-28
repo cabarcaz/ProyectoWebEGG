@@ -42,8 +42,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/crear")
-    public String crearUsuario(Model model) {
-        Usuario usuario = new Usuario();
+    public String crearUsuario(Usuario usuario, Model model) {
         model.addAttribute("titulo", "Formulario");
         model.addAttribute("h1", "Formulario ingreso nuevo usuario");
         model.addAttribute("usuario", usuario);
@@ -71,18 +70,11 @@ public class UsuarioController {
             }
         }
 
-        // VALIDACION PARA VER SI EL USUARIO TIENE ASIGNADA O NO UNA CARTA
         try {
-            if (usuario.getCarta() == null) {
-                usuario.setCarta(null);
                 usuarioServicio.crear(usuario);
-            } else {
-                usuario.setCarta(cartaServicio.findById(usuario.getCarta().getId()));
-                usuarioServicio.crear(usuario);
-                redirect.addFlashAttribute("success", "Su menu se ha asignado con EXITO.");
-            }
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
+            return "redirect:/usuario/crear";
         }
 
         return "redirect:/usuario/";

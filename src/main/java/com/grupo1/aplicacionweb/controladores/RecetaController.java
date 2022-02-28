@@ -38,7 +38,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class RecetaController {
     @Autowired
     private RecetaServicio recetaServicio;
-    @Autowired 
+    @Autowired
     private IngredienteServicio ingredienteServicio;
 
     @GetMapping("/")
@@ -54,10 +54,10 @@ public class RecetaController {
     @GetMapping("/crear")
     public String crearReceta(Model model) {
         Receta receta = new Receta();
-        for (int i = 0; i < 3; ++i) { // ingresar el numero de ingredientes que precisa el ususario
+        for (int i = 0; i < 10; ++i) { // ingresar el numero de ingredientes que precisa el ususario
             receta.getIngredientes().add(new Ingrediente());
         }
-        for (int i = 0; i < 3; ++i) { // ingresar el numero de pasos que precisa el ususario
+        for (int i = 0; i < 10; ++i) { // ingresar el numero de pasos que precisa el ususario
             receta.getPasos().add(new Paso());
         }
         model.addAttribute("titulo", "Formulario");
@@ -71,7 +71,7 @@ public class RecetaController {
     @PostMapping("/guardar")
     //
     public String guardar(@Valid @ModelAttribute Receta receta, SessionStatus ss, RedirectAttributes redirect, @RequestParam("file") MultipartFile imagen) {
-                                //codigo para GUARDAR IMAGEN //
+        //codigo para GUARDAR IMAGEN //
         if (!imagen.isEmpty()) {
             Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/receta");
             String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
@@ -81,20 +81,34 @@ public class RecetaController {
                 Files.write(rutaCompleta, bytesImg);
                 receta.setFoto(imagen.getOriginalFilename());
             } catch (IOException e) {
-               redirect.addFlashAttribute("error",e.getMessage());
+                redirect.addFlashAttribute("error", e.getMessage());
             }
         }
         for (int i = 0; i < receta.getPasos().size(); ++i) { // se asigna el orden de los pasos
-           receta.getPasos().get(i).setNumero(i+1);
+            receta.getPasos().get(i).setNumero(i + 1);
         }
-        receta.setTiempoTotal(receta.getTiempoDeCoccion()+receta.getTiempoDePreparacion());
+
+        for (Paso paso : receta.getPasos()) {
+            if (paso.getPaso() == null) {
+                receta.getPasos().remove(paso);
+            }
+        }
+        for (Ingrediente ingrediente : receta.getIngredientes()) {
+            if (ingrediente.getNombre() == null) {
+                receta.getIngredientes().remove(ingrediente);
+            }
+        }
+        if (receta.getTiempoDeCoccion() != null && receta.getTiempoDePreparacion() != null) {
+            receta.setTiempoTotal(receta.getTiempoDeCoccion() + receta.getTiempoDePreparacion());
+        }
+
         recetaServicio.crear(receta);
         ss.setComplete();
         return "redirect:/receta/";
     }
 
     @GetMapping("/editar/{id}")
-    public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect,Model model) {
+    public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect, Model model) {
         if (id == null || recetaServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un receta con ese ID.");
             return "redirect:/receta/";
@@ -112,29 +126,29 @@ public class RecetaController {
             return "redirect:/receta/";
         } else {
             recetaServicio.eliminar(id);
-            redirect.addFlashAttribute("success","Su receta se elimino con exito!");
+            redirect.addFlashAttribute("success", "Su receta se elimino con exito!");
         }
         return "redirect:/receta/";
     }
 
     @GetMapping("/detalle/{id}")
-    public String detalleRecetas(@PathVariable("id")Integer id, Model model, RedirectAttributes atribute){
+    public String detalleRecetas(@PathVariable("id") Integer id, Model model, RedirectAttributes atribute) {
         Receta receta = null;
-        if(id != null){
+        if (id != null) {
             receta = recetaServicio.findById(id);
-            if(id == null){
+            if (id == null) {
                 atribute.addFlashAttribute("error", "El id de la receta no existe!");
                 return "redirect:/receta/";
             }
-        }else{
+        } else {
             atribute.addFlashAttribute("error", "Error con el id de la recera");
             return "redirect:/receta/";
         }
         List<Ingrediente> listIngredientes = ingredienteServicio.listar();
 
-        model.addAttribute("titulo","Detalle");
+        model.addAttribute("titulo", "Detalle");
         model.addAttribute("h1", "Detalle de la receta");
-        model.addAttribute("recetas",receta);
+        model.addAttribute("recetas", receta);
         model.addAttribute("ingredientes", listIngredientes);
 
         return "/receta/detalles";
