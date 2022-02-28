@@ -45,10 +45,6 @@ public class Usuario implements Serializable {
     @Column(name = "foto")
     private String foto;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "carta_id")
-    private Carta carta; // Asigrnar Carta a empleado con un boton.(?)
-
     @Temporal(TemporalType.TIMESTAMP)
     private Date alta;
 
@@ -113,14 +109,6 @@ public class Usuario implements Serializable {
 
     public void setFoto(String foto) {
         this.foto = foto;
-    }
-
-    public Carta getCarta() {
-        return carta;
-    }
-
-    public void setCarta(Carta carta) {
-        this.carta = carta;
     }
 
     public Date getAlta() {
