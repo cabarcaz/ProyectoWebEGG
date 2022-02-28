@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- favicon -->
-
+  <link rel="icon" type="image/ico" href="/imagenes/landing/ico.png" />
   <!-- fonts -->
 
   <!-- bootstrap -->
@@ -41,24 +41,22 @@
 </head>
 
 <body>
+
   <header class="top">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(255, 255, 255, 0.541)">
       <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">Navbar</a>
+        <a class="navbar-brand" th:href="@{/inicio/}"><img src="/imagenes/landing/ico.png" alt="" width="60" height="48" class="d-inline-block align-text-top"> </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Carta</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(255, 255, 255, 0.541)">
                 <li><a class="dropdown-item" th:href="@{/carta/crear}">Nuevo</a></li>
                 <li><a class="dropdown-item" th:href="@{/carta/editar}">Editar</a></li>
                 <li><a class="dropdown-item" th:href="@{/carta/}">Lista</a></li>
@@ -67,7 +65,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Ingrediente</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(255, 255, 255, 0.541)">
                 <li><a class="dropdown-item" th:href="@{/ingrediente/crear}">Nuevo</a></li>
                 <li><a class="dropdown-item" th:href="@{/ingrediente/editar}">Editar</a></li>
                 <li><a class="dropdown-item" th:href="@{/ingrediente/}">Lista</a></li>
@@ -76,7 +74,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Receta</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(255, 255, 255, 0.541)">
                 <li><a class="dropdown-item" th:href="@{/receta/crear}">Nuevo</a></li>
                 <li><a class="dropdown-item" th:href="@{/receta/editar}">Editar</a></li>
                 <li><a class="dropdown-item" th:href="@{/receta/}">Lista</a></li>
@@ -85,7 +83,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false"> Usuario</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(255, 255, 255, 0.541)">
                 <li><a class="dropdown-item" th:href="@{/usuario/crear}">Nuevo</a></li>
                 <li><a class="dropdown-item" th:href="@{/usuario/editar}">Editar</a></li>
                 <li><a class="dropdown-item" th:href="@{/usuario/}">Lista</a></li>
@@ -95,20 +93,20 @@
           </ul>
 
           <!-- Navbar Search-->
-          <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <div class="input-group">
-              <input class="form-control " type="search" placeholder="Buscar" aria-label="Buscar"
-                aria-describedby="btnNavbarSearch" />
-              <button class="btn btn-primary fas fa-search" id="btnNavbarSearch" type="submit"
-                value="buscar"></i></button>
-            </div>
-          </form>
+          <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+              <div class="input-group">
+                <input class="form-control " type="search" placeholder="Buscar" aria-label="Buscar"
+                  aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary fas fa-search" id="btnNavbarSearch" type="submit"
+                  value="buscar"></i></button>
+              </div>
+            </form> -->
           <!-- Navbar-->
           <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle fas fa-user fa-fw" id="navbarDropdown" href="#" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false"></a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="background-color: rgba(255, 255, 255, 0.541)">
                 <li><a class="dropdown-item" href="#!">Settings</a></li>
                 <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                 <li>
@@ -122,12 +120,11 @@
       </div>
     </nav>
 
-    <main>
 
 
 
 
-    </main>
+
     <!-- mensajes de alerta -->
     <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success != null}">
       <label th:text="${success}"></label><button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -145,19 +142,22 @@
       <label th:text="${info}"></label><button type="button" class="btn-close" data-bs-dismiss="alert"
         aria-label="Close"></button>
     </div>
-  
+
     <span class="ir-arriba fas fa-solid fa-angle-up"></span>
 
   </header>
 
-  
+  <main>
+  </main>
 
-  <footer class="footer text-center">
-    <p class="mt-2 text-dark fs-5 fw-bolder"> Hecho con el ❤ por el grupo 1. &copy;Copyright 2022 - Todos los derechos reservados. </p>
+  <footer class="footer text-center pt-2">
+    <hr class="dropdown-divider border border-dark">
+    <hr class="dropdown-divider border border-dark">
+    <p class="mt-2 pt-3 text-dark fs-5 fw-bolder"> Hecho con el ❤ por el grupo 1. &copy;Copyright 2022 - Todos los
+      derechos
+      reservados. </p>
 
   </footer>
 
-
 </body>
-
 </html>

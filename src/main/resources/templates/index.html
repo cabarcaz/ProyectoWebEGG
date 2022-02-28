@@ -4,33 +4,41 @@
 
 <head th:replace="/plantilla/plantilla::head"></head>
 
-<body class="fondo-imagen">
-  <main class="shadow-orange">
-    <div class=" caja">
-      <form class="formulario">
-        <div class="login-text my-5">
-          <label class=" texto my-3">Iniciar Sesion</label>
-        </div>
-        <div class="form-but align-items-center">
-          <div class="espacios col col-4 ">
-            <div class="form-floating my-3 border border-dark border-2 rounded-3">
-              <input type="usuario" class="form-control" id="floatingInput" placeholder="User Name">
-              <label for="floatingInput">User Name</label>
-            </div>
-            <div class="form-floating border border-dark border-2 rounded-3 ">
-              <input type="password" class="form-control" id="floatingInput" placeholder="Password">
-              <label for="floatingInput">Password</label>
+<body class="fondo-imagen ">
 
-            </div>
+  <main class="">
+
+    <form class="formulario row justify-content-center align-content-center text-center">
+
+      <div class="col-12 col-md-6 col-sm-12 "> >
+        <h1 class="text-uppercase fs-1 fw-bolder text-decoration-none  my-3">Iniciar Sesion</h1>
+      </div>
+
+      <div class="espacios d-flex justify-content-center">
+
+        <div class=" col-md-6 col-sm-6 col-xl-4">
+
+          <div class="form-floating my-3 border border-dark border-2 rounded-3">
+            <input type="usuario" class="form-control" id="floatingInput" placeholder="User Name">
+            <label for="floatingInput">User Name</label>
           </div>
-          <div class="botones col col-5 pt-4">
-            <a th:href="@{/inicio/}" class="btn btn-lg btn-info me-5">Iniciar Sesion</a>
-            <a th:href="@{/usuario/crear}" class="btn btn-lg btn-info">Crear Usuario</a>
+          <div class="form-floating border border-dark border-2 rounded-3 ">
+            <input type="password" class="form-control" id="floatingInput" placeholder="Password">
+            <label for="floatingInput">Password</label>
+
           </div>
+          <div class="pt-4">
+            <a th:href="@{/inicio/}" class="btn btn-lg btn-info border border-dark">Iniciar
+              Sesion</a>
+            <a th:href="@{/usuario/crear}" class="btn btn-lg btn-info border border-dark">Crear Usuario</a>
+          </div>
+
         </div>
-      </form>
-    </div>
+
+    </form>
+
   </main>
+
 </body>
 
 </html>

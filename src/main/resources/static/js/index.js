@@ -42,31 +42,6 @@ $(document).ready(function(){
 
 });
 
-const ingredientes =[
-  new Ingrediente('Nombre del ingrediente', 'Cantidad del ingrediente'),
-];
-function mostrarIngredientes(){
-  console.log('Mostrar Ingredientes.');
-  let texto ='';
-  for(let ingrediente of ingredientes){
-    texto += `<li>${ingrediente.nombre} - ${ingrediente.cantidad}</li>`
-  }
-  document.getElementById('ingredientes').innerHTML = texto;
-}
-function agregarIngrediente(){
-  const forma = document.forms['forma'];
-  const nombre = forma['nombre'];
-  const cantidad = forma['cantidad'];
-  if(nombre.value !='' && cantidad.value !=''){
-    const ingrediente = new Ingrediente(nombre.value, cantidad.value);
-    ingredientes.push(ingrediente);
-    mostrarIngredientes();
-  }else{
-    console.log('sin información para agregar.')
-  }
-
-}
-
  // funciones de boton agregar
 
 function agregar(string, index){
