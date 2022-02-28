@@ -3,17 +3,17 @@
 
 <head th:replace="/plantilla/plantilla::head"></head>
 
-<body class="fondo-img">
+<body>
 
-  <main class="d-flex align-items-stretch align-content-center flex-wrap d-flex justify-content-center">
+  <main class="d-flex align-items-stretch flex-wrap ">
 
-    <div class="row g-0 ">
+    <div class="row bg-difuminado">
 
-      <div class="col-md-6 borde align-content-center flex-wrap d-flex justify-content-center">
-        <img src="/imagenes/landing/logo.png" alt="Logo RecetApp" class="img-fluid px-3 pt-5 mt-3 justify-content-center">
+      <div class="col-md-5 borde ">
+        <img src="/imagenes/landing/logo.png" alt="Logo RecetApp" style="width:35rem;" class="px-3 pt-3 mt-2 justify-content-center">
       </div>
 
-      <div class=" col-md-6 d-flex align-content-center flex-wrap d-flex justify-content-center">
+      <div class=" col-md-7 d-flex align-content-center flex-wrap justify-content-center ">
 
         <div class="card-body">
           <div class="text-center borde rounded-3">
@@ -26,7 +26,7 @@
 
           <div class="col">
             <div class="card borde rounded-3">
-              <img src="/imagenes/landing/user.svg" class="rounded mx-auto d-block" style="width:9rem;"
+              <img src="/imagenes/landing/user.svg" class="rounded mx-auto d-block" style="width:8rem;"
                 alt="user-image">
               <div class="card-body text-center">
                 <h5 class="card-title ">Usuario</h5>
@@ -39,7 +39,7 @@
 
           <div class="col ">
             <div class="card borde rounded-3">
-              <img src="/imagenes/landing/receta.svg" class="rounded mx-auto d-block" alt="Recetas" style="width:9rem;">
+              <img src="/imagenes/landing/receta.svg" class="rounded mx-auto d-block" alt="Recetas" style="width:8rem;">
               <div class="card-body text-center ">
                 <h5 class="card-title">Recetas</h5>
                 <a th:href="@{/receta/}" class="btn btn-warning mb-1">Todas</a>
@@ -50,7 +50,7 @@
 
           <div class="col">
             <div class="card borde rounded-3">
-              <img src="/imagenes/landing/carta.svg" class="rounded mx-auto d-block" alt="Carta" style="width:9rem;">
+              <img src="/imagenes/landing/carta.svg" class="rounded mx-auto d-block" alt="Carta" style="width:8rem;">
               <div class="card-body text-center">
                 <h5 class="card-title">Menú</h5>
                 <a th:href="@{/carta/}" class="btn btn-warning mb-1">Todos</a>
@@ -63,7 +63,7 @@
           <div class="col">
             <div class="card borde rounded-3">
               <img src="/imagenes/landing/ingrediente.svg" class="rounded mx-auto d-block" alt="Ingrediente"
-                style="width:9rem;">
+                style="width:8rem;">
               <div class="card-body text-center">
                 <h5 class="card-title">Ingredientes</h5>
                 <a th:href="@{/ingrediente/}" class="btn btn-warning mb-1">Todos</a>
