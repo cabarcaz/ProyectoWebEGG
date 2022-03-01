@@ -2,6 +2,7 @@ package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Usuario;
 import com.grupo1.aplicacionweb.enumeraciones.Roles;
+import com.grupo1.aplicacionweb.repositorios.UsuarioDao;
 import com.grupo1.aplicacionweb.servicio.CartaServicio;
 import com.grupo1.aplicacionweb.servicio.UsuarioServicio;
 
@@ -29,8 +30,6 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
-    @Autowired
-    private CartaServicio cartaServicio;
 
     @GetMapping("/")
     public String listar(Model model) {
@@ -50,9 +49,21 @@ public class UsuarioController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect, @RequestParam("file") MultipartFile imagen) {
+    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect,
+                          @RequestParam("file") MultipartFile imagen, @RequestParam("password2") String password2) {
         if (result.hasErrors()) {
-            return "/usuario/nuevo";
+            return "redirect:/usuario/crear";
+        }
+        if (usuario == null) {
+            redirect.addFlashAttribute("error", "El usuario es nulo");
+            return "/usuario/crear";
+        }
+        if (usuario.getId() == null) {
+            if (!password2.equals(usuario.getPassword())) {
+                redirect.addFlashAttribute("error", "Las contraseñas no coinciden");
+                model.addAttribute(usuario);
+                return "/usuario/crear";
+            }
         }
 
         // CODIGO PARA RECIBIR Y GUARDAR LA FOTO
@@ -69,9 +80,8 @@ public class UsuarioController {
                 redirect.addFlashAttribute("error", e.getMessage());
             }
         }
-
         try {
-                usuarioServicio.crear(usuario);
+            usuarioServicio.crear(usuario);
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/crear";
@@ -121,13 +131,35 @@ public class UsuarioController {
         return "/usuario/nuevo-pass";
     }
 
+    @PostMapping("/update-pass")
+    public String updatePass(Usuario usuario, @RequestParam("password2") String password2, Model model) {
+        if (usuario.getPassword().isEmpty() || password2.isEmpty()) {
+            model.addAttribute("error", "Debe llenar ambos campos");
+            return "redirect:/usuario/pass/" + usuario.getId();
+        }
+        if (!usuario.getPassword().equals(password2)) {
+            model.addAttribute("error", "Las constraseñas no coinciden");
+            return "redirect:/usuario/pass/" + usuario.getId();
+        }
+
+        try {
+            usuario.setPassword(usuario.getPassword());
+            usuarioServicio.crear(usuario);
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "redirect:/usuario/pass/" + usuario.getId();
+        }
+
+        return "redirect:/usuario/";
+    }
+
     //-------------------------------------FIN CRUD-----------------------------------------------------------------------//
 
 
     @GetMapping("/registrarse")
     public String registrarUsuario(Model model) {
-       
+
         return "/usuario/registrarse";
-}
+    }
 
 }

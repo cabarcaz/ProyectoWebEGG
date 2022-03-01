@@ -34,7 +34,7 @@
             </thead>
             <tbody>
                 <tr th:if="${usuario.getBaja() == false}" th:each="usuario:${usuarios}">
-                    <td>FOTO</td>
+                    <td><img class="center" th:src="@{'/imagenes/usuario/' + ${usuario.foto}}" th:alt="${usuario.foto}"></td>
                     <td th:text="${usuario.id}"></td>
                     <td th:text="${usuario.nombre}"></td>
                     <td th:text="${usuario.apellido}"></td>

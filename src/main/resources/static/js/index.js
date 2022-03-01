@@ -51,7 +51,6 @@ function agregar(string, index) {
   if (row != null) {
     row.classList.remove("no-mostrar");
   }
-  console.log("holis entre a agregar");
 }
 
 function eliminar(string, index) {
@@ -76,6 +75,4 @@ function eliminar(string, index) {
         };
     }
   }
-
-  console.log("holis entre a eliminar");
 }

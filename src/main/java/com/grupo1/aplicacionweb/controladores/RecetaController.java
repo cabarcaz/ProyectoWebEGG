@@ -54,10 +54,10 @@ public class RecetaController {
     @GetMapping("/crear")
     public String crearReceta(Model model) {
         Receta receta = new Receta();
-        for (int i = 0; i < 10; ++i) { // ingresar el numero de ingredientes que precisa el ususario
+        for (int i = 0; i < 20; ++i) { // ingresar el numero de ingredientes que precisa el ususario
             receta.getIngredientes().add(new Ingrediente());
         }
-        for (int i = 0; i < 10; ++i) { // ingresar el numero de pasos que precisa el ususario
+        for (int i = 0; i < 20; ++i) { // ingresar el numero de pasos que precisa el ususario
             receta.getPasos().add(new Paso());
         }
         model.addAttribute("titulo", "Formulario");
@@ -69,7 +69,6 @@ public class RecetaController {
     }
 
     @PostMapping("/guardar")
-    //
     public String guardar(@Valid @ModelAttribute Receta receta, SessionStatus ss, RedirectAttributes redirect, @RequestParam("file") MultipartFile imagen) {
         //codigo para GUARDAR IMAGEN //
         if (!imagen.isEmpty()) {
@@ -87,15 +86,14 @@ public class RecetaController {
         for (int i = 0; i < receta.getPasos().size(); ++i) { // se asigna el orden de los pasos
             receta.getPasos().get(i).setNumero(i + 1);
         }
-
-        for (Paso paso : receta.getPasos()) {
-            if (paso.getPaso() == null) {
-                receta.getPasos().remove(paso);
+        for (int i = 0; i < receta.getPasos().size(); ++i) {
+            if (receta.getPasos().get(i) == null) {
+                receta.getPasos().remove(receta.getPasos().get(i));
             }
         }
-        for (Ingrediente ingrediente : receta.getIngredientes()) {
-            if (ingrediente.getNombre() == null) {
-                receta.getIngredientes().remove(ingrediente);
+        for (int i = 0; i < receta.getIngredientes().size(); ++i) {
+            if (receta.getIngredientes().get(i) == null) {
+                receta.getIngredientes().remove(receta.getIngredientes().get(i));
             }
         }
         if (receta.getTiempoDeCoccion() != null && receta.getTiempoDePreparacion() != null) {

@@ -27,6 +27,8 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
         return usuarioDao.findAll();
     }
 
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
     @Override
     public void eliminar(Integer id) {
 //        usuarioDao.deleteById(id);
@@ -39,22 +41,14 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
     @Override
     public void crear(Usuario usuario) throws ErrorServicio {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        if (usuario != null) {
-            if (usuario.getPassword2().equals(usuario.getPassword())) {
-                if (usuario.getId() == null) {
-                    usuario.setPassword(encoder.encode(usuario.getPassword()));
-                    usuario.setPassword2(encoder.encode(usuario.getPassword2()));
-                    usuario.setAlta(new Date());
-                    usuario.setBaja(false);
-                    usuario.setRol(Roles.USER);
-                }
-                usuarioDao.save(usuario);
-            } else {
-                throw new ErrorServicio("Password no coincide");
-            }
-        } else {
-            throw new ErrorServicio("Error,el usuario es nulo.");
+        if (usuario.getId() == null) {
+            usuario.setPassword(encoder.encode(usuario.getPassword()));
+            usuario.setAlta(new Date());
+            usuario.setBaja(false);
+            usuario.setRol(Roles.USER);
         }
+        usuario.setPassword(encoder.encode(usuario.getPassword()));
+        usuarioDao.save(usuario);
     }
 
     @Override
