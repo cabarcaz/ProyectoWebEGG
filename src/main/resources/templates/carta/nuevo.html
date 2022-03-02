@@ -8,9 +8,13 @@
 
   <body>
     <header th:replace="/plantilla/plantilla::header"></header>
+    <main> 
+      <div class="container">
 
-    <h1 class="text-center py-4">Menu Semanal</h1>
-    <h2 class="text-center py-4">Planificación</h2>
+     
+
+    <h1 class="text-center py-4 bg-card mt-2 col col-md-6 ">Menu Semanal</h1>
+    <h2 class="text-center py-4 bg-card mb-2 col col-md-6">Planificación</h2>
 
     <!-- <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-1">Crear carta</a>
 <table class="table">
@@ -53,7 +57,7 @@
  -->
 
     <div class="container">
-      <table class="table text-center border border-secondary border-2 pt-4">
+      <table class="table text-center border border-secondary border-2 pt-4 mt-5">
         <tr>
           <th scope="row">Días</th>
           <th scope="row">Entrada</th>
@@ -400,7 +404,8 @@
         </tr>
       </table>
     </div>
-
+  </div>
+</main>
     <footer th:replace="/plantilla/plantilla::footer"></footer>
   </body>
 </html>

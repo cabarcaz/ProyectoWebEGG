@@ -8,7 +8,7 @@
 @import "./import/up.css";
 @import "./import/agregar-eliminar.css";
 @import "./import/imagen-styles.css";
-
+@import "./import/carta.css";
 
 body {
   background-image: url("/imagenes/landing/bg.jpg");
