@@ -16,6 +16,9 @@ public class UsuarioServicio implements IUsuario {
 
     @Autowired
     private UsuarioDao usuarioDao;
+    
+
+
 
     @Override
     public List<Usuario> listar() {
@@ -42,6 +45,7 @@ public class UsuarioServicio implements IUsuario {
                     usuario.setRol(Roles.USER);
                 }
                 usuarioDao.save(usuario);
+                
             } else {
                 throw new ErrorServicio("Password no coincide");
             }

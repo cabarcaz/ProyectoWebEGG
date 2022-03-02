@@ -2,6 +2,7 @@ package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Usuario;
 import com.grupo1.aplicacionweb.enumeraciones.Roles;
+import com.grupo1.aplicacionweb.interfaz.IMailsend;
 import com.grupo1.aplicacionweb.servicio.CartaServicio;
 import com.grupo1.aplicacionweb.servicio.UsuarioServicio;
 
@@ -31,6 +32,7 @@ public class UsuarioController {
     private UsuarioServicio usuarioServicio;
     @Autowired
     private CartaServicio cartaServicio;
+    
 
     @GetMapping("/")
     public String listar(Model model) {
@@ -76,10 +78,12 @@ public class UsuarioController {
             if (usuario.getCarta() == null) {
                 usuario.setCarta(null);
                 usuarioServicio.crear(usuario);
+               
             } else {
                 usuario.setCarta(cartaServicio.findById(usuario.getCarta().getId()));
                 usuarioServicio.crear(usuario);
                 redirect.addFlashAttribute("success", "Su menu se ha asignado con EXITO.");
+                
             }
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
