@@ -43,30 +43,12 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
 
     @Override
     public void crear(Usuario usuario) throws ErrorServicio {
-<<<<<<< HEAD
-
-        if (usuario != null) {
-            if (usuario.getPassword2().equals(usuario.getPassword())) {
-                if (usuario.getId() == null) {
-                    usuario.setAlta(new Date());
-                    usuario.setBaja(false);
-                    usuario.setRol(Roles.USER);
-                }
-                usuarioDao.save(usuario);
-                
-            } else {
-                throw new ErrorServicio("Password no coincide");
-            }
-        } else {
-            throw new ErrorServicio("Error,el usuario es nulo.");
-=======
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (usuario.getId() == null) {
             usuario.setPassword(encoder.encode(usuario.getPassword()));
             usuario.setAlta(new Date());
             usuario.setBaja(false);
             usuario.setRol(Roles.USER);
->>>>>>> dev
         }
         usuario.setPassword(encoder.encode(usuario.getPassword()));
         usuarioDao.save(usuario);

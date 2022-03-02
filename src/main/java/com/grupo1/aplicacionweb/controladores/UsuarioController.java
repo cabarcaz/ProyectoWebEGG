@@ -2,12 +2,6 @@ package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Usuario;
 import com.grupo1.aplicacionweb.enumeraciones.Roles;
-<<<<<<< HEAD
-import com.grupo1.aplicacionweb.interfaz.IMailsend;
-=======
-import com.grupo1.aplicacionweb.repositorios.UsuarioDao;
->>>>>>> dev
-import com.grupo1.aplicacionweb.servicio.CartaServicio;
 import com.grupo1.aplicacionweb.servicio.UsuarioServicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +28,6 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
-<<<<<<< HEAD
-    @Autowired
-    private CartaServicio cartaServicio;
-    
-=======
->>>>>>> dev
 
     @GetMapping("/")
     public String listar(Model model) {
@@ -91,20 +79,7 @@ public class UsuarioController {
             }
         }
         try {
-<<<<<<< HEAD
-            if (usuario.getCarta() == null) {
-                usuario.setCarta(null);
-                usuarioServicio.crear(usuario);
-               
-            } else {
-                usuario.setCarta(cartaServicio.findById(usuario.getCarta().getId()));
-                usuarioServicio.crear(usuario);
-                redirect.addFlashAttribute("success", "Su menu se ha asignado con EXITO.");
-                
-            }
-=======
             usuarioServicio.crear(usuario);
->>>>>>> dev
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/crear";
