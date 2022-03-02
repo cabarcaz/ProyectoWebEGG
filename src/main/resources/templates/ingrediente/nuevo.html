@@ -6,7 +6,10 @@
 <body>
   <header th:replace="/plantilla/plantilla::header"></header>
 
-  <main class="container mt-4 mb-5">
+  <main >
+    <div class="container">
+
+    
     <div class="card bg-light">
       <div class="card-header bg-dark text-white" th:text="${h1}"></div>
       <div class="card-body ">
@@ -32,9 +35,10 @@
         </form>
       </div>
     </div>
+    </div>
+    
   </main>
 
-  
   <footer th:replace="/plantilla/plantilla::footer"></footer>
 
 </body>
