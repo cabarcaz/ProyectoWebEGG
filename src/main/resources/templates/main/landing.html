@@ -3,100 +3,85 @@
 
 <head th:replace="/plantilla/plantilla::head"></head>
 
-<body class="fondo-img">
+<body>
 
-  <main class="borde-negro">
+  <main class="d-flex align-items-stretch flex-wrap ">
 
-    <div class="contenedor ">
+    <div class="row bg-difuminado ">
 
-      <div class="aside ">
-        <div class="logo card bg-transparent align-items-center">
-          <img src="/imagenes/landing/logo.png" alt="Logo RecetApp" class="img-fluid ">
-          <div class="card-body">
-            
-          </div>
-        </div>
+      <div class="col-md-5 col-xl-5 borde ">
+        <img src="/imagenes/landing/logo.png" alt="Logo RecetApp" style="width:35rem;" class="px-3 pt-3 mt-2 align-content-center">
       </div>
 
-      <div class="hero ">
+      <div class=" col-md-7 d-flex align-content-center flex-wrap justify-content-center ">
 
-        <div style="width: 100%">
-          <div class="texto px-3 py-3">
-
-            <h2 class="">Bienvenido <p> Nombre de usuario.</p>
+        <div class="card-body">
+          <div class="text-center borde rounded-3">
+            <h2 class="fs-1">Bienvenido <p> Nombre de usuario.</p>
             </h2>
           </div>
+        </div>
 
+        <div class=" row row-cols-1 row-cols-md-2 g-4 px-4">
 
-          <div class="botones px-3 py-3" style="width: 100%">
-
-            <div class="">
-
-              <div class="row my-3">
-                <div class="col-6 col-sm-6 shadow">
-                  <div class="btn card cuadro detal ">
-                    <div class="card-img-top imbBx ps-2 pb1"> <img src="/imagenes/landing/user.svg" alt="Profile"></div>
-                    <div class="btn card-body details">
-                      <p class="fs-4 fw-bolder"><a href="#">Perfil</a></p>
-                      <p class="fs-4 fw-bolder"><a th:href="@{/usuario/}">Usuarios</a></p>
-                      <p class="fs-4 fw-bolder"><a href="#">Logout</a></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6 col-sm-6 shadow">
-                  <div class="btn card cuadro detal">
-                    <div class="card-img-top imbBx ps-2 pb1"> <img src="/imagenes/landing/receta.svg" alt="Recetas"></div>
-                    <div class="btn card-body details">
-                      <p class="fs-4 fw-bolder"><a th:href="@{/receta/}">Todas</a></p>
-                      <p class="fs-4 fw-bolder"><a th:href="@{/receta/crear}">Nueva</a></p>
-                    </div>
-                  </div>
-                </div>
+          <div class="col">
+            <div class="card borde rounded-3">
+              <img src="/imagenes/landing/user.svg" class="rounded mx-auto d-block" style="width:8rem;"
+                alt="user-image">
+              <div class="card-body text-center">
+                <h5 class="card-title ">Usuario</h5>
+                <a th:href="@{/usuario/}" class="btn btn-warning mb-1">Perfil</a>
+                <a th:href="@{/usuario/}" class="btn btn-warning mb-1">Todos</a>
+                <a href="#" class="btn btn-warning">Salir</a>
               </div>
-
-              <div class="row">
-                <div class="col-6 col-sm-6 shadow">
-                  <div class="btn card cuadro detal">
-                    <div class="card-img-top imbBx ps-4 pb1"> <img  src="/imagenes/landing/carta.svg" alt="Carta"></div>
-                    <div class="btn card-body details">
-                      <p class="fs-4 fw-bolder"><a th:href="@{/carta/}">Todas</a></p>
-                      <p class="fs-4 fw-bolder"><a th:href="@{/carta/crear}">Nueva</a></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6 col-sm-6 shadow">
-                  <div class="btn card cuadro detal">
-                    <div class="card-img-top imbBx ps-4 pb1"> <img  src="/imagenes/landing/ingrediente.svg"
-                        alt="Ingredientes">
-                    </div>
-                    <div class="btn card-body details">
-                      <p class="fs-4 fw-bolder"><a th:href="@{/ingrediente/}">Todos</a></p>
-                      <p class="fs-4 fw-bolder"><a th:href="@{/ingrediente/crear}">Nuevo</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
             </div>
-
           </div>
 
+          <div class="col ">
+            <div class="card borde rounded-3">
+              <img src="/imagenes/landing/receta.svg" class="rounded mx-auto d-block" alt="Recetas" style="width:8rem;">
+              <div class="card-body text-center ">
+                <h5 class="card-title">Recetas</h5>
+                <a th:href="@{/receta/}" class="btn btn-warning mb-1">Todas</a>
+                <a th:href="@{/receta/crear}" class="btn btn-warning">Nueva</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card borde rounded-3">
+              <img src="/imagenes/landing/carta.svg" class="rounded mx-auto d-block" alt="Carta" style="width:8rem;">
+              <div class="card-body text-center">
+                <h5 class="card-title">Menú</h5>
+                <a th:href="@{/carta/}" class="btn btn-warning mb-1">Todos</a>
+                <a th:href="@{/carta/crear}" class="btn btn-warning mb-1">Nuevo</a>
+                <a href="#" class="btn btn-warning mb-1">Semana</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card borde rounded-3">
+              <img src="/imagenes/landing/ingrediente.svg" class="rounded mx-auto d-block" alt="Ingrediente"
+                style="width:8rem;">
+              <div class="card-body text-center">
+                <h5 class="card-title">Ingredientes</h5>
+                <a th:href="@{/ingrediente/}" class="btn btn-warning mb-1">Todos</a>
+                <a th:href="@{/ingrediente/crear}" class="btn btn-warning ">Nuevo</a>
+              </div>
+            </div>
+          </div>
 
         </div>
+
+
+
+
       </div>
 
     </div>
 
   </main>
-
-
-
-
-  <!--
-      <p class="fs-6 fw-bold shadow"><img src="/imagenes/landing/motivacion.png" alt="Estrella"> Una receta no tiene alma. Es el cocinero quien debe darle el alma a la receta.</p>
-    </div>
-  </main>  -->
 
 </body>
 

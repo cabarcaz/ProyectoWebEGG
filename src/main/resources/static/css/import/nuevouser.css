@@ -1,29 +1,27 @@
 
-
-.avatar{
-text-align: center;
-
-width: 150px;
-height: 150px;
-
-}
-.contenido{
-text-align:center;
-width:150%;
-/*max-width:900px;
-/*padding:32px 64px;*/
-margin:auto;
-/*display: inline-block;*/
-padding: 30px   }
-.detalle{
-text-align: justify;
-text-decoration-color:rgb(7, 247, 207);
-font-size: medium;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.img-social{
-    width: 40px;
-}
+.conteiner{
+    background-color: rgb(147, 209, 224);
+  
+  }.form{
+    text-align: center;
+  }
+  .cajon{
+    text-align: right;
+    font-size: x-large;
+    font-style: normal;
+    font-family: Arial;
+    padding: 20px;
+  }
+.form-group-row{
+    /*margin: 10px;
+    padding: 10px 0px;*/
    
+}
+.col-sm-1 {
+    height: 40px;
+    width: 60px;
+    margin-left: 8cm;
+    margin-top: 1cm;
 
 
+}
