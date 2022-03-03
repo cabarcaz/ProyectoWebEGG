@@ -2,8 +2,6 @@ package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Usuario;
 import com.grupo1.aplicacionweb.enumeraciones.Roles;
-import com.grupo1.aplicacionweb.repositorios.UsuarioDao;
-import com.grupo1.aplicacionweb.servicio.CartaServicio;
 import com.grupo1.aplicacionweb.servicio.UsuarioServicio;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,6 +5,7 @@ import com.grupo1.aplicacionweb.entidades.Paso;
 import com.grupo1.aplicacionweb.entidades.Receta;
 import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
 import com.grupo1.aplicacionweb.enumeraciones.Roles;
+import com.grupo1.aplicacionweb.interfaz.IMailsend;
 import com.grupo1.aplicacionweb.servicio.IngredienteServicio;
 import com.grupo1.aplicacionweb.servicio.RecetaServicio;
 
@@ -40,6 +41,8 @@ public class RecetaController {
     private RecetaServicio recetaServicio;
     @Autowired
     private IngredienteServicio ingredienteServicio;
+    @Autowired
+    private IMailsend mailsend;
 
     @GetMapping("/")
     public String listar(Model model) {
@@ -101,6 +104,7 @@ public class RecetaController {
         }
 
         recetaServicio.crear(receta);
+        mailsend.enviar("sgonzalo271@gmail.com");
         ss.setComplete();
         return "redirect:/receta/";
     }

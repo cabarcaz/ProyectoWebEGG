@@ -21,6 +21,9 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
 
     @Autowired
     private UsuarioDao usuarioDao;
+    
+
+
 
     @Override
     public List<Usuario> listar() {
