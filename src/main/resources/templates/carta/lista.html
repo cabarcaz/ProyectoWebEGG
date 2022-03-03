@@ -8,6 +8,43 @@
 
   <main>
     <h1>Página para mostrar lista de cartas</h1>
+
+    <div class="container">
+      <table class="table  table-hover  table-bordered border border-3 ">
+        <thead class="border border-3">
+
+
+          <div class="card mt-3">
+            <div class="card-header d-flex">
+              <h1> Lista de recetas</h1>
+              <div class="col"> <button type="button" class=" btn btn-dark btn-sm "><a th:href="@{/carta/crear}">crear
+                    Receta </a></button></th>
+
+              </div>
+        </thead>
+        <tbody>
+          <div class="card-body">
+            <table class="table table-white table-striped">
+              <thead>
+                <tr>
+                  <th> Nombre de recetas</th>
+                  <th>Editar</th>
+                  <th>Eliminar</th>
+                  <th>Guardar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="receta:${recetas}">
+                  <td th:text="${receta.nombre}"></td>
+                  <td><a th:href="@{/carta/detalle/} + ${carta.id}" class="btn btn-primary" th:text="Ver"></a></td>
+                  <td><a th:href="@{/carta/editar/} + ${carta.id}" class="btn btn-warning">Editar</a></td>
+                  <td><a th:href="@{/carta/eliminar/} + ${carta.id}" class="btn btn-danger">Eliminar</a></td>
+                </tr>
+              </tbody>
+              <p th:if="${cartas.isEmpty}">No hay recetas para mostrar</p>
+            </table>
+
+          </div>
   </main>
 
   <footer th:replace="/plantilla/plantilla::footer"></footer>
