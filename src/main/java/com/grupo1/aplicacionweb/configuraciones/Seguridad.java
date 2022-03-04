@@ -9,23 +9,21 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true) // habilita el preAuthorize
+//@EnableGlobalMethodSecurity(prePostEnabled = true) // habilita el preAuthorize
 
 @Order(1)
 public class Seguridad extends WebSecurityConfigurerAdapter {
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UsuarioServicio usuarioServicio;
 
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(usuarioServicio).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
@@ -36,7 +34,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
                 .and().formLogin()
                 .loginPage("/login") // Que formulario esta mi login
                 .loginProcessingUrl("/logincheck")
-                .usernameParameter("username") // Como viajan los datos del logueo
+                .usernameParameter("email") // Como viajan los datos del logueo
                 .passwordParameter("password")// Como viajan los datos del logueo
                 .defaultSuccessUrl("/inicio") // A que URL viaja
                 .failureUrl("/login?error=error")

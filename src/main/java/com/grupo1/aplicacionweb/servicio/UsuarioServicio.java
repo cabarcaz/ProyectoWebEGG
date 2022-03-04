@@ -31,8 +31,6 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
         return usuarioDao.findAll();
     }
 
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
     @Override
     public void eliminar(Integer id) {
 //        usuarioDao.deleteById(id);
@@ -70,6 +68,7 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
             User user;
             List<GrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString()));
+            System.out.println(email + " " + usuario.getPassword());
             return new User(email, usuario.getPassword(), authorities);
         } catch (Exception e) {
             throw new UsernameNotFoundException("el usuario solicitado no existe");

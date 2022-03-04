@@ -7,7 +7,10 @@
 <body class="fondo-imagen ">
 
   <main>
-
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${error != null}">
+          <label th:text="${error}"></label><button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+      </div>
     <form class="formulario row justify-content-center align-content-center text-center" th:action="@{/logincheck}" method="post">
 
         <div class="col-12 col-md-6 col-sm-12 "> >
@@ -20,16 +23,16 @@
 
                 <div class="form-floating my-3 border border-dark border-2 rounded-3">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" class="form-control" id="email" name="email">
                 </div>
                 <div class="form-floating border border-dark border-2 rounded-3 ">
                     <label for="pass">Password</label>
-                    <input type="password" class="form-control" id="pass">
+                    <input type="password" class="form-control" id="pass" name="password">
 
                 </div>
                 <div class="pt-4">
                     <button type="submit" class="btn btn-lg btn-info border border-dark">Iniciar Sesion</button>
-                    <a th:href="@{/usuario/crear}" class="btn btn-lg btn-info border border-dark">Crear Usuario</a>
+<!--                    <a th:href="@{/usuario/crear}" class="btn btn-lg btn-info border border-dark">Crear Usuario</a>-->
                 </div>
 
             </div>
