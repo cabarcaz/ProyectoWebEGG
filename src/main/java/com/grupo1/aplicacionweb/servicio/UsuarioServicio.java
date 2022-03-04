@@ -49,7 +49,7 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
             usuario.setBaja(false);
             usuario.setRol(Roles.USER);
         }
-        if (!encoder.upgradeEncoding(usuario.getPassword())){
+        if (encoder.upgradeEncoding(usuario.getPassword())){
             usuario.setPassword(encoder.encode(usuario.getPassword()));
         }
         usuarioDao.save(usuario);
@@ -68,8 +68,8 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
             User user;
             List<GrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString()));
-            System.out.println(email + " " + usuario.getPassword());
-            return new User(email, usuario.getPassword(), authorities);
+            System.out.println(usuario.getEmail() + " " + usuario.getPassword());
+            return new User(usuario.getEmail(), usuario.getPassword(), authorities);
         } catch (Exception e) {
             throw new UsernameNotFoundException("el usuario solicitado no existe");
         }
