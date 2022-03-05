@@ -14,7 +14,8 @@
         <div class="mx-4 px-4 my-4 py-4">
           <div class="form-group row">
             <div class="card col col-6 border-secondary" style="width: 18rem;">
-              <img th:src="@{'/imagenes/receta/' + ${receta.foto}}" class="card-img-top ml-3" th:alt="${receta.foto}">
+              <img class="center lista-img" th:src="@{'/imagenes/receta/' + ' - ' +  ${receta.foto}}"
+                   th:alt="${receta.foto}">
               <div class="card-body">
                 <h5 class="card-title" th:text="${receta.nombre}"></h5>
               </div>
@@ -26,20 +27,10 @@
             </div>
 
             <div class="col-sm-6 text-capitalize px-4 mx-4">
-              <ul class="list-group list-group-flush mb-3 ">
-                <h3 class="text-center pt-3">Ingredientes</h3>
-                <li class="list-group-item" > Ingrediente 1</li>
-                <form th:object="${ingrediente}">
-
-                  <select th:field="*{ingrediente}">
-                    <option th:each="ingrediente:${ingredientes}"
-                    th:value="${ingrediente.id}"
-                    th:text="${ingrediente.nombre}">
-                  </select>
-                </form>
-                  
-             
-              </ul>
+                <ol class="list-group list-group-numbered">
+                  <li class="list-group-item" th:each="ingrediente:${receta.ingredientes}" th:text="${ingrediente.cantidad} + ${ingrediente.nombre}"></li>
+                </ol>
+              </div>
             </div>
           </div>
         </div>
@@ -62,16 +53,7 @@
             <div class="tab-pane fade show active mx-4 px-4 my-4 py-4" id="home" role="tabpanel"
               aria-labelledby="Procedimiento">
               <ol class="list-group list-group-numbered">
-                <li class="list-group-item">primer paso</li>
-                <li class="list-group-item">Segundo Paso</li>
-                <li class="list-group-item">Tercer paso</li>
-                <li class="list-group-item">Cuarto paso</li>
-                <li class="list-group-item">Quinto paso</li>
-                <li class="list-group-item">Sexto paso</li>
-                <li class="list-group-item">Septimo paso</li>
-                <li class="list-group-item">Octavo paso</li>
-                <li class="list-group-item">Noveno paso</li>
-                <li class="list-group-item">Decimo paso</li>
+                <li class="list-group-item" th:each="paso:${receta.pasos}" th:text="${paso.paso}"></li>
               </ol>
             </div>
             <div class="tab-pane fade mx-4 px-4 my-4 py-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -107,21 +89,10 @@
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">oli</div>
           </div>
         </div>
-
-
-
-
       </div>
     </div>
-    
-    
-    
-    
-    
-    
-    
-    <footer th:replace="/plantilla/plantilla::footer"></footer>
   </main>
+  <footer th:replace="/plantilla/plantilla::footer"></footer>
 </body>
 
 </html>
