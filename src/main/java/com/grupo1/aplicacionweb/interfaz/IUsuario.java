@@ -13,4 +13,6 @@ public interface IUsuario {
   public void eliminar(Integer id);
   public void crear(Usuario usuario) throws ErrorServicio;
   public Usuario findById(Integer id);
+  public void cambiarPass(Usuario usuario);
+
 }

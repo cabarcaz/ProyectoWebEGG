@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true) // habilita el preAuthorize
+@EnableGlobalMethodSecurity(prePostEnabled = true) // habilita el preAuthorize
 
 @Order(1)
 public class Seguridad extends WebSecurityConfigurerAdapter {
