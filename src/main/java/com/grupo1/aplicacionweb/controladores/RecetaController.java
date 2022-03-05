@@ -170,11 +170,11 @@ public class RecetaController {
             atribute.addFlashAttribute("error", "Error con el id de la recera");
             return "redirect:/receta/";
         }
-        List<Ingrediente> listIngredientes = ingredienteServicio.listar();
+        List<Ingrediente> listIngredientes = receta.getIngredientes();
 
         model.addAttribute("titulo", "Detalle");
         model.addAttribute("h1", "Detalle de la receta");
-        model.addAttribute("recetas", receta);
+        model.addAttribute("receta", receta);
         model.addAttribute("ingredientes", listIngredientes);
 
         return "/receta/detalles";

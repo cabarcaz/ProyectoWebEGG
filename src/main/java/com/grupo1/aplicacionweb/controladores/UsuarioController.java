@@ -163,11 +163,4 @@ public class UsuarioController {
 
     //-------------------------------------FIN CRUD-----------------------------------------------------------------------//
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    @GetMapping("/registrarse")
-    public String registrarUsuario(Model model) {
-
-        return "/usuario/registrarse";
-    }
-
 }
