@@ -20,34 +20,26 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-//    @NotEmpty(message = "nombre es obligatorio")
+    //    @NotEmpty(message = "nombre es obligatorio")
     @Column(name = "nombre")
     private String nombre;
 
-//    @NotEmpty(message = "apellido es obligatorio.")
+    //    @NotEmpty(message = "apellido es obligatorio.")
     @Column(name = "apellido")
     private String apellido;
 
-//    @NotEmpty(message = "email es obligatorio.")
+    //    @NotEmpty(message = "email es obligatorio.")
     @Email
     @Column(name = "email")
     private String email;
 
-//    @NotEmpty(message = "password es obligatorio.")
+    //    @NotEmpty(message = "password es obligatorio.")
     @Column(name = "password")
     private String password;
 
-//    @NotEmpty(message = "password2 es obligatorio.")
-    @Column(name = "password2")
-    private String password2;
-
-//    @NotEmpty(message = "foto es obligatoria.")
+    //    @NotEmpty(message = "foto es obligatoria.")
     @Column(name = "foto")
     private String foto;
-
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "carta_id")
-    private Carta carta; // Asigrnar Carta a empleado con un boton.(?)
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date alta;
@@ -99,28 +91,12 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
-
     public String getFoto() {
         return foto;
     }
 
     public void setFoto(String foto) {
         this.foto = foto;
-    }
-
-    public Carta getCarta() {
-        return carta;
-    }
-
-    public void setCarta(Carta carta) {
-        this.carta = carta;
     }
 
     public Date getAlta() {

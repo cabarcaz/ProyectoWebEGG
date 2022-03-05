@@ -2,37 +2,42 @@
 @import "./import/card.css";
 @import "./import/detalle.css";
 @import "./import/index.css";
-@import "./import/reloj.css";
 @import "./import/registrar.css";
 @import "./import/nuevouser.css";
 @import "./import/lista_receta.css";
 @import "./import/up.css";
+<<<<<<< HEAD
 @import "./import/lista_ingredientes.css";
 
+=======
+@import "./import/agregar-eliminar.css";
+@import "./import/imagen-styles.css";
+@import "./import/carta.css";
+>>>>>>> 25ca68b0241758ee4f9ffdb5a4fc75b0b0209a05
 
 body {
-  /* border:30px solid black; */
-  /* width: 90%;
-  height: 90%;
-  display:flex;
-  justify-content:center; */
-
+  background-image: url("/imagenes/landing/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-/* header {
-  margin:auto;
-  width: 100%;
-  height: 65px;
-} */
+ header {
+   width: 100%;
+   height: 75px;
+} 
 
-
-
-/* main .container {
-  min-height: calc(100vh  - 80px);
-
+main {
+  background-color: rgba(245, 171, 11, 0.267);
+  min-height:calc(100vh - 75px - 120px);
+  border:1px solid rgba(245, 171, 11, 0.267);
+  
 }
+
 
 footer {
-  width: 100%;
-  height: 80px;
-} */
+background-color: rgba(255, 255, 255, 0.541);
+width:100%;
+height:120px;
+border:1px solid rgba(245, 171, 11, 0.267);
+}

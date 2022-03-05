@@ -52,7 +52,7 @@ public class Receta implements Serializable {
     private Integer porcion;
 
     @OneToMany( mappedBy = "receta" ,cascade = CascadeType.ALL)
-    private List<Paso> pasos = new ArrayList<>();
+    private List<Paso> pasos = new ArrayList<>(); // no persiste el id de la receta
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(

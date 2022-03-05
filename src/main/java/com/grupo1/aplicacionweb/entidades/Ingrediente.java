@@ -16,11 +16,11 @@ public class Ingrediente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotEmpty(message = "Este campo es obligatorio.")
+//    @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "nombre")
     private String nombre;
 
-    @NotEmpty(message = "Este campo es obligatorio.")
+//    @NotEmpty(message = "Este campo es obligatorio.")
     @Column(name = "cantidad")
     private String cantidad;
 
