@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html
-  xmlns:th="https://www.thymeleaf.org"
-  xml:lang
-  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
->
-  <head th:replace="/plantilla/plantilla::head"></head>
+<html xmlns:th="https://www.thymeleaf.org" xml:lang xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-  <body>
-    <header th:replace="/plantilla/plantilla::header"></header>
-    <main> 
-      <div class="container">
+<head th:replace="/plantilla/plantilla::head"></head>
 
-        <h1 class="text-center py-4 bg-card mt-2 col col-md-6 ">Menu Semanal</h1>
-        <h2 class="text-center py-4 bg-card mb-2 col col-md-6">Planificación</h2>
-
+<body>
+  <header th:replace="/plantilla/plantilla::header"></header>
+  <main>
     <div class="container">
+
+      <h1 class="text-center py-4 bg-card mt-2 col col-md-6 ">Menu Semanal</h1>
+      <h2 class="text-center py-4 bg-card mb-2 col col-md-6">Planificación</h2>
+
       <table class="table text-center border border-secondary border-2 pt-4 mt-5">
         <tr>
           <th scope="row">Días</th>
@@ -22,16 +18,16 @@
           <th scope="row">Plato de fondo</th>
           <th scope="row">Postre</th>
         </tr>
-        <tr>
+
+        <tr >
           <th class="text-uppercase" scope="row">Lunes</th>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option th:each= "receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>  
-                
+                <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
-            <div class="">
+            <div>
               <div>
                 <a th:href="@{receta/guardar}"
                   class="btn btn-warning"
@@ -43,78 +39,116 @@
                 >
                   Agregar
                 </a>
-                <a
-                  class="btn btn-danger"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseExample"
-                  aria-expanded="false"
-                  aria-controls="collapseExample"
-                >
-                  Eliminar
+                <a class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEntradaLunes"
+                  aria-expanded="false" aria-controls="collapseEntradaLunes"> Eliminar
                 </a>
+                 <a class="btn btn-info btn-xs" >Mostrar</a>
               </div>
-              <div class="collapse" id="collapseExample">
+
+              <div class="collapse" id="collapseEntradaLunes" th:each="receta : ${recetas}">
                 <div class="card card-body align-items-center">
-                  <div
-                    class="card carta border border-dark"
-                    style="width: 18rem"
-                  >
+                  <div class="card carta border border-dark" style="width: 18rem">
                     <div class="image">
-                      <img
-                        src="/imagenes/ensaladas/e.jpg"
-                        class="card-img-top imgl img-thumbnail"
-                        alt="..."
-                      />
+                      <img th:src="@{'/imagenes/receta/' + ${receta.foto}}" class="card-img-top imgl img-thumbnail" alt="" />
                     </div>
                     <div class="card-body cuerpo">
                       <h5 class="card-title">Nombre del plato</h5>
                       <p class="card-text">Pequeña descripción.</p>
-                      <a
-                        href="#"
-                        class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto"
-                        >Detalles</a
-                      >
+                      <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </td>
+
+          <td>
+            <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+              <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoga un Principal</option>
+                <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
+              </select>
+            </div>
+            <div>
+
+              <div>
+                <a class="btn btn-warning" data-bs-toggle="collapse" href="#collapsePrincipalLunes" role="button"
+                  aria-expanded="false" aria-controls="collapseExample">Agregar
+                </a>
+                <a class="btn btn-danger" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapsePrincipalLunes" aria-expanded="false" aria-controls="collapsePrincipalLunes">
+                  Eliminar
+                </a>
+              </div>
+
+              <div class="collapse" id="collapsePrincipalLunes">
+                <div class="card card-body align-items-center">
+                  <div class="card carta border border-dark" style="width: 18rem">
+                    <div class="image">
+                      <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="..." />
+                    </div>
+                    <div class="card-body cuerpo">
+                      <h5 class="card-title">Nombre del plato</h5>
+                      <p class="card-text">Pequeña descripción.</p>
+                      <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </td>
+
+          <td>
+            <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+              <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoga un Postre</option>
+                <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+              </select>
+            </div>
+            <div>
+              <div>
+                <a class="btn btn-warning" data-bs-toggle="collapse" href="#collapsePostreLunes" role="button"
+                  aria-expanded="false" aria-controls="collapseExample">Agregar
+                </a>
+                <a class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePostreLunes"
+                  aria-expanded="false" aria-controls="collapsePostreLunes"> Eliminar
+                </a>
+              </div>
+
+              <div class="collapse" id="collapsePostreLunes">
+                <div class="card card-body align-items-center">
+                  <div class="card carta border border-dark" style="width: 18rem">
+                    <div class="image">
+                      <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="..." />
+                    </div>
+                    <div class="card-body cuerpo">
+                      <h5 class="card-title">Nombre del plato</h5>
+                      <p class="card-text">Pequeña descripción.</p>
+                      <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </td>
-          <td>
-            <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-              <select class="form-select" id="inputGroupSelect01">
-               <option th:each= "receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
-              </select>
-            </div>
 
-            <div class="">
-              <a class="btn btn-warning" type="button">Agregar</a>
-              <a class="btn btn-danger" type="button">Eliminar</a>
-            </div>
-          </td>
-
-          <td>
-            <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-              <select class="form-select" id="inputGroupSelect01">
-                
-                <option th:each= "receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
-              </select>
-            </div>
-
-            <div class="">
-              <a class="btn btn-warning" type="button">Agregar</a>
-              <a class="btn btn-danger" type="button">Eliminar</a>
-            </div>
-          </td>
         </tr>
+
+
+
+
+
+
         <tr>
           <th class="text-uppercase" scope="row">Martes</th>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                
-                <option th:each= "receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option> </option>
+
+                <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </option>
               </select>
             </div>
 
@@ -126,8 +160,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <
-                <option th:each= "receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                < <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}">
+                  </option>
               </select>
             </div>
 
@@ -139,8 +173,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                
-                <option th:each= "receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
+                <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
 
@@ -155,8 +189,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                
-                <option th:each= "receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
+                <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
 
@@ -168,8 +202,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                
-                <option th:each= "receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
+                <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
 
@@ -181,8 +215,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                
-                <option th:each= "receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
+                <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
 
@@ -197,8 +231,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                
-                <option th:each= "receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
+                <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
 
@@ -210,8 +244,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option th:each= "receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
-                
+                <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
               </select>
             </div>
 
@@ -223,8 +257,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                
-                <option th:each= "receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
+                <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
 
@@ -239,8 +273,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option th:each= "receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
-                
+                <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
               </select>
             </div>
 
@@ -252,8 +286,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                
-                <option th:each= "receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
+                <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
 
@@ -265,8 +299,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option th:each= "receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
-                
+                <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
               </select>
             </div>
 
@@ -281,8 +315,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option th:each= "receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
-                
+                <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
               </select>
             </div>
 
@@ -294,8 +328,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option th:each= "receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
-                
+                <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
               </select>
             </div>
 
@@ -307,8 +341,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option th:each= "receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
-                
+                <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
               </select>
             </div>
 
@@ -323,8 +357,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option th:each= "receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
-                
+                <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
               </select>
             </div>
 
@@ -336,8 +370,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option th:each= "receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
-                
+                <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
               </select>
             </div>
 
@@ -349,8 +383,8 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option th:each= "receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
-                
+                <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+
               </select>
             </div>
 
@@ -360,10 +394,11 @@
             </div>
           </td>
         </tr>
-       </table>
-      </div>
-     </div>
-      </main>
-    <footer th:replace="/plantilla/plantilla::footer"></footer>
-  </body>
+      </table>
+
+    </div>
+  </main>
+  <footer th:replace="/plantilla/plantilla::footer"></footer>
+</body>
+
 </html>
