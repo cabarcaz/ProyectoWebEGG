@@ -123,7 +123,7 @@ public class RecetaController {
         }
 
         recetaServicio.crear(receta);
-        mailsend.enviar("");
+        //mailsend.enviar("");
         ss.setComplete();
 
         return "redirect:/receta/";
@@ -132,7 +132,6 @@ public class RecetaController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect, Model model) {
-        Receta receta = null;
         if (id == null || recetaServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un receta con ese ID.");
             return "redirect:/receta/";
@@ -149,10 +148,6 @@ public class RecetaController {
             model.addAttribute("pasos", receta.getPasos());
             model.addAttribute("listaCategorias", CategoriaPlato.values());
         }
-
-        model.addAttribute("titulo", "editar");
-        model.addAttribute("h1","Formulario : Editar receta.");
-        model.addAttribute("receta",receta);
         return "/receta/editar";
     }
 
@@ -172,9 +167,12 @@ public class RecetaController {
     @GetMapping("/detalle/{id}")
     public String detalleRecetas(@PathVariable("id") Integer id, Model model, RedirectAttributes atribute) {
         Receta receta = null;
-        if (id > 0) {
+        if (id != null) {
             receta = recetaServicio.findById(id);
-            
+            if (id == null) {
+                atribute.addFlashAttribute("error", "El id de la receta no existe!");
+                return "redirect:/receta/";
+            }
         } else {
             atribute.addFlashAttribute("error", "Error con el id de la recera");
             return "redirect:/receta/";
