@@ -138,9 +138,18 @@ public class RecetaController {
             redirect.addFlashAttribute("error", "Error, no hay un receta con ese ID.");
             return "redirect:/receta/";
         } else {
-            model.addAttribute("receta", recetaServicio.findById(id));
+            Receta receta = recetaServicio.findById(id);
+            for (int i = 0; i < 20; ++i) { // ingresar el numero de ingredientes que precisa el ususario
+                receta.getIngredientes().add(new Ingrediente());
+            }
+            for (int i = 0; i < 20; ++i) { // ingresar el numero de pasos que precisa el ususario
+                receta.getPasos().add(new Paso());
+            }
+            model.addAttribute("receta", receta);
+            model.addAttribute("ingredientes", receta.getIngredientes());
+            model.addAttribute("pasos", receta.getPasos());
+            model.addAttribute("listaCategorias", CategoriaPlato.values());
         }
-
         return "/receta/editar";
     }
 
