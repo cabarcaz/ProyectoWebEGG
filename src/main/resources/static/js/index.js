@@ -50,6 +50,8 @@ function agregar(string, index) {
   let row = document.getElementById(string + nextIndex);
   if (row != null) {
     row.classList.remove("no-mostrar");
+    row.classList.add("mostrar");
+
   }
 }
 
@@ -62,8 +64,9 @@ function eliminar(string, index) {
       nombre.value = '';
       cantidad.value = '';
       if (row != null) {
-          row.classList.add("no-mostrar")
-        };
+          row.classList.add("no-mostrar");
+          row.classList.remove("mostrar");
+     }
     }
   }
   if (string == "paso") {
@@ -71,8 +74,9 @@ function eliminar(string, index) {
       let texto = document.getElementById('procedimiento' + index);
       texto.value = '';
       if (row != null) {
-          row.classList.add("no-mostrar")
-        };
+           row.classList.add("no-mostrar")
+           row.classList.remove("mostrar")
+        }
     }
   }
 }

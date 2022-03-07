@@ -25,13 +25,12 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
     @Autowired
     private UsuarioDao usuarioDao;
 
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Override
     public List<Usuario> listar() {
         return usuarioDao.findAll();
     }
-
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Override
     public void eliminar(Integer id) {
@@ -44,15 +43,12 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
 
     @Override
     public void crear(Usuario usuario) throws ErrorServicio {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
         if (usuario.getId() == null) {
             usuario.setPassword(encoder.encode(usuario.getPassword()));
             usuario.setAlta(new Date());
             usuario.setBaja(false);
             usuario.setRol(Roles.USER);
-        }
-        if (!encoder.upgradeEncoding(usuario.getPassword())){
-            usuario.setPassword(encoder.encode(usuario.getPassword()));
         }
         usuarioDao.save(usuario);
     }
@@ -62,15 +58,21 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
         return usuarioDao.findById(id).orElse(null);
     }
 
+    @Override
+    public void cambiarPass(Usuario usuario) {
+        usuario.setPassword(encoder.encode(usuario.getPassword()));
+        usuarioDao.save(usuario);
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         try {
             Usuario usuario = usuarioDao.findByEmail(email);
-            User user;
             List<GrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString()));
-            return new User(email, usuario.getPassword(), authorities);
+            System.out.println("el rol de este usuario es: "+ "ROLE_" + usuario.getRol().toString());
+            return new User(usuario.getEmail(), usuario.getPassword(), authorities);
         } catch (Exception e) {
             throw new UsernameNotFoundException("el usuario solicitado no existe");
         }

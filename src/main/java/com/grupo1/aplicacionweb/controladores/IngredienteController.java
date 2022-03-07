@@ -4,6 +4,7 @@ import com.grupo1.aplicacionweb.entidades.Ingrediente;
 import com.grupo1.aplicacionweb.servicio.IngredienteServicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,11 +16,13 @@ import java.util.List;
 import javax.validation.Valid;
 
 @Controller
+
 @RequestMapping("/ingrediente")
 public class IngredienteController {
     @Autowired
     private IngredienteServicio ingredienteServicio;
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/")
     public String listar(Model model) {
         List<Ingrediente> listaIngredientes = ingredienteServicio.listar();
@@ -40,7 +43,7 @@ public class IngredienteController {
 
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Ingrediente ingrediente, BindingResult result, RedirectAttributes redirect) {
-        if (result.hasErrors()){
+        if (result.hasErrors()) {
             return "redirect:/ingrediente/crear";
         }
         try {
@@ -52,7 +55,7 @@ public class IngredienteController {
     }
 
     @GetMapping("/editar/{id}")
-    public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect,Model model) {
+    public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect, Model model) {
         if (id == null || ingredienteServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un ingrediente con ese ID.");
             return "redirect:/ingrediente/";
@@ -69,8 +72,8 @@ public class IngredienteController {
             redirect.addFlashAttribute("error", "Error, no hay un ingrediente con ese ID.");
             return "redirect:/ingrediente/";
         } else {
-           ingredienteServicio.eliminar(id);
-           redirect.addFlashAttribute("success","Su ingrediente se elimino con exito!");
+            ingredienteServicio.eliminar(id);
+            redirect.addFlashAttribute("success", "Su ingrediente se elimino con exito!");
         }
         return "redirect:/ingrediente/";
     }
