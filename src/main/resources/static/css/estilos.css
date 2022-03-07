@@ -9,6 +9,7 @@
 @import "./import/agregar-eliminar.css";
 @import "./import/imagen-styles.css";
 @import "./import/carta.css";
+@import"./import/cartalista.css";
 
 body {
   background-image: url("/imagenes/landing/bg.jpg");

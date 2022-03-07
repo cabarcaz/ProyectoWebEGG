@@ -123,9 +123,7 @@ public class RecetaController {
         }
 
         recetaServicio.crear(receta);
-
-//        mailsend.enviar("sgonzalo271@gmail.com");
-
+        //mailsend.enviar("");
         ss.setComplete();
 
         return "redirect:/receta/";

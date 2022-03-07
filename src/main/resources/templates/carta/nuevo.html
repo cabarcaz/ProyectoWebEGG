@@ -11,50 +11,8 @@
     <main> 
       <div class="container">
 
-     
-
-    <h1 class="text-center py-4 bg-card mt-2 col col-md-6 ">Menu Semanal</h1>
-    <h2 class="text-center py-4 bg-card mb-2 col col-md-6">Planificación</h2>
-
-    <!-- <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-1">Crear carta</a>
-<table class="table">
-  <tr>
-    <th scope="row">
-      <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-5">Lunes</a>
-    </th>
-    <th scope="row">
-      <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-5">Martes</a>
-    </th>
-    <th scope="row">
-      <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-5">Miércoles</a>
-    </th>
-
-    
-    <th scope="row">
-      <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-5">Jueves</a>
-    </th>
-    <th scope="row">
-      <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-5">Viernes</a>
-    </th>
-  </tr>
-  </table>
-
- 
-<table class="table">
-  <tr>
-    <th scope="row">
-      <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-5">Entrada</a>
-    </th>
-    <th scope="row">
-      <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-5">Principal</a>
-    </th>
-    <th scope="row">
-      <a href="#" class="btn btn-primary btn-sm d-grid gap-2 col-6 mx-auto my-5">Postre</a>
-    </th>
-
-  </tr>
-</table>
- -->
+        <h1 class="text-center py-4 bg-card mt-2 col col-md-6 ">Menu Semanal</h1>
+        <h2 class="text-center py-4 bg-card mb-2 col col-md-6">Planificación</h2>
 
     <div class="container">
       <table class="table text-center border border-secondary border-2 pt-4 mt-5">
@@ -75,7 +33,7 @@
             </div>
             <div class="">
               <div>
-                <a
+                <a th:href="@{receta/guardar}"
                   class="btn btn-warning"
                   data-bs-toggle="collapse"
                   href="#collapseExample"
@@ -402,10 +360,10 @@
             </div>
           </td>
         </tr>
-      </table>
-    </div>
-  </div>
-</main>
+       </table>
+      </div>
+     </div>
+      </main>
     <footer th:replace="/plantilla/plantilla::footer"></footer>
   </body>
 </html>
