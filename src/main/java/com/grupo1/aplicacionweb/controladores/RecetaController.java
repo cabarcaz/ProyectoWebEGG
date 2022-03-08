@@ -123,7 +123,7 @@ public class RecetaController {
         }
 
         recetaServicio.crear(receta);
-        mailsend.enviar("");
+        //mailsend.enviar("");
         ss.setComplete();
 
         return "redirect:/receta/";
@@ -132,7 +132,7 @@ public class RecetaController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect, Model model) {
-        Receta receta = null;
+       // Receta receta = null;
         if (id == null || recetaServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un receta con ese ID.");
             return "redirect:/receta/";
@@ -150,9 +150,7 @@ public class RecetaController {
             model.addAttribute("listaCategorias", CategoriaPlato.values());
         }
 
-        model.addAttribute("titulo", "editar");
-        model.addAttribute("h1","Formulario : Editar receta.");
-        model.addAttribute("receta",receta);
+        
         return "/receta/editar";
     }
 
