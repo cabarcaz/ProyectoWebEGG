@@ -4,12 +4,7 @@ import com.grupo1.aplicacionweb.entidades.Ingrediente;
 import com.grupo1.aplicacionweb.entidades.Paso;
 import com.grupo1.aplicacionweb.entidades.Receta;
 import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
-import com.grupo1.aplicacionweb.enumeraciones.Roles;
-import com.grupo1.aplicacionweb.interfaz.IMailsend;
-import com.grupo1.aplicacionweb.servicio.IngredienteServicio;
 import com.grupo1.aplicacionweb.servicio.RecetaServicio;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -39,10 +34,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class RecetaController {
     @Autowired
     private RecetaServicio recetaServicio;
-    @Autowired
-    private IngredienteServicio ingredienteServicio;
-    @Autowired
-    private IMailsend mailsend;
+    
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/")
