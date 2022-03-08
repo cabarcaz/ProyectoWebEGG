@@ -15,7 +15,7 @@
         <tr>
           <th scope="row">Días</th>
           <th scope="row">Entrada</th>
-          <th scope="row">Plato de fondo</th>
+          <th scope="row">Plato Principal</th>
           <th scope="row">Postre</th>
         </tr>
 
@@ -24,6 +24,7 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoja una Entrada</option>
                 <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
@@ -32,7 +33,7 @@
                 <a th:href="@{receta/guardar}"
                   class="btn btn-warning"
                   data-bs-toggle="collapse"
-                  href="#collapseExample"
+                  href="#collapseEntradaLunes"
                   role="button"
                   aria-expanded="false"
                   aria-controls="collapseExample"
@@ -42,10 +43,10 @@
                 <a class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEntradaLunes"
                   aria-expanded="false" aria-controls="collapseEntradaLunes"> Eliminar
                 </a>
-                 <a class="btn btn-info btn-xs" >Mostrar</a>
+                 <a  class="btn btn-info btn-xs" >Mostrar</a>
               </div>
 
-              <div class="collapse" id="collapseEntradaLunes" th:each="receta : ${recetas}">
+              <!-- <div class="collapse" id="collapseEntradaLunes" th:each="receta : ${recetas}">
                 <div class="card card-body align-items-center">
                   <div class="card carta border border-dark" style="width: 18rem">
                     <div class="image">
@@ -58,7 +59,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
 
           </td>
@@ -66,7 +67,7 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option value="">Escoga un Principal</option>
+                <option value="">Escoja un Principal</option>
                 <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
@@ -80,22 +81,32 @@
                   data-bs-target="#collapsePrincipalLunes" aria-expanded="false" aria-controls="collapsePrincipalLunes">
                   Eliminar
                 </a>
+                <a class="btn btn-info btn-xs" >Mostrar</a>
               </div>
 
-              <div class="collapse" id="collapsePrincipalLunes">
+            <div class="collapse" id="collapsePrincipalLunes">
                 <div class="card card-body align-items-center">
                   <div class="card carta border border-dark" style="width: 18rem">
-                    <div class="image">
-                      <img src="/imagenes/ensaladas/e.jpg" class="card-img-top imgl img-thumbnail" alt="..." />
-                    </div>
-                    <div class="card-body cuerpo">
-                      <h5 class="card-title">Nombre del plato</h5>
-                      <p class="card-text">Pequeña descripción.</p>
-                      <a href="#" class="btn btn-primary btn-lg d-grid gap-2 col-6 mx-auto">Detalles</a>
-                    </div>
+                    <table class="border border-primary"> 
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>nombre</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr th:each="receta:${recetas}">
+                          <td th:text="${receta.id}"></td>
+                          <td th:text="${receta.nombre}"></td>
+                          <td><a th:href="@{/receta/detalle/} + ${receta.id}" class="btn btn-primary">Detalle</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
                   </div>
                 </div>
-              </div>
+              </div> 
             </div>
 
           </td>
@@ -103,7 +114,7 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-                <option value="">Escoga un Postre</option>
+                <option value="">Escoja un Postre</option>
                 <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
@@ -115,8 +126,9 @@
                 <a class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePostreLunes"
                   aria-expanded="false" aria-controls="collapsePostreLunes"> Eliminar
                 </a>
+                <a class="btn btn-info btn-xs" >Mostrar</a>
               </div>
-
+<!-- 
               <div class="collapse" id="collapsePostreLunes">
                 <div class="card card-body align-items-center">
                   <div class="card carta border border-dark" style="width: 18rem">
@@ -130,7 +142,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </td>
 
@@ -146,7 +158,7 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-
+                <option value="">Escoja una Entrada</option>
                 <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
                 </option>
               </select>
@@ -155,11 +167,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoja un Principal</option>
                 < <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}">
                   </option>
               </select>
@@ -168,12 +182,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-
+                <option value="">Escoja un Postre</option>
                 <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
@@ -181,6 +196,7 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
         </tr>
@@ -189,7 +205,7 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-
+                <option value="">Escoja una Entrada</option>
                 <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
@@ -197,12 +213,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-
+                <option value="">Escoja un Principal</option>
                 <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
@@ -210,12 +227,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-
+                <option value="">Escoja un Postre</option>
                 <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
@@ -223,6 +241,7 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
         </tr>
@@ -231,7 +250,7 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-
+                <option value="">Escoja una Entrada</option>
                 <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
@@ -239,11 +258,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoja un Principal</option>
                 <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
 
               </select>
@@ -252,12 +273,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-
+                <option value="">Escoja un Postre</option>
                 <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
@@ -265,6 +287,7 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
         </tr>
@@ -273,6 +296,7 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoja una Entrada</option>
                 <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
 
               </select>
@@ -281,12 +305,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
-
+                <option value="">Escoja un Principal</option>
                 <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
               </select>
             </div>
@@ -294,11 +319,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoja un Postre</option>
                 <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
 
               </select>
@@ -307,6 +334,7 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
         </tr>
@@ -315,6 +343,7 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoja una Entrada</option>
                 <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
 
               </select>
@@ -323,11 +352,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoja un Principal</option>
                 <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
 
               </select>
@@ -336,11 +367,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoja un Postre</option>
                 <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
 
               </select>
@@ -349,6 +382,7 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
         </tr>
@@ -357,6 +391,7 @@
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoja una Entrada</option>
                 <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
 
               </select>
@@ -365,11 +400,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoja un Principal</option>
                 <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}"></option>
 
               </select>
@@ -378,11 +415,13 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
           <td>
             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
               <select class="form-select" id="inputGroupSelect01">
+                <option value="">Escoja un Postre</option>
                 <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
 
               </select>
@@ -391,6 +430,7 @@
             <div class="">
               <a class="btn btn-warning" type="button">Agregar</a>
               <a class="btn btn-danger" type="button">Eliminar</a>
+              <a  class="btn btn-info btn-xs" >Mostrar</a>
             </div>
           </td>
         </tr>
