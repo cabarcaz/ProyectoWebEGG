@@ -12,9 +12,9 @@
 
 
           <div class="card mt-3">
-            <div class="card-header d-flex">
+            <div class="card-- footer tex-center">
               <h1> Lista de recetas</h1>
-              <div class="col"> <button type="button" class=" btn btn-dark btn-sm "><a th:href="@{/receta/crear}">crear
+              <div class="col "> <button type="button" class=" btn  btn-warning  "><a th:href="@{/receta/crear}">crear
                     Receta </a></button></th>
 
               </div>
@@ -27,7 +27,7 @@
                   <th> Nombre de recetas</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
-                  <th>Guardar</th>
+                 
                 </tr>
               </thead>
               <tbody>
@@ -40,6 +40,8 @@
               </tbody>
               <p th:if="${recetas.isEmpty}">No hay recetas para mostrar</p>
             </table>
+            <a class="btn btn-success" onclick="goBack()" th:href="@{/inicio/}" value="Regresar" >Regresar</a>
+            
 
           </div>
   </main>
