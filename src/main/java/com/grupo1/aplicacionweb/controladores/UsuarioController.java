@@ -2,6 +2,7 @@ package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Usuario;
 import com.grupo1.aplicacionweb.enumeraciones.Roles;
+import com.grupo1.aplicacionweb.repositorios.UsuarioDao;
 import com.grupo1.aplicacionweb.servicio.UsuarioServicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class UsuarioController {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
+    @Autowired
+    private UsuarioDao usuarioDao;
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/")
     public String listar(Model model) {
@@ -56,6 +60,7 @@ public class UsuarioController {
         if (result.hasErrors()) {
             return "redirect:/usuario/crear";
         }
+        model.addAttribute("usuario", usuarioDao.findAll());
         if (usuario == null) {
             redirect.addFlashAttribute("error", "El usuario es nulo");
             return "/usuario/crear";

@@ -19,8 +19,8 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty(message = "nombre es obligatorio")
     @Column(name = "nombre")
+    @NotEmpty(message = "nombre es obligatorio")
     private String nombre;
 
     @NotEmpty(message = "apellido es obligatorio.")

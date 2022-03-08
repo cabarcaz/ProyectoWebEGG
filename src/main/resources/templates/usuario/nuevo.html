@@ -17,9 +17,10 @@
                         <div class="col-sm-4">
                             <input type="text" class="form-control form-control-sm" th:field="*{nombre}" id="nombre"
                                 placeholder="Nombre">
+                            <ul>
+                                <li th:each="err : ${#fields.errors('nombre')}" th:text="${err}" class="error" />
+                            </ul>
                         </div>
-                        <!-- <input type="text" th:field="*{nombre}" />
-                        <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p> -->
                 </div>
                 <br>
                 <div class="form-group row">
