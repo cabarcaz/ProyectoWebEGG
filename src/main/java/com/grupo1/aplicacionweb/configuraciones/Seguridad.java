@@ -20,8 +20,9 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(usuarioServicio).passwordEncoder(new BCryptPasswordEncoder());
     }
 
@@ -29,13 +30,13 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/css/*", "/js/*", "/img/*", "/**").permitAll()
+                .antMatchers("/css/*", "/js/*", "/img/*").permitAll()
                 .and().formLogin()
                 .loginPage("/login") // Que formulario esta mi login
                 .loginProcessingUrl("/logincheck")
-                .usernameParameter("username") // Como viajan los datos del logueo
+                .usernameParameter("email") // Como viajan los datos del logueo
                 .passwordParameter("password")// Como viajan los datos del logueo
-                .defaultSuccessUrl("/inicio") // A que URL viaja
+                .defaultSuccessUrl("/inicio/") // A que URL viaja
                 .failureUrl("/login?error=error")
                 .permitAll()
                 .and().logout() // Aca configuro la salida

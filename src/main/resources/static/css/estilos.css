@@ -6,8 +6,14 @@
 @import "./import/nuevouser.css";
 @import "./import/lista_receta.css";
 @import "./import/up.css";
+
+@import "./import/lista_ingredientes.css";
+
 @import "./import/agregar-eliminar.css";
 @import "./import/imagen-styles.css";
+@import "./import/carta.css";
+
+@import"./import/cartalista.css";
 
 
 body {

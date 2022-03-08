@@ -7,8 +7,48 @@
   <header th:replace="/plantilla/plantilla::header"></header>
 
   <main>
-    <h1>Página para mostrar lista de cartas</h1>
-  </main>
+   
+    <div class="container">
+      <table class="table  table-hover  table-bordered border border-3 ">
+        <thead class="border border-3">
+
+
+         <div class="container">
+              <h1 class="text-center py-1 bg-card mt-2 col col-md-6"> Lista de cartas</h1>
+              <div class="col"> 
+                <button type="button" class="btn btn-warning"><a th:href="@{/carta/crear}">Crear
+                    Carta </a></button>
+                  </div>
+              </div>
+          </div>
+        </thead>
+        <tbody>  
+          <div class="card-body">
+            <table class="table table-white table-striped">
+              <thead>
+                <tr>
+                  <th> Nombre de Cartas</th>
+                  <th>Editar</th>
+                  <th>Eliminar</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="carta:${cartas}">
+                  <td th:text="${carta.nombre}"></td>
+                  <td><a th:href="@{/carta/detalle/} + ${carta.id}" class="btn btn-primary" th:text="Ver"></a></td>
+                  <td><a th:href="@{/carta/editar/} + ${carta.id}" class="btn btn-warning">Editar</a></td>
+                  <td><a th:href="@{/carta/eliminar/} + ${carta.id}" class="btn btn-danger">Eliminar</a></td>
+                </tr>
+              </tbody>
+              <p th:if="${cartas.isEmpty}">No hay cartas para mostrar</p>
+            </table>
+
+          </div>
+  
+         </div>
+        </div>
+        </main>
 
   <footer th:replace="/plantilla/plantilla::footer"></footer>
   

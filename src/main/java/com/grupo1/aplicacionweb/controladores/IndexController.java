@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/")
 public class IndexController {
 
-    @GetMapping({"/", "/login"})
+    @GetMapping("/login")
     public String loginIndex(Model model, @RequestParam (required = false ) String error,
                              @RequestParam (required = false) String email,
                              @RequestParam (required = false) String logout) {
@@ -23,7 +23,7 @@ public class IndexController {
         }
         model.addAttribute("titulo", "Inicio");
 
-        return "index";
+        return "login";
     }
 
 
