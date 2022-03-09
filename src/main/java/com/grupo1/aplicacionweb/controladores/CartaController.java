@@ -34,8 +34,8 @@ public class CartaController {
     public String listar(Model model) {
         List<Carta> listaCarta = cartaServicio.listar();
         model.addAttribute("cartas", listaCarta);
-        model.addAttribute("titulo", "Listado de Recetas");
-        model.addAttribute("h1", "Listado de Recetas");
+        model.addAttribute("titulo", "Listado de Cartas");
+        model.addAttribute("h1", "Listado de Cartas");
         return "/carta/lista";
     }
 
@@ -44,7 +44,7 @@ public class CartaController {
     public String crearCarta(Model model) {
         Carta carta = new Carta();
         model.addAttribute("titulo", "Formulario");
-        model.addAttribute("h1", "Formulario ingreso Nueva receta");
+        model.addAttribute("h1", "Planificación Semanal");
         model.addAttribute("carta", carta);
         List<Receta> recetasEntradas = recetaServicio.listarPorCategoria(CategoriaPlato.ENTRADA);
         model.addAttribute("recetasEntradas", recetasEntradas);
