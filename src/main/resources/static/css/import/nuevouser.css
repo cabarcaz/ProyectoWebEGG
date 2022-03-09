@@ -1,27 +1,38 @@
 
-.conteiner{
-    background-color: rgb(147, 209, 224);
-  
-  }.form{
+.container{
+    border-color: rgba(#6c757d);
+    border-left: 30px;
+   /* margin-left: 50px;*/
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+ 
+/*.cajon{
+
+    margin-top: 5px;
     text-align: center;
-  }
-  .cajon{
-    text-align: right;
     font-size: x-large;
-    font-style: normal;
+    font-style:normal;
     font-family: Arial;
+    
     padding: 20px;
+  }*/
+  .recuadro{
+    text-align: center;
+    border-color: rgba(#6c757d);
+    margin-top: 20px;
+    margin-left: 10% ;
+    margin-right: 10%;
+    border-left: 20%;
+    border-right: 10%;
   }
-.form-group-row{
-    /*margin: 10px;
-    padding: 10px 0px;*/
-   
+.boton{
+  margin-left: 50%;
 }
-.col-sm-1 {
-    height: 40px;
-    width: 60px;
-    margin-left: 8cm;
-    margin-top: 1cm;
+
+  
 
 
-}
+
+
+
