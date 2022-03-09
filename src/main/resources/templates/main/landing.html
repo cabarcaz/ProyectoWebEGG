@@ -18,7 +18,7 @@
 
             <div class="card-body">
                 <div class="text-center borde rounded-3">
-                    <h2 class="fs-1">Bienvenido <p> Nombre de usuario.</p>
+                    <h2 class="fs-1">Bienvenido <p> <span sec:authentication="name"></span></p>
                     </h2>
                 </div>
             </div>
@@ -33,6 +33,10 @@
                             <h5 class="card-title ">Usuario</h5>
                             <a th:href="@{/usuario/}" class="btn btn-warning mb-1">Perfil</a>
                             <a th:href="@{/usuario/}" class="btn btn-warning mb-1">Listado de Usuarios</a>
+                            <form th:action="@{/logout}" method="post">
+                                <button type="submit" class="btn btn-warning mb-1">Desconectarse</button>
+                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -74,10 +78,6 @@
                     </div>
                 </div>
             </div>
-            <br>
-            <hr>
-            <br>
-            <a href="/" class="btn btn-warning">Salir</a>
         </div>
     </div>
 </main>

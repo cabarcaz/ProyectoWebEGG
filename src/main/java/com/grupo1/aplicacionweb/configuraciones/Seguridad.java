@@ -40,8 +40,6 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=error")
                 .permitAll()
                 .and().logout() // Aca configuro la salida
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
                 .permitAll().and().csrf().disable();
     }
 
