@@ -6,7 +6,6 @@ import com.grupo1.aplicacionweb.enumeraciones.Roles;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 
 import java.util.Date;
 
@@ -53,6 +52,14 @@ public class Usuario implements Serializable {
 
     public Integer getId() {
         return id;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public static void setSerialVersionUID(long serialVersionUID) {
+        Usuario.serialVersionUID = serialVersionUID;
     }
 
     public void setId(Integer id) {

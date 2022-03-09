@@ -164,10 +164,6 @@ public class RecetaController {
         Receta receta = null;
         if (id != null) {
             receta = recetaServicio.findById(id);
-            if (id == null) {
-                atribute.addFlashAttribute("error", "El id de la receta no existe!");
-                return "redirect:/receta/";
-            }
         } else {
             atribute.addFlashAttribute("error", "Error con el id de la recera");
             return "redirect:/receta/";

@@ -5,7 +5,6 @@ import com.grupo1.aplicacionweb.entidades.Carta;
 import com.grupo1.aplicacionweb.entidades.Receta;
 import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
 import com.grupo1.aplicacionweb.servicio.CartaServicio;
-
 import com.grupo1.aplicacionweb.servicio.RecetaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -13,11 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.List;
-
 import javax.validation.Valid;
-
 @Controller
 @RequestMapping("/carta")
 public class CartaController {
@@ -27,7 +23,6 @@ public class CartaController {
 
     @Autowired
     private RecetaServicio recetaServicio;
-
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/")

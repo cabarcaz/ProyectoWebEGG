@@ -32,7 +32,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/*", "/js/*", "/img/*").permitAll()
                 .and().formLogin()
-                .loginPage("/login") // Que formulario esta mi login
+                .loginPage("/") // Que formulario esta mi login
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("email") // Como viajan los datos del logueo
                 .passwordParameter("password")// Como viajan los datos del logueo

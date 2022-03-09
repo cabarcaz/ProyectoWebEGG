@@ -42,7 +42,8 @@ public class IngredienteController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(@Valid @ModelAttribute Ingrediente ingrediente, BindingResult result, RedirectAttributes redirect) {
+    public String guardar(@Valid @ModelAttribute Ingrediente ingrediente, BindingResult result,
+            RedirectAttributes redirect) {
         if (result.hasErrors()) {
             return "redirect:/ingrediente/crear";
         }

@@ -1,20 +1,11 @@
-@import "./import/landing.css";
+@import "./import/agregar-eliminar.css";
 @import "./import/card.css";
 @import "./import/detalle.css";
-@import "./import/index.css";
-@import "./import/registrar.css";
-@import "./import/nuevouser.css";
-@import "./import/lista_receta.css";
-@import "./import/up.css";
-
-@import "./import/lista_ingredientes.css";
-
-@import "./import/agregar-eliminar.css";
 @import "./import/imagen-styles.css";
-@import "./import/carta.css";
-
-@import"./import/cartalista.css";
-
+@import "./import/index.css";
+@import "./import/landing.css";
+@import "./import/lista_receta.css";
+@import "./import/nuevouser.css";
 
 body {
   background-image: url("/imagenes/landing/bg.jpg");
@@ -32,13 +23,23 @@ main {
   background-color: rgba(245, 171, 11, 0.267);
   min-height:calc(100vh - 75px - 120px);
   border:1px solid rgba(245, 171, 11, 0.267);
-  
 }
-
 
 footer {
 background-color: rgba(255, 255, 255, 0.541);
 width:100%;
 height:120px;
 border:1px solid rgba(245, 171, 11, 0.267);
+}
+
+.ir-arriba {
+	display:none;
+	padding:10px;
+	background:#4990a0;
+	font-size:20px;
+	color:#fff;
+	cursor:pointer;
+	position: fixed;
+	bottom:15px;
+	right:15px;
 }
