@@ -80,3 +80,12 @@ function eliminar(string, index) {
     }
   }
 }
+
+function check_text(input) {  
+    if (input.validity.patternMismatch){  
+        input.setCustomValidity("Nombre de usuario no puede ser null");  
+    }  
+    else {  
+        input.setCustomValidity("");  
+    }                 
+}

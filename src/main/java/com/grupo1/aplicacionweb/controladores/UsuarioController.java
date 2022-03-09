@@ -44,7 +44,8 @@ public class UsuarioController {
         return "/usuario/lista";
     }
 
-    //    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')") ---> activar una vez creado un usuario ADMIN o USER
+    // @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')") ---> activar una vez
+    // creado un usuario ADMIN o USER
     @GetMapping("/crear")
     public String crearUsuario(Usuario usuario, Model model) {
         model.addAttribute("titulo", "Formulario");
@@ -53,14 +54,15 @@ public class UsuarioController {
         return "/usuario/nuevo";
     }
 
-    //    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')") ---> activar una vez creado un usuario ADMIN o USER
+    // @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')") ---> activar una vez
+    // creado un usuario ADMIN o USER
     @PostMapping("/guardar")
-    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect,
-                          @RequestParam("file") MultipartFile imagen, @RequestParam("password2") String password2) {
+    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model,
+            RedirectAttributes redirect,
+            @RequestParam("file") MultipartFile imagen, @RequestParam("password2") String password2) {
         if (result.hasErrors()) {
-            return "redirect:/usuario/crear";
+            return "/usuario/nuevo";
         }
-        model.addAttribute("usuario", usuarioDao.findAll());
         if (usuario == null) {
             redirect.addFlashAttribute("error", "El usuario es nulo");
             return "/usuario/crear";
@@ -101,7 +103,7 @@ public class UsuarioController {
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect, Model model) {
 
-        //VALIDACION DE INGRESO DE ID
+        // VALIDACION DE INGRESO DE ID
 
         if (id == null || usuarioServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un usuario con ese ID.");
@@ -119,7 +121,7 @@ public class UsuarioController {
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable("id") Integer id, RedirectAttributes redirect) {
 
-        //VALIDACION DE INGRESO DE ID
+        // VALIDACION DE INGRESO DE ID
 
         if (id == null || usuarioServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un usuario con ese ID.");
@@ -132,7 +134,6 @@ public class UsuarioController {
         return "redirect:/usuario/";
     }
 
-
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/pass/{id}")
     public String nuevoPass(@PathVariable("id") Integer id, Model model) {
@@ -142,7 +143,8 @@ public class UsuarioController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/update-pass")
-    public String updatePass(Usuario usuario, @RequestParam("password2") String password2,RedirectAttributes redirect) {
+    public String updatePass(Usuario usuario, @RequestParam("password2") String password2,
+            RedirectAttributes redirect) {
 
         if (usuario.getPassword().isEmpty() || password2.isEmpty()) {
             redirect.addFlashAttribute("error", "Debe llenar ambos campos");
@@ -150,7 +152,7 @@ public class UsuarioController {
         }
 
         if (!usuario.getPassword().equals(password2)) {
-           redirect.addFlashAttribute("error", "Las constraseñas no coinciden");
+            redirect.addFlashAttribute("error", "Las constraseñas no coinciden");
             return "redirect:/usuario/pass/" + usuario.getId();
         }
 
@@ -159,13 +161,14 @@ public class UsuarioController {
             System.out.println("el password nuevo es : " + usuario.getPassword());
             usuarioServicio.cambiarPass(usuario);
         } catch (Exception e) {
-           redirect.addFlashAttribute("error", e.getMessage());
+            redirect.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/pass/" + usuario.getId();
         }
 
         return "redirect:/usuario/";
     }
 
-    //-------------------------------------FIN CRUD-----------------------------------------------------------------------//
+    // -------------------------------------FIN
+    // CRUD-----------------------------------------------------------------------//
 
 }
