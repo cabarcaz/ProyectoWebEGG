@@ -8,21 +8,23 @@
 
   <main>
    
-    <div class="container bg-card">
+    <div class="container">
       <table class="table  table-hover  table-bordered border border-3 bg-card">
         <thead class="border border-3">
 
 
          <div class="container d-flex">
-              <h1 class="text-center py-1 bg-card mt-2 col col-md-6 me-5"> Lista de cartas</h1>
+              <div class="bg-card col col-md-6 border mt-4">
+                <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
+             </div>
               <div class="py-2 ms-5">
               <a th:href="@{/carta/crear}" class="btn btn-primary ms-5">Crear Carta </a>
               <a href="#" class="btn btn-success ms-5">Volver</a>
               </div>
         </div>
         </thead>
-          <div class="card-body">
-            <table class="table table-white table-striped">
+          <div class="">
+            <table class="table table-striped bg-card">
               <thead>
                 <tr>
                   <th> Nombre de Cartas</th>
@@ -34,7 +36,6 @@
               <tbody>
                 <tr th:each="carta:${cartas}">
                   <td th:text="${carta.nombre}"></td>
-                  <td><a th:href="@{/carta/detalle/} + ${carta.id}" class="btn btn-primary" th:text="Ver"></a></td>
                   <td><a th:href="@{/carta/editar/} + ${carta.id}" class="btn btn-warning">Editar</a></td>
                   <td><a th:href="@{/carta/eliminar/} + ${carta.id}" class="btn btn-danger">Eliminar</a></td>
                 </tr>
