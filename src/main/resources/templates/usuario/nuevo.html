@@ -8,8 +8,12 @@
 
     <main>
         <div class="container">
-            <div class="form">
-                <h1> Registro </h1>
+            <h1 class="text-center py-4 bg-card mt-2 col col-md-6"> Registro </h1>
+        </div>
+
+        <div class="recuadro">
+            <div class="table text-center py-4 bg-card col col-md-6 border border-secondary border-3 pt-3 mt-5"> 
+     
                 <form class="row mx-3 py-2 my-2 align-items-center" th:action="@{/usuario/guardar}" method="post"
                     th:object="${usuario}" enctype="multipart/form-data">
                     <div class="form-group row">
