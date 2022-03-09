@@ -6,6 +6,7 @@ import com.grupo1.aplicacionweb.enumeraciones.Roles;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 import java.util.Date;
 
