@@ -13,12 +13,12 @@
         </div>
 
         <div class="recuadro">
-            <div class="table text-center py-4 bg-card col col-md-6 border border-secondary border-3 pt-3 mt-5"> 
+            <div class="table text-center py-4 bg-card col col-md-6 border border-secondary border-3 pt-3 mt-4"> 
      
-                <form class="row mx-3 py-2 my-2 align-items-center" th:action="@{/usuario/guardar}" method="post"
+                <form class="row mx-3 py-2 my-2 align-center" th:action="@{/usuario/guardar}" method="post"
                     th:object="${usuario}" enctype="multipart/form-data">
                     <div class="form-group row">
-                        <label for="nombre" class="col-sm-2 col-form-label col-form-label-sm">Nombre</label><br>
+                        <label for="nombre" class=" align center col-sm-2 col-form-label col-form-label-sm">Nombre</label><br>
                         <div class="col-sm-4">
                             <input type="text" class="form-control form-control-sm" th:field="*{nombre}" id="nombre"
                                 placeholder="Nombre">
@@ -26,7 +26,7 @@
                     </div>
                     <br>
                     <div class="form-group row">
-                        <label for="apellido" class="col-sm-2 col-form-label col-form-label-sm">Apellido</label><br>
+                        <label for="apellido" class="align center col-sm-2 col-form-label col-form-label-sm">Apellido</label><br>
                         <div class="col-sm-4">
                             <input type="text" class="form-control form-control-sm" th:field="*{apellido}" id="apellido"
                                 placeholder="Apellido">
@@ -34,7 +34,7 @@
                     </div>
                     <br>
                     <div class="form-group row">
-                        <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Email</label><br>
+                        <label for="email" class="align center col-sm-2 col-form-label col-form-label-sm">Email</label><br>
                         <div class="col-sm-4">
                             <input type="email" class="form-control form-control-sm" th:field="*{email}" id="email"
                                 placeholder="Email">
@@ -42,14 +42,14 @@
                     </div>
                     <br>
                     <div class="form-group row">
-                        <label for="file" class="col-sm-2 col-form-label col-form-label-sm">Foto de Perfill</label><br>
+                        <label for="file" class="align center col-sm-2 col-form-label col-form-label-sm">Foto de Perfill</label><br>
                         <div class="col-sm-4 mb-2">
                             <input type="file" class="form-control" id="file" name="file">
                         </div>
                     </div>
                     <br>
                     <div class="form-group row">
-                        <label for="Contraseña" class="col-sm-2 col-form-label col-form-label-sm">Contraseña</label><br>
+                        <label for="Contraseña" class="align center col-sm-2 col-form-label col-form-label-sm">Contraseña</label><br>
                         <div class="col-sm-4">
                             <input type="password" class="form-control form-control-sm" th:field="*{password}"
                                 id="Contraseña" placeholder="Ingrese Contraseña">
@@ -57,7 +57,7 @@
                     </div>
                     <br>
                     <div class="form-group row">
-                        <label for="Contraseña2" class="col-sm-2 col-form-label col-form-label-sm">Repetir
+                        <label for="Contraseña2" class="align center col-sm-2 col-form-label col-form-label-sm">Repetir
                             Contraseña</label><br>
                         <div class="col-sm-4">
                             <input type="password" class="form-control form-control-sm" id="Contraseña2"
