@@ -20,7 +20,7 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    //    @NotEmpty(message = "nombre es obligatorio")
+//    @NotEmpty(message = "nombre es obligatorio")
     @Column(name = "nombre")
     private String nombre;
 
@@ -28,7 +28,7 @@ public class Usuario implements Serializable {
     @Column(name = "apellido")
     private String apellido;
 
-    //    @NotEmpty(message = "email es obligatorio.")
+    @NotEmpty(message = "email es obligatorio.")
     @Email
     @Column(name = "email")
     private String email;

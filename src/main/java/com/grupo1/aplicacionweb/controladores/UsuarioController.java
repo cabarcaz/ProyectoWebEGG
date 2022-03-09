@@ -53,9 +53,11 @@ public class UsuarioController {
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect,
                           @RequestParam("file") MultipartFile imagen, @RequestParam("password2") String password2) {
+
         if (result.hasErrors()) {
             return "redirect:/usuario/crear";
         }
+
         if (usuario == null) {
             redirect.addFlashAttribute("error", "El usuario es nulo");
             return "/usuario/crear";

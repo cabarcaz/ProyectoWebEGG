@@ -48,6 +48,8 @@
                     <div class="col-sm-4">
                         <input type="password" class="form-control form-control-sm" th:field="*{password}"
                                id="Contraseña" placeholder="Ingrese Contraseña">
+                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+
                     </div>
                 </div>
                 <br>

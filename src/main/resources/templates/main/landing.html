@@ -44,7 +44,7 @@
                         <div class="card-body text-center ">
                             <h5 class="card-title">Recetas</h5>
                             <a th:href="@{/receta/}" class="btn btn-warning mb-1">Listado de Recetas</a>
-                            <a th:href="@{/receta/crear}" class="btn btn-warning">Nueva</a>
+                            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/receta/crear}" class="btn btn-warning">Nueva</a>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">Menú</h5>
                             <a th:href="@{/carta/}" class="btn btn-warning mb-1">Listado de Menues</a>
-                            <a th:href="@{/carta/crear}" class="btn btn-warning mb-1">Nuevo</a>
+                            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/carta/crear}" class="btn btn-warning mb-1">Nuevo</a>
                             <a href="#" class="btn btn-warning mb-1">Semana</a>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">Ingredientes</h5>
                             <a th:href="@{/ingrediente/}" class="btn btn-warning mb-1">Listado de ingredientes</a>
-                            <a th:href="@{/ingrediente/crear}" class="btn btn-warning ">Nuevo</a>
+                            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/ingrediente/crear}" class="btn btn-warning ">Nuevo</a>
                         </div>
                     </div>
                 </div>
