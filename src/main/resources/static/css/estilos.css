@@ -1,10 +1,8 @@
 @import "./import/agregar-eliminar.css";
-@import "./import/card.css";
 @import "./import/detalle.css";
 @import "./import/imagen-styles.css";
 @import "./import/index.css";
 @import "./import/landing.css";
-@import "./import/lista_receta.css";
 @import "./import/nuevouser.css";
 
 body {
