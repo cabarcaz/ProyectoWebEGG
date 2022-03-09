@@ -1,7 +1,6 @@
 package com.grupo1.aplicacionweb.entidades;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,6 +28,14 @@ public class Ingrediente implements Serializable {
 
     public Integer getId() {
         return id;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public static void setSerialVersionUID(long serialVersionUID) {
+        Ingrediente.serialVersionUID = serialVersionUID;
     }
 
     public void setId(Integer id) {

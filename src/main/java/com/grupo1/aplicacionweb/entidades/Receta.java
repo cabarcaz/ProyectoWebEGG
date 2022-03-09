@@ -3,7 +3,6 @@ package com.grupo1.aplicacionweb.entidades;
 import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

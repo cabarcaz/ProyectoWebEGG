@@ -14,30 +14,29 @@ import java.util.Date;
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
 
-
     private static long serialVersionUID = -1299678208192314499L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    //    @NotEmpty(message = "nombre es obligatorio")
     @Column(name = "nombre")
+    @NotEmpty(message = "nombre es obligatorio")
     private String nombre;
 
-    //    @NotEmpty(message = "apellido es obligatorio.")
+    @NotEmpty(message = "apellido es obligatorio.")
     @Column(name = "apellido")
     private String apellido;
 
-    //    @NotEmpty(message = "email es obligatorio.")
+    @NotEmpty(message = "email es obligatorio.")
     @Email
     @Column(name = "email")
     private String email;
 
-    //    @NotEmpty(message = "password es obligatorio.")
+    @NotEmpty(message = "password es obligatorio.")
     @Column(name = "password")
     private String password;
 
-    //    @NotEmpty(message = "foto es obligatoria.")
+    @NotEmpty(message = "foto es obligatoria.")
     @Column(name = "foto")
     private String foto;
 
@@ -50,9 +49,16 @@ public class Usuario implements Serializable {
     @Enumerated(EnumType.STRING)
     private Roles rol;
 
-
     public Integer getId() {
         return id;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public static void setSerialVersionUID(long serialVersionUID) {
+        Usuario.serialVersionUID = serialVersionUID;
     }
 
     public void setId(Integer id) {

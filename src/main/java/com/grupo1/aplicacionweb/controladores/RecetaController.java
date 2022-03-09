@@ -4,12 +4,7 @@ import com.grupo1.aplicacionweb.entidades.Ingrediente;
 import com.grupo1.aplicacionweb.entidades.Paso;
 import com.grupo1.aplicacionweb.entidades.Receta;
 import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
-import com.grupo1.aplicacionweb.enumeraciones.Roles;
-import com.grupo1.aplicacionweb.interfaz.IMailsend;
-import com.grupo1.aplicacionweb.servicio.IngredienteServicio;
 import com.grupo1.aplicacionweb.servicio.RecetaServicio;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -39,10 +34,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class RecetaController {
     @Autowired
     private RecetaServicio recetaServicio;
-    @Autowired
-    private IngredienteServicio ingredienteServicio;
-    @Autowired
-    private IMailsend mailsend;
+    
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/")
@@ -132,6 +124,7 @@ public class RecetaController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect, Model model) {
+       // Receta receta = null;
         if (id == null || recetaServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un receta con ese ID.");
             return "redirect:/receta/";
@@ -148,6 +141,8 @@ public class RecetaController {
             model.addAttribute("pasos", receta.getPasos());
             model.addAttribute("listaCategorias", CategoriaPlato.values());
         }
+
+        
         return "/receta/editar";
     }
 
@@ -169,10 +164,6 @@ public class RecetaController {
         Receta receta = null;
         if (id != null) {
             receta = recetaServicio.findById(id);
-            if (id == null) {
-                atribute.addFlashAttribute("error", "El id de la receta no existe!");
-                return "redirect:/receta/";
-            }
         } else {
             atribute.addFlashAttribute("error", "Error con el id de la recera");
             return "redirect:/receta/";

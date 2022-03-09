@@ -1,22 +1,11 @@
 
-.container{
+.contenedor{
     border-color: rgba(#6c757d);
     border-left: 30px;
-   /* margin-left: 50px;*/
     padding-left: 30px;
     padding-right: 30px;
   }
  
-/*.cajon{
-
-    margin-top: 5px;
-    text-align: center;
-    font-size: x-large;
-    font-style:normal;
-    font-family: Arial;
-    
-    padding: 20px;
-  }*/
   .recuadro{
     text-align: center;
     border-color: rgba(#6c757d);

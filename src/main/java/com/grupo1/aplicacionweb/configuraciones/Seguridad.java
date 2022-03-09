@@ -32,7 +32,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/*", "/js/*", "/img/*").permitAll()
                 .and().formLogin()
-                .loginPage("/login") // Que formulario esta mi login
+                .loginPage("/") // Que formulario esta mi login
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("email") // Como viajan los datos del logueo
                 .passwordParameter("password")// Como viajan los datos del logueo
@@ -40,8 +40,6 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=error")
                 .permitAll()
                 .and().logout() // Aca configuro la salida
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
                 .permitAll().and().csrf().disable();
     }
 

@@ -34,7 +34,6 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
 
     @Override
     public void eliminar(Integer id) {
-//        usuarioDao.deleteById(id);
         Usuario usuario = findById(id);
         usuario.setBaja(true);
         usuarioDao.save(usuario);
