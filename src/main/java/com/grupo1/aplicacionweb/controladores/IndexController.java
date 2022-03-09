@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/index")
 public class IndexController {
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String loginIndex(Model model, @RequestParam (required = false ) String error,
                              @RequestParam (required = false) String email,
                              @RequestParam (required = false) String logout) {
@@ -22,7 +22,7 @@ public class IndexController {
         }
         model.addAttribute("titulo", "Inicio");
 
-        return "login";
+        return "/index";
     }
 
 
