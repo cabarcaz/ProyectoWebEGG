@@ -49,7 +49,7 @@ public class UsuarioController {
     @GetMapping("/crear")
     public String crearUsuario(Usuario usuario, Model model) {
         model.addAttribute("titulo", "Formulario");
-        model.addAttribute("h1", "Formulario ingreso nuevo usuario");
+        model.addAttribute("h1", "Registro");
         model.addAttribute("usuario", usuario);
         return "/usuario/nuevo";
     }
