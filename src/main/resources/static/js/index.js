@@ -80,7 +80,7 @@ function eliminar(string, index) {
     }
   }
 }
-// funcion boron regresar
+// funcion boton regresar
 function goBack() {
   window.history.back();
 }

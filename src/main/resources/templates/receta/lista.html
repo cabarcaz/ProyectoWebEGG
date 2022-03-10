@@ -8,12 +8,9 @@
   <main>
 
     <div class="container">
-
       <div class="bg-card col col-md-6 border my-4">
         <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
       </div>
-
-
       <div class=" text-capitalize">
         <table class="bg-card table table-striped table-hover table-sm table-bordered">
           <thead>
@@ -50,9 +47,7 @@
         </table>
         <a class="btn btn-success" onclick="goBack()" th:href="@{/inicio/}" value="Regresar">Regresar</a>
       </div>
-
     </div>
-
   </main>
   <footer th:replace="/plantilla/plantilla::footer"></footer>
 
