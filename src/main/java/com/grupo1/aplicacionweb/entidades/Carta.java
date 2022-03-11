@@ -2,8 +2,11 @@ package com.grupo1.aplicacionweb.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "cartas")
@@ -13,6 +16,11 @@ public class Carta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Temporal(TemporalType.DATE)
+
+    @DateTimeFormat(iso =  DateTimeFormat.ISO.DATE)
+    private Date semana;
 
     @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
     private List<Receta> lunes = new ArrayList<>();
@@ -101,5 +109,3 @@ public class Carta implements Serializable {
         this.domingo = domingo;
     }
 }
-
-
