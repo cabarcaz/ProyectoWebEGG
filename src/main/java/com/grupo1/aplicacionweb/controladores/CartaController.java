@@ -96,4 +96,14 @@ public class CartaController {
         return "redirect:/carta/";
     }
 
+    @GetMapping("/listaReceta")
+    public String listaRecetaCarta(Model model){
+        model.addAttribute("titulo", "Detalle Simple");
+        model.addAttribute("h1", "Lista de Recetas");
+        List<Receta> listadoRecetas = recetaServicio.listar();
+        model.addAttribute("recetas", listadoRecetas);
+
+        return "/carta/listarecetacarta";
+    } 
+
 }

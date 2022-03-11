@@ -177,4 +177,5 @@ public class RecetaController {
 
         return "/receta/detalles";
     }
+   
 }
