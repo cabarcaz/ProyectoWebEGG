@@ -38,6 +38,10 @@ public class CartaController {
     @GetMapping("/crear")
     public String crearCarta(Model model) {
         Carta carta = new Carta();
+        List<Receta> recetasEntradas = recetaServicio.listarPorCategoria(CategoriaPlato.ENTRADA);
+        List<Receta> recetasPrincpales = recetaServicio.listarPorCategoria(CategoriaPlato.PRINCIPAL);
+        List<Receta> recetasPostres = recetaServicio.listarPorCategoria(CategoriaPlato.POSTRE);
+
         // for (int i = 0; i < 3; ++i) {carta.getLunes().add(new Receta());}
         // for (int i = 0; i < 3; ++i) {carta.getMartes().add(new Receta());}
         // for (int i = 0; i < 3; ++i) {carta.getMiercoles().add(new Receta());}
@@ -49,12 +53,8 @@ public class CartaController {
         model.addAttribute("titulo", "Formulario");
         model.addAttribute("h1", "Planificación Semanal");
         model.addAttribute("carta", carta);
-
-        List<Receta> recetasEntradas = recetaServicio.listarPorCategoria(CategoriaPlato.ENTRADA);
         model.addAttribute("recetasEntradas", recetasEntradas);
-        List<Receta> recetasPrincpales = recetaServicio.listarPorCategoria(CategoriaPlato.PRINCIPAL);
         model.addAttribute("recetasPrincpales", recetasPrincpales);
-        List<Receta> recetasPostres = recetaServicio.listarPorCategoria(CategoriaPlato.POSTRE);
         model.addAttribute("recetasPostres", recetasPostres);
 
         return "/carta/nuevo";
