@@ -36,7 +36,7 @@ public class Usuario implements Serializable {
     @Column(name = "password")
     private String password;
 
-    @NotEmpty(message = "foto es obligatoria.")
+    //@NotEmpty(message = "foto es obligatoria.")
     @Column(name = "foto")
     private String foto;
 

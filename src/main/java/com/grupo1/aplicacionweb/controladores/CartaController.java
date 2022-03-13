@@ -38,13 +38,8 @@ public class CartaController {
     @GetMapping("/crear")
     public String crearCarta(Model model) {
         Carta carta = new Carta();
-        // for (int i = 0; i < 3; ++i) {carta.getLunes().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getMartes().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getMiercoles().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getJueves().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getViernes().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getSabado().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getDomingo().add(new Receta());}
+
+        System.out.println(carta.getId());
 
         model.addAttribute("titulo", "Formulario");
         model.addAttribute("h1", "Planificación Semanal");
@@ -63,6 +58,9 @@ public class CartaController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Carta carta, RedirectAttributes redirect) {
+
+        System.out.println(carta.getId());
+
         try {
             cartaServicio.crear(carta);
         } catch (Exception e) {

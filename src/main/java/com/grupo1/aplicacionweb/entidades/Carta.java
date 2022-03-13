@@ -22,20 +22,154 @@ public class Carta implements Serializable {
     @DateTimeFormat(iso =  DateTimeFormat.ISO.DATE)
     private Date semana;
 
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-    private List<Receta> lunes = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-    private List<Receta> martes = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-    private List<Receta> miercoles = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-    private List<Receta> jueves = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-    private List<Receta> viernes = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-    private List<Receta> sabado = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-    private List<Receta> domingo = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "entrada_lunes_id")
+    private Receta entradaLunes;
+    @ManyToOne
+    @JoinColumn(name = "principal_lunes_id")
+    private Receta principalLunes;
+    @ManyToOne
+    @JoinColumn(name = "postre_lunes_id")
+    private Receta postreLunes;
+    @ManyToOne
+    @JoinColumn(name = "entrada_martes_id")
+    private Receta entradaMartes;
+    @ManyToOne
+    @JoinColumn(name = "principal_martes_id")
+    private Receta principalMartes;
+    @ManyToOne
+    @JoinColumn(name = "postre_martes_id")
+    private Receta postreMartes;
+    @ManyToOne
+    @JoinColumn(name = "entrada_miercoles_id")
+    private Receta entradaMiercoles;
+    @ManyToOne
+    @JoinColumn(name = "principal_miercoles_id")
+    private Receta principalMiercoles;
+    @ManyToOne
+    @JoinColumn(name = "postre_miercoles_id")
+    private Receta postreMiercoles;
+    @ManyToOne
+    @JoinColumn(name = "entrada_jueves_id")
+    private Receta entradaJueves;
+    @ManyToOne
+    @JoinColumn(name = "principal_jueves_id")
+    private Receta principalJueves;
+    @ManyToOne
+    @JoinColumn(name = "postre_jueves_id")
+    private Receta postreJueves;
+    @ManyToOne
+    @JoinColumn(name = "entrada_viernes_id")
+    private Receta entradaViernes;
+    @ManyToOne
+    @JoinColumn(name = "principal_viernes_id")
+    private Receta principalViernes;
+    @ManyToOne
+    @JoinColumn(name = "postre_viernes_id")
+    private Receta postreViernes;
+    @ManyToOne
+    @JoinColumn(name = "entrada_sabado_id")
+    private Receta entradaSabado;
+    @ManyToOne
+    @JoinColumn(name = "principal_sabado_id")
+    private Receta principalSabado;
+    @ManyToOne
+    @JoinColumn(name = "postre_sabado_id")
+    private Receta postreSabado;
+    @ManyToOne
+    @JoinColumn(name = "entrada_domingo_id")
+    private Receta entradaDomingo;
+    @ManyToOne
+    @JoinColumn(name = "principal_domingo_id")
+    private Receta principalDomingo;
+    @ManyToOne
+    @JoinColumn(name = "postre_domingo_id")
+    private Receta postreDomingo;
+
+    public Receta getPostreDomingo() {
+        return postreDomingo;
+    }
+
+    public Receta getPrincipalDomingo() {
+        return principalDomingo;
+    }
+
+    public Receta getEntradaDomingo() {
+        return entradaDomingo;
+    }
+
+    public Receta getPostreSabado() {
+        return postreSabado;
+    }
+
+    public Receta getPrincipalSabado() {
+        return principalSabado;
+    }
+
+    public Receta getEntradaSabado() {
+        return entradaSabado;
+    }
+
+    public Receta getPostreViernes() {
+        return postreViernes;
+    }
+
+    public Receta getPrincipalViernes() {
+        return principalViernes;
+    }
+
+    public Receta getEntradaViernes() {
+        return entradaViernes;
+    }
+
+    public Receta getPostreJueves() {
+        return postreJueves;
+    }
+
+    public Receta getPrincipalJueves() {
+        return principalJueves;
+    }
+
+    public Receta getEntradaJueves() {
+        return entradaJueves;
+    }
+
+    public Receta getPostreMiercoles() {
+        return postreMiercoles;
+    }
+
+    public Receta getPrincipalMiercoles() {
+        return principalMiercoles;
+    }
+
+    public Receta getEntradaMiercoles() {
+        return entradaMiercoles;
+    }
+
+    public Receta getPostreMartes() {
+        return postreMartes;
+    }
+
+    public Receta getPrincipalMartes() {
+        return principalMartes;
+    }
+
+    public Receta getEntradaMartes() {
+        return entradaMartes;
+    }
+
+    public Receta getPrincipalLunes() {
+        return principalLunes;
+    }
+
+    public Receta getPostreLunes() {
+        return postreLunes;
+    }
+
+    public Receta getEntradaLunes() {
+        return entradaLunes;
+    }
+
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -53,59 +187,4 @@ public class Carta implements Serializable {
         this.id = id;
     }
 
-    public List<Receta> getLunes() {
-        return lunes;
-    }
-
-    public void setLunes(List<Receta> lunes) {
-        this.lunes = lunes;
-    }
-
-    public List<Receta> getMartes() {
-        return martes;
-    }
-
-    public void setMartes(List<Receta> martes) {
-        this.martes = martes;
-    }
-
-    public List<Receta> getMiercoles() {
-        return miercoles;
-    }
-
-    public void setMiercoles(List<Receta> miercoles) {
-        this.miercoles = miercoles;
-    }
-
-    public List<Receta> getJueves() {
-        return jueves;
-    }
-
-    public void setJueves(List<Receta> jueves) {
-        this.jueves = jueves;
-    }
-
-    public List<Receta> getViernes() {
-        return viernes;
-    }
-
-    public void setViernes(List<Receta> viernes) {
-        this.viernes = viernes;
-    }
-
-    public List<Receta> getSabado() {
-        return sabado;
-    }
-
-    public void setSabado(List<Receta> sabado) {
-        this.sabado = sabado;
-    }
-
-    public List<Receta> getDomingo() {
-        return domingo;
-    }
-
-    public void setDomingo(List<Receta> domingo) {
-        this.domingo = domingo;
-    }
 }

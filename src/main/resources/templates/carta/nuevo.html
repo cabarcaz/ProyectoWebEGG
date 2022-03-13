@@ -17,7 +17,7 @@
 
       </div>
 
-      <form th:action="@{/carta/crear}" th:object="${carta}"method="POST" enctype="multipart/form-data">
+      <form th:action="@{/carta/guardar}" th:object="${carta}" method="POST" enctype="multipart/form-data">
 
 
         <table class="table text-center border border-secondary border-2 pt-4 mt-5 bg-card">
@@ -28,12 +28,11 @@
             <th scope="row">Postre</th>
           </tr>
 
-
           <tr>
             <th class="text-uppercase" scope="row">Lunes</th>
             <td>
               <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                <!-- <select class="form-select" id="inputGroupSelect01" th:field="*{lunes[__0.index__]}"> -->
+                <select class="form-select" id="entradaLunes" th:field="*{entradaLunes}">
                   <option value="">Escoja una Entrada</option>
                   <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
                 </select>
@@ -42,7 +41,7 @@
 
             <td>
               <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                <!-- <select class="form-select" id="inputGroupSelect01" th:field="*{lunes[__1.index__]}"> -->
+                <select class="form-select" id="principalLunes" th:field="*{principalLunes}">
                   <option value="">Escoja un Principal</option>
                   <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}">
                   </option>
@@ -52,7 +51,194 @@
 
             <td>
               <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                <!-- <select class="form-select" id="inputGroupSelect01" th:field="*{lunes[__2.index__]}"> -->
+                <select class="form-select" id="postreLunes" th:field="*{postreLunes}">
+                  <option value="">Escoja un Postre</option>
+                  <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="text-uppercase" scope="row">Martes</th>
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="entradaMartes" th:field="*{entradaMartes}">
+                  <option value="">Escoja una Entrada</option>
+                  <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="principalMartes" th:field="*{principalMartes}">
+                  <option value="">Escoja un Principal</option>
+                  <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}">
+                  </option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="postreMartes" th:field="*{postreMartes}">
+                  <option value="">Escoja un Postre</option>
+                  <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+
+          </tr>
+
+          <tr>
+            <th class="text-uppercase" scope="row">Miercoles</th>
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="entradaMiercoles" th:field="*{entradaMiercoles}">
+                  <option value="">Escoja una Entrada</option>
+                  <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="principalMiercoles" th:field="*{principalMiercoles}">
+                  <option value="">Escoja un Principal</option>
+                  <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}">
+                  </option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="postreMiercoles" th:field="*{postreMiercoles}">
+                  <option value="">Escoja un Postre</option>
+                  <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+
+          </tr>
+          <tr>
+            <th class="text-uppercase" scope="row">Jueves</th>
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="entradaJueves" th:field="*{entradaJueves}">
+                  <option value="">Escoja una Entrada</option>
+                  <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="principalJueves" th:field="*{principalJueves}">
+                  <option value="">Escoja un Principal</option>
+                  <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}">
+                  </option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="postreJueves" th:field="*{postreJueves}">
+                  <option value="">Escoja un Postre</option>
+                  <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+
+          </tr>
+          <tr>
+            <th class="text-uppercase" scope="row">Viernes</th>
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="entradaViernes" th:field="*{entradaViernes}">
+                  <option value="">Escoja una Entrada</option>
+                  <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="principalViernes" th:field="*{principalViernes}">
+                  <option value="">Escoja un Principal</option>
+                  <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}">
+                  </option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="postreViernes" th:field="*{postreViernes}">
+                  <option value="">Escoja un Postre</option>
+                  <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+
+          </tr>
+          <tr>
+            <th class="text-uppercase" scope="row">Sabado</th>
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="entradaSabado" th:field="*{entradaSabado}">
+                  <option value="">Escoja una Entrada</option>
+                  <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="principalSabado" th:field="*{principalSabado}">
+                  <option value="">Escoja un Principal</option>
+                  <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}">
+                  </option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="postreSabado" th:field="*{postreSabado}">
+                  <option value="">Escoja un Postre</option>
+                  <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+
+          </tr>
+          <tr>
+            <th class="text-uppercase" scope="row">Domingo</th>
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="entradaDomingo" th:field="*{entradaDomingo}">
+                  <option value="">Escoja una Entrada</option>
+                  <option th:each="receta: ${recetasEntradas}" th:value="${receta}" th:text="${receta.nombre}"></option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="principalDomingo" th:field="*{principalDomingo}">
+                  <option value="">Escoja un Principal</option>
+                  <option th:each="receta: ${recetasPrincpales}" th:value="${receta}" th:text="${receta.nombre}">
+                  </option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
+                <select class="form-select" id="postreDomingo" th:field="*{postreDomingo}">
                   <option value="">Escoja un Postre</option>
                   <option th:each="receta: ${recetasPostres}" th:value="${receta}" th:text="${receta.nombre}"></option>
                 </select>
@@ -62,7 +248,9 @@
           </tr>
 
         </table>
-
+        <div class="col-sm-1">
+          <button class="btn btn-primary" type="submit">Enviar</button>
+        </div>
       </form>
     </div>
   </main>

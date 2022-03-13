@@ -49,6 +49,7 @@ public class UsuarioServicio implements IUsuario, UserDetailsService {
             usuario.setBaja(false);
             usuario.setRol(Roles.USER);
         }
+        System.out.println(usuario);
         usuarioDao.save(usuario);
     }
 
