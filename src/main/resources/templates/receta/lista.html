@@ -11,6 +11,16 @@
       <div class="bg-card col col-md-6 border my-4">
         <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
       </div>
+<<<<<<< HEAD
+=======
+
+      <div class="py-2 ms-5">
+        <a th:href="@{/receta/crear}" class=  "btn btn-warning btn ms-5 ">Crear receta </a>
+        <!-- <a onclick="goBack()" href="#" class="btn btn-success ms-5">Volver</a> -->
+        <a class="btn btn-success btn ms-5" onclick="goBack()" th:href="@{/inicio/}" value="Regresar">Regresar</a>
+
+      </div>
+>>>>>>> 3f0c600caad33f8c9af1d655407b499d976df54f
       <div class=" text-capitalize">
         <table class="bg-card table table-striped table-hover table-sm table-bordered">
           <thead>
@@ -44,8 +54,10 @@
               <td><a th:href="@{/receta/eliminar/} + ${receta.id}" class="btn btn-danger">Eliminar</a></td>
             </tr>
           </tbody>
+          
+
         </table>
-        <a class="btn btn-success" onclick="goBack()" th:href="@{/inicio/}" value="Regresar">Regresar</a>
+        <!-- <a class="btn btn-success" onclick="goBack()" th:href="@{/inicio/}" value="Regresar">Regresar</a> -->
       </div>
     </div>
   </main>
