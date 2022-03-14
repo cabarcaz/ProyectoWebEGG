@@ -170,4 +170,22 @@ public class Receta implements Serializable {
     public void setCartas(List<Carta> cartas) {
         this.cartas = cartas;
     }
+
+    @Override
+    public String toString() {
+        return "Receta{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", categoria=" + categoria +
+                ", foto='" + foto + '\'' +
+                ", comentario='" + comentario + '\'' +
+                ", tiempoDeCoccion=" + tiempoDeCoccion +
+                ", tiempoDePreparacion=" + tiempoDePreparacion +
+                ", tiempoTotal=" + tiempoTotal +
+                ", porcion=" + porcion +
+                ", pasos=" + pasos +
+                ", ingredientes=" + ingredientes +
+                ", cartas=" + cartas +
+                '}';
+    }
 }

@@ -36,13 +36,7 @@ public class CartaServicio implements ICarta {
     @Override
     public void crear(Carta carta) throws ErrorServicio {
         if (carta != null) {
-            if (cartaDao.findById(carta.getId()) != null) {
-                //Agregar validaciones para las listas
-                cartaDao.save(carta);
-            } else {
-                cartaDao.save(carta);
-            }
-        } else {
+          cartaDao.save(carta);
             throw new ErrorServicio("Error, componente nulo.");
         }
     }
@@ -52,4 +46,6 @@ public class CartaServicio implements ICarta {
     public Carta findById(Integer id) {
         return cartaDao.findById(id).orElse(null);
     }
+
+
 }

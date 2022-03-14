@@ -38,7 +38,7 @@ public class CartaController {
     @GetMapping("/crear")
     public String crearCarta(Model model) {
         Carta carta = new Carta();
-        // for (int i = 0; i < 3; ++i) {carta.getLunes().add(new Receta());}
+//         for (int i = 0; i < 3; ++i) {carta.getLunes().add(new Receta());}
         // for (int i = 0; i < 3; ++i) {carta.getMartes().add(new Receta());}
         // for (int i = 0; i < 3; ++i) {carta.getMiercoles().add(new Receta());}
         // for (int i = 0; i < 3; ++i) {carta.getJueves().add(new Receta());}
@@ -53,7 +53,7 @@ public class CartaController {
         List<Receta> recetasEntradas = recetaServicio.listarPorCategoria(CategoriaPlato.ENTRADA);
         model.addAttribute("recetasEntradas", recetasEntradas);
         List<Receta> recetasPrincpales = recetaServicio.listarPorCategoria(CategoriaPlato.PRINCIPAL);
-        model.addAttribute("recetasPrincpales", recetasPrincpales);
+        model.addAttribute("recetasPrincipales", recetasPrincpales);
         List<Receta> recetasPostres = recetaServicio.listarPorCategoria(CategoriaPlato.POSTRE);
         model.addAttribute("recetasPostres", recetasPostres);
 
@@ -63,6 +63,14 @@ public class CartaController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Carta carta, RedirectAttributes redirect) {
+        System.out.println("entre al post efectivamente");
+        for (Receta aux: carta.getLunes()) {
+            System.out.println("los ids de estas recetas " + aux.getId());
+            Receta r = recetaServicio.findById(aux.getId());
+            System.out.println( r.toString());
+            carta.getLunes().add(r);
+            System.out.println("me rompi?");
+        }
         try {
             cartaServicio.crear(carta);
         } catch (Exception e) {
@@ -95,5 +103,6 @@ public class CartaController {
         }
         return "redirect:/carta/";
     }
+
 
 }
