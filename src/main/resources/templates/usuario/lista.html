@@ -8,22 +8,28 @@
     <main>
         <div class="container ">
 
-       
-
-
-
-        <div class=" mt-3">
-            <form class="row g-3">
-                <div class="">
-                    <h2 class=" text-center py-4 bg-card mt-2 col col-md-6" th:text="${h1}"></h2>
-                    <div class="col  "> <button type="button" class=" btn btn-warning  " ><a
-                                th:href="@{/usuario/crear}">crear
-                                Usuario </a></button></th>
+            <div class=" mt-3">
+                <form class="row g-3">
+                    <div class="">
+                        <h2 class=" text-center py-4 bg-card mt-2 col col-md-6" th:text="${h1}">
+                        </h2>
 
                     </div>
-                </div>
 
-            </form>
+                    <div class="py-2 ms-5">
+                </form>
+                <a th:href="@{/usuario/crear}" class=" btn btn-warning btn ms-5  ">Crear usuario </a>
+                <!-- <a onclick="goBack()" href="#" class="btn btn-success ms-5">Volver</a> -->
+                <a class="btn btn-success btn ms-5" onclick="goBack()" th:href="@{/inicio/}"
+                    value="Regresar">Regresar</a>
+
+            </div>
+
+        </div>
+
+
+
+        </form>
         </div>
 
         <div class=" text-capitalize">
@@ -52,17 +58,18 @@
                         <td th:text="${usuario.email}"></td>
                         <td th:text="${usuario.rol}"></td>
                         <td><a th:href="@{/usuario/editar/} + ${usuario.id}" class="btn btn-primary">Editar</a></td>
-                        <td><a th:href="@{/usuario/eliminar/} + ${usuario.id}" class="btn btn-danger">Eliminar</a></td>
+                        <td><a th:href="@{/usuario/eliminar/} + ${usuario.id}" class="btn btn-danger">Eliminar</a>
+                        </td>
                     </tr>
                 </tbody>
                 <p th:if="${usuarios.isEmpty}">No hay usuarios para mostrar</p>
             </table>
 
-            <a class="btn btn-success" onclick="goBack()" th:href="@{/inicio/}" value="Regresar">Regresar</a>
+            <!-- <a class="btn btn-success" onclick="goBack()" th:href="@{/inicio/}" value="Regresar">Regresar</a> -->
 
 
         </div>
-    </div>
+        </div>
     </main>
     <footer th:replace="/plantilla/plantilla::footer"></footer>
 
