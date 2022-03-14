@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 @Controller
@@ -64,12 +66,18 @@ public class CartaController {
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Carta carta, RedirectAttributes redirect) {
         System.out.println("entre al post efectivamente");
+        List<Receta> auxiliarLista = new ArrayList<>();
         for (Receta aux: carta.getLunes()) {
-            System.out.println("los ids de estas recetas " + aux.getId());
+            System.out.println("los bla bla de estas recetas " + aux.toString());
             Receta r = recetaServicio.findById(aux.getId());
             System.out.println( r.toString());
-            carta.getLunes().add(r);
+            auxiliarLista.add(r);
             System.out.println("me rompi?");
+        }
+        carta.setLunes(auxiliarLista);
+        for (Receta aux: carta.getLunes()){
+
+            System.out.println("segundo fore "+ aux.toString());
         }
         try {
             cartaServicio.crear(carta);

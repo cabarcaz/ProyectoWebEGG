@@ -21,10 +21,12 @@ public class Carta implements Serializable {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date semana;
 
-    @ManyToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> lunes = new ArrayList<>();
-
-
 //    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
 //    private List<Receta> martes = new ArrayList<>();
 //    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)

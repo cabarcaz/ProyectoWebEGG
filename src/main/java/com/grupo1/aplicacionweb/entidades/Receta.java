@@ -60,11 +60,7 @@ public class Receta implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "ingrediente_id")})
     private List<Ingrediente> ingredientes = new ArrayList<>();
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "receta_carta",
-            joinColumns = {@JoinColumn(name = "receta_id")},
-            inverseJoinColumns = {@JoinColumn(name = "carta_id")})
+    @ManyToMany( mappedBy = "lunes" ,cascade = CascadeType.ALL)
     private List<Carta> cartas = new ArrayList<>();
 
     public static long getSerialVersionUID() {
