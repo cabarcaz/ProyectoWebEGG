@@ -11,9 +11,6 @@
             <div class="bg-card col col-md-6 border mt-4">
                 <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
             </div>
-
-
-
             <div class="py-4 bg-card  border border-secondary pt-3 mt-4">
 
                 <form class="justify-content-center align-content-center align-items-center border border-danger border-3 row mx-3 py-2 my-2 align-center"
@@ -26,7 +23,7 @@
                         </div>
                         <div class="col-sm-4 text-danger">
                             <p class="alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errorclass="error"
-                                th:errors="*{nombre}" />
+                                th:errors="*{nombre}" >
                         </div>
                     </div>
 
@@ -45,17 +42,16 @@
                         </div>
                         <div class="col-sm-4 text-danger">
                             <p class="alert-danger" th:if="${#fields.hasErrors('email')}" th:errorclass="error"
-                                th:errors="*{email}" />
+                                th:errors="*{email}" >
                         </div>
                     </div>
 
-                    <div class="form-group row justify-content-center ">
-                        <label for="file" class=" col-sm-2 col-form-label col-form-label-sm">Foto de
-                            Perfil</label>
-                        <div class="col-sm-4 mb-2">
+                  <!---- <div class="form-group row justify-content-center align-content-center ">
+                        <label for="file" class=" col-sm-2 col-form-label col-form-label-sm">Foto de Perfil</label>
+                <div class="col-sm-4 mb-2">
                             <input type="file" class="form-control form-control-sm" id="file" name="file">
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="form-group row justify-content-center align-content-center">
                         <label for="Contraseña" class="col-sm-2 col-form-label col-form-label-sm">Contraseña</label>
@@ -65,7 +61,7 @@
                         </div>
                         <div class="col-sm-4 text-danger">
                             <p class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errorclass="error"
-                                th:errors="*{password}" />
+                                th:errors="*{password}" >
                         </div>
                     </div>
 
@@ -78,11 +74,11 @@
                         </div>
                         <div class="col-sm-4 text-danger">
                             <p class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errorclass="error"
-                                th:errors="*{password}" />
+                                th:errors="*{password}" >
                         </div>
                     </div>
 
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <button class="btn btn-primary" type="submit">Enviar</button>
                     </div>
                 </form>
