@@ -61,17 +61,20 @@ public class UsuarioController {
             RedirectAttributes redirect,
             @RequestParam("file") MultipartFile imagen, @RequestParam("password2") String password2) {
         if (result.hasErrors()) {
+            System.out.println("error result");
             return "/usuario/nuevo";
         }
         if (usuario == null) {
+            System.out.println("usuario null");
             redirect.addFlashAttribute("error", "El usuario es nulo");
-            return "/usuario/crear";
+            return "/usuario/nuevo";
         }
         if (usuario.getId() == null) {
+            System.out.println("usuario get id null");
             if (!password2.equals(usuario.getPassword())) {
                 redirect.addFlashAttribute("error", "Las contraseñas no coinciden");
                 model.addAttribute(usuario);
-                return "/usuario/crear";
+                return "/usuario/nuevo";
             }
         }
 
@@ -89,9 +92,12 @@ public class UsuarioController {
                 redirect.addFlashAttribute("error", e.getMessage());
             }
         }
+
         try {
+            System.out.println("creando usuario");
             usuarioServicio.crear(usuario);
         } catch (Exception e) {
+            System.out.println("error al crear usuario");
             redirect.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/crear";
         }
