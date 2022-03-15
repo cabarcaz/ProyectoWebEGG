@@ -8,18 +8,24 @@
   <main>
 
     <div class="container">
-
       <div class="bg-card col col-md-6 border my-4">
         <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
       </div>
+      
+      <div class="mt-2">
+        <a th:href="@{/receta/crear}" class="btn btn-primary btn-lg" type="button" target="_blank">Crear receta</a>
+        <a th:href="@{/inicio/}" class="btn btn-primary btn-lg" type="button" target="_blank">Regresar</a>
 
-      <div class="py-2 ms-5">
-        <a th:href="@{/receta/crear}" class=  "btn btn-warning btn ms-5 ">Crear receta </a>
-        <!-- <a onclick="goBack()" href="#" class="btn btn-success ms-5">Volver</a> -->
-        <a class="btn btn-success btn ms-5" onclick="goBack()" th:href="@{/inicio/}" value="Regresar">Regresar</a>
+    </div>
 
-      </div>
-      <div class=" text-capitalize">
+
+
+
+
+
+      <div class=" text-capitalize  mt-4">
+
+     
         <table class="bg-card table table-striped table-hover table-sm table-bordered">
           <thead>
             <tr>
@@ -57,9 +63,7 @@
         </table>
         <!-- <a class="btn btn-success" onclick="goBack()" th:href="@{/inicio/}" value="Regresar">Regresar</a> -->
       </div>
-
     </div>
-
   </main>
   <footer th:replace="/plantilla/plantilla::footer"></footer>
 

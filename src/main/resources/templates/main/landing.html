@@ -17,7 +17,7 @@
                 <div class="card-body col col-md-12">
                     <div class="text-center bg-card rounded-3 border border-warning border-2">
                         <h2 class="fs-1">Bienvenido <p> <span sec:authentication="name"></span></p>
-                        </h2>
+                       </h2>
                     </div>
                 </div>
 
@@ -66,28 +66,10 @@
                                 <div class="card-body">
                                     <a th:href="@{/carta/}" class="btn btn-outline-warning mb-1 border border-dark text-black">Lista de Menues</a>
                                     <a th:href="@{/carta/crear}"class="btn btn-outline-warning mb-1 border border-dark text-black">Nuevo</a>
-                                    <a href="#"class="btn btn-outline-warning mb-1 border border-dark text-black">Semana</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="card bg-card border border-warning border-2 ms-3 mb-5" style="max-width: 350px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="/imagenes/landing/ingrediente.svg" class="rounded mx-auto d-block" alt="Ingrediente" style="width:7rem;">
-                                <h5 class="card-title">Ingrediente</h5>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <a th:href="@{/ingrediente/}"
-                                        class="btn btn-outline-warning mb-1 border border-dark text-black">Lista de ingredientes</a>
-                                    <a th:href="@{/ingrediente/crear}" class="btn btn-outline-warning mb-1 border border-dark text-black ">Nuevo</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
