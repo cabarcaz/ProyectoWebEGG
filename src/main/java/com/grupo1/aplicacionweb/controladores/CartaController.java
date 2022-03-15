@@ -65,21 +65,16 @@ public class CartaController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Carta carta, RedirectAttributes redirect) {
-        System.out.println("entre al post efectivamente");
         List<Receta> auxiliarLista = new ArrayList<>();
-        for (Receta aux: carta.getLunes()) {
-            System.out.println("los bla bla de estas recetas " + aux.toString());
-            Receta r = recetaServicio.findById(aux.getId());
-            System.out.println( r.toString());
-            auxiliarLista.add(r);
-            System.out.println("me rompi?");
-        }
-        carta.setLunes(auxiliarLista);
-        for (Receta aux: carta.getLunes()){
-
-            System.out.println("segundo fore "+ aux.toString());
-        }
+        System.out.println("La fecha que entra alterada: "+carta.getSemana().toString());
         try {
+            for (Receta aux : carta.getLunes()) {
+                auxiliarLista.add(recetaServicio.findById(aux.getId()));
+            }
+            if (carta.getId()!=null){
+                carta.setSemana(carta.getSemana());
+            }
+            carta.setLunes(auxiliarLista);
             cartaServicio.crear(carta);
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
@@ -92,6 +87,12 @@ public class CartaController {
     public String editar(@PathVariable("id") Integer id, Model model, RedirectAttributes redirect) {
         if (id != null) {
             model.addAttribute("carta", cartaServicio.findById(id));
+            List<Receta> recetasEntradas = recetaServicio.listarPorCategoria(CategoriaPlato.ENTRADA);
+            model.addAttribute("recetasEntradas", recetasEntradas);
+            List<Receta> recetasPrincpales = recetaServicio.listarPorCategoria(CategoriaPlato.PRINCIPAL);
+            model.addAttribute("recetasPrincipales", recetasPrincpales);
+            List<Receta> recetasPostres = recetaServicio.listarPorCategoria(CategoriaPlato.POSTRE);
+            model.addAttribute("recetasPostres", recetasPostres);
         } else {
             redirect.addFlashAttribute("error", "Error con el ID");
             return "redirect:/carta/";

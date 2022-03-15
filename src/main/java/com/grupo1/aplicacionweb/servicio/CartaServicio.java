@@ -25,8 +25,8 @@ public class CartaServicio implements ICarta {
     @Override
     public void eliminar(Integer id) throws ErrorServicio {
         if (cartaDao.findById(id) != null) {
-            Carta carta = findById(id);
-            crear(carta);
+
+          cartaDao.deleteById(id);
         } else {
             throw new ErrorServicio("Error, ID nulo.");
         }
@@ -37,6 +37,7 @@ public class CartaServicio implements ICarta {
     public void crear(Carta carta) throws ErrorServicio {
         if (carta != null) {
           cartaDao.save(carta);
+        }else{
             throw new ErrorServicio("Error, componente nulo.");
         }
     }

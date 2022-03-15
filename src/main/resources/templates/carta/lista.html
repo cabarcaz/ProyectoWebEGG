@@ -11,8 +11,6 @@
     <div class="container">
       <table class="table  table-hover  table-bordered border border-3 bg-card">
         <thead class="border border-3">
-
-
          <div class="container d-flex">
               <div class="bg-card col col-md-6 border mt-4">
                 <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
@@ -27,7 +25,8 @@
             <table class="table table-striped bg-card">
               <thead>
                 <tr>
-                  <th> Nombre de Cartas</th>
+                  <th>Fecha de creacion</th>
+                  <th>Lunes</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                   
@@ -35,7 +34,12 @@
               </thead>
               <tbody>
                 <tr th:each="carta:${cartas}">
-                  <td th:text="${carta.nombre}"></td>
+                  <td th:text="${carta.semana}"></td>
+                  <td>
+                    <select name="" id="">
+                      <option th:each="receta : ${carta.lunes}" value="" th:text="${receta.nombre}"></option>
+                    </select>
+                  </td>
                   <td><a th:href="@{/carta/editar/} + ${carta.id}" class="btn btn-warning">Editar</a></td>
                   <td><a th:href="@{/carta/eliminar/} + ${carta.id}" class="btn btn-danger">Eliminar</a></td>
                 </tr>
