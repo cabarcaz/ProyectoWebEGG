@@ -23,22 +23,46 @@ public class Carta implements Serializable {
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
-            name = "carta_receta",
+            name = "carta_receta_lunes",
             joinColumns = {@JoinColumn(name = "carta_id")},
             inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> lunes = new ArrayList<>();
-//    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-//    private List<Receta> martes = new ArrayList<>();
-//    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-//    private List<Receta> miercoles = new ArrayList<>();
-//    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-//    private List<Receta> jueves = new ArrayList<>();
-//    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-//    private List<Receta> viernes = new ArrayList<>();
-//    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-//    private List<Receta> sabado = new ArrayList<>();
-//    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
-//    private List<Receta> domingo = new ArrayList<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_martes",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
+    private List<Receta> martes = new ArrayList<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_miercoles",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
+    private List<Receta> miercoles = new ArrayList<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_jueves",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
+    private List<Receta> jueves = new ArrayList<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_viernes",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
+    private List<Receta> viernes = new ArrayList<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_sabado",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
+    private List<Receta> sabado = new ArrayList<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_domingo",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
+    private List<Receta> domingo = new ArrayList<>();
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -66,6 +90,54 @@ public class Carta implements Serializable {
 
     public void setLunes(List<Receta> lunes) {
         this.lunes = lunes;
+    }
+
+    public List<Receta> getMartes() {
+        return martes;
+    }
+
+    public void setMartes(List<Receta> martes) {
+        this.martes = martes;
+    }
+
+    public List<Receta> getMiercoles() {
+        return miercoles;
+    }
+
+    public void setMiercoles(List<Receta> miercoles) {
+        this.miercoles = miercoles;
+    }
+
+    public List<Receta> getJueves() {
+        return jueves;
+    }
+
+    public void setJueves(List<Receta> jueves) {
+        this.jueves = jueves;
+    }
+
+    public List<Receta> getViernes() {
+        return viernes;
+    }
+
+    public void setViernes(List<Receta> viernes) {
+        this.viernes = viernes;
+    }
+
+    public List<Receta> getSabado() {
+        return sabado;
+    }
+
+    public void setSabado(List<Receta> sabado) {
+        this.sabado = sabado;
+    }
+
+    public List<Receta> getDomingo() {
+        return domingo;
+    }
+
+    public void setDomingo(List<Receta> domingo) {
+        this.domingo = domingo;
     }
 }
 

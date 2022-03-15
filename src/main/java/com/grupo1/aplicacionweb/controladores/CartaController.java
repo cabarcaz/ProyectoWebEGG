@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/carta")
 public class CartaController {
@@ -40,14 +41,6 @@ public class CartaController {
     @GetMapping("/crear")
     public String crearCarta(Model model) {
         Carta carta = new Carta();
-//         for (int i = 0; i < 3; ++i) {carta.getLunes().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getMartes().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getMiercoles().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getJueves().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getViernes().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getSabado().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getDomingo().add(new Receta());}
-
         model.addAttribute("titulo", "Formulario");
         model.addAttribute("h1", "Planificación Semanal");
         model.addAttribute("carta", carta);
@@ -65,16 +58,58 @@ public class CartaController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Carta carta, RedirectAttributes redirect) {
-        List<Receta> auxiliarLista = new ArrayList<>();
-        System.out.println("La fecha que entra alterada: "+carta.getSemana().toString());
+        List<Receta> listaLunes = new ArrayList<>();
+        List<Receta> listaMartes = new ArrayList<>();
+        List<Receta> listaMiercoles = new ArrayList<>();
+        List<Receta> listaJueves = new ArrayList<>();
+        List<Receta> listaViernes = new ArrayList<>();
+        List<Receta> listaSabado = new ArrayList<>();
+        List<Receta> listaDomingo = new ArrayList<>();
         try {
+            //Lunes
             for (Receta aux : carta.getLunes()) {
-                auxiliarLista.add(recetaServicio.findById(aux.getId()));
+                listaLunes.add(recetaServicio.findById(aux.getId()));
             }
-            if (carta.getId()!=null){
+            carta.setLunes(listaLunes);
+
+            //Martes
+            for (Receta aux : carta.getMartes()) {
+                listaMartes.add(recetaServicio.findById(aux.getId()));
+            }
+            carta.setMartes(listaMartes);
+
+            //Miercoles
+            for (Receta aux : carta.getMiercoles()) {
+                listaMiercoles.add(recetaServicio.findById(aux.getId()));
+            }
+            carta.setMiercoles(listaMiercoles);
+
+            //Jueves
+            for (Receta aux : carta.getJueves()) {
+                listaJueves.add(recetaServicio.findById(aux.getId()));
+            }
+            carta.setJueves(listaJueves);
+
+            //Viernes
+            for (Receta aux : carta.getViernes()) {
+                listaViernes.add(recetaServicio.findById(aux.getId()));
+            }
+            carta.setViernes(listaViernes);
+
+            //Sabado
+            for (Receta aux : carta.getSabado()) {
+                listaSabado.add(recetaServicio.findById(aux.getId()));
+            }
+            carta.setSabado(listaSabado);
+
+            //Domingo
+            for (Receta aux : carta.getDomingo()) {
+                listaDomingo.add(recetaServicio.findById(aux.getId()));
+            }
+            if (carta.getId() != null) {
                 carta.setSemana(carta.getSemana());
             }
-            carta.setLunes(auxiliarLista);
+            carta.setDomingo(listaDomingo);
             cartaServicio.crear(carta);
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());

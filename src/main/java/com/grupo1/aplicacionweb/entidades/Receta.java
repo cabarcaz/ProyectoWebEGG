@@ -61,7 +61,19 @@ public class Receta implements Serializable {
     private List<Ingrediente> ingredientes = new ArrayList<>();
 
     @ManyToMany( mappedBy = "lunes" ,cascade = CascadeType.ALL)
-    private List<Carta> cartas = new ArrayList<>();
+    private List<Carta> cartasLunes = new ArrayList<>();
+    @ManyToMany( mappedBy = "martes" ,cascade = CascadeType.ALL)
+    private List<Carta> cartasMartes = new ArrayList<>();
+    @ManyToMany( mappedBy = "miercoles" ,cascade = CascadeType.ALL)
+    private List<Carta> cartasMiercoles = new ArrayList<>();
+    @ManyToMany( mappedBy = "jueves" ,cascade = CascadeType.ALL)
+    private List<Carta> cartasJueves = new ArrayList<>();
+    @ManyToMany( mappedBy = "viernes" ,cascade = CascadeType.ALL)
+    private List<Carta> cartasViernes = new ArrayList<>();
+    @ManyToMany( mappedBy = "sabado" ,cascade = CascadeType.ALL)
+    private List<Carta> cartasSabado = new ArrayList<>();
+    @ManyToMany( mappedBy = "domingo" ,cascade = CascadeType.ALL)
+    private List<Carta> cartasDomingo = new ArrayList<>();
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -159,29 +171,60 @@ public class Receta implements Serializable {
         this.ingredientes = ingredientes;
     }
 
-    public List<Carta> getCartas() {
-        return cartas;
+    public List<Carta> getCartasLunes() {
+        return cartasLunes;
     }
 
-    public void setCartas(List<Carta> cartas) {
-        this.cartas = cartas;
+    public void setCartasLunes(List<Carta> cartasLunes) {
+        this.cartasLunes = cartasLunes;
     }
 
-    @Override
-    public String toString() {
-        return "Receta{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", categoria=" + categoria +
-                ", foto='" + foto + '\'' +
-                ", comentario='" + comentario + '\'' +
-                ", tiempoDeCoccion=" + tiempoDeCoccion +
-                ", tiempoDePreparacion=" + tiempoDePreparacion +
-                ", tiempoTotal=" + tiempoTotal +
-                ", porcion=" + porcion +
-                ", pasos=" + pasos +
-                ", ingredientes=" + ingredientes +
-                ", cartas=" + cartas +
-                '}';
+    public List<Carta> getCartasMartes() {
+        return cartasMartes;
     }
+
+    public void setCartasMartes(List<Carta> cartasMartes) {
+        this.cartasMartes = cartasMartes;
+    }
+
+    public List<Carta> getCartasMiercoles() {
+        return cartasMiercoles;
+    }
+
+    public void setCartasMiercoles(List<Carta> cartasMiercoles) {
+        this.cartasMiercoles = cartasMiercoles;
+    }
+
+    public List<Carta> getCartasJueves() {
+        return cartasJueves;
+    }
+
+    public void setCartasJueves(List<Carta> cartasJueves) {
+        this.cartasJueves = cartasJueves;
+    }
+
+    public List<Carta> getCartasViernes() {
+        return cartasViernes;
+    }
+
+    public void setCartasViernes(List<Carta> cartasViernes) {
+        this.cartasViernes = cartasViernes;
+    }
+
+    public List<Carta> getCartasSabado() {
+        return cartasSabado;
+    }
+
+    public void setCartasSabado(List<Carta> cartasSabado) {
+        this.cartasSabado = cartasSabado;
+    }
+
+    public List<Carta> getCartasDomingo() {
+        return cartasDomingo;
+    }
+
+    public void setCartasDomingo(List<Carta> cartasDomingo) {
+        this.cartasDomingo = cartasDomingo;
+    }
+
 }
