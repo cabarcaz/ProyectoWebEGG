@@ -61,7 +61,6 @@ public class CartaController {
 
         return "/carta/nuevo";
     }
-
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Carta carta, RedirectAttributes redirect) {

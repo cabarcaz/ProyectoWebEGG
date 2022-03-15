@@ -79,13 +79,13 @@
                                            th:id="'cantidad'+${index.index}">
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-warning"
+                                    <button th:id="'botonAI'+${index.index}" type="button" class="btn btn-primary"
                                             th:attr="onclick=|agregar('ingrediente',${index.index})|">Agregar
                                     </button>
                                 </td>
 
                                 <td>
-                                    <button type="button" class="btn btn-danger"
+                                    <button th:id="'botonEI'+${index.index}" type="button" class="btn btn-danger"
                                             th:attr="onclick=|eliminar('ingrediente',${index.index})|">Eliminar
                                     </button>
                                 </td>
@@ -123,13 +123,13 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-warning"
+                                    <button th:id="'botonAP'+${index.index}" type="button" class="btn btn-primary"
                                             th:attr="onclick=|agregar('paso',${index.index})|">Agregar
                                     </button>
                                 </td>
 
                                 <td>
-                                    <button type="button" class="btn btn-danger"
+                                    <button th:id="'botonEP'+${index.index}" type="button" class="btn btn-danger"
                                             th:attr="onclick=|eliminar('paso',${index.index})|">Eliminar
                                     </button>
                                 </td>

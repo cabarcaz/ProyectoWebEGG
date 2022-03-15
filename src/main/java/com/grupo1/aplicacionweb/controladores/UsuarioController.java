@@ -57,13 +57,14 @@ public class UsuarioController {
     // @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')") ---> activar una vez
     // creado un usuario ADMIN o USER
     @PostMapping("/guardar")
-    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model,
-            RedirectAttributes redirect,
-            @RequestParam("file") MultipartFile imagen, @RequestParam("password2") String password2) {
+    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect,
+                          @RequestParam("file") MultipartFile imagen, @RequestParam("password2") String password2) {
+
         if (result.hasErrors()) {
             System.out.println("error result");
             return "/usuario/nuevo";
         }
+
         if (usuario == null) {
             System.out.println("usuario null");
             redirect.addFlashAttribute("error", "El usuario es nulo");
