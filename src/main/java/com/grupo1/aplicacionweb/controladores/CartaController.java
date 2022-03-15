@@ -12,8 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/carta")
 public class CartaController {
@@ -53,7 +56,7 @@ public class CartaController {
         List<Receta> recetasEntradas = recetaServicio.listarPorCategoria(CategoriaPlato.ENTRADA);
         model.addAttribute("recetasEntradas", recetasEntradas);
         List<Receta> recetasPrincpales = recetaServicio.listarPorCategoria(CategoriaPlato.PRINCIPAL);
-        model.addAttribute("recetasPrincpales", recetasPrincpales);
+        model.addAttribute("recetasPrincipales", recetasPrincpales);
         List<Receta> recetasPostres = recetaServicio.listarPorCategoria(CategoriaPlato.POSTRE);
         model.addAttribute("recetasPostres", recetasPostres);
 
@@ -63,7 +66,78 @@ public class CartaController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Carta carta, RedirectAttributes redirect) {
+        List<Receta> listaLunes = new ArrayList<>();
+        List<Receta> listaMartes = new ArrayList<>();
+        List<Receta> listaMiercoles = new ArrayList<>();
+        List<Receta> listaJueves = new ArrayList<>();
+        List<Receta> listaViernes = new ArrayList<>();
+        List<Receta> listaSabado = new ArrayList<>();
+        List<Receta> listaDomingo = new ArrayList<>();
         try {
+            //Lunes
+                for (Receta aux : carta.getLunes()) {
+                    if (aux.getId()!=null) {
+                        listaLunes.add(recetaServicio.findById(aux.getId()));
+                    }
+                }
+            System.out.println("llegamos acá -----------------------------------------------------------");
+
+            carta.setLunes(listaLunes);
+
+            //Martes
+            for (Receta aux : carta.getMartes()) {
+                if (aux.getId()!=null) {
+                    listaMartes.add(recetaServicio.findById(aux.getId()));
+                }
+            }
+
+            carta.setMartes(listaMartes);
+
+            //Miercoles
+            for (Receta aux : carta.getMiercoles()) {
+                if (aux.getId()!=null) {
+                    listaMiercoles.add(recetaServicio.findById(aux.getId()));
+                }
+            }
+            carta.setMiercoles(listaMiercoles);
+
+            //Jueves
+            for (Receta aux : carta.getJueves()) {
+                if (aux.getId()!=null) {
+                    listaJueves.add(recetaServicio.findById(aux.getId()));
+                }
+            }
+            carta.setJueves(listaJueves);
+
+            //Viernes
+            for (Receta aux : carta.getViernes()) {
+                if (aux.getId()!=null) {
+                    listaViernes.add(recetaServicio.findById(aux.getId()));
+                }
+            }
+            carta.setViernes(listaViernes);
+
+            //Sabado
+            for (Receta aux : carta.getSabado()) {
+                if (aux.getId()!=null) {
+                    listaSabado.add(recetaServicio.findById(aux.getId()));
+                }
+            }
+            carta.setSabado(listaSabado);
+
+            //Domingo
+            for (Receta aux : carta.getDomingo()) {
+                if (aux.getId()!=null) {
+                listaDomingo.add(recetaServicio.findById(aux.getId()));}
+            }
+            carta.setDomingo(listaDomingo);
+
+            if (carta.getId() != null) {
+                carta.setSemana(carta.getSemana());
+
+            }
+
+
             cartaServicio.crear(carta);
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
@@ -76,6 +150,12 @@ public class CartaController {
     public String editar(@PathVariable("id") Integer id, Model model, RedirectAttributes redirect) {
         if (id != null) {
             model.addAttribute("carta", cartaServicio.findById(id));
+            List<Receta> recetasEntradas = recetaServicio.listarPorCategoria(CategoriaPlato.ENTRADA);
+            model.addAttribute("recetasEntradas", recetasEntradas);
+            List<Receta> recetasPrincpales = recetaServicio.listarPorCategoria(CategoriaPlato.PRINCIPAL);
+            model.addAttribute("recetasPrincipales", recetasPrincpales);
+            List<Receta> recetasPostres = recetaServicio.listarPorCategoria(CategoriaPlato.POSTRE);
+            model.addAttribute("recetasPostres", recetasPostres);
         } else {
             redirect.addFlashAttribute("error", "Error con el ID");
             return "redirect:/carta/";
@@ -95,5 +175,6 @@ public class CartaController {
         }
         return "redirect:/carta/";
     }
+
 
 }
