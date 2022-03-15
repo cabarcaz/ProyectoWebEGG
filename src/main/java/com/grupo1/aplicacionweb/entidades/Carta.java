@@ -139,5 +139,20 @@ public class Carta implements Serializable {
     public void setDomingo(List<Receta> domingo) {
         this.domingo = domingo;
     }
+
+    @Override
+    public String toString() {
+        return "Carta{" +
+                "id=" + id +
+                ", semana=" + semana +
+                ", lunes=" + lunes +
+                ", martes=" + martes +
+                ", miercoles=" + miercoles +
+                ", jueves=" + jueves +
+                ", viernes=" + viernes +
+                ", sabado=" + sabado +
+                ", domingo=" + domingo +
+                '}';
+    }
 }
 

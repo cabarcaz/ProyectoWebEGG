@@ -67,49 +67,69 @@ public class CartaController {
         List<Receta> listaDomingo = new ArrayList<>();
         try {
             //Lunes
-            for (Receta aux : carta.getLunes()) {
-                listaLunes.add(recetaServicio.findById(aux.getId()));
-            }
+                for (Receta aux : carta.getLunes()) {
+                    if (aux.getId()!=null) {
+                        listaLunes.add(recetaServicio.findById(aux.getId()));
+                    }
+                }
+            System.out.println("llegamos acá -----------------------------------------------------------");
+
             carta.setLunes(listaLunes);
 
             //Martes
             for (Receta aux : carta.getMartes()) {
-                listaMartes.add(recetaServicio.findById(aux.getId()));
+                if (aux.getId()!=null) {
+                    listaMartes.add(recetaServicio.findById(aux.getId()));
+                }
             }
+
             carta.setMartes(listaMartes);
 
             //Miercoles
             for (Receta aux : carta.getMiercoles()) {
-                listaMiercoles.add(recetaServicio.findById(aux.getId()));
+                if (aux.getId()!=null) {
+                    listaMiercoles.add(recetaServicio.findById(aux.getId()));
+                }
             }
             carta.setMiercoles(listaMiercoles);
 
             //Jueves
             for (Receta aux : carta.getJueves()) {
-                listaJueves.add(recetaServicio.findById(aux.getId()));
+                if (aux.getId()!=null) {
+                    listaJueves.add(recetaServicio.findById(aux.getId()));
+                }
             }
             carta.setJueves(listaJueves);
 
             //Viernes
             for (Receta aux : carta.getViernes()) {
-                listaViernes.add(recetaServicio.findById(aux.getId()));
+                if (aux.getId()!=null) {
+                    listaViernes.add(recetaServicio.findById(aux.getId()));
+                }
             }
             carta.setViernes(listaViernes);
 
             //Sabado
             for (Receta aux : carta.getSabado()) {
-                listaSabado.add(recetaServicio.findById(aux.getId()));
+                if (aux.getId()!=null) {
+                    listaSabado.add(recetaServicio.findById(aux.getId()));
+                }
             }
             carta.setSabado(listaSabado);
 
             //Domingo
             for (Receta aux : carta.getDomingo()) {
-                listaDomingo.add(recetaServicio.findById(aux.getId()));
-            }
-            if (carta.getId() != null) {
-                carta.setSemana(carta.getSemana());
+                if (aux.getId()!=null) {
+                listaDomingo.add(recetaServicio.findById(aux.getId()));}
             }
             carta.setDomingo(listaDomingo);
+
+            if (carta.getId() != null) {
+                carta.setSemana(carta.getSemana());
+
+            }
+
+
             cartaServicio.crear(carta);
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
