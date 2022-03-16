@@ -46,7 +46,8 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(255, 255, 255, 0.541)">
       <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/inicio/}"><img src="/imagenes/landing/ico.png" alt="" width="60" height="48" class="d-inline-block align-text-top"> </a>
+        <a class="navbar-brand" th:href="@{/inicio/}"><img src="/imagenes/landing/ico.png" alt="" width="60" height="48"
+            class="d-inline-block align-text-top"> </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -55,16 +56,18 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Carta</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(255, 255, 255, 0.541)">
-                <li><a class="dropdown-item" th:href="@{/carta/crear}">Semanal</a></li>
-                <li><a class="dropdown-item" th:href="@{/carta/}">Lista</a></li>
+                aria-expanded="false">Menú</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                style="background-color: rgba(255, 255, 255, 0.541)">
+                <li><a class="dropdown-item" th:href="@{/carta/crear}">Crear menú semanal</a></li>
+                <li><a class="dropdown-item" th:href="@{/carta/}">Lista meñu creados</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Receta</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(255, 255, 255, 0.541)">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                style="background-color: rgba(255, 255, 255, 0.541)">
                 <li><a class="dropdown-item" th:href="@{/receta/crear}">Nuevo</a></li>
                 <li><a class="dropdown-item" th:href="@{/receta/}">Lista</a></li>
               </ul>
@@ -72,7 +75,8 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false"> Usuario</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(255, 255, 255, 0.541)">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                style="background-color: rgba(255, 255, 255, 0.541)">
                 <li><a class="dropdown-item" th:href="@{/usuario/crear}">Nuevo</a></li>
                 <li><a class="dropdown-item" th:href="@{/usuario/}">Lista</a></li>
               </ul>
@@ -85,12 +89,10 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle fas fa-user fa-fw" id="navbarDropdown" href="#" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false"></a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="background-color: rgba(255, 255, 255, 0.541)">
-                <li><a class="dropdown-item" th:href="@{/usuario/}">Settings</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"style="background-color: rgba(255, 255, 255, 0.541)" >
+                <li th:each="usuario:${usuarios}" th:text="Perfil"><a  class="dropdown-item" th:href="@{/usuario/editar/} + ${usuario.id}">Configuración</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" th:href="@{/logout}">Salir</a></li>
               </ul>
             </li>
           </ul>
@@ -138,4 +140,5 @@
   </footer>
 
 </body>
+
 </html>
