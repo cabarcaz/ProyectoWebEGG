@@ -36,6 +36,15 @@ public class CartaController {
         model.addAttribute("h1", "Listado de Cartas");
         return "/carta/lista";
     }
+    @GetMapping("/listaReceta")
+    public String listaRecetaCarta(Model model){
+        model.addAttribute("titulo", "Detalle Simple");
+        model.addAttribute("h1", "Lista de Recetas");
+        List<Receta> listadoRecetas = recetaServicio.listar();
+        model.addAttribute("recetas", listadoRecetas);
+
+        return "/carta/listarecetacarta";
+    }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/crear")
