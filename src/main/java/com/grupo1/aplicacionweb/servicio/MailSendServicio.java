@@ -16,10 +16,9 @@ public class MailSendServicio implements IMailsend{
 
 @Override
 @Async
-    public void enviar (String email){
+    public void enviar (String email, String cuerpo){
 
         SimpleMailMessage mensaje = new SimpleMailMessage();
-String cuerpo = "El registro de la receta a sido realizado de forma correcta.";
 String titulo = "Registro de Receta";
 mensaje.setFrom("recetapp.egg@gmail.com");
 mensaje.setTo(email);
