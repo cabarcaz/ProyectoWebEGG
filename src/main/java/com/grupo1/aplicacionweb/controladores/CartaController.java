@@ -33,7 +33,7 @@ public class CartaController {
         List<Carta> listaCarta = cartaServicio.listar();
         model.addAttribute("cartas", listaCarta);
         model.addAttribute("titulo", "Listado de Cartas");
-        model.addAttribute("h1", "Listado de Cartas");
+        model.addAttribute("h1", "Listado de Menús");
         return "/carta/lista";
     }
     @GetMapping("/listaReceta")
@@ -50,16 +50,9 @@ public class CartaController {
     @GetMapping("/crear")
     public String crearCarta(Model model) {
         Carta carta = new Carta();
-        // for (int i = 0; i < 3; ++i) {carta.getLunes().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getMartes().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getMiercoles().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getJueves().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getViernes().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getSabado().add(new Receta());}
-        // for (int i = 0; i < 3; ++i) {carta.getDomingo().add(new Receta());}
 
         model.addAttribute("titulo", "Formulario");
-        model.addAttribute("h1", "Planificación Semanal");
+        model.addAttribute("h1", "Planificación  Menú Semanal");
         model.addAttribute("carta", carta);
 
         List<Receta> recetasEntradas = recetaServicio.listarPorCategoria(CategoriaPlato.ENTRADA);
@@ -169,7 +162,7 @@ public class CartaController {
             redirect.addFlashAttribute("error", "Error con el ID");
             return "redirect:/carta/";
         }
-
+        model.addAttribute("h1", "Editar Menú");
         return "/carta/editar";
     }
 

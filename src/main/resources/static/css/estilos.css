@@ -41,3 +41,21 @@ border:1px solid rgba(245, 171, 11, 0.267);
 	bottom:15px;
 	right:15px;
 }
+
+
+/* Botones */
+.mostrar{
+  background: rgb(0, 198, 247);
+}
+.nueva{
+  background: rgb(10, 248, 2);
+}
+.crear{
+  background: rgb(255, 196, 1);
+}
+.back{
+  background: rgb(0, 255, 191);
+}
+.editar{
+  background: rgb(228, 253, 2);
+}

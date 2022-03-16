@@ -44,7 +44,7 @@ public class UsuarioController {
     public String listar(Model model) {
         List<Usuario> listaUsuario = usuarioServicio.listar();
         model.addAttribute("usuarios", listaUsuario);
-        model.addAttribute("titulo", "Listado Usuaarios");
+        model.addAttribute("titulo", "Listado Usuarios");
         model.addAttribute("h1", "Listado de Usuarios");
         return "/usuario/lista";
     }
@@ -54,7 +54,7 @@ public class UsuarioController {
     @GetMapping("/crear")
     public String crearUsuario(Usuario usuario, Model model) {
         model.addAttribute("titulo", "Formulario");
-        model.addAttribute("h1", "Formulario ingreso nuevo usuario");
+        model.addAttribute("h1", "Registro de nuevo usuario");
         model.addAttribute("usuario", usuario);
         return "/usuario/nuevo";
     }
@@ -123,6 +123,7 @@ public class UsuarioController {
             List<Roles> roles = new ArrayList<>(Arrays.asList(Roles.values()));
             model.addAttribute("usuario", usuarioServicio.findById(id));
             model.addAttribute("roles", roles);
+            model.addAttribute("titulo", "Editar Usuario");
             model.addAttribute("h1", "Editar usuario");
         }
 
