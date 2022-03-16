@@ -47,16 +47,6 @@ public class RecetaController {
         return "/receta/lista";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-    @GetMapping("/cards")
-    public String listaCards(Model model) {
-        List<Receta> listaRecetas = recetaServicio.listar();
-
-        model.addAttribute("recetas", listaRecetas);
-        model.addAttribute("titulo", "Listado de  Recetas");
-        model.addAttribute("h1", "Lista de Recetas Existentes");
-        return "/carta/listarecetacarta";
-    }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/crear")
