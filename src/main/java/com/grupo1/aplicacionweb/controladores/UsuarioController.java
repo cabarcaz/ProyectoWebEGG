@@ -112,6 +112,7 @@ public class UsuarioController {
             List<Roles> roles = new ArrayList<>(Arrays.asList(Roles.values()));
             model.addAttribute("usuario", usuarioServicio.findById(id));
             model.addAttribute("roles", roles);
+            model.addAttribute("h1", "Editar usuario");
         }
 
         return "/usuario/editar";
