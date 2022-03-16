@@ -2,8 +2,11 @@ package com.grupo1.aplicacionweb.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "cartas")
@@ -14,27 +17,55 @@ public class Carta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private Date semana;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_lunes",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> lunes = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_martes",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> martes = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_miercoles",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> miercoles = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_jueves",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> jueves = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_viernes",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> viernes = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_sabado",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> sabado = new ArrayList<>();
-    @OneToMany(mappedBy = "cartas", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "carta_receta_domingo",
+            joinColumns = {@JoinColumn(name = "carta_id")},
+            inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> domingo = new ArrayList<>();
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
-
-    public static void setSerialVersionUID(long serialVersionUID) {
-        Carta.serialVersionUID = serialVersionUID;
     }
 
     public Integer getId() {
@@ -43,6 +74,14 @@ public class Carta implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Date getSemana() {
+        return semana;
+    }
+
+    public void setSemana(Date semana) {
+        this.semana = semana;
     }
 
     public List<Receta> getLunes() {
@@ -100,6 +139,20 @@ public class Carta implements Serializable {
     public void setDomingo(List<Receta> domingo) {
         this.domingo = domingo;
     }
-}
 
+    @Override
+    public String toString() {
+        return "Carta{" +
+                "id=" + id +
+                ", semana=" + semana +
+                ", lunes=" + lunes +
+                ", martes=" + martes +
+                ", miercoles=" + miercoles +
+                ", jueves=" + jueves +
+                ", viernes=" + viernes +
+                ", sabado=" + sabado +
+                ", domingo=" + domingo +
+                '}';
+    }
+}
 

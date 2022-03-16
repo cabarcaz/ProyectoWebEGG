@@ -23,6 +23,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        
         auth.userDetailsService(usuarioServicio).passwordEncoder(new BCryptPasswordEncoder());
     }
 
@@ -32,7 +33,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/*", "/js/*", "/img/*").permitAll()
                 .and().formLogin()
-                .loginPage("/") // Que formulario esta mi login
+                .loginPage("/") // Que formulario est                .successHandler(loginSuccessMessage)
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("email") // Como viajan los datos del logueo
                 .passwordParameter("password")// Como viajan los datos del logueo
@@ -42,5 +43,8 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
                 .and().logout() // Aca configuro la salida
                 .permitAll().and().csrf().disable();
     }
+
+    
+
 
 }
