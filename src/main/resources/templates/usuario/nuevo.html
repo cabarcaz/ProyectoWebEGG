@@ -7,83 +7,81 @@
     <header th:replace="/plantilla/plantilla::header"></header>
 
     <main>
+
         <div class="container">
-            <div class="bg-card col col-md-6 border mt-4">
-                <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
+            <div class="d-flex">
+                <div class="bg-card col col-md-6 border border-dark border-2 mt-4 fs-2 rounded-3">
+                    <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
+                </div>
             </div>
-            <div class="py-4 bg-card  border border-secondary pt-3 mt-4">
 
-                <form class="justify-content-center align-content-center align-items-center border border-danger border-3 row mx-3 py-2 my-2 align-center"
-                    th:action="@{/usuario/guardar}" method="post" th:object="${usuario}" enctype="multipart/form-data">
-                    <div class="form-group row justify-content-center align-content-center">
-                        <label for="nombre" class="col-sm-2 col-form-label col-form-label-sm">Nombre</label>
-                        <div class="col-sm-4 mb-2">
-                            <input type="text" class="form-control form-control-sm" th:field="*{nombre}" id="nombre"
-                                placeholder="Nombre">
+            <form
+                class="row mx-3 py-2 my-2 align-items-center fw-bolder text-start ps-5 text-center border border-dark border-2 mt-4 bg-card rounded-3"
+                th:action="@{/usuario/guardar}" method="post" th:object="${usuario}" enctype="multipart/form-data">
+
+                <div class="form-group row pb-2">
+                    <label for="nombre" class="col-sm-2 col-form-label col-form-label-sm">Nombre</label>
+                    <div class="col-sm-4"> <input type="text" class="form-control form-control-sm" th:field="*{nombre}" id="nombre" placeholder="Nombre">
+                    </div>
+                    <div class="col-sm-4 text-danger">
+                        <p class="alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errorclass="error"th:errors="*{nombre}" />
+                    </div>
+                </div>    
+                    
+                        <div class="form-group row  pb-2">
+                            <label for="apellido" class="col-sm-2 col-form-label col-form-label-sm">Apellido</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control form-control-sm" th:field="*{apellido}" id="apellido"placeholder="Apellido">
+                            </div>
+                            <div class="col-sm-4 text-danger">
+                                <p class="alert-danger" th:if="${#fields.hasErrors('apellido')}" th:errorclass="error" th:errors="*{apellido}" />
+                            </div>
                         </div>
-                        <div class="col-sm-4 text-danger">
-                            <p class="alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errorclass="error"
-                                th:errors="*{nombre}" >
+                    
+                        <div class="form-group row  pb-2">
+                            <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+                            <div class="col-sm-4">
+                                <input type="email" class="form-control form-control-sm" th:field="*{email}" id="email"placeholder="Email">
+                            </div>
+                            <div class="col-sm-4 text-danger">
+                                <p class="alert-danger" th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}" />
+                            </div>
                         </div>
+                    
+                        <div class="form-group row  pb-2">
+                            <label for="file" class="col-sm-2 col-form-label col-form-label-sm">Foto de Perfil</label>
+                            <div class="col-sm-4">
+                                <input type="file" class="form-control" id="file" name="file">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row  pb-2">
+                            <label for="Contraseña" class="col-sm-2 col-form-label col-form-label-sm">Contraseña</label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control form-control-sm" th:field="*{password}"id="Contraseña" placeholder="Ingrese Contraseña">
+                            </div>
+                            <div class="col-sm-4 text-danger">
+                                <p class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row  pb-2">
+                            <label for="Contraseña2" class="col-sm-2 col-form-label col-form-label-sm">Repetir Contraseña</label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control form-control-sm" id="Contraseña2" placeholder="Repita Contraseña" name="password2">
+                            </div>
+                            <div class="col-sm-4 text-danger">
+                                <p class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errorclass="error"th:errors="*{password}" />
+                            </div>
+                        </div>
+                    
+                    <div class=" mb-3 fs-2  pb-2">
+                        <button class="btn crear btn-lg border border-dark border-2 rounded-3" type="submit">Crear usuario</button>
+                        <a class="back btn btn-lg border border-dark border-2 rounded-3" onclick="goBack()">Regresar</a>
                     </div>
 
-                    <div class="form-group row justify-content-center align-content-center">
-                        <div class="col-sm-4 mb-2">
-                            <input type="text" class="form-control form-control-sm" th:field="*{apellido}" id="apellido"
-                                th:errors="*{apellido}" />
-                        </div>
-                    </div>
-
-                    <div class="form-group row justify-content-center align-content-center">
-                        <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
-                        <div class="col-sm-4 mb-2">
-                            <input type="email" class="form-control form-control-sm" th:field="*{email}" id="email"
-                                placeholder="Email">
-                        </div>
-                        <div class="col-sm-4 text-danger">
-                            <p class="alert-danger" th:if="${#fields.hasErrors('email')}" th:errorclass="error"
-                                th:errors="*{email}" >
-                        </div>
-                    </div>
-
-                  <!---- <div class="form-group row justify-content-center align-content-center ">
-                        <label for="file" class=" col-sm-2 col-form-label col-form-label-sm">Foto de Perfil</label>
-                <div class="col-sm-4 mb-2">
-                            <input type="file" class="form-control form-control-sm" id="file" name="file">
-                        </div>
-                    </div>-->
-
-                    <div class="form-group row justify-content-center align-content-center">
-                        <label for="Contraseña" class="col-sm-2 col-form-label col-form-label-sm">Contraseña</label>
-                        <div class="col-sm-4 mb-2">
-                            <input type="password" class="form-control form-control-sm" th:field="*{password}"
-                                id="Contraseña" placeholder="Ingrese Contraseña">
-                        </div>
-                        <div class="col-sm-4 text-danger">
-                            <p class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errorclass="error"
-                                th:errors="*{password}" >
-                        </div>
-                    </div>
-
-                    <div class="form-group row justify-content-center align-content-center">
-                        <label for="Contraseña2" class="col-sm-2 col-form-label col-form-label-sm">Repetir
-                            Contraseña</label>
-                        <div class="col-sm-4">
-                            <input type="password" class="form-control form-control-sm" id="Contraseña2"
-                                placeholder="Repita Contraseña" name="password2">
-                        </div>
-                        <div class="col-sm-4 text-danger">
-                            <p class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errorclass="error"
-                                th:errors="*{password}" >
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <button class="btn btn-primary" type="submit">Enviar</button>
-                    </div>
-                </form>
-
-            </div>
+            </form>
+            
         </div>
     </main>
 

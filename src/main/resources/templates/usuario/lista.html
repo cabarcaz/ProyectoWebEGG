@@ -4,21 +4,7 @@
 <head th:replace="/plantilla/plantilla::head"></head>
 
 <body>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <header th:replace="/plantilla/plantilla::header"></header>
-    <main>
-        <div class="container ">
 
-            <div class=" mt-3">
-                <form class="row g-3">
-                    <div class="">
-                        <h2 class=" text-center py-4 bg-card mt-2 col col-md-6" th:text="${h1}">
-                        </h2>
-
-=======
-=======
->>>>>>> d4a7929edd3753d00dd91f65bf0f427e98f1306d
 <header th:replace="/plantilla/plantilla::header"></header>
 <main>
     <div class="container ">
@@ -28,26 +14,54 @@
                     <h2 class=" text-center py-4 bg-card mt-2 col col-md-6" th:text="${h1}"></h2>
                     <div class="col">
                         <a class="btn btn-primary" th:href="@{/usuario/crear}">Crear Usuario</a>
-<<<<<<< HEAD
->>>>>>> b510cdefce66e15368442947040b26b6b733b125
-=======
->>>>>>> d4a7929edd3753d00dd91f65bf0f427e98f1306d
-                    </div>
 
-                    <div class="py-2 ms-5">
-                </form>
+
+    <header th:replace="/plantilla/plantilla::header"></header>
+    <main>
+        <div class="container ">
+
+
+            <div class="d-flex">
+                <div class="bg-card col col-md-6 border border-dark border-2 mt-4 fs-2 rounded-3">
+                    <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
+                </div>
+                <div class="col col-md-6 mt-4 text-center">
+                    <a th:href="@{/usuario/crear}" class="btn btn-lg nueva border border-dark border-2 rounded-3 ms-3" type="button" target="_blank">Nuevo Usuario</a>
+                    <a class="back btn btn-lg border border-dark border-2 rounded-3" onclick="goBack()">Regresar</a>
+                </div>
             </div>
-        </div>
-        <!-- <a th:href="@{/usuario/crear}" class="       ">Crear usuario </a>
-                <a onclick="goBack()" href="#" class="btn btn-success ms-5">Volver</a> -->
-        <!-- <a class="btn btn-success btn ms-5" onclick="goBack()" th:href="@{/inicio/}" -->
-        <!-- value="Regresar">Regresar</a> -->
 
-        <div class="mt-3">
-            <a th:href="@{/usuario/crear}" class="btn btn-primary btn-lg" type="button" target="_blank">Crear Usuario</a>
-            <a th:href="@{/inicio/}" class="btn btn-primary btn-lg" type="button" target="_blank">Regresar</a>
+            <div class="">
+                <table class="table text-center border border-dark border-2 mt-4 bg-card rounded-3">
+                    <thead>
+                        <tr class="text-uppercase">
+                            <th scope="col">Foto</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Eliminar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr th:if="${usuario.getBaja() == false}" th:each="usuario:${usuarios}" class="fw-bolder">
+                            <td><img class="center lista-img" th:src="@{'/imagenes/usuario/' + ${usuario.foto}}" th:alt="${usuario.foto}"></td>
+                            <td class="text-capitalize" th:text="${usuario.nombre}"></td>
+                            <td class="text-capitalize" th:text="${usuario.apellido}"></td>
+                            <td th:text="${usuario.email}"></td>
+                            <td th:text="${usuario.rol}"></td>
+                            <td><a th:href="@{/usuario/editar/} + ${usuario.id}" class="btn editar border border-dark border-2 rounded-3">Editar</a></td>
+                            <td><a th:href="@{/usuario/eliminar/} + ${usuario.id}" class="btn btn-danger  border border-dark border-2 rounded-3">Eliminar</a></td>
+                        </tr>
+                    </tbody>
+                    <p th:if="${usuarios.isEmpty}">No hay usuarios para mostrar</p>
+                </table>
+            </div>
 
         </div>
+
 
 
 
@@ -78,23 +92,7 @@
 
                 </thead>
                 <tbody>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    <tr th:if="${usuario.getBaja() == false}" th:each="usuario:${usuarios}">
-                        <td><img class="center lista-img" th:src="@{'/imagenes/usuario/' + ${usuario.foto}}"
-                                th:alt="${usuario.foto}"></td>
-                        <td th:text="${usuario.id}"></td>
-                        <td th:text="${usuario.nombre}"></td>
-                        <td th:text="${usuario.apellido}"></td>
-                        <td th:text="${usuario.email}"></td>
-                        <td th:text="${usuario.rol}"></td>
-                        <td><a th:href="@{/usuario/editar/} + ${usuario.id}" class="btn btn-primary">Editar</a></td>
-                        <td><a th:href="@{/usuario/eliminar/} + ${usuario.id}" class="btn btn-danger">Eliminar</a>
-                        </td>
-                    </tr>
-=======
-=======
->>>>>>> d4a7929edd3753d00dd91f65bf0f427e98f1306d
+
                 <tr th:if="${usuario.getBaja() == false}" th:each="usuario:${usuarios}">
                     <td><img class="center lista-img" th:src="@{'/imagenes/usuario/' + ${usuario.foto}}"
                              th:alt="${usuario.foto}"></td>
@@ -106,10 +104,8 @@
                     <td><a th:href="@{/usuario/editar/} + ${usuario.id}" class="btn btn-primary">Editar</a></td>
                     <td><a th:href="@{/usuario/eliminar/} + ${usuario.id}" class="btn btn-danger">Eliminar</a></td>
                 </tr>
-<<<<<<< HEAD
->>>>>>> b510cdefce66e15368442947040b26b6b733b125
-=======
->>>>>>> d4a7929edd3753d00dd91f65bf0f427e98f1306d
+
+
                 </tbody>
                 <p th:if="${usuarios.isEmpty}">No hay usuarios para mostrar</p>
             </table>
@@ -118,21 +114,17 @@
 
 
         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        </div>
+    </div>
+</main>
+<footer th:replace="/plantilla/plantilla::footer"></footer>
+
+    </div>
+</main>
+<footer th:replace="/plantilla/plantilla::footer"></footer>
+
     </main>
     <footer th:replace="/plantilla/plantilla::footer"></footer>
-=======
-    </div>
-</main>
-<footer th:replace="/plantilla/plantilla::footer"></footer>
->>>>>>> b510cdefce66e15368442947040b26b6b733b125
-=======
-    </div>
-</main>
-<footer th:replace="/plantilla/plantilla::footer"></footer>
->>>>>>> d4a7929edd3753d00dd91f65bf0f427e98f1306d
+
 
 </body>
 
