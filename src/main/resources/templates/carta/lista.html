@@ -5,49 +5,88 @@
 
 <body>
 
-  <header th:replace="/plantilla/plantilla::header"></header>
+<header th:replace="/plantilla/plantilla::header"></header>
 
-  <main>
+<main>
 
     <div class="container">
-      <table class="table  table-hover  table-bordered border border-3 bg-card">
-        <thead class="border border-3">
-
-
-          <div class="container d-flex">
-            <div class="bg-card col col-md-6 border mt-4                  ">
-              <h2 class="text-center py-3 fs-2        " th:text="${h1}"></h2>
+        <table class="table  table-hover  table-bordered border border-3 bg-card">
+            <thead class="border border-3">
+            <div class="container d-flex">
+                <div class="bg-card col col-md-6 border mt-4">
+                    <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
+                </div>
+                <br>
+                <div class="py-2 ms-5">
+                    <a th:href="@{/carta/crear}" class="btn btn-primary ms-5">Crear Carta </a>
+                    <a onclick="goBack()" href="#" class="btn btn-success ms-5">Volver</a>
+                </div>
             </div>
-            <div class="py-2 ms-5    col col-md6                 ">
-              <a th:href="@{/carta/crear}" class="btn btn-primary ms-5 ">Crear Carta </a>
-              <a onclick="goBack()" href="#" class="btn btn-success ms-5">Volver</a>
-            </div>
-          </div>
-        </thead>
-        <div class="">
-          <table class="table table-striped bg-card">
-            <thead>
-              <tr>
-                <th> Nombre de Cartas</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-
-              </tr>
             </thead>
-            <tbody>
-              <tr th:each="carta:${cartas}">
-                <td th:text="${carta.nombre}"></td>
-                <td><a th:href="@{/carta/editar/} + ${carta.id}" class="btn btn-warning">Editar</a></td>
-                <td><a th:href="@{/carta/eliminar/} + ${carta.id}" class="btn btn-danger">Eliminar</a></td>
-              </tr>
-            </tbody>
-            <p th:if="${cartas.isEmpty}">No hay cartas para mostrar</p>
-          </table>
-
-        </div>
-
+            <div class="">
+                <table class="table table-striped bg-card">
+                    <thead>
+                    <tr>
+                        <th>Fecha de creacion</th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miercoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                        <th>Sabado</th>
+                        <th>Domingo</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="carta:${cartas}">
+                        <td th:text="${carta.semana}"></td>
+                        <td>
+                            <select name="" id="">
+                                <option th:each="receta : ${carta.lunes}" value="" th:text="${receta.nombre}"></option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="" id="">
+                                <option th:each="receta : ${carta.martes}" value="" th:text="${receta.nombre}"></option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="" id="">
+                                <option th:each="receta : ${carta.miercoles}" value="" th:text="${receta.nombre}"></option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="" id="">
+                                <option th:each="receta : ${carta.jueves}" value="" th:text="${receta.nombre}"></option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="" id="">
+                                <option th:each="receta : ${carta.viernes}" value="" th:text="${receta.nombre}"></option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="" id="">
+                                <option th:each="receta : ${carta.sabado}" value="" th:text="${receta.nombre}"></option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="" id="">
+                                <option th:each="receta : ${carta.domingo}" value="" th:text="${receta.nombre}"></option>
+                            </select>
+                        </td>
+                        <td><a th:href="@{/carta/editar/} + ${carta.id}" class="btn btn-warning">Editar</a></td>
+                        <td><a th:href="@{/carta/eliminar/} + ${carta.id}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    </tbody>
+                    <p th:if="${cartas.isEmpty}">No hay cartas para mostrar</p>
+                </table>
+            </div>
+        </table>
     </div>
-  </main>
+</main>
 </body>
 <footer th:replace="/plantilla/plantilla::footer"></footer>
 

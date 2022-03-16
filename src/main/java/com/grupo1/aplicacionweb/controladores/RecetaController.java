@@ -47,6 +47,7 @@ public class RecetaController {
         return "/receta/lista";
     }
 
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/crear")
     public String crearReceta(Model model) {
@@ -115,7 +116,6 @@ public class RecetaController {
         }
 
         recetaServicio.crear(receta);
-        //mailsend.enviar("");
         ss.setComplete();
 
         return "redirect:/receta/";

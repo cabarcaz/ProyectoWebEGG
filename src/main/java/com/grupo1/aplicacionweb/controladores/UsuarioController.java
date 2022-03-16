@@ -2,7 +2,9 @@ package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Usuario;
 import com.grupo1.aplicacionweb.enumeraciones.Roles;
+import com.grupo1.aplicacionweb.interfaz.IMailsend;
 import com.grupo1.aplicacionweb.repositorios.UsuarioDao;
+import com.grupo1.aplicacionweb.servicio.MailSendServicio;
 import com.grupo1.aplicacionweb.servicio.UsuarioServicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
+
+    @Autowired
+    private IMailsend iMailsend;
 
     @Autowired
     private UsuarioServicio usuarioServicio;
@@ -97,11 +102,17 @@ public class UsuarioController {
         try {
             System.out.println("creando usuario");
             usuarioServicio.crear(usuario);
+
+            iMailsend.enviar(usuario.getEmail(), "Bienvenide " + usuario.getNombre());
+
+
         } catch (Exception e) {
             System.out.println("error al crear usuario");
             redirect.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/crear";
         }
+
+
 
         return "redirect:/usuario/";
     }
@@ -119,6 +130,7 @@ public class UsuarioController {
             List<Roles> roles = new ArrayList<>(Arrays.asList(Roles.values()));
             model.addAttribute("usuario", usuarioServicio.findById(id));
             model.addAttribute("roles", roles);
+            model.addAttribute("h1", "Editar usuario");
         }
 
         return "/usuario/editar";
