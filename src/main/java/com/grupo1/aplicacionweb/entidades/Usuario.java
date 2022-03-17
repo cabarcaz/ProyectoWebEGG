@@ -3,6 +3,7 @@ package com.grupo1.aplicacionweb.entidades;
 import java.io.Serializable;
 
 import com.grupo1.aplicacionweb.enumeraciones.Roles;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -40,7 +41,8 @@ public class Usuario implements Serializable {
     @Column(name = "foto")
     private String foto;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date alta;
 
     @Column(name = "baja")

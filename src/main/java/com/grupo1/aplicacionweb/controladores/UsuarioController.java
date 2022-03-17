@@ -63,13 +63,15 @@ public class UsuarioController {
     // creado un usuario ADMIN o USER
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect,
-                          @RequestParam("file") MultipartFile imagen, @RequestParam("password2") String password2) {
+                          @RequestParam(value = "file",required = false) MultipartFile imagen, @RequestParam(value = "password2",required = false) String password2) {
 
         if (result.hasErrors()) {
             System.out.println("error result");
             return "/usuario/nuevo";
         }
-
+        if (usuario.getId() != null) {
+            usuario.setAlta(usuario.getAlta());
+        }
         if (usuario == null) {
             System.out.println("usuario null");
             redirect.addFlashAttribute("error", "El usuario es nulo");

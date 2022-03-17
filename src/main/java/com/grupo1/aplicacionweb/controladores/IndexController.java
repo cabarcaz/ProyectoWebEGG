@@ -14,42 +14,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class IndexController {
 
     @GetMapping("/")
-    // public String loginIndex(Model model, @RequestParam(required = false) String error,
-    //         @RequestParam(required = false) String email,
-    //         @RequestParam(required = false) String logout,
-    //         RedirectAttributes attribute){
-    //     if (error != null) {
-    //         model.addAttribute("error", "el usuario ingresado o la contraseña son incorrectos");
-    //     }
-    //     if (email != null) {
-    //         model.addAttribute("email", email);
-    //     }
-    //     if (logout != null) {
-    //         attribute.addFlashAttribute("success", "SESION FINALIZADA CON EXITO.");
-    //         model.addAttribute("success", "SESION FINALIZADA CON EXITO.");
-    //     }
-    //     model.addAttribute("titulo", "Inicio");
-
-    //     return "/index";
-    // }
-
     public String login(@RequestParam(value = "error", required = false) String error,
-      @RequestParam(value = "logout", required = false) String logout, Model model, Principal principal,
-      RedirectAttributes attribute) {
-    if (error != null) {
-      model.addAttribute("error", "ERROR DE VALIDACION: Usuario y/o contraseña son incorrectos");
-    }
-    if (principal != null) {
-      attribute.addFlashAttribute("warning", " ATENCION: ya ha iniciado sesión.");
-      return "redirect:/";
-    }
-    if (logout != null) {attribute.addFlashAttribute("success", "SESION FINALIZADA CON EXITO.");
-      model.addAttribute("success", "SESION FINALIZADA CON EXITO.");
-    }
+                        @RequestParam(value = "logout", required = false) String logout, Model model, Principal principal,
+                        RedirectAttributes attribute) {
+        if (error != null) {
+            model.addAttribute("error", "ERROR DE VALIDACION: Usuario y/o contraseña son incorrectos");
+        }
+        if (principal != null) {
+            attribute.addFlashAttribute("warning", " ATENCION: ya ha iniciado sesión.");
+            return "redirect:/";
+        }
+        if (logout != null) {
+            attribute.addFlashAttribute("success", "SESION FINALIZADA CON EXITO.");
+            model.addAttribute("success", "SESION FINALIZADA CON EXITO.");
+        }
 
-    model.addAttribute("titulo","Inicio Sesion");
+        model.addAttribute("titulo", "Inicio Sesion");
 
-
-    return "/login/sesion";
-  }
+        return "/login/sesion";
+    }
 }
