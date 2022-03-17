@@ -20,9 +20,12 @@
             <form th:action="@{/usuario/guardar}" th:object="${usuario}" method="post" enctype="multipart/form-data"
                 class=" text-center border border-dark border-2 my-4 bg-card rounded-3 ">
                 <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{nombre}">
+                <input type="hidden" th:field="*{apellido}">
+                <input type="hidden" th:field="*{email}">
                 <input type="hidden" th:field="*{password}">
                 <input type="hidden" th:field="*{baja}">
-                <input type="hidden" th:field="*{foto}">
+                <input hidden type="file" th:name="file" th:value="*{foto}">
 
                 <div class="fw-bolder text-start ms-5 row mt-4">
                   
