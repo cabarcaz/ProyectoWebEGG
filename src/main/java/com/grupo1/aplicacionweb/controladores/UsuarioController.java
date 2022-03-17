@@ -44,7 +44,7 @@ public class UsuarioController {
     public String listar(Model model) {
         List<Usuario> listaUsuario = usuarioServicio.listar();
         model.addAttribute("usuarios", listaUsuario);
-        model.addAttribute("titulo", "Listado Usuarios");
+        model.addAttribute("titulo", "Listado Usuaarios");
         model.addAttribute("h1", "Listado de Usuarios");
         return "/usuario/lista";
     }
@@ -54,7 +54,7 @@ public class UsuarioController {
     @GetMapping("/crear")
     public String crearUsuario(Usuario usuario, Model model) {
         model.addAttribute("titulo", "Formulario");
-        model.addAttribute("h1", "Registro de nuevo usuario");
+        model.addAttribute("h1", "Formulario ingreso nuevo usuario");
         model.addAttribute("usuario", usuario);
         return "/usuario/nuevo";
     }
@@ -62,21 +62,25 @@ public class UsuarioController {
     // @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')") ---> activar una vez
     // creado un usuario ADMIN o USER
     @PostMapping("/guardar")
-    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model,
-            RedirectAttributes redirect,
-            @RequestParam("file") MultipartFile imagen, @RequestParam("password2") String password2) {
+    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect,
+                          @RequestParam("file") MultipartFile imagen, @RequestParam("password2") String password2) {
+
         if (result.hasErrors()) {
+            System.out.println("error result");
             return "/usuario/nuevo";
         }
+
         if (usuario == null) {
+            System.out.println("usuario null");
             redirect.addFlashAttribute("error", "El usuario es nulo");
-            return "/usuario/crear";
+            return "/usuario/nuevo";
         }
         if (usuario.getId() == null) {
+            System.out.println("usuario get id null");
             if (!password2.equals(usuario.getPassword())) {
                 redirect.addFlashAttribute("error", "Las contraseñas no coinciden");
                 model.addAttribute(usuario);
-                return "/usuario/crear";
+                return "/usuario/nuevo";
             }
         }
 
@@ -94,13 +98,16 @@ public class UsuarioController {
                 redirect.addFlashAttribute("error", e.getMessage());
             }
         }
+
         try {
+            System.out.println("creando usuario");
             usuarioServicio.crear(usuario);
 
             iMailsend.enviar(usuario.getEmail(), "Bienvenide " + usuario.getNombre());
 
 
         } catch (Exception e) {
+            System.out.println("error al crear usuario");
             redirect.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/crear";
         }
@@ -123,7 +130,6 @@ public class UsuarioController {
             List<Roles> roles = new ArrayList<>(Arrays.asList(Roles.values()));
             model.addAttribute("usuario", usuarioServicio.findById(id));
             model.addAttribute("roles", roles);
-            model.addAttribute("titulo", "Editar Usuario");
             model.addAttribute("h1", "Editar usuario");
         }
 
