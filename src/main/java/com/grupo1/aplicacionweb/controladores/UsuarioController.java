@@ -67,6 +67,7 @@ public class UsuarioController {
 
         if (result.hasErrors()) {
             System.out.println("error result");
+            model.addAttribute("h1", "Formulario nuevo usuario");
             return "/usuario/nuevo";
         }
         if (usuario.getId() != null) {
@@ -82,6 +83,7 @@ public class UsuarioController {
             if (!password2.equals(usuario.getPassword())) {
                 redirect.addFlashAttribute("error", "Las contraseñas no coinciden");
                 model.addAttribute(usuario);
+                model.addAttribute("h1", "Formulario nuevo usuario");
                 return "/usuario/nuevo";
             }
         }
@@ -115,7 +117,7 @@ public class UsuarioController {
         }
 
         
-
+        model.addAttribute("h1", "Formulario nuevo usuario");
         return "redirect:/usuario/";
     }
 
