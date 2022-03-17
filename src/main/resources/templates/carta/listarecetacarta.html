@@ -23,7 +23,7 @@
 
       <div class="card-group mt-4">
         <div class="card border border-dark border-2 mt-4 fs-2 rounded-3 mx-2 card bg-card" th:each="receta:${recetas}">
-          <img class="card-img-top border border-danger" style="height:10rem;"
+          <img class="card-img-top border img-thumbnail bg-card" style="height:10rem;"
             th:src="@{'/imagenes/receta/' + ${receta.foto}}" th:alt="${receta.foto}">
           <div class="card-body">
             <h4 class="card-title" th:text="${receta.nombre}"></h4>
