@@ -17,19 +17,25 @@
             <div class="mx-4 px-4 my-4 py-4">
                 <div class="form-group row">
                     <div class="card col col-6 border-secondary" style="width: 18rem;">
-                        <img th:src="@{'/imagenes/receta/' + ${receta.foto}}" class="card-img-top ml-3"
+                        <img th:src="@{'/imagenes/receta/' + ${receta.foto}}" class="card-img-top ml-3 mt-3"
                              th:alt="${receta.foto}">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${receta.nombre}"></h5>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item fas fa-solid fa-utensils fa-1x"
-                                th:text="'Tiempo de preparacion ' + ${receta.tiempoDePreparacion}">
+
+                            <li class="list-group-item fas fa-solid fa-clock fa-1x"
+                                th:text="' Tiempo de preparacion ' + ${receta.tiempoDeCoccion}">
+                            </li>
+                            <li class="list-group-item fas fa-solid  fa-clock fa-1x"
+                                th:text="' Tiempo de preparacion ' + ${receta.tiempoDePreparacion}">
                             </li>
                             <li class="list-group-item fas fa-solid fa-clock fa-1x"
-                                th:text="'Porciones ' + ${receta.porcion}"></li>
-                            <li class="list-group-item fas fa-solid fa-person fa-1x"
-                                th:text="'Total ' + ${receta.tiempoTotal}"></li>
+                                th:text="' Total ' + ${receta.tiempoTotal}">
+                            </li>
+                            <li class="list-group-item fas fa-solid fa-utensils fa-1x"
+                                th:text="' Porciones ' + ${receta.porcion}">
+                            </li>
                         </ul>
                     </div>
 
@@ -78,6 +84,7 @@
                     </div>
                     <div class="tab-pane fade mx-4 px-4 my-4 py-4" id="profile" role="tabpanel"
                          aria-labelledby="profile-tab">
+
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Nombre de Usuario</label>
                             <input type="email" class="form-control" id="exampleFormControlInput1">
@@ -87,7 +94,6 @@
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <div class="valoracion" id="votos">
-
                             <form>
                                 <p class="clasificacion">
                                     <input id="radio1" type="radio" name="estrellas" value="5">
@@ -113,15 +119,12 @@
                             </form>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">oli</div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">kesesto?
+                    </div>
                 </div>
             </div>
-
-
         </div>
-
     </div>
-
 </main>
 
 <footer th:replace="/plantilla/plantilla::footer"></footer>
