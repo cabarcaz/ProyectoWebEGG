@@ -132,7 +132,7 @@ public class UsuarioController {
             model.addAttribute("roles", roles);
             model.addAttribute("h1", "Editar usuario");
         }
-
+        model.addAttribute("titulo", "Editar usuario");
         return "/usuario/editar";
     }
 
