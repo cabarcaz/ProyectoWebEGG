@@ -157,6 +157,7 @@ public class UsuarioController {
     @GetMapping("/pass/{id}")
     public String nuevoPass(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("usuario", usuarioServicio.findById(id));
+         model.addAttribute("h1", "Configuracion de Contraseña");
         return "/usuario/nuevo-pass";
     }
 

@@ -1,54 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" xml:lang xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head th:replace="/plantilla/plantilla::head"></head>
 
 <body>
-<header th:replace="/plantilla/plantilla::header"></header>
-<main class="container">
-    <div class="card bg-light">
-        <div class="card-body d-flex justify-content-center align-items-center">
-            <div>
-                <br>
-                <h2>Configuracion de Contraseña</h2>
-                <hr>
-                <br>
-                <form class="row g-3" th:action="@{/usuario/update-pass}" th:object="${usuario}" method="post"
-                      enctype="multipart/form-data">
-                    <input type="hidden" th:field="*{id}">
-                    <input type="hidden" th:field="*{foto}">
-                    <input type="hidden" th:field="*{nombre}">
-                    <input type="hidden" th:field="*{apellido}">
-                    <input type="hidden" th:field="*{email}">
-                    <input type="hidden" th:field="*{rol}">
-                    <input type="hidden" th:field="*{baja}">
-                    <div class="form-group row">
-                        <label for="Contraseña" class="col-sm-2 col-form-label col-form-label-sm">Contraseña</label><br>
-                        <div class="col-sm-4">
-                            <input type="password" class="form-control form-control-sm" th:field="*{password}"
-                                   id="Contraseña" placeholder="Ingrese Contraseña">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="form-group row">
-                        <label for="Contraseña2" class="col-sm-2 col-form-label col-form-label-sm"
-                               name="password2">Repetir Contraseña</label><br>
-                        <div class="col-sm-4">
-                            <input type="password" class="form-control form-control-sm" id="Contraseña2"
-                                   placeholder="Repita Contraseña" name="password2">
-                        </div>
-                    </div>
-                    <div class="card-footer text-center">
-                        <input type="submit" class="btn btn-primary" value="Guardar"/>
-                        <a class="btn btn-success" onclick="goBack()" th:href="@{/usuario/}"
-                           value="Regresar"/>Regresar</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</main>
+    <header th:replace="/plantilla/plantilla::header"></header>
+    <main>
+        <div class="container">
 
-<footer th:replace="/plantilla/plantilla::footer"></footer>
+
+
+            <div class="d-flex">
+                <div class="bg-card col col-md-6 border border-dark border-2 mt-4 fs-2 rounded-3">
+                    <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
+
+                </div>
+            </div>
+
+            <form th:action="@{/usuario/guardar}" th:object="${usuario}" method="post" enctype="multipart/form-data"
+                class=" text-center border border-dark border-2 my-4 bg-card rounded-3 ">
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{password}">
+                <input type="hidden" th:field="*{baja}">
+                <input type="hidden" th:field="*{foto}">
+
+                <div class="fw-bolder text-start ms-5 row mt-4">
+                  
+
+                   <label for="Contraseña" class="col-sm-2 col-form-label ">Contraseña</label>
+                    <div class="col-sm-4">
+                        <input type="password" class="form-control form-control-sm" th:field="*{password}"id="Contraseña" placeholder="Ingrese Contraseña">
+                    </div>
+               
+                </div>
+
+                <div class="fw-bolder text-start ms-5 row">
+                    <label for="Contraseña2" class="col-sm-2 col-form-label " name="password2">Repetir
+                        Contraseña</label>
+                    <div class="col-sm-4">
+                        <input type="password" class="form-control form-control-sm" id="Contraseña2"
+                            placeholder="Repita Contraseña" name="password2">
+                    </div>
+
+
+
+
+                    <div class="my-3 text-center">
+                        <button class="btn nueva  border border-dark border-2 rounded-3" type="submit">Guardar
+                            Cambios</button>
+
+                        <a class="back btn  border border-dark border-2 rounded-3" onclick="goBack()">Regresar</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        
+    </main>
+
+
+
+    <footer th:replace="/plantilla/plantilla::footer"></footer>
 
 </body>
+
 </html>
