@@ -27,10 +27,11 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body text-start">
-                                    <a th:href="@{/usuario/}" class="btn btn-outline-warning border border-dark text-black border-2 fw-bold mb-2">Perfil</a>
+<!--                                    <a th:href="@{/usuario/}" class="btn btn-outline-warning border border-dark text-black border-2 fw-bold mb-2">Perfil</a>-->
                                     <a th:href="@{/usuario/}" class="btn btn-outline-warning border border-dark text-black border-2 fw-bold mb-2">Lista de Usuarios</a>
+                                    <a th:href="@{/usuario/crear}" class="btn btn-outline-warning border border-dark text-black border-2 fw-bold mb-2">Nuevo Usuario</a>
                                     <form th:action="@{/logout}" method="post">
-                                        <button type="submit" class="btn btn-outline-warning border border-dark text-black border-2 fw-bold ">Desconectarse</button>
+                                        <button type="submit" class="btn btn-outline-warning border border-dark text-black border-2 fw-bold ">Log Out</button>
                                     </form>
                                 </div>
                             </div>

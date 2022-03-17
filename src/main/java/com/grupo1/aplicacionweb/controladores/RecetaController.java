@@ -34,7 +34,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class RecetaController {
     @Autowired
     private RecetaServicio recetaServicio;
-    
+
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/")
@@ -124,7 +124,7 @@ public class RecetaController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect, Model model) {
-       // Receta receta = null;
+        // Receta receta = null;
         if (id == null || recetaServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un receta con ese ID.");
             return "redirect:/receta/";
@@ -144,7 +144,7 @@ public class RecetaController {
             model.addAttribute("h1", "Editar Recetas");
         }
 
-        
+
         return "/receta/editar";
     }
 
@@ -171,12 +171,23 @@ public class RecetaController {
             return "redirect:/receta/";
         }
         List<Ingrediente> listIngredientes = receta.getIngredientes();
+        List<Paso> pasos = receta.getPasos();
 
         model.addAttribute("titulo", "Detalle");
         model.addAttribute("h1", "Detalle de la receta");
         model.addAttribute("receta", receta);
         model.addAttribute("ingredientes", listIngredientes);
+        model.addAttribute("pasos", pasos);
 
         return "/receta/detalles";
+    }
+
+    @PostMapping("/comentario/")
+    public String comentario(@RequestParam("comentario") String comentario,@RequestParam("id") Integer id) {
+        System.out.println("entre al postear comentario");
+        Receta receta = recetaServicio.findById(id);
+        receta.setComentario(comentario);
+        recetaServicio.crear(receta);
+        return "/receta/detalles/";
     }
 }

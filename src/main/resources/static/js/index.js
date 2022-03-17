@@ -19,7 +19,7 @@ function mensaje(nombre) {
     icon: 'success',
     title: 'Comentario enviado',
     showConfirmButton: false,
-    timer: 2500
+    timer: 10000
   })
 }
 
