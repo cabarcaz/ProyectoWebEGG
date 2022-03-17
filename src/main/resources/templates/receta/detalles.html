@@ -85,39 +85,22 @@
                     <div class="tab-pane fade mx-4 px-4 my-4 py-4" id="profile" role="tabpanel"
                          aria-labelledby="profile-tab">
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Nombre de Usuario</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Comentario</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <div class="valoracion" id="votos">
-                            <form>
-                                <p class="clasificacion">
-                                    <input id="radio1" type="radio" name="estrellas" value="5">
-                                    <label for="radio1" class="fas fa-solid fa-star" data-bs-placement="top"
-                                           title="5"></label>
-                                    <input id="radio2" type="radio" name="estrellas" value="4">
-                                    <label for="radio2" class="fas fa-solid fa-star" data-bs-placement="top"
-                                           title="4"></label>
-                                    <input id="radio3" type="radio" name="estrellas" value="3">
-                                    <label for="radio3" class="fas fa-solid fa-star" data-bs-placement="top"
-                                           title="3"></label>
-                                    <input id="radio4" type="radio" name="estrellas" value="2">
-                                    <label for="radio4" class="fas fa-solid fa-star" data-bs-placement="top"
-                                           title="2"></label>
-                                    <input id="radio5" type="radio" name="estrellas" value="1">
-                                    <label for="radio5" class="fas fa-solid fa-star" data-bs-placement="top"
-                                           title="1"></label>
-                                </p>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-primary me-md-2" type="submit" onclick="mensaje()">Calificar
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                        <form th:action="@{/receta/comentario/}" method="POST">
+                            <input hidden th:value="${receta.id}" th:name="id"></input>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre de Usuario</label>
+                                <span sec:authentication="name" id="nombre"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Comentario</label>
+                                <textarea class="form-control" id="exampleFormCo"
+                                        th:name="comentario"  required></textarea>
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn btn-primary me-md-2" type="submit" onclick="mensaje()">Calificar
+                                </button>
+                            </div>
+                        </form>
                     </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">kesesto?
                     </div>
