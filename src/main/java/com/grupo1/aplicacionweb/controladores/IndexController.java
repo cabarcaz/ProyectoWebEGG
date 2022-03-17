@@ -19,6 +19,7 @@ public class IndexController {
                         RedirectAttributes attribute) {
         if (error != null) {
             model.addAttribute("error", "ERROR DE VALIDACION: Usuario y/o contraseña son incorrectos");
+            return "index";
         }
         if (principal != null) {
             attribute.addFlashAttribute("warning", " ATENCION: ya ha iniciado sesión.");

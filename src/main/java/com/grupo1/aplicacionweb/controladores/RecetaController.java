@@ -171,11 +171,13 @@ public class RecetaController {
             return "redirect:/receta/";
         }
         List<Ingrediente> listIngredientes = receta.getIngredientes();
+        List<Paso> pasos = receta.getPasos();
 
         model.addAttribute("titulo", "Detalle");
         model.addAttribute("h1", "Detalle de la receta");
         model.addAttribute("receta", receta);
         model.addAttribute("ingredientes", listIngredientes);
+        model.addAttribute("pasos", pasos);
 
         return "/receta/detalles";
     }
