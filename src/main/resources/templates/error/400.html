@@ -7,9 +7,9 @@
 	<header th:replace="/plantilla/plantilla::header"></header>
 
 	<main>
-
-		<div class="container text-center py-3  mt-3">
-			<div class="panel bg-light  mt-3">
+<div class="container">
+		<div class="bg-card text-center py-3  mt-3">
+			<div class="panel mt-3">
 				<div class="panel-heading  mt-3">
 					<h3 class="panel-title text-danger  mt-3"><span th:text="${error}"></span> - <span th:text="${status}"></span>
 					</h3>
@@ -19,6 +19,7 @@
 					<h4 class=" mt-3">Ha hecho una solicitud incorrecta!</h4>
 				</div>
 			</div>
+		</div>
 		</div>
 	</main>
 	<footer th:replace="/plantilla/plantilla::footer"></footer>
