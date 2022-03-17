@@ -63,7 +63,7 @@
 
                             <tr th:id="'ingrediente' + ${index.index}"
                                 th:each="ingrediente,index : *{ingredientes}"
-                                th:classappend="${ingrediente.nombre != null} ? 'mostrar' : 'no-mostrar'">
+                                th:classappend="${ingrediente.nombre != null} ? 'mostrar1' : 'no-mostrar'">
 <!--                                th:classappend="${index.index !=0} ? 'no-mostrar'">-->
                                 <td>
                                     <label for="nombre">Nombre</label>
@@ -78,14 +78,14 @@
                                            th:id="'cantidad'+${index.index}">
                                 </td>
                                 <td>
-                                    <button type="button" 
+                                    <button th:id="'botonAI'+${index.index}" type="button" 
                                     class="btn nueva border border-dark border-2 rounded-3"
                                             th:attr="onclick=|agregar('ingrediente',${index.index})|">Agregar
                                     </button>
                                 </td>
 
                                 <td>
-                                    <button type="button" 
+                                    <button th:id="'botonEI'+${index.index}" type="button" 
                                     class="btn btn-danger border border-dark border-2 rounded-3"
                                             th:attr="onclick=|eliminar('ingrediente',${index.index})|">Eliminar
                                     </button>
@@ -110,7 +110,7 @@
                             <tbody>
                             <tr th:id="'paso'+${index.index}"
                                 th:each="paso,index : *{pasos}"
-                                th:classappend="${paso.paso != null} ? 'mostrar' : 'no-mostrar'">
+                                th:classappend="${paso.paso != null} ? 'mostrar1' : 'no-mostrar'">
                                 <td>
                                     <p th:text="'Paso ' + ${index.count}"></p>
                                 </td>
@@ -124,14 +124,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button type="button" 
+                                    <button th:id="'botonAP'+${index.index}" type="button" 
                                     class="btn nueva border border-dark border-2 rounded-3"
                                             th:attr="onclick=|agregar('paso',${index.index})|">Agregar
                                     </button>
                                 </td>
 
                                 <td>
-                                    <button type="button" 
+                                    <button th:id="'botonEP'+${index.index}" type="button" 
                                     class="btn btn-danger border border-dark border-2 rounded-3"
                                             th:attr="onclick=|eliminar('paso',${index.index})|">Eliminar
                                     </button>

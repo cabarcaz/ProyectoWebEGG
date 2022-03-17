@@ -54,7 +54,7 @@ public class UsuarioController {
     @GetMapping("/crear")
     public String crearUsuario(Usuario usuario, Model model) {
         model.addAttribute("titulo", "Formulario");
-        model.addAttribute("h1", "Formulario ingreso nuevo usuario");
+        model.addAttribute("h1", "Formulario nuevo usuario");
         model.addAttribute("usuario", usuario);
         return "/usuario/nuevo";
     }
@@ -112,7 +112,7 @@ public class UsuarioController {
             return "redirect:/usuario/crear";
         }
 
-
+        
 
         return "redirect:/usuario/";
     }

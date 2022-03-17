@@ -140,6 +140,7 @@ public class RecetaController {
             model.addAttribute("ingredientes", receta.getIngredientes());
             model.addAttribute("pasos", receta.getPasos());
             model.addAttribute("listaCategorias", CategoriaPlato.values());
+            model.addAttribute("titulo", "Editar Recetas");
             model.addAttribute("h1", "Editar Recetas");
         }
 

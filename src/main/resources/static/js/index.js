@@ -48,15 +48,38 @@ function agregar(string, index) {
   //  console.log(event)
   let nextIndex = index + 1;
   let row = document.getElementById(string + nextIndex);
+  if(string == "ingrediente"){
+  let botA = document.getElementById('botonAI' + index);
+   if (botA != null){
+   botA.classList.add("no-mostrar");}
+  }
+  if(string == "paso"){
+  let botB = document.getElementById('botonAP' + index);
+   if (botB != null){
+   botB.classList.add("no-mostrar");}
+  }
   if (row != null) {
     row.classList.remove("no-mostrar");
-    row.classList.add("mostrar");
+    row.classList.add("mostrar1");
 
   }
 }
 
 function eliminar(string, index) {
   let row = document.getElementById(string + index);
+  let lowIndex= index - 1;
+  // config para la vista de los botones
+  if(string == "ingrediente"){
+    let botA = document.getElementById('botonAI' + lowIndex);
+     console.log("aca estoy arriba");
+     botA.classList.remove("no-mostrar")
+     console.log("que onda porque no anda esta bosta??" + lowIndex);
+    }
+    if(string == "paso"){
+    let botB = document.getElementById('botonAP' + lowIndex);
+     if (botB != null){
+     botB.classList.remove("no-mostrar");}
+    }
   if (string == "ingrediente") {
     if (index != 0) {
       let nombre = document.getElementById('nombre' + index);
@@ -65,7 +88,7 @@ function eliminar(string, index) {
       cantidad.value = '';
       if (row != null) {
           row.classList.add("no-mostrar");
-          row.classList.remove("mostrar");
+          row.classList.remove("mostrar1");
      }
     }
   }
@@ -75,7 +98,7 @@ function eliminar(string, index) {
       texto.value = '';
       if (row != null) {
            row.classList.add("no-mostrar")
-           row.classList.remove("mostrar")
+           row.classList.remove("mostrar1")
         }
     }
   }
