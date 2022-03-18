@@ -94,7 +94,7 @@
                                 <form th:action="@{/receta/comentario/}" method="POST">
                                     <input hidden th:value="${receta.id}" th:name="id"></input>
                                     <div class="mb-3">
-                                        <label for="nombre" class="form-label fw-bolder">Nombre de Usuario : </label>
+                                        <label for="nombre" class="form-label fw-bolder">Nombre de usuario : </label>
                                         <span sec:authentication="name" id="nombre"></span>
                                     </div>
                                     <div class="mb-3 ">

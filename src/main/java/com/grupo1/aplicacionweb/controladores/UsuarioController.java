@@ -45,7 +45,7 @@ public class UsuarioController {
         List<Usuario> listaUsuario = usuarioServicio.listar();
         model.addAttribute("usuarios", listaUsuario);
         model.addAttribute("titulo", "Listado Usuaarios");
-        model.addAttribute("h1", "Listado de Usuarios");
+        model.addAttribute("h1", "Listado de usuarios");
         return "/usuario/lista";
     }
 
@@ -161,7 +161,7 @@ public class UsuarioController {
     @GetMapping("/pass/{id}")
     public String nuevoPass(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("usuario", usuarioServicio.findById(id));
-         model.addAttribute("h1", "Configuracion de Contraseña");
+         model.addAttribute("h1", "Configuracion de contraseña");
         return "/usuario/nuevo-pass";
     }
 

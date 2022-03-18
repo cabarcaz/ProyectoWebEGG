@@ -43,7 +43,7 @@ public class RecetaController {
 
         model.addAttribute("recetas", listaRecetas);
         model.addAttribute("titulo", "Listado de  Recetas");
-        model.addAttribute("h1", "Lista de Recetas Existentes");
+        model.addAttribute("h1", "Lista de recetas existentes");
         return "/receta/lista";
     }
 
@@ -141,7 +141,7 @@ public class RecetaController {
             model.addAttribute("pasos", receta.getPasos());
             model.addAttribute("listaCategorias", CategoriaPlato.values());
             model.addAttribute("titulo", "Editar Recetas");
-            model.addAttribute("h1", "Editar Recetas");
+            model.addAttribute("h1", "Editar recetas");
         }
 
 

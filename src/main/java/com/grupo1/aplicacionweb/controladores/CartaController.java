@@ -33,7 +33,7 @@ public class CartaController {
         List<Carta> listaCarta = cartaServicio.listar();
         model.addAttribute("cartas", listaCarta);
         model.addAttribute("titulo", "Listado de Cartas");
-        model.addAttribute("h1", "Listado de Menús");
+        model.addAttribute("h1", "Listado de menús");
         return "/carta/lista";
     }
     @GetMapping("/listaReceta")
@@ -52,7 +52,7 @@ public class CartaController {
         Carta carta = new Carta();
 
         model.addAttribute("titulo", "Formulario");
-        model.addAttribute("h1", "Planificación  Menú Semanal");
+        model.addAttribute("h1", "Planificación  menú semanal");
         model.addAttribute("carta", carta);
 
         List<Receta> recetasEntradas = recetaServicio.listarPorCategoria(CategoriaPlato.ENTRADA);
