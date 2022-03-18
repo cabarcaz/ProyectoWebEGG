@@ -63,8 +63,7 @@ public class UsuarioController {
     // creado un usuario ADMIN o USER
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect,
-                          @RequestParam(value = "file",required = false) MultipartFile imagen, @RequestParam(value = "password2",required = false) String password2) {
-
+                          @RequestParam(value = "file",required = false) MultipartFile imagen, @RequestParam(value = "password2",required = false) String password2) throws IOException {
         if (result.hasErrors()) {
             System.out.println("error result");
             model.addAttribute("h1", "Formulario nuevo usuario");
@@ -72,11 +71,6 @@ public class UsuarioController {
         }
         if (usuario.getId() != null) {
             usuario.setAlta(usuario.getAlta());
-        }
-        if (usuario == null) {
-            System.out.println("usuario null");
-            redirect.addFlashAttribute("error", "El usuario es nulo");
-            return "/usuario/nuevo";
         }
         if (usuario.getId() == null) {
             System.out.println("usuario get id null");
@@ -87,30 +81,14 @@ public class UsuarioController {
                 return "/usuario/nuevo";
             }
         }
-
         // CODIGO PARA RECIBIR Y GUARDAR LA FOTO
-
         if (!imagen.isEmpty()) {
             Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/usuario");
             String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
             try {
                 byte[] bytesImg = imagen.getBytes();
                 Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
-                System.out.println("hola soy el file name " + imagen.getOriginalFilename());
-                System.out.println("hola soy la ruta absoluta " + rutaAbsoluta);
-                Files.write(rutaCompleta, bytesImg);
-                usuario.setFoto(imagen.getOriginalFilename());
-            } catch (IOException e) {
-                redirect.addFlashAttribute("error", e.getMessage());
-            }
-        }else{
-            Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/usuario");
-            String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
-            System.out.println(rutaAbsoluta);
 
-            try {
-                byte[] bytesImg = imagen.getBytes();
-                Path rutaCompleta = Paths.get(rutaAbsoluta + "//intruso.jpg");
                 Files.write(rutaCompleta, bytesImg);
                 usuario.setFoto(imagen.getOriginalFilename());
             } catch (IOException e) {
@@ -119,19 +97,13 @@ public class UsuarioController {
         }
 
         try {
-            System.out.println("creando usuario");
             usuarioServicio.crear(usuario);
-
-            iMailsend.enviar(usuario.getEmail(), "Bienvenide " + usuario.getNombre());
-
-
+            iMailsend.enviar(usuario.getEmail(), "Bienvenido " + usuario.getNombre());
         } catch (Exception e) {
             System.out.println("error al crear usuario");
             redirect.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/crear";
         }
-
-        
         model.addAttribute("h1", "Formulario nuevo usuario");
         return "redirect:/usuario/";
     }
@@ -158,9 +130,7 @@ public class UsuarioController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable("id") Integer id, RedirectAttributes redirect) {
-
         // VALIDACION DE INGRESO DE ID
-
         if (id == null || usuarioServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un usuario con ese ID.");
             return "redirect:/usuario/";
@@ -168,7 +138,6 @@ public class UsuarioController {
             usuarioServicio.eliminar(id);
             redirect.addFlashAttribute("success", "Su usuario se elimino con exito!");
         }
-
         return "redirect:/usuario/";
     }
 

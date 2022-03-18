@@ -42,8 +42,7 @@
 </head>
 
 <body>
-
-<header class="top">
+<header>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(255, 255, 255, 0.541)">
         <div class="container-fluid">
@@ -110,43 +109,14 @@
             </div>
         </div>
     </nav>
-
-
-    <!-- mensajes de alerta -->
-    <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success != null}">
-        <label th:text="${success}"></label>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                aria-label="Close"></button>
-    </div>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${error != null}">
-        <label th:text="${error}"></label>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                aria-label="Close"></button>
-    </div>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${warning != null}">
-        <label th:text="${warning}"></label>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                aria-label="Close"></button>
-    </div>
-    <div class="alert alert-info alert-dismissible fade show" role="alert" th:if="${info != null}">
-        <label th:text="nfo${i}"></label>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                aria-label="Close"></button>
-    </div>
-
     <span class="ir-arriba fas fa-solid fa-angle-up"></span>
-
 </header>
-
 <main>
 </main>
-
 <footer class="footer text-center pt-2">
-    <hr class="dropdown-divider border border-dark">
-    <hr class="dropdown-divider border border-dark">
-    <p class="mt-2 pt-3 text-dark fs-5 fw-bolder"> Hecho con el ❤ por el grupo 1. &copy;Copyright 2022 - Todos los
-        derechos
-        reservados. </p>
+    <hr class="dropdown-divider border border-dark border-2">
+    <hr class="dropdown-divider border border-dark border-2">
+    <p class="mt-2 pt-3 text-dark fs-5 fw-bolder"> Hecho con el ❤ por el grupo 1. &copy;Copyright 2022 - Todos los derechos reservados.</p>
 
 </footer>
 

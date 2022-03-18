@@ -49,7 +49,7 @@ public class Receta implements Serializable {
     @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL)
     private List<Paso> pasos = new ArrayList<>(); // no persiste el id de la receta
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "receta_ingrediente",
             joinColumns = {@JoinColumn(name = "receta_id")},
@@ -71,7 +71,7 @@ public class Receta implements Serializable {
     @ManyToMany(mappedBy = "domingo", cascade = CascadeType.ALL)
     private List<Carta> cartasDomingo = new ArrayList<>();
 
-    @OneToMany(mappedBy = "receta", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "receta", cascade = {CascadeType.ALL})
     private List<Comentario> comentarios = new ArrayList<>();
 
     public List<Comentario> getComentarios() {
