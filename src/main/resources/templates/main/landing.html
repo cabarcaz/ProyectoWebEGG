@@ -13,7 +13,8 @@
             <div class="col col-md-7">
                 <div class="card-body col col-md-12">
                     <div class="text-center bg-card rounded-3 border border-warning border-3">
-                        <h2 class="fs-1">Bienvenido<p><span sec:authentication="name"></span></p></h2>
+<!--                        <h2 class="fs-1">Bienvenido<p><span sec:authentication="name"></span></p></h2>-->
+                        <h2 class="fs-1">Bienvenido<p><span th:text="${nombreUsuario}"></span></p></h2>
                     </div>
                 </div>
 
