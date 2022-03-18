@@ -188,6 +188,6 @@ public class RecetaController {
         Receta receta = recetaServicio.findById(id);
         receta.setComentario(comentario);
         recetaServicio.crear(receta);
-        return "/receta/detalles/";
+        return "/receta/detalles";
     }
 }
