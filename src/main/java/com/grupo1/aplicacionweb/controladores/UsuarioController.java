@@ -96,6 +96,21 @@ public class UsuarioController {
             try {
                 byte[] bytesImg = imagen.getBytes();
                 Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
+                System.out.println("hola soy el file name " + imagen.getOriginalFilename());
+                System.out.println("hola soy la ruta absoluta " + rutaAbsoluta);
+                Files.write(rutaCompleta, bytesImg);
+                usuario.setFoto(imagen.getOriginalFilename());
+            } catch (IOException e) {
+                redirect.addFlashAttribute("error", e.getMessage());
+            }
+        }else{
+            Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/usuario");
+            String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+            System.out.println(rutaAbsoluta);
+
+            try {
+                byte[] bytesImg = imagen.getBytes();
+                Path rutaCompleta = Paths.get(rutaAbsoluta + "//intruso.jpg");
                 Files.write(rutaCompleta, bytesImg);
                 usuario.setFoto(imagen.getOriginalFilename());
             } catch (IOException e) {
