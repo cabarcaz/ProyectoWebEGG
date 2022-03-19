@@ -38,7 +38,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email") // Como viajan los datos del logueo
                 .passwordParameter("password")// Como viajan los datos del logueo
                 .defaultSuccessUrl("/inicio/") // A que URL viaja
-                .failureUrl("/login?error=error")
+                .failureUrl("/index/?error=error")
                 .permitAll()
                 .and().logout() // Aca configuro la salida
                 .permitAll().and().csrf().disable();

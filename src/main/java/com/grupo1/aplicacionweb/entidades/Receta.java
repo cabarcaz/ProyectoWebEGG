@@ -30,10 +30,6 @@ public class Receta implements Serializable {
     @Column(name = "foto")
     private String foto;
 
-    //    @NotEmpty(message = "Este campo es obligatorio.")
-    @Column(name = "comentario")
-    private String comentario;
-
     // @NotNull (message = "Este campo es obligatorio.")
     @Column(name = "tiempo_coccion")
     private Integer tiempoDeCoccion;
@@ -50,30 +46,41 @@ public class Receta implements Serializable {
     @Column(name = "porcion")
     private Integer porcion;
 
-    @OneToMany( mappedBy = "receta" ,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL)
     private List<Paso> pasos = new ArrayList<>(); // no persiste el id de la receta
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "receta_ingrediente",
             joinColumns = {@JoinColumn(name = "receta_id")},
             inverseJoinColumns = {@JoinColumn(name = "ingrediente_id")})
     private List<Ingrediente> ingredientes = new ArrayList<>();
 
-    @ManyToMany( mappedBy = "lunes" ,cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "lunes", cascade = CascadeType.ALL)
     private List<Carta> cartasLunes = new ArrayList<>();
-    @ManyToMany( mappedBy = "martes" ,cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "martes", cascade = CascadeType.ALL)
     private List<Carta> cartasMartes = new ArrayList<>();
-    @ManyToMany( mappedBy = "miercoles" ,cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "miercoles", cascade = CascadeType.ALL)
     private List<Carta> cartasMiercoles = new ArrayList<>();
-    @ManyToMany( mappedBy = "jueves" ,cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "jueves", cascade = CascadeType.ALL)
     private List<Carta> cartasJueves = new ArrayList<>();
-    @ManyToMany( mappedBy = "viernes" ,cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "viernes", cascade = CascadeType.ALL)
     private List<Carta> cartasViernes = new ArrayList<>();
-    @ManyToMany( mappedBy = "sabado" ,cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "sabado", cascade = CascadeType.ALL)
     private List<Carta> cartasSabado = new ArrayList<>();
-    @ManyToMany( mappedBy = "domingo" ,cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "domingo", cascade = CascadeType.ALL)
     private List<Carta> cartasDomingo = new ArrayList<>();
+
+    @OneToMany(mappedBy = "receta", cascade = {CascadeType.ALL})
+    private List<Comentario> comentarios = new ArrayList<>();
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -113,14 +120,6 @@ public class Receta implements Serializable {
 
     public void setFoto(String foto) {
         this.foto = foto;
-    }
-
-    public String getComentario() {
-        return comentario;
-    }
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
     }
 
     public Integer getTiempoDeCoccion() {

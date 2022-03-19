@@ -1,12 +1,16 @@
 package com.grupo1.aplicacionweb.controladores;
 
-import com.grupo1.aplicacionweb.entidades.Ingrediente;
-import com.grupo1.aplicacionweb.entidades.Paso;
-import com.grupo1.aplicacionweb.entidades.Receta;
+import com.grupo1.aplicacionweb.entidades.*;
 import com.grupo1.aplicacionweb.enumeraciones.CategoriaPlato;
+import com.grupo1.aplicacionweb.repositorios.UsuarioDao;
 import com.grupo1.aplicacionweb.servicio.RecetaServicio;
+import com.grupo1.aplicacionweb.servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +38,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class RecetaController {
     @Autowired
     private RecetaServicio recetaServicio;
-    
+
+    @Autowired
+    private UsuarioServicio usuarioServicio;
+
+    @Autowired
+    private UsuarioDao usuarioDao;
+
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     @GetMapping("/")
@@ -124,7 +134,7 @@ public class RecetaController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") Integer id, RedirectAttributes redirect, Model model) {
-       // Receta receta = null;
+        // Receta receta = null;
         if (id == null || recetaServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un receta con ese ID.");
             return "redirect:/receta/";
@@ -140,9 +150,11 @@ public class RecetaController {
             model.addAttribute("ingredientes", receta.getIngredientes());
             model.addAttribute("pasos", receta.getPasos());
             model.addAttribute("listaCategorias", CategoriaPlato.values());
+            model.addAttribute("titulo", "Editar Recetas");
+            model.addAttribute("h1", "Editar Recetas");
         }
 
-        
+
         return "/receta/editar";
     }
 
@@ -161,6 +173,12 @@ public class RecetaController {
 
     @GetMapping("/detalle/{id}")
     public String detalleRecetas(@PathVariable("id") Integer id, Model model, RedirectAttributes atribute) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            Usuario usuario = usuarioDao.findByEmail(userDetails.getUsername());
+            model.addAttribute("nombreUsuario", usuario.getNombre());
+        }
         Receta receta = null;
         if (id != null) {
             receta = recetaServicio.findById(id);
@@ -169,12 +187,33 @@ public class RecetaController {
             return "redirect:/receta/";
         }
         List<Ingrediente> listIngredientes = receta.getIngredientes();
+        List<Paso> pasos = receta.getPasos();
 
         model.addAttribute("titulo", "Detalle");
         model.addAttribute("h1", "Detalle de la receta");
         model.addAttribute("receta", receta);
         model.addAttribute("ingredientes", listIngredientes);
+        model.addAttribute("pasos", pasos);
+        model.addAttribute("comentarios", receta.getComentarios());
 
         return "/receta/detalles";
+    }
+
+    @PostMapping("/comentario/")
+    public String comentario(@RequestParam("comentario") String comentario, @RequestParam("id") Integer id) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            Usuario usuario = usuarioDao.findByEmail(userDetails.getUsername());
+            Receta receta = recetaServicio.findById(id);
+            Comentario com = new Comentario();
+            com.setUsuario(usuario);
+            com.setReceta(receta);
+            com.setCuerpo(comentario);
+            receta.getComentarios().add(com);
+            recetaServicio.crear(receta);
+        }
+        return "redirect:/receta/detalle/" + id;
+
     }
 }

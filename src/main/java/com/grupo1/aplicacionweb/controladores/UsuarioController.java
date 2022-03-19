@@ -44,7 +44,7 @@ public class UsuarioController {
     public String listar(Model model) {
         List<Usuario> listaUsuario = usuarioServicio.listar();
         model.addAttribute("usuarios", listaUsuario);
-        model.addAttribute("titulo", "Listado Usuarios");
+        model.addAttribute("titulo", "Listado Usuaarios");
         model.addAttribute("h1", "Listado de Usuarios");
         return "/usuario/lista";
     }
@@ -54,7 +54,7 @@ public class UsuarioController {
     @GetMapping("/crear")
     public String crearUsuario(Usuario usuario, Model model) {
         model.addAttribute("titulo", "Formulario");
-        model.addAttribute("h1", "Registro de nuevo usuario");
+        model.addAttribute("h1", "Formulario nuevo usuario");
         model.addAttribute("usuario", usuario);
         return "/usuario/nuevo";
     }
@@ -62,51 +62,49 @@ public class UsuarioController {
     // @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')") ---> activar una vez
     // creado un usuario ADMIN o USER
     @PostMapping("/guardar")
-    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model,
-            RedirectAttributes redirect,
-            @RequestParam("file") MultipartFile imagen, @RequestParam("password2") String password2) {
+    public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect,
+                          @RequestParam(value = "file",required = false) MultipartFile imagen, @RequestParam(value = "password2",required = false) String password2) throws IOException {
         if (result.hasErrors()) {
+            System.out.println("error result");
+            model.addAttribute("h1", "Formulario nuevo usuario");
             return "/usuario/nuevo";
         }
-        if (usuario == null) {
-            redirect.addFlashAttribute("error", "El usuario es nulo");
-            return "/usuario/crear";
+        if (usuario.getId() != null) {
+            usuario.setAlta(usuario.getAlta());
         }
         if (usuario.getId() == null) {
+            System.out.println("usuario get id null");
             if (!password2.equals(usuario.getPassword())) {
                 redirect.addFlashAttribute("error", "Las contraseñas no coinciden");
                 model.addAttribute(usuario);
-                return "/usuario/crear";
+                model.addAttribute("h1", "Formulario nuevo usuario");
+                return "/usuario/nuevo";
             }
         }
-
         // CODIGO PARA RECIBIR Y GUARDAR LA FOTO
-
         if (!imagen.isEmpty()) {
             Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/usuario");
             String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
             try {
                 byte[] bytesImg = imagen.getBytes();
                 Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
+
                 Files.write(rutaCompleta, bytesImg);
                 usuario.setFoto(imagen.getOriginalFilename());
             } catch (IOException e) {
                 redirect.addFlashAttribute("error", e.getMessage());
             }
         }
+
         try {
             usuarioServicio.crear(usuario);
-
-            iMailsend.enviar(usuario.getEmail(), "Bienvenide " + usuario.getNombre());
-
-
+            iMailsend.enviar(usuario.getEmail(), "Bienvenido " + usuario.getNombre());
         } catch (Exception e) {
+            System.out.println("error al crear usuario");
             redirect.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/crear";
         }
-
-
-
+        model.addAttribute("h1", "Formulario nuevo usuario");
         return "redirect:/usuario/";
     }
 
@@ -123,19 +121,16 @@ public class UsuarioController {
             List<Roles> roles = new ArrayList<>(Arrays.asList(Roles.values()));
             model.addAttribute("usuario", usuarioServicio.findById(id));
             model.addAttribute("roles", roles);
-            model.addAttribute("titulo", "Editar Usuario");
             model.addAttribute("h1", "Editar usuario");
         }
-
+        model.addAttribute("titulo", "Editar usuario");
         return "/usuario/editar";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable("id") Integer id, RedirectAttributes redirect) {
-
         // VALIDACION DE INGRESO DE ID
-
         if (id == null || usuarioServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un usuario con ese ID.");
             return "redirect:/usuario/";
@@ -143,7 +138,6 @@ public class UsuarioController {
             usuarioServicio.eliminar(id);
             redirect.addFlashAttribute("success", "Su usuario se elimino con exito!");
         }
-
         return "redirect:/usuario/";
     }
 
@@ -151,6 +145,7 @@ public class UsuarioController {
     @GetMapping("/pass/{id}")
     public String nuevoPass(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("usuario", usuarioServicio.findById(id));
+         model.addAttribute("h1", "Configuracion de Contraseña");
         return "/usuario/nuevo-pass";
     }
 

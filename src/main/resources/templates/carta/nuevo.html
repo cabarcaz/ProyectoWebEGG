@@ -26,7 +26,7 @@
                     <input type="date" class="form-control" th:field="*{semana}">
                 </div>
 
-                <table class="table text-center border border-dark border-2 pt-4 mt-2 bg-card rounded-3">
+                <table class="table text-center border border-2 pt-4 mt-2 bg-card rounded-3 table-bordered table-bordered border-dark">
                     <tr>
                         <th scope="row">Días</th>
                         <th scope="row">Entrada</th>
@@ -35,10 +35,10 @@
                     </tr>
                     <!--                lunes-->
                     <tr>
-                        <th class="text-uppercase" scope="row">Lunes</th>
+                        <th class="text-uppercase pt-4" scope="row">Lunes</th>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{lunes[0].id}" required>
+                                <select class="form-select" th:field="*{lunes[0].id}">
                                     <option value="">Escoja una Entrada</option>
                                     <option th:each="receta: ${recetasEntradas}" th:value="${receta.id}"
                                         th:text="${receta.nombre}" ></option>
@@ -47,7 +47,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{lunes[1].id}" required>
+                                <select class="form-select" th:field="*{lunes[1].id}">
                                     <option value="">Escoja un plato Principal</option>
                                     <option th:each="receta: ${recetasPrincipales}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -56,7 +56,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{lunes[2].id}" required>
+                                <select class="form-select" th:field="*{lunes[2].id}">
                                     <option value="">Escoja un Postre</option>
                                     <option th:each="receta: ${recetasPostres}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -66,10 +66,10 @@
                     </tr>
                     <!--                martes-->
                     <tr>
-                        <th class="text-uppercase" scope="row">Martes</th>
+                        <th class="text-uppercase pt-4" scope="row">Martes</th>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{martes[0].id}" required>
+                                <select class="form-select" th:field="*{martes[0].id}">
                                     <option value="">Escoja una Entrada</option>
                                     <option th:each="receta: ${recetasEntradas}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -78,7 +78,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{martes[1].id}" required>
+                                <select class="form-select" th:field="*{martes[1].id}">
                                     <option value="">Escoja un plato Principal</option>
                                     <option th:each="receta: ${recetasPrincipales}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -87,7 +87,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{martes[2].id}" required>
+                                <select class="form-select" th:field="*{martes[2].id}">
                                     <option value="">Escoja un Postre</option>
                                     <option th:each="receta: ${recetasPostres}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -97,10 +97,10 @@
                     </tr>
                     <!--                miercoles-->
                     <tr>
-                        <th class="text-uppercase" scope="row">Miercoles</th>
+                        <th class="text-uppercase pt-4" scope="row">Miercoles</th>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{miercoles[0].id}" required>
+                                <select class="form-select" th:field="*{miercoles[0].id}">
                                     <option value="">Escoja una Entrada</option>
                                     <option th:each="receta: ${recetasEntradas}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -109,7 +109,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{miercoles[1].id}" required>
+                                <select class="form-select" th:field="*{miercoles[1].id}">
                                     <option value="">Escoja un plato Principal</option>
                                     <option th:each="receta: ${recetasPrincipales}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -118,7 +118,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{miercoles[2].id}" required>
+                                <select class="form-select" th:field="*{miercoles[2].id}">
                                     <option value="">Escoja un Postre</option>
                                     <option th:each="receta: ${recetasPostres}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -128,10 +128,10 @@
                     </tr>
                     <!--                jueves-->
                     <tr>
-                        <th class="text-uppercase" scope="row">Jueves</th>
+                        <th class="text-uppercase pt-4" scope="row">Jueves</th>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{jueves[0].id}" required>
+                                <select class="form-select" th:field="*{jueves[0].id}">
                                     <option value="">Escoja una Entrada</option>
                                     <option th:each="receta: ${recetasEntradas}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -140,7 +140,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{jueves[1].id}" required>
+                                <select class="form-select" th:field="*{jueves[1].id}">
                                     <option value="">Escoja un plato Principal</option>
                                     <option th:each="receta: ${recetasPrincipales}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -149,7 +149,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{jueves[2].id}" required>
+                                <select class="form-select" th:field="*{jueves[2].id}">
                                     <option value="">Escoja un Postre</option>
                                     <option th:each="receta: ${recetasPostres}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -159,10 +159,10 @@
                     </tr>
                     <!--                viernes-->
                     <tr>
-                        <th class="text-uppercase" scope="row">Viernes</th>
+                        <th class="text-uppercase pt-4" scope="row">Viernes</th>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{viernes[0].id}" required>
+                                <select class="form-select" th:field="*{viernes[0].id}">
                                     <option value="">Escoja una Entrada</option>
                                     <option th:each="receta: ${recetasEntradas}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -171,7 +171,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{viernes[1].id}" required>
+                                <select class="form-select" th:field="*{viernes[1].id}">
                                     <option value="">Escoja un plato Principal</option>
                                     <option th:each="receta: ${recetasPrincipales}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -180,7 +180,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{viernes[2].id}" required>
+                                <select class="form-select" th:field="*{viernes[2].id}">
                                     <option value="">Escoja un Postre</option>
                                     <option th:each="receta: ${recetasPostres}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -190,10 +190,10 @@
                     </tr>
                     <!--                sabado-->
                     <tr>
-                        <th class="text-uppercase" scope="row">Sabado</th>
+                        <th class="text-uppercase pt-4" scope="row">Sabado</th>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{sabado[0].id}" required>
+                                <select class="form-select" th:field="*{sabado[0].id}">
                                     <option value="">Escoja una Entrada</option>
                                     <option th:each="receta: ${recetasEntradas}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -202,7 +202,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{sabado[1].id}" required>
+                                <select class="form-select" th:field="*{sabado[1].id}">
                                     <option value="">Escoja un plato Principal</option>
                                     <option th:each="receta: ${recetasPrincipales}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -211,7 +211,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{sabado[2].id}" required>
+                                <select class="form-select" th:field="*{sabado[2].id}">
                                     <option value="">Escoja un Postre</option>
                                     <option th:each="receta: ${recetasPostres}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -221,10 +221,10 @@
                     </tr>
                     <!--                domingo-->
                     <tr>
-                        <th class="text-uppercase" scope="row">Domingo</th>
+                        <th class="text-uppercase pt-4" scope="row">Domingo</th>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{domingo[0].id}" required>
+                                <select class="form-select" th:field="*{domingo[0].id}">
                                     <option value="">Escoja una Entrada</option>
                                     <option th:each="receta: ${recetasEntradas}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -233,7 +233,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{domingo[1].id}" required>
+                                <select class="form-select" th:field="*{domingo[1].id}">
                                     <option value="">Escoja un plato Principal</option>
                                     <option th:each="receta: ${recetasPrincipales}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -242,7 +242,7 @@
                         </td>
                         <td>
                             <div class="input-group mt-4 pt-0 mx-auto w-75 p-3">
-                                <select class="form-select" th:field="*{domingo[2].id}" required> 
+                                <select class="form-select" th:field="*{domingo[2].id}"> 
                                     <option value="">Escoja un Postre</option>
                                     <option th:each="receta: ${recetasPostres}" th:value="${receta.id}"
                                         th:text="${receta.nombre}"></option>
@@ -252,20 +252,20 @@
                     </tr>
 
                 </table>
-                
+            
                 <div class=" col col-6 mb-3 fs-2">
                     <button class="btn crear btn-lg border border-dark border-2 rounded-3" type="submit">Crear menú</button>
                     <a class="back btn btn-lg border border-dark border-2 rounded-3" onclick="goBack()">Regresar</a>
                 </div>
 
-
-
-
             </form>
 
         </div>
+
     </main>
+
     <footer th:replace="/plantilla/plantilla::footer"></footer>
+    
 </body>
 
 </html>

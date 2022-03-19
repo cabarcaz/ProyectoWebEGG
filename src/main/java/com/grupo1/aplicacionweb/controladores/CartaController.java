@@ -136,7 +136,6 @@ public class CartaController {
 
             if (carta.getId() != null) {
                 carta.setSemana(carta.getSemana());
-
             }
 
 

@@ -22,45 +22,37 @@
                         method="POST" enctype="multipart/form-data">
 
                         <div class="col-sm-6">
-                            <label for="nombre" class="fas fa-regular fa-file-signature form-label"> Nombre de la
-                                Receta</label>
+                            <label for="nombre" class="fas fa-regular fa-file-signature form-label"> Nombre de la Receta</label>
                             <input th:field="*{nombre}" type="text" class="form-control" id="nombre" required>
                         </div>
                         <div class="col-sm-2">
                             <label for="Tcocion" class="fas fa-solid fa-clock form-label"> Cocción (min)</label>
-                            <input th:field="*{tiempoDeCoccion}" type="number" class="form-control" id="Tcocion"
-                                min="0">
+                            <input th:field="*{tiempoDeCoccion}" type="number" class="form-control" id="Tcocion"min="0">
                         </div>
                         <div class="col-sm-2">
                             <label for="prep" class="fas fa-solid fa-clock form-label"> Preparación (min)</label>
-                            <input th:field="*{tiempoDePreparacion}" type="number" class="form-control" id="prep"
-                                min="0">
+                            <input th:field="*{tiempoDePreparacion}" type="number" class="form-control" id="prep" min="0">
                         </div>
-
                         <div class="col-sm-4">
                             <label for="file" class="fas fa-regular fa-camera form-label"> Imagen</label>
                             <input type="file" class="form-control" id="file" name="file">
                         </div>
                         <div class="col-sm-2">
-                            <label for="specificSizeInputName" class="fas fa-solid fa-users form-label">
-                                Porciones</label>
-                            <input th:field="*{porcion}" type="number" class="form-control" id="specificSizeInputName"
-                                min="0">
+                            <label for="specificSizeInputName" class="fas fa-solid fa-users form-label">Porciones</label>
+                            <input th:field="*{porcion}" type="number" class="form-control" id="specificSizeInputName" min="0">
                         </div>
                         <div class="col-sm-2">
-                            <label for="specificSizeInputName" class="fas fa-solid fa-users form-label">
-                                Categoria</label>
+                            <label for="specificSizeInputName" class="fas fa-solid fa-users form-label">Categoria</label>
                             <select th:field="*{categoria}" class="form-control">
-                                <option th:each="categoria : ${listaCategorias}" th:value="${categoria}"
-                                    th:text="${categoria.toString}">
+                                <option th:each="categoria : ${listaCategorias}" th:value="${categoria}" th:text="${categoria.toString}">
                                 </option>
                             </select>
                         </div>
                         <!--                FORMULARIO INGREDIENTES -->
                         <div class="">
-                            <table class="table border border-dark border-2 mt-3 bg-card rounded-3">
-                                <thead>
-                                    <tr>
+                            <table class="table border border-dark border-2 mt-3 bg-card table-bordered table-bordered ">
+                                <thead class="text-center">
+                                    <tr >
                                         <th scope="col">Nombre del ingrediente</th>
                                         <th scope="col">Cantidad</th>
                                         <th scope="col">Agregar</th>
@@ -84,15 +76,11 @@
                                                 th:id="'cantidad'+${index.index}">
                                         </td>
                                         <td>
-                                            <button type="button"
-                                                class="btn nueva border border-dark border-2 rounded-3"
-                                                th:attr="onclick=|agregar('ingrediente',${index.index})|">Agregar
+                                            <button th:id="'botonAI'+${index.index}" type="button"class="btn nueva border border-dark border-2 rounded-3" th:attr="onclick=|agregar('ingrediente',${index.index})|">Agregar
                                             </button>
                                         </td>
                                         <td>
-                                            <button type="button"
-                                                class="btn btn-danger border border-dark border-2 rounded-3"
-                                                th:attr="onclick=|eliminar('ingrediente',${index.index})|">Eliminar
+                                            <button th:id="'botonEI'+${index.index}" type="button" class="btn btn-danger border border-dark border-2 rounded-3"th:attr="onclick=|eliminar('ingrediente',${index.index})|">Eliminar
                                             </button>
                                         </td>
                                     </tr>
@@ -101,7 +89,7 @@
                         </div>
                         <!--                FORMULARIO PROCEDIMIENTOS-->
                         <div class="">
-                            <table class="table border border-dark border-2 mt-3 bg-card rounded-3">
+                            <table class="table border border-dark border-2 mt-3 bg-card table-bordered table-bordered text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col">Paso</th>
@@ -119,22 +107,16 @@
                                         </td>
                                         <td>
                                             <div class="form-floating">
-                                                <textarea th:field="*{pasos[__${index.index}__].paso}"
-                                                    class="form-control" placeholder="Descripcion"
-                                                    th:id="'procedimiento'+${index.index}"></textarea>
+                                                <textarea th:field="*{pasos[__${index.index}__].paso}" class="form-control" placeholder="Descripcion"th:id="'procedimiento'+${index.index}"></textarea>
                                             </div>
                                         </td>
                                         <td>
-                                            <button type="button"
-                                                class="btn nueva border border-dark border-2 rounded-3"
-                                                th:attr="onclick=|agregar('paso',${index.index})|">Agregar
+                                            <button th:id="'botonAP'+${index.index}" type="button" class="btn nueva border border-dark border-2 rounded-3" th:attr="onclick=|agregar('paso',${index.index})|">Agregar
                                             </button>
                                         </td>
 
                                         <td>
-                                            <button type="button"
-                                                class="btn btn-danger border border-dark border-2 rounded-3"
-                                                th:attr="onclick=|eliminar('paso',${index.index})|">Eliminar
+                                            <button th:id="'botonEP'+${index.index}" type="button" class="btn btn-danger border border-dark border-2 rounded-3"th:attr="onclick=|eliminar('paso',${index.index})|">Eliminar
                                             </button>
                                         </td>
                                     </tr>
@@ -143,10 +125,8 @@
                         </div>
 
                         <div class=" col col-6 mb-3 fs-2">
-                            <button class="btn crear btn-lg border border-dark border-2 rounded-3" type="submit">Crear
-                                receta</button>
-                            <a class="back btn btn-lg border border-dark border-2 rounded-3"
-                                onclick="goBack()">Regresar</a>
+                            <button class="btn crear btn-lg border border-dark border-2 rounded-3" type="submit">Crear receta</button>
+                            <a class="back btn btn-lg border border-dark border-2 rounded-3"onclick="goBack()">Regresar</a>
                         </div>
                     </form>
                 </div>
