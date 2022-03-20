@@ -152,27 +152,25 @@ public class UsuarioController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/update-pass")
     public String updatePass(Usuario usuario, @RequestParam("password2") String password2,
-            RedirectAttributes redirect) {
-
+           RedirectAttributes model) {
         if (usuario.getPassword().isEmpty() || password2.isEmpty()) {
-            redirect.addFlashAttribute("error", "Debe llenar ambos campos");
+           model.addFlashAttribute("error", "Debe llenar ambos campos");
             return "redirect:/usuario/pass/" + usuario.getId();
         }
 
         if (!usuario.getPassword().equals(password2)) {
-            redirect.addFlashAttribute("error", "Las constraseñas no coinciden");
+            model.addFlashAttribute("error", "Las constraseñas no coinciden");
             return "redirect:/usuario/pass/" + usuario.getId();
         }
 
         try {
             usuario.setPassword(password2);
-            System.out.println("el password nuevo es : " + usuario.getPassword());
             usuarioServicio.cambiarPass(usuario);
+            model.addFlashAttribute("success","Su password se actualizo correctamente!");
         } catch (Exception e) {
-            redirect.addFlashAttribute("error", e.getMessage());
+            model.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/pass/" + usuario.getId();
         }
-
         return "redirect:/usuario/";
     }
 

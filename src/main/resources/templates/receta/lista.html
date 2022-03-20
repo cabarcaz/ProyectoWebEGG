@@ -32,7 +32,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr th:each="receta:${recetas}" class="fw-bolder">
+            <tr th:each="receta:${recetas}" class="fw-bolder text-capitalize">
               <td><a th:href="@{/receta/detalle/} + ${receta.id}" class="btn btn-sm mostrar border border-dark border-2 rounded-3">Ver</a></td>
               <td><img class="center lista-img" th:src="@{'/imagenes/receta/' + ${receta.foto}}"
                   th:alt="${receta.foto}"></td>

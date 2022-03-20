@@ -30,7 +30,7 @@
                     <img th:src="@{'/imagenes/receta/' + ${receta.foto}}" class="card-img-top img-thumbnail bg-card"
                          th:alt="${receta.foto}">
                     <div class="card-body bg-card">
-                        <h5 class="card-title" th:text="${receta.nombre}"></h5>
+                        <h5 class="card-title  text-capitalize" th:text="${receta.nombre}"></h5>
                     </div>
                     <ul class="list-group list-group-flush bg-card">
                         <li class="list-group-item fas fa-solid fa-clock fa-1x bg-card"
@@ -48,8 +48,8 @@
                     <ul class="list-group list-group-flush mb-4 ">
                         <h3 class="text-center mt-5">Lista de ingredientes</h3>
                         <li th:if="${ingrediente.nombre} != null" th:each="ingrediente : ${ingredientes}"
-                            th:text="${ingrediente.cantidad} + ' ' + ${ingrediente.nombre}"
-                            class="list-group-item bg-card border border-dark rounded-3 mb-1">
+                            th:text="${ingrediente.nombre} + ' --> ' + ${ingrediente.cantidad}"
+                            class="list-group-item bg-card border border-dark rounded-3 mb-1  text-capitalize">
                         </li>
                     </ul>
                 </div>
@@ -84,7 +84,7 @@
                              aria-labelledby="Procedimiento">
                             <ol class="list-group list-group-numbered">
                                 <li th:if="${paso.paso} != null" th:each="paso : ${pasos}" th:text="${paso.paso}"
-                                    class="list-group-item bg-card border border-dark  mb-1"></li>
+                                    class="list-group-item bg-card border border-dark mb-1  text-capitalize"></li>
                             </ol>
                         </div>
 

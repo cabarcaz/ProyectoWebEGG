@@ -92,6 +92,17 @@ public class RecetaController {
             } catch (IOException e) {
                 redirect.addFlashAttribute("error", e.getMessage());
             }
+        }else{
+            Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/receta");
+            String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+            try {
+                byte[] bytesImg = imagen.getBytes();
+                Path rutaCompleta = Paths.get("C:\\Users\\frant.DESKTOP-HHFNSPP\\Desktop\\Fran\\ProyectosSpring\\Proyecto Final\\ProyectoWebEGG\\src\\main\\resources\\static\\imagenes\\usuario\\perfil.png");
+                Files.write(rutaCompleta, bytesImg);
+                receta.setFoto(imagen.getOriginalFilename());
+            } catch (IOException e) {
+                redirect.addFlashAttribute("error", e.getMessage());
+            }
         }
 
         // se asigna el orden de los pasos
