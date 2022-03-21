@@ -9,9 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UsuarioDao extends JpaRepository<Usuario, Integer> {
 
-    @Query("select u from Usuario u where u.email = :email")
+    @Query("select u from Usuario u where u.email = :email") // JPQL
             public Usuario findByEmail(@Param("email") String email);
-
-
 
 }

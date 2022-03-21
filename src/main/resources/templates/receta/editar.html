@@ -21,7 +21,7 @@
                         <div class="col-sm-6">
                             <label for="nombre" class="fas fa-regular fa-file-signature form-label"> Nombre de la
                                 Receta</label>
-                            <input th:field="*{nombre}" type="text" class="form-control" id="nombre" required>
+                            <input th:field="*{nombre}" type="text" class="form-control " id="nombre" required>
                         </div>
                         <div class="col-sm-2">
                             <label for="Tcocion" class="fas fa-solid fa-clock form-label"> Cocción (min)</label>
@@ -71,13 +71,13 @@
                                         <!--                                th:classappend="${index.index !=0} ? 'no-mostrar'">-->
                                         <td>
                                             <label for="nombre">Nombre</label>
-                                            <input placeholder="Ingrese Ingrediente" type="text"
+                                            <input class="" placeholder="Ingrese Ingrediente" type="text"
                                                 th:field="*{ingredientes[__${index.index}__].nombre}"
                                                 th:id="'nombre'+${index.index}">
                                         </td>
                                         <td>
                                             <label for="nombre">Cantidad</label>
-                                            <input placeholder="Ingrese Cantidad" type="text"
+                                            <input class="" placeholder="Ingrese Cantidad" type="text"
                                                 th:field="*{ingredientes[__${index.index}__].cantidad}"
                                                 th:id="'cantidad'+${index.index}">
                                         </td>
@@ -111,7 +111,7 @@
                                         <th scope="col">Eliminar</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="text-capitalize fd">
                                     <tr th:id="'paso'+${index.index}" th:each="paso,index : *{pasos}"
                                         th:classappend="${paso.paso != null} ? 'mostrar1' : 'no-mostrar'">
                                         <td>
@@ -120,7 +120,7 @@
                                         <td>
                                             <div class="form-floating">
                                                 <textarea th:field="*{pasos[__${index.index}__].paso}"
-                                                    class="form-control" placeholder="Descripcion"
+                                                    class="form-control " placeholder="Descripcion"
                                                     th:id="'procedimiento'+${index.index}"></textarea>
                                             </div>
                                         </td>

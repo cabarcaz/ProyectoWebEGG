@@ -23,11 +23,11 @@
 
                         <div class="col-sm-6">
                             <label for="nombre" class="fas fa-regular fa-file-signature form-label"> Nombre de la Receta</label>
-                            <input th:field="*{nombre}" type="text" class="form-control" id="nombre" required>
+                            <input th:field="*{nombre}" type="text" class="form-control capital" id="nombre" required>
                         </div>
                         <div class="col-sm-2">
                             <label for="Tcocion" class="fas fa-solid fa-clock form-label"> Cocción (min)</label>
-                            <input th:field="*{tiempoDeCoccion}" type="number" class="form-control" id="Tcocion"min="0">
+                            <input th:field="*{tiempoDeCoccion}" type="number" class="form-control " id="Tcocion"min="0">
                         </div>
                         <div class="col-sm-2">
                             <label for="prep" class="fas fa-solid fa-clock form-label"> Preparación (min)</label>
@@ -65,13 +65,13 @@
                                         th:each="ingrediente,index : *{ingredientes}">
                                         <td>
                                             <label for="nombre">Nombre</label>
-                                            <input placeholder="Ingrese Ingrediente" type="text"
+                                            <input class=" text-capitalize" placeholder="Ingrese Ingrediente" type="text"
                                                 th:field="*{ingredientes[__${index.index}__].nombre}"
                                                 th:id="'nombre'+${index.index}">
                                         </td>
                                         <td>
                                             <label for="nombre">Cantidad</label>
-                                            <input placeholder="Ingrese Cantidad" type="text"
+                                            <input class=" text-capitalize" placeholder="Ingrese Cantidad" type="text"
                                                 th:field="*{ingredientes[__${index.index}__].cantidad}"
                                                 th:id="'cantidad'+${index.index}">
                                         </td>
@@ -107,7 +107,7 @@
                                         </td>
                                         <td>
                                             <div class="form-floating">
-                                                <textarea th:field="*{pasos[__${index.index}__].paso}" class="form-control" placeholder="Descripcion"th:id="'procedimiento'+${index.index}"></textarea>
+                                                <textarea th:field="*{pasos[__${index.index}__].paso}" class="form-control  text-capitalize" placeholder="Descripcion"th:id="'procedimiento'+${index.index}"></textarea>
                                             </div>
                                         </td>
                                         <td>

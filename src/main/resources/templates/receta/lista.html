@@ -8,7 +8,21 @@
   <main>
 
     <div class="container">
-
+      <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success != null}">
+        <label th:text="${success}"></label>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${error != null}">
+        <label th:text="${error}"></label>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${warning != null}">
+        <label th:text="${warning}"></label>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+    </div>
       <div class="">
         <div class="bg-card col col-md-6 border border-dark border-2 mt-4 fs-2 rounded-3">
           <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
@@ -36,7 +50,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr th:each="receta:${recetas}" class="fw-bolder">
+            <tr th:each="receta:${recetas}" class="fw-bolder text-capitalize">
               <td><a th:href="@{/receta/detalle/} + ${receta.id}" class="btn btn-sm mostrar border border-dark border-2 rounded-3">Ver</a></td>
               <td><img class="center lista-img" th:src="@{'/imagenes/receta/' + ${receta.foto}}"
                   th:alt="${receta.foto}"></td>

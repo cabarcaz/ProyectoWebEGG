@@ -36,8 +36,9 @@ public class CartaController {
         model.addAttribute("h1", "Listado de Menús");
         return "/carta/lista";
     }
+
     @GetMapping("/listaReceta")
-    public String listaRecetaCarta(Model model){
+    public String listaRecetaCarta(Model model) {
         model.addAttribute("titulo", "Detalle Simple");
         model.addAttribute("h1", "Lista de Recetas");
         List<Receta> listadoRecetas = recetaServicio.listar();
@@ -76,61 +77,62 @@ public class CartaController {
         List<Receta> listaSabado = new ArrayList<>();
         List<Receta> listaDomingo = new ArrayList<>();
         try {
-            //Lunes
-                for (Receta aux : carta.getLunes()) {
-                    if (aux.getId()!=null) {
-                        listaLunes.add(recetaServicio.findById(aux.getId()));
-                    }
+            // Lunes
+            for (Receta aux : carta.getLunes()) {
+                if (aux.getId() != null) {
+                    listaLunes.add(recetaServicio.findById(aux.getId()));
                 }
+            }
             System.out.println("llegamos acá -----------------------------------------------------------");
 
             carta.setLunes(listaLunes);
 
-            //Martes
+            // Martes
             for (Receta aux : carta.getMartes()) {
-                if (aux.getId()!=null) {
+                if (aux.getId() != null) {
                     listaMartes.add(recetaServicio.findById(aux.getId()));
                 }
             }
 
             carta.setMartes(listaMartes);
 
-            //Miercoles
+            // Miercoles
             for (Receta aux : carta.getMiercoles()) {
-                if (aux.getId()!=null) {
+                if (aux.getId() != null) {
                     listaMiercoles.add(recetaServicio.findById(aux.getId()));
                 }
             }
             carta.setMiercoles(listaMiercoles);
 
-            //Jueves
+            // Jueves
             for (Receta aux : carta.getJueves()) {
-                if (aux.getId()!=null) {
+                if (aux.getId() != null) {
                     listaJueves.add(recetaServicio.findById(aux.getId()));
                 }
             }
             carta.setJueves(listaJueves);
 
-            //Viernes
+            // Viernes
             for (Receta aux : carta.getViernes()) {
-                if (aux.getId()!=null) {
+                if (aux.getId() != null) {
                     listaViernes.add(recetaServicio.findById(aux.getId()));
                 }
             }
             carta.setViernes(listaViernes);
 
-            //Sabado
+            // Sabado
             for (Receta aux : carta.getSabado()) {
-                if (aux.getId()!=null) {
+                if (aux.getId() != null) {
                     listaSabado.add(recetaServicio.findById(aux.getId()));
                 }
             }
             carta.setSabado(listaSabado);
 
-            //Domingo
+            // Domingo
             for (Receta aux : carta.getDomingo()) {
-                if (aux.getId()!=null) {
-                listaDomingo.add(recetaServicio.findById(aux.getId()));}
+                if (aux.getId() != null) {
+                    listaDomingo.add(recetaServicio.findById(aux.getId()));
+                }
             }
             carta.setDomingo(listaDomingo);
 
@@ -138,8 +140,8 @@ public class CartaController {
                 carta.setSemana(carta.getSemana());
             }
 
-
             cartaServicio.crear(carta);
+            redirect.addFlashAttribute("success", "Su menu semanal fue creado con exito!");
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
         }
@@ -169,6 +171,7 @@ public class CartaController {
     @GetMapping("/eliminar/{id}")
     public String delete(@PathVariable("id") Integer id, Model model, RedirectAttributes redirect) {
         try {
+            System.out.println("este es el id de la carta -----------------------------------------------------------------------------------"+id);
             cartaServicio.eliminar(id);
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
@@ -176,6 +179,5 @@ public class CartaController {
         }
         return "redirect:/carta/";
     }
-
 
 }
