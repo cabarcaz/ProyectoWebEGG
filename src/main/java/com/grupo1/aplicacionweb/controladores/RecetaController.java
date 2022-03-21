@@ -137,6 +137,7 @@ public class RecetaController {
         }
 
         recetaServicio.crear(receta);
+        redirect.addFlashAttribute("success", "Receta creada con exito!");
         ss.setComplete();
 
         return "redirect:/receta/";

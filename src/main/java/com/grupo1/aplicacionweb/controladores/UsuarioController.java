@@ -98,6 +98,7 @@ public class UsuarioController {
 
         try {
             usuarioServicio.crear(usuario);
+
             iMailsend.enviar(usuario.getEmail(), "Bienvenido " + usuario.getNombre());
         } catch (Exception e) {
             System.out.println("error al crear usuario");
@@ -105,6 +106,7 @@ public class UsuarioController {
             return "redirect:/usuario/crear";
         }
         model.addAttribute("h1", "Formulario nuevo usuario");
+        redirect.addFlashAttribute("success", "Usuario creado con exito!");
         return "redirect:/usuario/";
     }
 
