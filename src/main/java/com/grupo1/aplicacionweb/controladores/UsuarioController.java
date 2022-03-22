@@ -2,6 +2,7 @@ package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Usuario;
 import com.grupo1.aplicacionweb.enumeraciones.Roles;
+import com.grupo1.aplicacionweb.excepciones.ErrorServicio;
 import com.grupo1.aplicacionweb.interfaz.IMailsend;
 import com.grupo1.aplicacionweb.repositorios.UsuarioDao;
 import com.grupo1.aplicacionweb.servicio.MailSendServicio;
@@ -63,12 +64,13 @@ public class UsuarioController {
     // creado un usuario ADMIN o USER
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect,
-                          @RequestParam(value = "file",required = false) MultipartFile imagen, @RequestParam(value = "password2",required = false) String password2) throws IOException {
+                          @RequestParam(value = "file", required = false) MultipartFile imagen, @RequestParam(value = "password2", required = false) String password2) throws IOException {
         if (result.hasErrors()) {
             System.out.println("error result");
             model.addAttribute("h1", "Formulario nuevo usuario");
             return "/usuario/nuevo";
         }
+
         if (usuario.getId() != null) {
             usuario.setAlta(usuario.getAlta());
         }
@@ -97,8 +99,14 @@ public class UsuarioController {
         }
 
         try {
+            if (usuario.getId() == null) {
+                for (Usuario user : usuarioServicio.listar()) {
+                    if (usuario.getEmail().equals(user.getEmail())) {
+                        throw new ErrorServicio("Ya existe un usuario con este correo.");
+                    }
+                }
+            }
             usuarioServicio.crear(usuario);
-
             iMailsend.enviar(usuario.getEmail(), "Bienvenido " + usuario.getNombre());
         } catch (Exception e) {
             System.out.println("error al crear usuario");
@@ -147,16 +155,16 @@ public class UsuarioController {
     @GetMapping("/pass/{id}")
     public String nuevoPass(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("usuario", usuarioServicio.findById(id));
-         model.addAttribute("h1", "Configuracion de Contraseña");
+        model.addAttribute("h1", "Configuracion de Contraseña");
         return "/usuario/nuevo-pass";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/update-pass")
     public String updatePass(Usuario usuario, @RequestParam("password2") String password2,
-           RedirectAttributes model) {
+                             RedirectAttributes model) {
         if (usuario.getPassword().isEmpty() || password2.isEmpty()) {
-           model.addFlashAttribute("error", "Debe llenar ambos campos");
+            model.addFlashAttribute("error", "Debe llenar ambos campos");
             return "redirect:/usuario/pass/" + usuario.getId();
         }
 
@@ -168,7 +176,7 @@ public class UsuarioController {
         try {
             usuario.setPassword(password2);
             usuarioServicio.cambiarPass(usuario);
-            model.addFlashAttribute("success","Su password se actualizo correctamente!");
+            model.addFlashAttribute("success", "Su password se actualizo correctamente!");
         } catch (Exception e) {
             model.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/pass/" + usuario.getId();
