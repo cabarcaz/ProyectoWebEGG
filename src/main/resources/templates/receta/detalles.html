@@ -48,8 +48,8 @@
                     <ul class="list-group list-group-flush mb-4 ">
                         <h3 class="text-center mt-5">Lista de ingredientes</h3>
                         <li th:if="${ingrediente.nombre} != null" th:each="ingrediente : ${ingredientes}"
-                            th:text="${ingrediente.nombre} + ' --> ' + ${ingrediente.cantidad}"
-                            class="list-group-item bg-card border border-dark rounded-3 mb-1  text-capitalize">
+                            th:text=" ${ingrediente.cantidad}+ ' '+ ${ingrediente.nombre}"
+                            class="list-group-item bg-card border border-dark rounded-3 mb-1  text-capitalize fw-bolder">
                         </li>
                     </ul>
                 </div>
