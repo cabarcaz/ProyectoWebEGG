@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-sm-4">
                             <label for="file" class="fas fa-regular fa-camera form-label"> Imagen</label>
-                            <input type="file" class="form-control" id="file" name="file">
+                            <input type="file" class="form-control" id="file" name="file" required>
                         </div>
                         <div class="col-sm-2">
                             <label for="specificSizeInputName" class="fas fa-solid fa-users form-label">Porciones</label>
@@ -107,7 +107,7 @@
                                         </td>
                                         <td>
                                             <div class="form-floating">
-                                                <textarea th:field="*{pasos[__${index.index}__].paso}" class="form-control  text-capitalize" placeholder="Descripcion"th:id="'procedimiento'+${index.index}"></textarea>
+                                                <textarea th:field="*{pasos[__${index.index}__].paso}" class="form-control" placeholder="Descripcion"th:id="'procedimiento'+${index.index}"></textarea>
                                             </div>
                                         </td>
                                         <td>
