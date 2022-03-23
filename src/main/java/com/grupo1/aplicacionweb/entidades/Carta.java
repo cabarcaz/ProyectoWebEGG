@@ -21,43 +21,43 @@ public class Carta implements Serializable {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date semana;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinTable(
             name = "carta_receta_lunes",
             joinColumns = {@JoinColumn(name = "carta_id")},
             inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> lunes = new ArrayList<>();
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinTable(
             name = "carta_receta_martes",
             joinColumns = {@JoinColumn(name = "carta_id")},
             inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> martes = new ArrayList<>();
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinTable(
             name = "carta_receta_miercoles",
             joinColumns = {@JoinColumn(name = "carta_id")},
             inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> miercoles = new ArrayList<>();
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinTable(
             name = "carta_receta_jueves",
             joinColumns = {@JoinColumn(name = "carta_id")},
             inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> jueves = new ArrayList<>();
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinTable(
             name = "carta_receta_viernes",
             joinColumns = {@JoinColumn(name = "carta_id")},
             inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> viernes = new ArrayList<>();
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinTable(
             name = "carta_receta_sabado",
             joinColumns = {@JoinColumn(name = "carta_id")},
             inverseJoinColumns = {@JoinColumn(name = "receta_id")})
     private List<Receta> sabado = new ArrayList<>();
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinTable(
             name = "carta_receta_domingo",
             joinColumns = {@JoinColumn(name = "carta_id")},

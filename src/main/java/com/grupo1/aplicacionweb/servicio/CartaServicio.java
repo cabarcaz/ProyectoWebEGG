@@ -25,7 +25,6 @@ public class CartaServicio implements ICarta {
     @Override
     public void eliminar(Integer id) throws ErrorServicio {
         if (cartaDao.findById(id) != null) {
-
           cartaDao.deleteById(id);
         } else {
             throw new ErrorServicio("Error, ID nulo.");

@@ -8,7 +8,21 @@
   <main>
 
     <div class="container">
-
+      <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success != null}">
+        <label th:text="${success}"></label>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${error != null}">
+        <label th:text="${error}"></label>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${warning != null}">
+        <label th:text="${warning}"></label>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button>
+    </div>
       <div class="">
         <div class="bg-card col col-md-6 border border-dark border-2 mt-4 fs-2 rounded-3">
           <h2 class="text-center py-3 fs-2" th:text="${h1}"></h2>
@@ -16,7 +30,7 @@
       </div>
 
       <div class="">
-        <table class="table text-center border border-dark border-2 mt-4 bg-card rounded-3">
+        <table class="table text-center border border-dark border-2 mt-4 bg-card rounded-3 table-bordered table-bordered border-dark">
           <thead>
             <tr >
               <th scope="col">Detalle</th>
@@ -32,7 +46,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr th:each="receta:${recetas}" class="fw-bolder">
+            <tr th:each="receta:${recetas}" class="fw-bolder text-capitalize">
               <td><a th:href="@{/receta/detalle/} + ${receta.id}" class="btn btn-sm mostrar border border-dark border-2 rounded-3">Ver</a></td>
               <td><img class="center lista-img" th:src="@{'/imagenes/receta/' + ${receta.foto}}"
                   th:alt="${receta.foto}"></td>
@@ -43,7 +57,7 @@
               <td th:text="${receta.tiempoTotal}"></td>
               <td th:text="${receta.porcion}"></td>
               <td><a th:href="@{/receta/editar/} + ${receta.id}" class="btn mostrar editar border-dark border-2 rounded-3">Editar</a></td>
-              <td><a th:href="@{/receta/eliminar/} + ${receta.id}" class="btn btn-danger mostrar border border-dark border-2 rounded-3">Eliminar</a></td>
+              <td><a th:href="@{/receta/eliminar/} + ${receta.id}" class="btn btn-danger  border border-dark border-2 rounded-3">Eliminar</a></td>
             </tr>
           </tbody>
 

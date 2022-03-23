@@ -2,6 +2,7 @@ package com.grupo1.aplicacionweb.controladores;
 
 import com.grupo1.aplicacionweb.entidades.Usuario;
 import com.grupo1.aplicacionweb.enumeraciones.Roles;
+import com.grupo1.aplicacionweb.excepciones.ErrorServicio;
 import com.grupo1.aplicacionweb.interfaz.IMailsend;
 import com.grupo1.aplicacionweb.repositorios.UsuarioDao;
 import com.grupo1.aplicacionweb.servicio.MailSendServicio;
@@ -63,20 +64,15 @@ public class UsuarioController {
     // creado un usuario ADMIN o USER
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model, RedirectAttributes redirect,
-                          @RequestParam(value = "file",required = false) MultipartFile imagen, @RequestParam(value = "password2",required = false) String password2) {
-
+                          @RequestParam(value = "file", required = false) MultipartFile imagen, @RequestParam(value = "password2", required = false) String password2) throws IOException {
         if (result.hasErrors()) {
             System.out.println("error result");
             model.addAttribute("h1", "Formulario nuevo usuario");
             return "/usuario/nuevo";
         }
+
         if (usuario.getId() != null) {
             usuario.setAlta(usuario.getAlta());
-        }
-        if (usuario == null) {
-            System.out.println("usuario null");
-            redirect.addFlashAttribute("error", "El usuario es nulo");
-            return "/usuario/nuevo";
         }
         if (usuario.getId() == null) {
             System.out.println("usuario get id null");
@@ -87,30 +83,14 @@ public class UsuarioController {
                 return "/usuario/nuevo";
             }
         }
-
         // CODIGO PARA RECIBIR Y GUARDAR LA FOTO
-
         if (!imagen.isEmpty()) {
             Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/usuario");
             String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
             try {
                 byte[] bytesImg = imagen.getBytes();
                 Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
-                System.out.println("hola soy el file name " + imagen.getOriginalFilename());
-                System.out.println("hola soy la ruta absoluta " + rutaAbsoluta);
-                Files.write(rutaCompleta, bytesImg);
-                usuario.setFoto(imagen.getOriginalFilename());
-            } catch (IOException e) {
-                redirect.addFlashAttribute("error", e.getMessage());
-            }
-        }else{
-            Path directorioImagenes = Paths.get("src//main//resources//static//imagenes/usuario");
-            String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
-            System.out.println(rutaAbsoluta);
 
-            try {
-                byte[] bytesImg = imagen.getBytes();
-                Path rutaCompleta = Paths.get(rutaAbsoluta + "//intruso.jpg");
                 Files.write(rutaCompleta, bytesImg);
                 usuario.setFoto(imagen.getOriginalFilename());
             } catch (IOException e) {
@@ -119,20 +99,22 @@ public class UsuarioController {
         }
 
         try {
-            System.out.println("creando usuario");
+            if (usuario.getId() == null) {
+                for (Usuario user : usuarioServicio.listar()) {
+                    if (usuario.getEmail().equals(user.getEmail())) {
+                        throw new ErrorServicio("Ya existe un usuario con este correo.");
+                    }
+                }
+            }
             usuarioServicio.crear(usuario);
-
-            iMailsend.enviar(usuario.getEmail(), "Bienvenide " + usuario.getNombre());
-
-
+            iMailsend.enviar(usuario.getEmail(), "Bienvenido " + usuario.getNombre());
         } catch (Exception e) {
             System.out.println("error al crear usuario");
             redirect.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/crear";
         }
-
-        
         model.addAttribute("h1", "Formulario nuevo usuario");
+        redirect.addFlashAttribute("success", "Usuario creado con exito!");
         return "redirect:/usuario/";
     }
 
@@ -158,9 +140,7 @@ public class UsuarioController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable("id") Integer id, RedirectAttributes redirect) {
-
         // VALIDACION DE INGRESO DE ID
-
         if (id == null || usuarioServicio.findById(id) == null) {
             redirect.addFlashAttribute("error", "Error, no hay un usuario con ese ID.");
             return "redirect:/usuario/";
@@ -168,7 +148,6 @@ public class UsuarioController {
             usuarioServicio.eliminar(id);
             redirect.addFlashAttribute("success", "Su usuario se elimino con exito!");
         }
-
         return "redirect:/usuario/";
     }
 
@@ -176,34 +155,32 @@ public class UsuarioController {
     @GetMapping("/pass/{id}")
     public String nuevoPass(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("usuario", usuarioServicio.findById(id));
-         model.addAttribute("h1", "Configuracion de contraseña");
+        model.addAttribute("h1", "Configuracion de Contraseña");
         return "/usuario/nuevo-pass";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/update-pass")
     public String updatePass(Usuario usuario, @RequestParam("password2") String password2,
-            RedirectAttributes redirect) {
-
+                             RedirectAttributes model) {
         if (usuario.getPassword().isEmpty() || password2.isEmpty()) {
-            redirect.addFlashAttribute("error", "Debe llenar ambos campos");
+            model.addFlashAttribute("error", "Debe llenar ambos campos");
             return "redirect:/usuario/pass/" + usuario.getId();
         }
 
         if (!usuario.getPassword().equals(password2)) {
-            redirect.addFlashAttribute("error", "Las constraseñas no coinciden");
+            model.addFlashAttribute("error", "Las constraseñas no coinciden");
             return "redirect:/usuario/pass/" + usuario.getId();
         }
 
         try {
             usuario.setPassword(password2);
-            System.out.println("el password nuevo es : " + usuario.getPassword());
             usuarioServicio.cambiarPass(usuario);
+            model.addFlashAttribute("success", "Su password se actualizo correctamente!");
         } catch (Exception e) {
-            redirect.addFlashAttribute("error", e.getMessage());
+            model.addFlashAttribute("error", e.getMessage());
             return "redirect:/usuario/pass/" + usuario.getId();
         }
-
         return "redirect:/usuario/";
     }
 

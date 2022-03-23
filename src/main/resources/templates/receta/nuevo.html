@@ -22,12 +22,12 @@
                         method="POST" enctype="multipart/form-data">
 
                         <div class="col-sm-6">
-                            <label for="nombre" class="fas fa-regular fa-file-signature form-label"> Nombre de la receta</label>
-                            <input th:field="*{nombre}" type="text" class="form-control" id="nombre" required>
+                            <label for="nombre" class="fas fa-regular fa-file-signature form-label"> Nombre de la Receta</label>
+                            <input th:field="*{nombre}" type="text" class="form-control capital" id="nombre" required>
                         </div>
                         <div class="col-sm-2">
                             <label for="Tcocion" class="fas fa-solid fa-clock form-label"> Cocción (min)</label>
-                            <input th:field="*{tiempoDeCoccion}" type="number" class="form-control" id="Tcocion"min="0">
+                            <input th:field="*{tiempoDeCoccion}" type="number" class="form-control " id="Tcocion"min="0">
                         </div>
                         <div class="col-sm-2">
                             <label for="prep" class="fas fa-solid fa-clock form-label"> Preparación (min)</label>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-sm-4">
                             <label for="file" class="fas fa-regular fa-camera form-label"> Imagen</label>
-                            <input type="file" class="form-control" id="file" name="file">
+                            <input type="file" class="form-control" id="file" name="file" required>
                         </div>
                         <div class="col-sm-2">
                             <label for="specificSizeInputName" class="fas fa-solid fa-users form-label">Porciones</label>
@@ -50,9 +50,9 @@
                         </div>
                         <!--                FORMULARIO INGREDIENTES -->
                         <div class="">
-                            <table class="table border border-dark border-2 mt-3 bg-card rounded-3">
-                                <thead>
-                                    <tr>
+                            <table class="table border border-dark border-2 mt-3 bg-card table-bordered table-bordered ">
+                                <thead class="text-center">
+                                    <tr >
                                         <th scope="col">Nombre del ingrediente</th>
                                         <th scope="col">Cantidad</th>
                                         <th scope="col">Agregar</th>
@@ -65,13 +65,13 @@
                                         th:each="ingrediente,index : *{ingredientes}">
                                         <td>
                                             <label for="nombre">Nombre</label>
-                                            <input placeholder="Ingrese Ingrediente" type="text"
+                                            <input class=" text-capitalize" placeholder="Ingrese Ingrediente" type="text"
                                                 th:field="*{ingredientes[__${index.index}__].nombre}"
                                                 th:id="'nombre'+${index.index}">
                                         </td>
                                         <td>
                                             <label for="nombre">Cantidad</label>
-                                            <input placeholder="Ingrese Cantidad" type="text"
+                                            <input class=" text-capitalize" placeholder="Ingrese Cantidad" type="text"
                                                 th:field="*{ingredientes[__${index.index}__].cantidad}"
                                                 th:id="'cantidad'+${index.index}">
                                         </td>
@@ -89,7 +89,7 @@
                         </div>
                         <!--                FORMULARIO PROCEDIMIENTOS-->
                         <div class="">
-                            <table class="table border border-dark border-2 mt-3 bg-card rounded-3">
+                            <table class="table border border-dark border-2 mt-3 bg-card table-bordered table-bordered text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col">Paso</th>

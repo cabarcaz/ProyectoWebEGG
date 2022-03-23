@@ -42,21 +42,23 @@ $(document).ready(function () {
 
 });
 
- // funciones de boton agregar
+// funciones de boton agregar
 
 function agregar(string, index) {
   //  console.log(event)
   let nextIndex = index + 1;
   let row = document.getElementById(string + nextIndex);
-  if(string == "ingrediente"){
-  let botA = document.getElementById('botonAI' + index);
-   if (botA != null){
-   botA.classList.add("no-mostrar");}
+  if (string == "ingrediente") {
+    let botA = document.getElementById('botonAI' + index);
+    if (botA != null) {
+      botA.classList.add("no-mostrar");
+    }
   }
-  if(string == "paso"){
-  let botB = document.getElementById('botonAP' + index);
-   if (botB != null){
-   botB.classList.add("no-mostrar");}
+  if (string == "paso") {
+    let botB = document.getElementById('botonAP' + index);
+    if (botB != null) {
+      botB.classList.add("no-mostrar");
+    }
   }
   if (row != null) {
     row.classList.remove("no-mostrar");
@@ -67,19 +69,20 @@ function agregar(string, index) {
 
 function eliminar(string, index) {
   let row = document.getElementById(string + index);
-  let lowIndex= index - 1;
+  let lowIndex = index - 1;
   // config para la vista de los botones
-  if(string == "ingrediente"){
+  if (string == "ingrediente") {
     let botA = document.getElementById('botonAI' + lowIndex);
-     console.log("aca estoy arriba");
-     botA.classList.remove("no-mostrar")
-     console.log("que onda porque no anda esta bosta??" + lowIndex);
-    }
-    if(string == "paso"){
+    console.log("aca estoy arriba");
+    botA.classList.remove("no-mostrar")
+    console.log("que onda porque no anda esta bosta??" + lowIndex);
+  }
+  if (string == "paso") {
     let botB = document.getElementById('botonAP' + lowIndex);
-     if (botB != null){
-     botB.classList.remove("no-mostrar");}
+    if (botB != null) {
+      botB.classList.remove("no-mostrar");
     }
+  }
   if (string == "ingrediente") {
     if (index != 0) {
       let nombre = document.getElementById('nombre' + index);
@@ -87,9 +90,9 @@ function eliminar(string, index) {
       nombre.value = '';
       cantidad.value = '';
       if (row != null) {
-          row.classList.add("no-mostrar");
-          row.classList.remove("mostrar1");
-     }
+        row.classList.add("no-mostrar");
+        row.classList.remove("mostrar1");
+      }
     }
   }
   if (string == "paso") {
@@ -97,9 +100,9 @@ function eliminar(string, index) {
       let texto = document.getElementById('procedimiento' + index);
       texto.value = '';
       if (row != null) {
-           row.classList.add("no-mostrar")
-           row.classList.remove("mostrar1")
-        }
+        row.classList.add("no-mostrar")
+        row.classList.remove("mostrar1")
+      }
     }
   }
 }
@@ -108,12 +111,18 @@ function goBack() {
   window.history.back();
 }
 
-  //Funcion hecha por Lucas
-function check_text(input) {  
-    if (input.validity.patternMismatch){  
-        input.setCustomValidity("Nombre de usuario no puede ser null");  
-    }  
-    else {  
-        input.setCustomValidity("");  
-    }                 
+//Funcion hecha por Lucas
+function check_text(input) {
+  if (input.validity.patternMismatch) {
+    input.setCustomValidity("Nombre de usuario no puede ser null");
+  } else {
+    input.setCustomValidity("");
+  }
 }
+
+
+var images = $(".image");
+
+$(images).on("error", function(event) {
+    $(event.target).attr("src", "https://image-placeholder.com/images/actual-size/200x200.png");
+});

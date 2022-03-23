@@ -7,7 +7,21 @@
     <header th:replace="/plantilla/plantilla::header"></header>
 
     <main>
-
+        <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success != null}">
+            <label th:text="${success}"></label>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${error != null}">
+            <label th:text="${error}"></label>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+        </div>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${warning != null}">
+            <label th:text="${warning}"></label>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+        </div>
         <div class="container ">
             <div class="d-flex">
                 <div class="bg-card col col-md-6 border border-dark border-2 mt-4 fs-2 rounded-3">
@@ -25,8 +39,7 @@
                     <div class="col-sm-4 text-danger">
                         <p class="alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errorclass="error"th:errors="*{nombre}" />
                     </div>
-                </div>    
-                    
+                </div>
                         <div class="form-group row  pb-2">
                             <label for="apellido" class="col-sm-2 col-form-label col-form-label-sm">Apellido</label>
                             <div class="col-sm-4">
@@ -36,7 +49,6 @@
                                 <p class="alert-danger" th:if="${#fields.hasErrors('apellido')}" th:errorclass="error" th:errors="*{apellido}" />
                             </div>
                         </div>
-                    
                         <div class="form-group row  pb-2">
                             <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
                             <div class="col-sm-4">
@@ -57,7 +69,7 @@
                         <div class="form-group row  pb-2">
                             <label for="Contraseña" class="col-sm-2 col-form-label col-form-label-sm">Contraseña</label>
                             <div class="col-sm-4">
-                                <input type="password" class="form-control form-control-sm" th:field="*{password}"id="Contraseña" placeholder="Ingrese Contraseña">
+                                <input type="password" class="form-control form-control-sm" th:field="*{password}"id="Contraseña" placeholder="Ingrese Contraseña" minlength="4">
                             </div>
                             <div class="col-sm-4 text-danger">
                                 <p class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}" />
@@ -67,7 +79,7 @@
                         <div class="form-group row  pb-2">
                             <label for="Contraseña2" class="col-sm-2 col-form-label col-form-label-sm">Repetir Contraseña</label>
                             <div class="col-sm-4">
-                                <input type="password" class="form-control form-control-sm" id="Contraseña2" placeholder="Repita Contraseña" name="password2">
+                                <input type="password" class="form-control form-control-sm" id="Contraseña2" placeholder="Repita Contraseña" name="password2" minlength="4">
                             </div>
                             <div class="col-sm-4 text-danger">
                                 <p class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errorclass="error"th:errors="*{password}" />

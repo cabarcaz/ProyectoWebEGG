@@ -23,7 +23,7 @@ public class Ingrediente implements Serializable {
     @Column(name = "cantidad")
     private String cantidad;
 
-    @ManyToMany(mappedBy = "ingredientes")
+    @ManyToMany(mappedBy = "ingredientes",cascade = CascadeType.ALL)
     private List<Receta> recetas = new ArrayList<>();
 
     public Integer getId() {
